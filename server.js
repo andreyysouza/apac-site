@@ -16,6 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "inicio.html"));
+});
+
 // garante que as pastas existam
 const ensureDir = dir => {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
