@@ -1,0 +1,144 @@
+/* ======== RESET ======== */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Poppins", sans-serif;
+  background:#f7f7f7;
+  color:#001051;
+}
+
+/* barra */
+.barra-institucional {
+  background: #001051;
+  color: white;
+  padding: 6px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* menu */
+.menu ul {
+  display: flex;
+  justify-content: center;
+  background: #5b74a0;
+  list-style: none;
+}
+.menu li a {
+  color: white;
+  padding: 12px 18px;
+  display: block;
+  text-decoration: none;
+  font-weight: 600;
+}
+.menu li a:hover,
+.menu li a.active {
+  background: #001051;
+}
+
+/* ======== HEADER ======== */
+.header-apac{
+  background:#5b74a0;
+  color:#fff;
+  height:15vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+.header-apac h1{
+  font-size:2.4rem;
+  font-weight:700;
+}
+.header-apac h2{
+  font-size:1.3rem;
+  font-weight:500;
+  margin-top:10px;
+}
+.logo-apac{
+  width:140px;
+  margin-bottom:15px;
+}
+
+/* ======== SLIDER VERTICAL ======== */
+.slider{
+  width:100%;
+  max-width:900px;
+  margin:40px auto;
+  overflow:hidden;
+  border-radius:14px;
+
+  /* >>> AJUSTE PARA IMAGENS VERTICAIS */
+  height:650px;
+
+  background:#000;
+  position:relative;
+}
+
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+
+  /* >>> MOSTRAR A IMAGEM INTEIRA (SEM CORTAR) */
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-color:#000;
+
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .7s ease, transform .7s ease;
+  border-radius:14px;
+}
+
+.slide.ativo{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* overlay discreto */
+.overlay{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  padding:20px;
+  background:linear-gradient(to top, rgba(0,0,0,.65), transparent);
+  color:#fff;
+}
+.overlay h2{
+  font-size:20px;
+  margin-bottom:4px;
+}
+.overlay p{
+  font-size:14px;
+  opacity:.9;
+}
+
+/* bolinhas laterais */
+.slider-controls{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.ctrl-dot{
+  width:8px;
+  height:28px;
+  background:rgba(255,255,255,.3);
+  border-radius:6px;
+  cursor:pointer;
+}
+.ctrl-dot.active{
+  background:#fff;
+}
+
+/* RESPONSIVO */
+@media(max-width:600px){
+  .slider{ height:540px; } /* altura reduzida em telas pequenas */
+  .overlay h2{ font-size:18px; }
+}

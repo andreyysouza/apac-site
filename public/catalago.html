@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo APAC</title>
+
+    <!-- Importando a fonte Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="catalago.css" />
+</head>
+
+<body>
+
+    <!-- ======================= HEADER / CAPA DO SITE ======================= -->
+    <div class="barra-institucional">
+        Este é um site institucional da APAC de Santa Bárbara - MG
+    </div>
+
+    <header>
+        <div>
+            <h1>Artesanato com Propósito</h1>
+            <h2>Mãos que fazem o bem!</h2>
+            <p>Produzido pelos recuperandos da APAC com dedicação e esperança.</p>
+            <a href="#catalogo" class="btn">Ver Catálogo</a>
+        </div>
+    </header>
+
+    <!-- ======================= MENU ======================= -->
+    <nav class="menu">
+        <ul>
+            <li><a href="inicio.html">INICIO</a></li>
+            <li><a href="catalago.html">ARTESANATO</a></li>
+            <li><a href="aupac.html">AUPAC</a></li>
+        </ul>
+    </nav>
+
+    <!-- ======================= SEÇÃO SOBRE ======================= -->
+    <section class="sobre">
+        <h2>Sobre o Projeto</h2>
+        <p>
+            Cada peça produzida pelos recuperandos da APAC representa mais que um artesanato: é um gesto de dignidade, oportunidade e reconstrução.
+            Ao adquirir um produto, você contribui diretamente para o processo de ressocialização e apoia o futuro de pessoas em busca de um novo caminho.
+        </p>
+    </section>
+
+    <!-- ======================= FILTROS DE CATEGORIA ======================= -->
+    <div class="filtros"> 
+        <h2>Catálogo de Produtos</h2>
+        <button class="filtro-btn active" data-filter="all">TODOS</button>
+        <button class="filtro-btn" data-filter="marcenaria">MARCENARIA</button>
+        <button class="filtro-btn" data-filter="gesso">GESSO</button>
+        <button class="filtro-btn" data-filter="palito">PALITO</button>
+    </div> 
+
+    <!-- ======================= CATÁLOGO ======================= -->
+    <section class="produtos" id="catalogo">
+
+        <!-- CONTAINER ONDE OS PRODUTOS SERÃO GERADOS VIA JS -->
+        <div class="grid" id="produtos-container"></div>
+
+        <!-- PAGINAÇÃO -->
+        <div id="paginacao" class="pagination"></div>
+    </section>
+
+    <!-- ======================= RODAPÉ ======================= -->
+    <footer>
+        <p>APAC - Associação de Proteção e Assistência aos Condenados</p>
+        <p>Artesanato criado com dignidade, fé e oportunidade.</p>
+        <img src="logo_apac.png" /> 
+    </footer>
+
+    <!-- ======================= JS ======================= -->
+    <script src="catalago.js"></script>
+
+</body>
+</html>

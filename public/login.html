@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - Admin APAC</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header>
+    <h1>Login Administrativo</h1>
+  </header>
+
+  <form id="loginForm">
+    <div class="row">
+      <div style="flex:1">
+        <label>Senha</label>
+        <input id="senha" type="password" required />
+      </div>
+    </div>
+    <button type="submit">Entrar</button>
+  </form>
+
+  <script>
+    const SENHA = "APAC2026"; // senha universal
+
+    document.getElementById('loginForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const input = document.getElementById('senha').value.trim();
+      if(input === SENHA){
+        // salva no localStorage que o usuário está autorizado
+        localStorage.setItem("autorizado", "true");
+        window.location.href = "admin.html";
+      } else {
+        alert("Senha incorreta!");
+      }
+    });
+  </script>
+</body>
+</html>

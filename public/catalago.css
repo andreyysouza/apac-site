@@ -1,0 +1,333 @@
+/* ======================= CONFIGURAÇÕES GERAIS ======================= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #f7f7f7;
+    color: black;
+}
+
+/* Remover sublinhado padrão dos links */
+a {
+    text-decoration: none;
+}
+
+.menu a,
+.menu a:visited {
+  color: white
+  ;   
+  text-decoration: none;
+}
+
+/* ======================= CABEÇALHO ======================= */
+
+.barra-institucional {
+    width: 100%;
+    background: #001051;
+    color: #fff;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+header {
+    background-color: #5b74a0;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 10px;
+}
+
+header h2 {
+    font-size: 2rem;
+    font-weight: 550;
+    margin: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #001051; 
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: #405881;
+}
+
+/* ======================= MENU NAVEGACAO ======================= */
+
+.menu {
+    position: fixed;
+    top: 15px;      /* distância da borda superior */
+    right: 20px;    /* distância da borda direita */
+    z-index: 999;
+}
+
+.menu ul {
+    color: white; 
+    display: flex;
+    gap: 20px;              /* separa os botões */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding: 10px 15px;
+    border-radius: 12px;    /* deixa arredondado */
+}
+
+.menu ul li {
+    color: white;
+    font-size: 14px;        /* tamanho menor */
+    font-weight: 600;
+    padding: 6px 12px;      /* tamanho do “botão” */
+    background: #001051;    /* cor dos botões */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu ul li:hover {
+    background: #405881;
+    color: white;
+}
+
+/* Adiciona espaço para o conteúdo não ficar escondido atrás do menu */
+body {
+    padding-top: 80px; /* ajuste conforme o tamanho do menu */
+}
+
+/* ===================== FILTROS (botões) ===================== */
+.filtros {
+  margin: 30px auto;
+  text-align: center;
+}
+
+/* cada botão de filtro */
+.filtro-btn {
+  background: #001051; /* cor base */
+  color: #fff; /* texto branco */
+  padding: 8px 14px; /* espaçamento */
+  border: none; /* sem borda */
+  margin: 6px; /* separação entre botões */
+  border-radius: 6px; /* cantos arredondados */
+  cursor: pointer; /* cursor indicador de clique */
+  transition: background 0.2s ease; /* transição suave */
+}
+
+/* hover do botão */
+.filtro-btn:hover { 
+  background: #5b74a0; /* cor ao passar o mouse */
+}
+
+/* botão ativo (destacado) */
+.filtro-btn.active {
+  background: #5b74a0; /* cor amarela quando ativo */
+  color: white; /* texto escuro no botão ativo */
+}
+
+/* ======================= SEÇÃO SOBRE ======================= */
+.sobre {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+}
+
+.sobre h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sobre p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+/* ======================= CATÁLOGO ======================= */
+.produtos {
+    padding: 60px 10%;
+}
+
+.produtos h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+/* Grade responsiva dos produtos */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Card do produto */
+.card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+    padding: 16px;
+    transition: 0.25s;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+/* Efeito hover */
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+/* Imagem */
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+/* Conteúdo */
+.card-content {
+    padding: 0; /* agora o padding está no card */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nome */
+.card-content h3 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Descrição */
+.card-content p {
+    font-size: .9rem;
+    color: #555;
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+/* Preço */
+.price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #2c7a78;
+    margin-bottom: 12px;
+}
+
+/* Botão do WhatsApp */
+.whatsapp-btn {
+    margin: 15px auto 0;
+    display: block;
+    width: 70%;
+    text-align: center;
+    padding: 12px;
+    background-color: #001051;
+    color: white;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+/* Hover do botão */
+.whatsapp-btn:hover {
+    background-color: #405881;
+}
+
+
+/* ======================= RODAPÉ ======================= */
+footer {
+    background-color: #001051;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    position: relative; 
+}
+
+footer img {
+    width: 120px; /* ajuste como quiser */
+    position: absolute; 
+    left: 60px; /* distância da esquerda */
+    top: 50%;
+    transform: translateY(-50%); /* centraliza verticalmente */
+}
+
+/* ======================= ESCONDE O FILTRO JS ======================= */
+.hide {
+    display: none !important;
+}
+
+/* ======================= PAGINAÇÃO ======================= */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.page-btn,
+.nav-btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #001051;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 600;
+}
+
+.page-btn:hover,
+.nav-btn:hover {
+  background: #001051;
+  color: white;
+}
+
+.page-btn.active {
+  background: #001051;
+  color: white;
+}
+
+.nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Animação suave */
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0px); 
+  }
+}

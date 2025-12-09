@@ -1,0 +1,182 @@
+
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6fb;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ========================= HEADER ========================= */
+header {
+  width: 100%;
+  max-width: 900px;
+  background: #001051;
+  color: #fff;
+  padding: 20px 15px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: 26px;
+}
+
+/* ========================= SEÇÕES ========================= */
+.bloco {
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.bloco h2 {
+  color: #001051;
+  margin-bottom: 18px;
+}
+
+/* ========================= FORMULÁRIOS ========================= */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #001051;
+}
+
+input[type=text],
+input[type=number],
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d9dce3;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button[type=submit] {
+  margin-top: 5px;
+  padding: 12px;
+  border: none;
+  background: #001051;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button[type=submit]:hover {
+  background: #5b74a0;
+}
+
+/* ========================= LISTAGEM ========================= */
+
+#listaArtesanatos,
+#listaCachorros {
+  margin-top: 18px;
+}
+
+/* Card padrão */
+.item-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 9px;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+  margin-bottom: 12px;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.item-card img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Conteúdo do card */
+.item-card h4 {
+  margin-bottom: 4px;
+  color: #001051;
+}
+
+.item-card p {
+  font-size: 13px;
+  color: #333;
+  margin: 3px 0;
+}
+
+/* Botões no card */
+.item-card button {
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.item-card button:hover {
+  opacity: 0.8;
+}
+
+/* Editar */
+.item-card button:not(.del) {
+  background: #001051;
+  color: #fff;
+}
+
+/* Excluir */
+.item-card button.del {
+  background: #b00020;
+  color: #fff;
+}
+
+.item-card button.del:hover {
+  background: #d32f2f;
+}
+
+/* ========================= RESPONSIVO ========================= */
+
+@media(max-width: 600px) {
+  .item-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .item-card img {
+    width: 100%;
+    height: 180px;
+  }
+}
+
+

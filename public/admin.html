@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin - Artesanatos & AUPAC</title>
+</head>
+<body>
+
+<script>
+  // simples bloqueio por senha (troque se quiser)
+  const SENHA = "APAC2026";
+  if(localStorage.getItem("autorizado") !== "true"){
+    const s = prompt("Informe a senha de acesso:");
+    if(s === SENHA) localStorage.setItem("autorizado","true");
+    else { alert("Acesso negado."); location.href = "login.html"; }
+  }
+</script>
+
+<header>
+  <h1>Painel Admin — Artesanatos & AUPAC</h1>
+  <button id="logout" class="logout-btn" style="position:relative;left:0;top:10px">Sair</button>
+</header>
+
+<div class="admin-tabs">
+  <button class="tab-btn active" data-tab="tab-artesanatos">Artesanatos</button>
+  <button class="tab-btn" data-tab="tab-cachorros">Cachorros (AUPAC)</button>
+</div>
+
+<main>
+
+  <!-- ARTESANATOS -->
+  <section id="tab-artesanatos" class="tab active">
+    <div class="top-row">
+      <h2 style="margin:0">Cadastrar / Editar Artesanato</h2>
+      <div>
+        <button id="btn-refresh-art">Atualizar lista</button>
+        <button id="btn-export-prod" style="margin-left:8px">Exportar JSON</button>
+      </div>
+    </div>
+
+    <form id="formArt" onsubmit="return false">
+      <input type="hidden" id="art-id" value="">
+      <div class="row">
+        <div><label>Nome</label><input id="art-nome" type="text" required></div>
+        <div style="width:160px"><label>Preço</label><input id="art-preco" type="text"></div>
+      </div>
+
+      <div class="row" style="margin-top:8px">
+        <div><label>Descrição</label><textarea id="art-desc" rows="2"></textarea></div>
+        <div style="width:180px"><label>Categoria</label>
+          <select id="art-categoria">
+            <option value="marcenaria">Marcenaria</option>
+            <option value="gesso">Gesso</option>
+            <option value="palito">Palito</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:8px">
+        <div><label>Imagem (upload)</label><input id="art-img" type="file" accept="image/*"></div>
+        <div style="width:220px"><label>WhatsApp (ex: 553199600000)</label><input id="art-whatsapp" type="text"></div>
+      </div>
+
+      <div style="margin-top:10px">
+        <button id="art-save">Salvar</button>
+        <button id="art-clear" type="button" style="margin-left:8px;background:#6c757d">Limpar</button>
+      </div>
+    </form>
+
+    <div class="list" id="list-art"></div>
+  </section>
+
+  <!-- CACHORROS -->
+  <section id="tab-cachorros" class="tab" style="display:none">
+    <div class="top-row">
+      <h2 style="margin:0">Cadastrar / Editar Cachorro (AUPAC)</h2>
+      <div>
+        <button id="btn-refresh-dog">Atualizar lista</button>
+        <button id="btn-export-aupac" style="margin-left:8px">Exportar JSON</button>
+      </div>
+    </div>
+
+    <form id="formDog" onsubmit="return false">
+      <input type="hidden" id="dog-id" value="">
+      <div class="row">
+        <div><label>Nome</label><input id="dog-nome" type="text" required></div>
+        <div style="width:160px"><label>Porte</label>
+          <select id="dog-porte"><option value="pequeno">Pequeno</option><option value="medio">Médio</option><option value="grande">Grande</option></select>
+        </div>
+        <div style="width:160px"><label>Idade</label>
+          <select id="dog-idade"><option value="filhote">Filhote</option><option value="adulto">Adulto</option><option value="idoso">Idoso</option></select>
+        </div>
+        <div style="width:160px"><label>Sexo</label>
+          <select id="dog-sexo"><option value="macho">Macho</option><option value="femea">Fêmea</option></select>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:8px">
+        <div><label>Observação (apenas interna)</label><input id="dog-obs" type="text" placeholder="opcional"></div>
+        <div style="width:220px"><label>Imagem (upload)</label><input id="dog-img" type="file" accept="image/*"></div>
+      </div>
+
+      <div class="row" style="margin-top:8px">
+        <div style="width:220px"><label>WhatsApp</label><input id="dog-whatsapp" type="text"></div>
+        <div style="flex:1"></div>
+      </div>
+
+      <div style="margin-top:10px">
+        <button id="dog-save">Salvar</button>
+        <button id="dog-clear" type="button" style="margin-left:8px;background:#6c757d">Limpar</button>
+      </div>
+    </form>
+
+    <div class="list" id="list-dog"></div>
+  </section>
+
+</main>
+
+<script>
+/* ===================== Helpers e estado ===================== */
+const API_BASE = ""; // mesmo host (http://localhost:3000 se estiver rodando local)
+const sel = s => document.querySelector(s);
+const selAll = s => Array.from(document.querySelectorAll(s));
+
+let artes = []; // lista local de artesanatos
+let dogs = [];  // lista local de cachorros
+
+// logout
+sel("#logout").addEventListener("click", ()=>{ localStorage.removeItem("autorizado"); location.reload(); });
+
+/* ===================== abas ===================== */
+selAll(".tab-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    selAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    selAll(".tab").forEach(t => t.style.display = "none");
+    btn.classList.add("active");
+    const id = btn.dataset.tab;
+    document.getElementById(id).style.display = "block";
+  });
+});
+
+/* ===================== API helpers ===================== */
+async function apiGet(tipo){
+  const res = await fetch(`/api/${tipo}`);
+  if(!res.ok) throw new Error("Falha ao carregar " + tipo);
+  return res.json();
+}
+
+async function apiAdd(tipo, formData){
+  const res = await fetch(`/api/add/${tipo}`, { method: "POST", body: formData });
+  if(!res.ok) throw new Error("Falha ao adicionar");
+  return res.json();
+}
+
+async function apiEdit(tipo, id, formData){
+  const res = await fetch(`/api/edit/${tipo}/${id}`, { method: "PUT", body: formData });
+  if(!res.ok) throw new Error("Falha ao editar");
+  return res.json();
+}
+
+async function apiDelete(tipo, id){
+  const res = await fetch(`/api/delete/${tipo}/${id}`, { method: "DELETE" });
+  if(!res.ok) throw new Error("Falha ao deletar");
+  return res.json();
+}
+
+/* ===================== Render listas ===================== */
+function renderArt(){
+  const root = sel("#list-art");
+  root.innerHTML = "";
+  if(!artes.length){ root.innerHTML = "<p>Nenhum artesanato cadastrado.</p>"; return; }
+
+  artes.forEach((p, i)=>{
+    const img = p.imagem ? `<img src="${p.imagem}" alt="${p.nome}">` : `<div style="width:110px;height:110px;border-radius:8px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999">Sem imagem</div>`;
+    const html = document.createElement("div");
+    html.className = "item-card";
+    html.innerHTML = `
+      ${img}
+      <div class="meta">
+        <h4>${p.nome}</h4>
+        <p>Categoria: ${p.categoria || "—"}</p>
+        <p>Preço: R$ ${p.preco || "0,00"}</p>
+        <p style="font-size:13px;color:#333">${p.descricao || ""}</p>
+        <p style="font-size:13px;color:#333">WhatsApp: ${p.whatsapp || "—"}</p>
+        <div class="actions">
+          <button class="edit" data-i="${i}">Editar</button>
+          <button class="delete" data-i="${i}">Excluir</button>
+        </div>
+      </div>
+    `;
+    root.appendChild(html);
+  });
+
+  // attach events
+  selAll("#list-art .edit").forEach(b => b.addEventListener("click", e=>{
+    const i = Number(e.currentTarget.dataset.i);
+    openEditArt(i);
+  }));
+  selAll("#list-art .delete").forEach(b => b.addEventListener("click", async e=>{
+    const i = Number(e.currentTarget.dataset.i);
+    const ok = confirm("Excluir este artesanato?");
+    if(!ok) return;
+    try{
+      await apiDelete("artesanato", artes[i].id);
+      await loadArtes();
+      alert("Removido");
+    }catch(err){ console.error(err); alert("Erro ao remover"); }
+  }));
+}
+
+function renderDogs(){
+  const root = sel("#list-dog");
+  root.innerHTML = "";
+  if(!dogs.length){ root.innerHTML = "<p>Nenhum cachorro cadastrado.</p>"; return; }
+
+  dogs.forEach((d, i)=>{
+    const img = d.imagem ? `<img src="${d.imagem}" alt="${d.nome}">` : `<div style="width:110px;height:110px;border-radius:8px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999">Sem imagem</div>`;
+    const html = document.createElement("div");
+    html.className = "item-card";
+    html.innerHTML = `
+      ${img}
+      <div class="meta">
+        <h4>${d.nome}</h4>
+        <p>Porte: ${d.porte || "—"}</p>
+        <p>Idade: ${d.idade || "—"}</p>
+        <p>Sexo: ${d.sexo || "—"}</p>
+        <p style="font-size:13px;color:#333">WhatsApp: ${d.whatsapp || "—"}</p>
+        <div class="actions">
+          <button class="edit" data-i="${i}">Editar</button>
+          <button class="delete" data-i="${i}">Excluir</button>
+        </div>
+      </div>
+    `;
+    root.appendChild(html);
+  });
+
+  selAll("#list-dog .edit").forEach(b => b.addEventListener("click", e=>{
+    const i = Number(e.currentTarget.dataset.i);
+    openEditDog(i);
+  }));
+  selAll("#list-dog .delete").forEach(b => b.addEventListener("click", async e=>{
+    const i = Number(e.currentTarget.dataset.i);
+    const ok = confirm("Excluir este cachorro?");
+    if(!ok) return;
+    try{
+      await apiDelete("aupac", dogs[i].id);
+      await loadDogs();
+      alert("Removido");
+    }catch(err){ console.error(err); alert("Erro ao remover"); }
+  }));
+}
+
+/* ===================== Carregar do servidor ===================== */
+async function loadArtes(){
+  try{
+    artes = await apiGet("artesanato");
+    renderArt();
+  }catch(err){ console.error(err); sel("#list-art").innerHTML = "<p>Erro ao carregar artesanatos.</p>"; }
+}
+async function loadDogs(){
+  try{
+    dogs = await apiGet("aupac");
+    renderDogs();
+  }catch(err){ console.error(err); sel("#list-dog").innerHTML = "<p>Erro ao carregar cachorros.</p>"; }
+}
+
+/* ===================== abrir edição ===================== */
+function openEditArt(i){
+  const p = artes[i];
+  sel("#art-id").value = p.id;
+  sel("#art-nome").value = p.nome || "";
+  sel("#art-preco").value = p.preco || "";
+  sel("#art-desc").value = p.descricao || "";
+  sel("#art-categoria").value = p.categoria || "marcenaria";
+  sel("#art-whatsapp").value = p.whatsapp || "";
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+function openEditDog(i){
+  const d = dogs[i];
+  sel("#dog-id").value = d.id;
+  sel("#dog-nome").value = d.nome || "";
+  sel("#dog-porte").value = d.porte || "pequeno";
+  sel("#dog-idade").value = d.idade || "filhote";
+  sel("#dog-sexo").value = d.sexo || "macho";
+  sel("#dog-obs").value = d.obs || "";
+  sel("#dog-whatsapp").value = d.whatsapp || "";
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+/* ===================== enviar formularios ===================== */
+async function handleSaveArt(){
+  const id = sel("#art-id").value;
+  const nome = sel("#art-nome").value.trim();
+  if(!nome){ alert("Preencha o nome"); return; }
+  const preco = sel("#art-preco").value.trim();
+  const descricao = sel("#art-desc").value.trim();
+  const categoria = sel("#art-categoria").value;
+  const whatsapp = sel("#art-whatsapp").value.trim();
+  const file = sel("#art-img").files[0] || null;
+
+  const fd = new FormData();
+  fd.append("nome", nome);
+  fd.append("preco", preco);
+  fd.append("descricao", descricao);
+  fd.append("categoria", categoria);
+  fd.append("whatsapp", whatsapp);
+  if(file) fd.append("imagem", file);
+
+  try{
+    if(!id){
+      const novo = await apiAdd("artesanato", fd);
+      alert("Artesanato criado");
+      sel("#formArt").reset();
+    } else {
+      const updated = await apiEdit("artesanato", id, fd);
+      alert("Artesanato atualizado");
+      sel("#formArt").reset();
+    }
+    await loadArtes();
+  }catch(err){ console.error(err); alert("Erro ao salvar artesanato"); }
+}
+
+async function handleSaveDog(){
+  const id = sel("#dog-id").value;
+  const nome = sel("#dog-nome").value.trim();
+  if(!nome){ alert("Preencha o nome"); return; }
+  const porte = sel("#dog-porte").value;
+  const idade = sel("#dog-idade").value;
+  const sexo = sel("#dog-sexo").value;
+  const whatsapp = sel("#dog-whatsapp").value.trim();
+  const obs = sel("#dog-obs").value.trim();
+  const file = sel("#dog-img").files[0] || null;
+
+  const fd = new FormData();
+  fd.append("nome", nome);
+  fd.append("porte", porte);
+  fd.append("idade", idade);
+  fd.append("sexo", sexo);
+  fd.append("whatsapp", whatsapp);
+  fd.append("obs", obs);
+  if(file) fd.append("imagem", file);
+
+  try{
+    if(!id){
+      await apiAdd("aupac", fd);
+      alert("Cachorro criado");
+      sel("#formDog").reset();
+    } else {
+      await apiEdit("aupac", id, fd);
+      alert("Cachorro atualizado");
+      sel("#formDog").reset();
+    }
+    await loadDogs();
+  }catch(err){ console.error(err); alert("Erro ao salvar cachorro"); }
+}
+
+/* ===================== botões / eventos ===================== */
+sel("#art-save").addEventListener("click", handleSaveArt);
+sel("#dog-save").addEventListener("click", handleSaveDog);
+
+sel("#art-clear").addEventListener("click", ()=> sel("#formArt").reset());
+sel("#dog-clear").addEventListener("click", ()=> sel("#formDog").reset());
+
+sel("#btn-refresh-art").addEventListener("click", loadArtes);
+sel("#btn-refresh-dog").addEventListener("click", loadDogs);
+
+sel("#btn-export-prod").addEventListener("click", ()=>{
+  const blob = new Blob([JSON.stringify({ produtos: artes }, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a"); a.href = url; a.download = "produtos.json"; document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+});
+
+sel("#btn-export-aupac").addEventListener("click", ()=>{
+  const blob = new Blob([JSON.stringify({ cachorros: dogs }, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a"); a.href = url; a.download = "aupac.json"; document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+});
+
+/* ===================== inicializar ===================== */
+(async function init(){
+  await loadArtes();
+  await loadDogs();
+})();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
