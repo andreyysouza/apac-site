@@ -239,6 +239,65 @@ footer img {
   }
 }
 
+/* ======================= FILTROS AUPAC ======================= */ 
+.filtros-container { 
+    max-width: 900px; 
+    margin: 0 auto; 
+    text-align: center; 
+} 
+/* Título */ 
+.filtros-container h3 { 
+    margin-bottom: 15px; 
+    font-size: 18px; 
+} 
+/* LINHA DOS FILTROS (agora flex, não grid!) */ 
+.filtros-grid { 
+    display: flex; 
+    justify-content: center; 
+    align-items: end; 
+    gap: 10px; 
+/* Espaçamento entre filtros */ 
+    flex-wrap: wrap; 
+/* Quebra apenas quando necessário */ 
+    margin-bottom: 10px; 
+} 
+/* Cada grupo do filtro */ 
+.filtro-group { 
+    display: flex; flex-direction: column; 
+    gap: 2px; 
+    min-width: 130px; 
+    /* Tamanho consistente, lado a lado */ 
+} 
+/* Labels discretos */ 
+.filtro-group label { 
+    font-size: 12px; 
+    font-weight: 600; 
+    color: #001051; 
+    opacity: 0.6; 
+} 
+/* Select minimalista */ 
+.filtro-group select { 
+    background: #001051; /* cor base */ 
+    color: #fff; /* texto branco */ 
+    padding: 8px 14px; /* espaçamento */
+    border: none; /* sem borda */ 
+    margin: 6px; /* separação entre botões */
+    border-radius: 6px; /* cantos arredondados */ 
+    cursor: pointer; /* cursor indicador de clique */ 
+    transition: background 0.2s ease; /* transição suave */ 
+} 
+.filtro-group select:hover { 
+    background: #5b74a0; 
+} 
+/* Botões */ 
+.filtros-botoes { 
+    display: flex; 
+    justify-content: center;
+    gap: 8px; 
+    margin-top: 10px; 
+}
+
+
 
 
 
