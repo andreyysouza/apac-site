@@ -241,22 +241,31 @@ body {
 }
 
 #pagination-aupac button {
-    padding: 8px 14px;
-    border-radius: 6px;
-    border: 1px solid #001051;
-    background: #fff;
-    cursor: pointer;
-    transition: 0.2s;
-    font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #001051;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 600;
 }
 
+/* Hover igual */
+#pagination-aupac button:hover {
+  background: #001051;
+  color: white;
+}
+
+/* Ativo igual */
 #pagination-aupac button.active {
-    background: #ffc107;
-    color: black;
+  background: #001051;
+  color: white;
 }
 
-#pagination-aupac button:hover:not(.active) {
-    background: #405881;
+/* Botões desativados igual */
+#pagination-aupac button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 
@@ -342,5 +351,6 @@ footer img {
   gap: 8px;
   margin-top: 10px;
 }
+
 
 
