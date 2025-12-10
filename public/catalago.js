@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const DEFAULT_WHATSAPP = "5531996005196";
 
-  // Criar card
+  // ================= CREATE CARD =================
   function createCard(item) {
 
     const nome = item.nome || "Sem nome";
@@ -24,7 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const card = document.createElement("div");
     card.className = `card produto ${categoria}`;
 
-    const precoHTML = preco ? `<p class="price">R$ ${preco.toFixed(2)}</p>` : "";
+    const precoHTML = preco
+      ? `<p class="price">R$ ${preco.toFixed(2).replace('.', ',')}</p>`
+      : "";
 
     card.innerHTML = `
       <img src="${img}">
@@ -43,14 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
     return card;
   }
 
-  // Render page
+  // ================= RENDER PAGE =================
   function renderPage() {
 
     const btn = document.querySelector('.filtro-btn.active');
-    const categoria = btn ? btn.dataset.filter : "all";
+    const categoriaFiltro = btn ? btn.dataset.filter : "all";
 
     const filtrados = produtos.filter(p =>
-      categoria === "all" || p.categoria === categoria
+      categoriaFiltro === "all" || p.categoria === categoriaFiltro
     );
 
     const totalPages = Math.ceil(filtrados.length / itemsPerPage) || 1;
@@ -67,8 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
     buildPagination(totalPages);
   }
 
-  // Paginação
+  // ================= PAGINATION =================
   function buildPagination(totalPages) {
+
     paginationContainer.innerHTML = "";
 
     const prev = document.createElement("button");
@@ -92,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     paginationContainer.appendChild(next);
   }
 
-  // Eventos dos filtros
+  // ================= FILTER EVENTS =================
   filterButtons.forEach(btn => {
     btn.onclick = () => {
       filterButtons.forEach(b => b.classList.remove("active"));
@@ -102,15 +105,19 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   });
 
-  // Carregar do backend
+  // ================= LOAD DATA FROM BACKEND =================
   async function loadData() {
     try {
+
       const r = await fetch("/api/artesanato");
-      const lista = await r.json();
+      const dados = await r.json();
+
+      // --- NOVO: Ajuste porque backend retorna { produtos: [] }
+      const lista = Array.isArray(dados) ? dados : dados.produtos || [];
 
       produtos = lista.map(item => ({
         nome: item.nome,
-        categoria: item.categoria?.toLowerCase() || "outro",
+        categoria: (item.categoria || "outro").toLowerCase(),
         preco: item.preco,
         descricao: item.descricao,
         whatsapp: item.whatsapp,
@@ -127,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadData();
 
 });
+
 
 
 
