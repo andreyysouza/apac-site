@@ -7,7 +7,7 @@ const path = require("path");
 const multer = require("multer");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -157,6 +157,7 @@ app.delete("/api/delete/:tipo/:id", (req, res) => {
 
 // iniciar
 app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));
+
 
 
 
