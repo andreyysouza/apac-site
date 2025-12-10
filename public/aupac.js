@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return card;
   }
 
-  // Filtros
+  // Aplicar filtros
   function applyFilters() {
     const fIdade = filtroIdade.value || "all";
     const fSexo = filtroSexo.value || "all";
@@ -111,7 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
   async function loadData() {
     try {
       const r = await fetch("/api/aupac");
-      const lista = await r.json();
+      const dados = await r.json();
+
+      // Backend devolve { cachorros: [...] } → corrigido:
+      const lista = Array.isArray(dados) ? dados : dados.cachorros || [];
 
       allPets = lista.map(item => ({
         nome: item.nome,
@@ -135,4 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
   filtroPorte.addEventListener("change", () => { currentPage = 1; renderPage(); });
 
 });
+
+
 
