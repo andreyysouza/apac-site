@@ -184,31 +184,37 @@ body {
 
 /* ================= PAGINAÇÃO ================= */
 
-#pagination-aupac button {
-  padding: 8px 14px;
-  border-radius: 6px;
-  border: 1px solid #001051;
-  background: #fff;
-  cursor: pointer;
-  transition: 0.2s;
-  font-weight: 600;
-}
-
-#pagination-aupac button:hover {
-  background: #001051;
-  color: white;
-}
-
+#pagination-aupac { 
+    display: flex; 
+    justify-content: center; 
+    gap: 8px; 
+    margin: 30px 0; 
+    flex-wrap: wrap; 
+} 
+#pagination-aupac button { 
+    padding: 8px 14px; 
+    border-radius: 6px; 
+    border: 1px solid #001051; 
+    background: #fff; 
+    cursor: pointer; 
+    transition: 0.2s; 
+    font-weight: 600; 
+} 
+/* Hover igual */
+#pagination-aupac button:hover { 
+    background: #001051; 
+    color: white; 
+} 
+/* Ativo igual */ 
 #pagination-aupac button.active {
-  background: #001051;
-  color: white;
+    background: #001051;
+    color: white; 
+} 
+/* Botões desativados igual */
+#pagination-aupac button:disabled { 
+    opacity: 0.4; 
+    cursor: not-allowed; 
 }
-
-#pagination-aupac button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
 /* ================= RODAPÉ ================= */
 
 .rodape {
@@ -296,6 +302,7 @@ footer img {
     gap: 8px; 
     margin-top: 10px; 
 }
+
 
 
 
