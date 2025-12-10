@@ -1,10 +1,38 @@
 // server.js
-// Servidor Express para ler/escrever data/produtos.json e data/aupac.json
-// + uploads de imagens para uploads/artesanatos e uploads/aupac
+// Servidor Express usando Cloudinary para upload de imagens
+// e JSON para armazenar artesanatos e cachorros
+
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const multer = require("multer");
+
+// -------- CLOUDINARY --------
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key:    process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+// Storage do Cloudinary
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: (req, file) => {
+    const tipo = req.params.tipo === "artesanato" ? "artesanatos" : "aupac";
+    return {
+      folder: tipo,
+      allowed_formats: ["jpg", "jpeg", "png", "webp"],
+      public_id: Date.now() + "-" + file.originalname.replace(/\s+/g, "_")
+    };
+  }
+});
+
+const upload = multer({ storage });
+// ---------- FIM CLOUDINARY ----------
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,151 +40,139 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// servir arquivos estáticos (pasta public) e uploads para imagens
+// arquivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "inicio.html"));
 });
 
-// garante que as pastas existam
-const ensureDir = dir => {
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-};
-ensureDir(path.join(__dirname, "uploads", "artesanatos"));
-ensureDir(path.join(__dirname, "uploads", "aupac"));
-ensureDir(path.join(__dirname, "data"));
+// garante pasta data/
+if (!fs.existsSync(path.join(__dirname, "data"))) {
+  fs.mkdirSync(path.join(__dirname, "data"), { recursive: true });
+}
 
-// ---- util: lê o arquivo e retorna { rootObj, key, arr }
-// suporta formato { produtos: [...] } e { cachorros: [...] } ou array puro
+
+// ======= Leitura dos arquivos JSON =======
 function readDataFile(tipo) {
-  const filePath = tipo === "artesanato" ? path.join(__dirname, "data", "produtos.json")
-                                        : path.join(__dirname, "data", "aupac.json");
+  const filePath = tipo === "artesanato"
+    ? path.join(__dirname, "data", "produtos.json")
+    : path.join(__dirname, "data", "aupac.json");
+
   if (!fs.existsSync(filePath)) {
-    // cria arquivo padrão com a chave adequada
     const empty = tipo === "artesanato" ? { produtos: [] } : { cachorros: [] };
     fs.writeFileSync(filePath, JSON.stringify(empty, null, 2));
   }
+
   const raw = fs.readFileSync(filePath, "utf8");
-  let parsed;
-  try { parsed = JSON.parse(raw); } catch (e) { parsed = tipo === "artesanato" ? { produtos: [] } : { cachorros: [] }; }
 
-  // detecta chave
-  if (Array.isArray(parsed)) return { root: parsed, key: null, arr: parsed, filePath };
-  if (parsed.produtos && Array.isArray(parsed.produtos)) return { root: parsed, key: "produtos", arr: parsed.produtos, filePath };
-  if (parsed.cachorros && Array.isArray(parsed.cachorros)) return { root: parsed, key: "cachorros", arr: parsed.cachorros, filePath };
+  try {
+    const parsed = JSON.parse(raw);
 
-  // fallback: cria estrutura adequada
+    if (Array.isArray(parsed)) return { root: parsed, key: null, arr: parsed, filePath };
+    if (parsed.produtos) return { root: parsed, key: "produtos", arr: parsed.produtos, filePath };
+    if (parsed.cachorros) return { root: parsed, key: "cachorros", arr: parsed.cachorros, filePath };
+
+  } catch {}
+
+  // fallback
   const fallback = tipo === "artesanato" ? { produtos: [] } : { cachorros: [] };
-  return { root: fallback, key: tipo === "artesanato" ? "produtos" : "cachorros", arr: tipo === "artesanato" ? fallback.produtos : fallback.cachorros, filePath };
+  return {
+    root: fallback,
+    key: tipo === "artesanato" ? "produtos" : "cachorros",
+    arr: fallback[tipo === "artesanato" ? "produtos" : "cachorros"],
+    filePath
+  };
 }
 
 function writeDataFile(filePath, root) {
   fs.writeFileSync(filePath, JSON.stringify(root, null, 2));
 }
 
-// ---- multer setup (usa uma rota com :tipo para escolher a pasta) ----
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const tipo = req.params.tipo;
-    const folder = tipo === "artesanato" ? "artesanatos" : "aupac";
-    const dest = path.join(__dirname, "uploads", folder);
-    ensureDir(dest);
-    cb(null, dest);
-  },
-  filename: (req, file, cb) => {
-    const safe = Date.now() + "-" + file.originalname.replace(/\s+/g, "_");
-    cb(null, safe);
-  }
-});
-const upload = multer({ storage });
 
-// ---- ROTAS ----
+// ======= ROTAS API =======
 
-// listar (retorna a array)
+// retornar lista
 app.get("/api/:tipo", (req, res) => {
   const tipo = req.params.tipo === "artesanato" ? "artesanato" : "aupac";
   const { arr } = readDataFile(tipo);
-  return res.json(arr);
+  res.json(arr);
 });
 
-// criar (com upload opcional)
+// criar
 app.post("/api/add/:tipo", upload.single("imagem"), (req, res) => {
   const tipo = req.params.tipo === "artesanato" ? "artesanato" : "aupac";
   const { root, key, arr, filePath } = readDataFile(tipo);
 
-  // montar item com campos possíveis
   const novo = {
     id: Date.now(),
-    nome: req.body.nome || req.body.titulo || "",
-    preco: req.body.preco != null ? req.body.preco : null,
-    descricao: req.body.descricao || req.body.descricao_curta || "",
+    nome: req.body.nome || "",
+    preco: req.body.preco || null,
+    descricao: req.body.descricao || "",
     categoria: req.body.categoria || null,
-    // campos aupac
     porte: req.body.porte || null,
     idade: req.body.idade || null,
     sexo: req.body.sexo || null,
-    // contato
     whatsapp: req.body.whatsapp || null,
-    // imagem: gravamos o caminho relativo que o front pode usar
-    imagem: req.file ? `/uploads/${tipo === "artesanato" ? "artesanatos" : "aupac"}/${req.file.filename}` : (req.body.imagem || null)
+    obs: req.body.obs || null,
+    imagem: req.file ? req.file.path : null   // URL DO CLOUDINARY
   };
 
   arr.push(novo);
 
-  // grava de volta respeitando a estrutura original
-  if (key) {
-    root[key] = arr;
-    writeDataFile(filePath, root);
-  } else {
-    writeDataFile(filePath, arr);
-  }
+  if (key) root[key] = arr;
+  writeDataFile(filePath, root);
 
-  return res.json(novo);
+  res.json(novo);
 });
 
-// editar (PUT) - aceita upload opcional
+// editar
 app.put("/api/edit/:tipo/:id", upload.single("imagem"), (req, res) => {
   const tipo = req.params.tipo === "artesanato" ? "artesanato" : "aupac";
   const id = Number(req.params.id);
+
   const { root, key, arr, filePath } = readDataFile(tipo);
 
   const idx = arr.findIndex(i => i.id === id);
   if (idx === -1) return res.status(404).json({ error: "Item não encontrado" });
 
-  // atualiza campos (somente os enviados)
   const item = arr[idx];
-  const allowed = ["nome","preco","descricao","categoria","porte","idade","sexo","whatsapp","obs"];
-  allowed.forEach(k => {
-    if (req.body[k] !== undefined) item[k] = req.body[k];
+  const campos = ["nome", "preco", "descricao", "categoria", "porte", "idade", "sexo", "whatsapp", "obs"];
+
+  campos.forEach(c => {
+    if (req.body[c] !== undefined) item[c] = req.body[c];
   });
 
-  if (req.file) {
-    item.imagem = `/uploads/${tipo === "artesanato" ? "artesanatos" : "aupac"}/${req.file.filename}`;
-  }
+  // nova imagem no Cloudinary
+  if (req.file) item.imagem = req.file.path;
 
   arr[idx] = item;
-  if (key) { root[key] = arr; writeDataFile(filePath, root); } else { writeDataFile(filePath, arr); }
+  if (key) root[key] = arr;
+  writeDataFile(filePath, root);
 
-  return res.json(item);
+  res.json(item);
 });
 
 // deletar
 app.delete("/api/delete/:tipo/:id", (req, res) => {
   const tipo = req.params.tipo === "artesanato" ? "artesanato" : "aupac";
   const id = Number(req.params.id);
+
   const { root, key, arr, filePath } = readDataFile(tipo);
 
   const novoArr = arr.filter(i => i.id !== id);
 
-  if (key) { root[key] = novoArr; writeDataFile(filePath, root); } else { writeDataFile(filePath, novoArr); }
+  if (key) root[key] = novoArr;
+  writeDataFile(filePath, root);
 
-  return res.json({ msg: "Removido" });
+  res.json({ msg: "Removido" });
 });
 
+
 // iniciar
-app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Servidor rodando em http://localhost:${PORT}`)
+);
 
 
 
