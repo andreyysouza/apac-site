@@ -1,21 +1,23 @@
 // server.js
-// Express + Cloudinary (multer-storage-cloudinary) + Firestore (firebase-admin)
+// Express + Cloudinary + Firestore
 
 const express = require("express");
 const path = require("path");
 
-// cloudinary + multer storage
+// Cloudinary
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const multer = require("multer");
 
-// firebase-admin
+// Firebase Admin (Firestore)
 const admin = require("firebase-admin");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-/* =========== Cloudinary =========== */
+/* ======================================================
+   CLOUDINARY
+====================================================== */
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key:    process.env.CLOUDINARY_API_KEY,
@@ -33,79 +35,95 @@ const storage = new CloudinaryStorage({
     };
   }
 });
-const upload = multer({ storage });
-/* =========== End Cloudinary =========== */
 
-/* =========== Firestore (firebase-admin) =========== */
-/*
-  EXPECTS: process.env.FIREBASE_SERVICE_ACCOUNT to be a JSON string (the service account).
-  On Render: add an Environment Secret named FIREBASE_SERVICE_ACCOUNT with the JSON content.
-*/
+const upload = multer({ storage });
+
+/* ------------------------------------------------------
+   Função mais segura para pegar URL do arquivo enviado
+------------------------------------------------------- */
+function fileUrlFromReqFile(file) {
+  if (!file) return null;
+  // multer-storage-cloudinary garante 'path' = secure_url
+  return (
+    file.path ||
+    file.secure_url ||
+    file.url ||
+    file.location ||
+    null
+  );
+}
+
+/* ======================================================
+   FIREBASE ADMIN (FIRESTORE)
+====================================================== */
+
 if (!process.env.FIREBASE_SERVICE_ACCOUNT) {
-  console.warn("Warning: FIREBASE_SERVICE_ACCOUNT not set. Local Firestore calls will fail unless set.");
+  console.warn("⚠️ FIREBASE_SERVICE_ACCOUNT não definido. Firestore não vai funcionar.");
 } else {
   try {
     const sa = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+
     admin.initializeApp({
       credential: admin.credential.cert(sa)
     });
-  } catch (err) {
-    console.error("Failed to parse FIREBASE_SERVICE_ACCOUNT JSON:", err);
+
+    console.log("Firebase Admin inicializado com sucesso!");
+  } catch (error) {
+    console.error("❌ Erro ao inicializar Firebase Admin:", error);
     process.exit(1);
   }
 }
 
 const db = admin.apps.length ? admin.firestore() : null;
-/* =========== End Firestore =========== */
+
+/* ======================================================
+   EXPRESS CONFIG
+====================================================== */
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// serve static front files
 app.use(express.static(path.join(__dirname, "public")));
-app.get("/", (req, res) => res.sendFile(path.join(__dirname, "public", "inicio.html")));
 
-/* =========== Helpers =========== */
+app.get("/", (req, res) =>
+  res.sendFile(path.join(__dirname, "public", "inicio.html"))
+);
+
+/* Utilidade para nome de coleção */
 function collectionName(tipo) {
   return tipo === "artesanato" ? "produtos" : "cachorros";
 }
 
-// safe extractor for cloudinary file URL (multer-storage-cloudinary)
-function fileUrlFromReqFile(file) {
-  if (!file) return null;
-  // multer-storage-cloudinary usually sets file.path or file.path and file.filename; check possible names
-  return file.path || file.url || file.secure_url || file.location || file.path || null;
-}
+/* ======================================================
+   API - LISTAR
+====================================================== */
 
-/* =========== API routes using Firestore =========== */
-
-// LIST
 app.get("/api/:tipo", async (req, res) => {
   const tipo = req.params.tipo === "artesanato" ? "artesanato" : "aupac";
-  const collName = collectionName(tipo);
+  const coll = collectionName(tipo);
 
-  if (!db) {
-    // fallback: if Firestore not configured, return empty array to keep front working
-    return res.json([]);
-  }
+  if (!db) return res.json([]);
 
   try {
-    const snapshot = await db.collection(collName).orderBy("id", "desc").get();
-    const items = snapshot.docs.map(d => d.data());
-    return res.json(items);
+    const snap = await db.collection(coll).orderBy("id", "desc").get();
+    const list = snap.docs.map(doc => doc.data());
+    res.json(list);
   } catch (err) {
-    console.error("Erro GET /api/:tipo", err);
-    return res.status(500).json({ error: "Erro ao ler dados" });
+    console.error("Erro ao listar:", err);
+    res.status(500).json({ error: "Erro ao listar" });
   }
 });
 
-// CREATE
+/* ======================================================
+   API - CRIAR
+====================================================== */
+
 app.post("/api/add/:tipo", upload.single("imagem"), async (req, res) => {
   const tipo = req.params.tipo === "artesanato" ? "artesanato" : "aupac";
-  const collName = collectionName(tipo);
+  const coll = collectionName(tipo);
 
   const novo = {
-    id: Date.now(), // mantém compatibilidade com o front
+    id: Date.now(),
     nome: req.body.nome || "",
     preco: req.body.preco || null,
     descricao: req.body.descricao || "",
@@ -115,81 +133,86 @@ app.post("/api/add/:tipo", upload.single("imagem"), async (req, res) => {
     sexo: req.body.sexo || null,
     whatsapp: req.body.whatsapp || null,
     obs: req.body.obs || null,
-    imagem: fileUrlFromReqFile(req.file) // cloudinary url
+    imagem: fileUrlFromReqFile(req.file)
   };
 
-  if (!db) {
-    // fallback: respond success but do not persist
-    return res.json(novo);
-  }
+  if (!db) return res.json(novo);
 
   try {
-    // use id as document id so front (which uses numeric id) can find by id easily
-    const docId = String(novo.id);
-    await db.collection(collName).doc(docId).set(novo);
-    return res.json(novo);
+    await db.collection(coll).doc(String(novo.id)).set(novo);
+    res.json(novo);
   } catch (err) {
-    console.error("Erro POST /api/add/:tipo", err);
-    return res.status(500).json({ error: "Erro ao salvar item" });
+    console.error("Erro ao salvar:", err);
+    res.status(500).json({ error: "Erro ao salvar" });
   }
 });
 
-// EDIT
+/* ======================================================
+   API - EDITAR
+====================================================== */
+
 app.put("/api/edit/:tipo/:id", upload.single("imagem"), async (req, res) => {
   const tipo = req.params.tipo === "artesanato" ? "artesanato" : "aupac";
-  const collName = collectionName(tipo);
-  const id = Number(req.params.id);
-  const docId = String(id);
+  const coll = collectionName(tipo);
+  const id = String(req.params.id);
 
-  if (!db) {
-    return res.status(500).json({ error: "Firestore não configurado" });
-  }
+  if (!db) return res.status(500).json({ error: "Firestore não está configurado" });
 
   try {
-    const docRef = db.collection(collName).doc(docId);
+    const docRef = db.collection(coll).doc(id);
     const snap = await docRef.get();
+
     if (!snap.exists) return res.status(404).json({ error: "Item não encontrado" });
 
     const item = snap.data();
 
-    const campos = ["nome", "preco", "descricao", "categoria", "porte", "idade", "sexo", "whatsapp", "obs"];
+    const campos = [
+      "nome", "preco", "descricao", "categoria",
+      "porte", "idade", "sexo", "whatsapp", "obs"
+    ];
+
     campos.forEach(c => {
       if (req.body[c] !== undefined) item[c] = req.body[c];
     });
 
-    if (req.file) {
-      item.imagem = fileUrlFromReqFile(req.file);
-    }
+    if (req.file) item.imagem = fileUrlFromReqFile(req.file);
 
     await docRef.set(item);
-    return res.json(item);
+    res.json(item);
+
   } catch (err) {
-    console.error("Erro PUT /api/edit/:tipo/:id", err);
-    return res.status(500).json({ error: "Erro ao atualizar" });
+    console.error("Erro ao editar:", err);
+    res.status(500).json({ error: "Erro ao editar" });
   }
 });
 
-// DELETE
+/* ======================================================
+   API - DELETAR
+====================================================== */
+
 app.delete("/api/delete/:tipo/:id", async (req, res) => {
   const tipo = req.params.tipo === "artesanato" ? "artesanato" : "aupac";
-  const collName = collectionName(tipo);
-  const id = Number(req.params.id);
-  const docId = String(id);
+  const coll = collectionName(tipo);
+  const id = String(req.params.id);
 
-  if (!db) {
-    return res.status(500).json({ error: "Firestore não configurado" });
-  }
+  if (!db) return res.status(500).json({ error: "Firestore não configurado" });
 
   try {
-    await db.collection(collName).doc(docId).delete();
-    return res.json({ msg: "Removido" });
+    await db.collection(coll).doc(id).delete();
+    res.json({ msg: "Removido" });
   } catch (err) {
-    console.error("Erro DELETE /api/delete/:tipo/:id", err);
-    return res.status(500).json({ error: "Erro ao deletar" });
+    console.error("Erro ao deletar:", err);
+    res.status(500).json({ error: "Erro ao deletar" });
   }
 });
 
-app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));
+/* ======================================================
+   START SERVER
+====================================================== */
+
+app.listen(PORT, () =>
+  console.log(`Servidor rodando em http://localhost:${PORT}`)
+);
 
 
 
