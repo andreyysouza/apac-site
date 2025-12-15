@@ -181,6 +181,19 @@ body {
     border-radius: 10px;
     margin-bottom: 12px;
 }
+.whatsapp-btn {
+    margin: 15px auto 0;
+    display: block;
+    width: 70%;
+    text-align: center;
+    padding: 12px;
+    background-color: #001051;
+    color: white;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
 
 /* ================= PAGINAÇÃO ================= */
 
@@ -302,6 +315,7 @@ footer img {
     gap: 8px; 
     margin-top: 10px; 
 }
+
 
 
 
