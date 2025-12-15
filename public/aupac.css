@@ -29,29 +29,6 @@ a {
     transition: 0.3s ease;
 }
 
-/* LOGO RESPONSIVA */
-@media (max-width: 768px) {
-  .logo-aupac {
-      position: static;       /* deixa de ser absoluta */
-      display: block;
-      margin: 0 auto 10px;
-      height: 110px;          /* reduz tamanho */
-  }
-
-  header h1 {
-      font-size: 1.9rem;
-  }
-
-  header h2 {
-      font-size: 1.3rem;
-  }
-
-  header {
-      height: auto;
-      padding: 40px 20px 25px;
-  }
-}
-
 .barra-institucional {
     width: 100%;
     background: #001051;
@@ -68,7 +45,7 @@ header {
     background-position: center;
     height: 60vh;
     display: flex;
-    flex-direction: column; /* permite logo acima */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -91,10 +68,10 @@ header h2 {
 
 .btn {
     display: inline-block;
-    background-color: #001051; 
+    background-color: #001051;
     color: white;
-    padding: 12px 25px;
-    border-radius: 8px;
+    padding: 14px 26px;
+    border-radius: 25px;
     transition: 0.3s ease;
     font-weight: 600;
 }
@@ -182,40 +159,68 @@ body {
     margin-bottom: 12px;
 }
 
+.pet-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* BOTÃO ADOTAR */
+.adotar-btn {
+    width: 80%;
+    margin-top: 14px;
+    padding: 12px 16px;
+    background-color: #001051;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.adotar-btn:hover {
+    background-color: #405881;
+}
 
 /* ================= PAGINAÇÃO ================= */
 
-#pagination-aupac { 
-    display: flex; 
-    justify-content: center; 
-    gap: 8px; 
-    margin: 30px 0; 
-    flex-wrap: wrap; 
-} 
-#pagination-aupac button { 
-    padding: 8px 14px; 
-    border-radius: 6px; 
-    border: 1px solid #001051; 
-    background: #fff; 
-    cursor: pointer; 
-    transition: 0.2s; 
-    font-weight: 600; 
-} 
-/* Hover igual */
-#pagination-aupac button:hover { 
-    background: #001051; 
-    color: white; 
-} 
-/* Ativo igual */ 
+#pagination-aupac {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+#pagination-aupac button {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid #001051;
+    background: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 600;
+}
+
+#pagination-aupac button:hover {
+    background: #001051;
+    color: white;
+}
+
 #pagination-aupac button.active {
     background: #001051;
-    color: white; 
-} 
-/* Botões desativados igual */
-#pagination-aupac button:disabled { 
-    opacity: 0.4; 
-    cursor: not-allowed; 
+    color: white;
 }
+
+#pagination-aupac button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
 /* ================= RODAPÉ ================= */
 
 .rodape {
@@ -235,104 +240,49 @@ footer img {
     transform: translateY(-50%);
 }
 
-/* FOOTER RESPONSIVO */
+/* ======================= MOBILE (AJUSTES FINAIS) ======================= */
 @media (max-width: 768px) {
-  footer img {
-      width: 80px;
-      position: static;
-      display: block;
-      margin: 15px auto 0;
-      transform: none;
-  }
+
+    header {
+        height: auto;
+        padding: 90px 20px 40px;
+    }
+
+    .logo-aupac {
+        position: static;
+        display: block;
+        margin: 0 auto 20px;
+        height: 90px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    header h2 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+    header .btn {
+        width: 90%;
+        max-width: 320px;
+        margin: 25px auto 0;
+        font-size: 1rem;
+        padding: 14px;
+    }
+
+    footer img {
+        width: 80px;
+        position: static;
+        display: block;
+        margin: 15px auto 0;
+        transform: none;
+    }
 }
 
-/* ======================= FILTROS AUPAC ======================= */ 
-.filtros-container { 
-    max-width: 900px; 
-    margin: 0 auto; 
-    text-align: center; 
-} 
-/* Título */ 
-.filtros-container h3 { 
-    margin-bottom: 15px; 
-    font-size: 18px; 
-} 
-/* LINHA DOS FILTROS (agora flex, não grid!) */ 
-.filtros-grid { 
-    display: flex; 
-    justify-content: center; 
-    align-items: end; 
-    gap: 10px; 
-/* Espaçamento entre filtros */ 
-    flex-wrap: wrap; 
-/* Quebra apenas quando necessário */ 
-    margin-bottom: 10px; 
-} 
-/* Cada grupo do filtro */ 
-.filtro-group { 
-    display: flex; flex-direction: column; 
-    gap: 2px; 
-    min-width: 130px; 
-    /* Tamanho consistente, lado a lado */ 
-} 
-/* Labels discretos */ 
-.filtro-group label { 
-    font-size: 12px; 
-    font-weight: 600; 
-    color: #001051; 
-    opacity: 0.6; 
-} 
-/* Select minimalista */ 
-.filtro-group select { 
-    background: #001051; /* cor base */ 
-    color: #fff; /* texto branco */ 
-    padding: 8px 14px; /* espaçamento */
-    border: none; /* sem borda */ 
-    margin: 6px; /* separação entre botões */
-    border-radius: 6px; /* cantos arredondados */ 
-    cursor: pointer; /* cursor indicador de clique */ 
-    transition: background 0.2s ease; /* transição suave */ 
-} 
-.filtro-group select:hover { 
-    background: #5b74a0; 
-} 
-/* Botões */ 
-.filtros-botoes { 
-    display: flex; 
-    justify-content: center;
-    gap: 8px; 
-    margin-top: 10px; 
-}
 
-.pet-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.adotar-btn {
-  width: 80%;
-  margin-top: 14px;
-
-  padding: 12px 16px;
-  background-color: #001051;
-  color: #fff;
-
-  font-weight: 600;
-  font-size: 14px;
-  border-radius: 25px;
-  border: none;
-
-  cursor: pointer;
-  text-align: center;
-
-  /* ESSENCIAL PARA MOBILE */
-  appearance: none;
-  -webkit-appearance: none;
-}
-.adotar-btn:hover {
-    background-color: #405881;
-}
 
 
 
