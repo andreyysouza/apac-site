@@ -330,6 +330,10 @@ footer img {
   appearance: none;
   -webkit-appearance: none;
 }
+.adotar-btn:hover {
+    background-color: #405881;
+}
+
 
 
 
