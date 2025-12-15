@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let allPets = [];
   let visiblePets = [];
   let currentPage = 1;
-  const itemsPerPage = 6;
+  const itemsPerPage = 12;
 
   const DEFAULT_WHATSAPP = "5531996005196";
 
@@ -138,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
   filtroPorte.addEventListener("change", () => { currentPage = 1; renderPage(); });
 
 });
+
 
 
 
