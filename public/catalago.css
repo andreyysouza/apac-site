@@ -282,37 +282,38 @@ footer img {
 
 /* ======================= PAGINAÇÃO ======================= */
 .pagination {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin: 30px 0;
-  flex-wrap: wrap;
+   display: flex; 
+    justify-content: center; 
+    gap: 8px; 
+    margin: 30px 0; 
+    flex-wrap: wrap;
 }
 
 .page-btn,
 .nav-btn {
-  padding: 8px 14px;
-  border-radius: 6px;
-  border: 1px solid #001051;
-  background: #fff;
-  cursor: pointer;
-  transition: 0.2s;
-  font-weight: 600;
+    padding: 8px 14px; 
+    border-radius: 6px; 
+    border: 1px solid #001051; 
+    background: #fff; 
+    cursor: pointer; 
+    transition: 0.2s; 
+    font-weight: 600; 
+
 }
 
 .page-btn:hover,
 .nav-btn:hover {
-  background: #001051;
-  color: white;
+    background: #001051; 
+    color: white; 
 }
 
 .page-btn.active {
   background: #001051;
-  color: white;
+  color: white; 
 }
 
 .nav-btn:disabled {
-  opacity: 0.4;
+  opacity: 0.4; 
   cursor: not-allowed;
 }
 
@@ -424,3 +425,4 @@ footer img {
       font-size: 1.5rem;
   }
 }
+
