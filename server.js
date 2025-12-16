@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 3000;
 ====================================================== */
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key:    process.env.CLOUDINARY_API_KEY,
+  api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
@@ -34,34 +34,33 @@ const storage = new CloudinaryStorage({
       allowed_formats: ["jpg", "jpeg", "png", "webp"],
       public_id: Date.now() + "-" + file.originalname.replace(/\s+/g, "_"),
 
-      // 🔴 AJUSTE VISUAL AQUI
-     transformation: tipo === "aupac"
-        ? [
-            {
-              width: 600,
-              height: 750,
-              crop: "fill",
-
-              // 🔥 ESSENCIAL
-               gravity: "auto:faces:animal"
-            },
-            {
-              quality: "auto",
-              fetch_format: "auto"
-            }
-          ]
-        : [
-            {
-              width: 600,
-              height: 600,
-              crop: "fill",
-              gravity: "center"
-            },
-            {
-              quality: "auto",
-              fetch_format: "auto"
-            }
-          ]
+      // ✅ TRANSFORMAÇÃO CORRETA E ESTÁVEL
+      transformation:
+        tipo === "aupac"
+          ? [
+              {
+                width: 600,
+                height: 750,
+                crop: "fill",
+                gravity: "auto" // ✅ CORRETO (não quebra upload)
+              },
+              {
+                quality: "auto",
+                fetch_format: "auto"
+              }
+            ]
+          : [
+              {
+                width: 600,
+                height: 600,
+                crop: "fill",
+                gravity: "center"
+              },
+              {
+                quality: "auto",
+                fetch_format: "auto"
+              }
+            ]
     };
   }
 });
@@ -69,11 +68,10 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage });
 
 /* ------------------------------------------------------
-   Função mais segura para pegar URL do arquivo enviado
+   Função segura para pegar URL do Cloudinary
 ------------------------------------------------------- */
 function fileUrlFromReqFile(file) {
   if (!file) return null;
-  // multer-storage-cloudinary garante 'path' = secure_url
   return (
     file.path ||
     file.secure_url ||
@@ -86,17 +84,14 @@ function fileUrlFromReqFile(file) {
 /* ======================================================
    FIREBASE ADMIN (FIRESTORE)
 ====================================================== */
-
 if (!process.env.FIREBASE_SERVICE_ACCOUNT) {
-  console.warn("⚠️ FIREBASE_SERVICE_ACCOUNT não definido. Firestore não vai funcionar.");
+  console.warn("⚠️ FIREBASE_SERVICE_ACCOUNT não definido.");
 } else {
   try {
     const sa = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
-
     admin.initializeApp({
       credential: admin.credential.cert(sa)
     });
-
     console.log("Firebase Admin inicializado com sucesso!");
   } catch (error) {
     console.error("❌ Erro ao inicializar Firebase Admin:", error);
@@ -109,10 +104,8 @@ const db = admin.apps.length ? admin.firestore() : null;
 /* ======================================================
    EXPRESS CONFIG
 ====================================================== */
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) =>
@@ -127,7 +120,6 @@ function collectionName(tipo) {
 /* ======================================================
    API - LISTAR
 ====================================================== */
-
 app.get("/api/:tipo", async (req, res) => {
   const tipo = req.params.tipo === "artesanato" ? "artesanato" : "aupac";
   const coll = collectionName(tipo);
@@ -147,7 +139,6 @@ app.get("/api/:tipo", async (req, res) => {
 /* ======================================================
    API - CRIAR
 ====================================================== */
-
 app.post("/api/add/:tipo", upload.single("imagem"), async (req, res) => {
   const tipo = req.params.tipo === "artesanato" ? "artesanato" : "aupac";
   const coll = collectionName(tipo);
@@ -180,19 +171,19 @@ app.post("/api/add/:tipo", upload.single("imagem"), async (req, res) => {
 /* ======================================================
    API - EDITAR
 ====================================================== */
-
 app.put("/api/edit/:tipo/:id", upload.single("imagem"), async (req, res) => {
   const tipo = req.params.tipo === "artesanato" ? "artesanato" : "aupac";
   const coll = collectionName(tipo);
   const id = String(req.params.id);
 
-  if (!db) return res.status(500).json({ error: "Firestore não está configurado" });
+  if (!db) return res.status(500).json({ error: "Firestore não configurado" });
 
   try {
     const docRef = db.collection(coll).doc(id);
     const snap = await docRef.get();
 
-    if (!snap.exists) return res.status(404).json({ error: "Item não encontrado" });
+    if (!snap.exists)
+      return res.status(404).json({ error: "Item não encontrado" });
 
     const item = snap.data();
 
@@ -209,7 +200,6 @@ app.put("/api/edit/:tipo/:id", upload.single("imagem"), async (req, res) => {
 
     await docRef.set(item);
     res.json(item);
-
   } catch (err) {
     console.error("Erro ao editar:", err);
     res.status(500).json({ error: "Erro ao editar" });
@@ -219,7 +209,6 @@ app.put("/api/edit/:tipo/:id", upload.single("imagem"), async (req, res) => {
 /* ======================================================
    API - DELETAR
 ====================================================== */
-
 app.delete("/api/delete/:tipo/:id", async (req, res) => {
   const tipo = req.params.tipo === "artesanato" ? "artesanato" : "aupac";
   const coll = collectionName(tipo);
@@ -239,10 +228,11 @@ app.delete("/api/delete/:tipo/:id", async (req, res) => {
 /* ======================================================
    START SERVER
 ====================================================== */
-
 app.listen(PORT, () =>
   console.log(`Servidor rodando em http://localhost:${PORT}`)
 );
+
+
 
 
 
