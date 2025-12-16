@@ -28,10 +28,38 @@ const storage = new CloudinaryStorage({
   cloudinary,
   params: (req, file) => {
     const tipo = req.params.tipo === "artesanato" ? "artesanatos" : "aupac";
+
     return {
       folder: tipo,
       allowed_formats: ["jpg", "jpeg", "png", "webp"],
-      public_id: Date.now() + "-" + file.originalname.replace(/\s+/g, "_")
+      public_id: Date.now() + "-" + file.originalname.replace(/\s+/g, "_"),
+
+      // 🔴 AJUSTE VISUAL AQUI
+      transformation: tipo === "aupac"
+        ? [
+            {
+              width: 600,
+              height: 750,      // proporção 4:5 (ideal p/ pets)
+              crop: "fill",
+              gravity: "auto"   // Cloudinary escolhe o melhor enquadramento
+            },
+            {
+              quality: "auto",
+              fetch_format: "auto"
+            }
+          ]
+        : [
+            {
+              width: 600,
+              height: 600,      // artesanato pode continuar quadrado
+              crop: "fill",
+              gravity: "center"
+            },
+            {
+              quality: "auto",
+              fetch_format: "auto"
+            }
+          ]
     };
   }
 });
@@ -213,6 +241,7 @@ app.delete("/api/delete/:tipo/:id", async (req, res) => {
 app.listen(PORT, () =>
   console.log(`Servidor rodando em http://localhost:${PORT}`)
 );
+
 
 
 
