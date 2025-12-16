@@ -35,13 +35,15 @@ const storage = new CloudinaryStorage({
       public_id: Date.now() + "-" + file.originalname.replace(/\s+/g, "_"),
 
       // 🔴 AJUSTE VISUAL AQUI
-      transformation: tipo === "aupac"
+     transformation: tipo === "aupac"
         ? [
             {
               width: 600,
-              height: 750,      // proporção 4:5 (ideal p/ pets)
+              height: 750,
               crop: "fill",
-              gravity: "auto"   // Cloudinary escolhe o melhor enquadramento
+
+              // 🔥 ESSENCIAL
+               gravity: "auto:faces:animal"
             },
             {
               quality: "auto",
@@ -51,7 +53,7 @@ const storage = new CloudinaryStorage({
         : [
             {
               width: 600,
-              height: 600,      // artesanato pode continuar quadrado
+              height: 600,
               crop: "fill",
               gravity: "center"
             },
@@ -241,6 +243,7 @@ app.delete("/api/delete/:tipo/:id", async (req, res) => {
 app.listen(PORT, () =>
   console.log(`Servidor rodando em http://localhost:${PORT}`)
 );
+
 
 
 
