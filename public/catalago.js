@@ -1,6 +1,17 @@
-// ======================= CATALAGO.JS – Backend =======================
+/// ======================= CATALAGO.JS – Backend =======================
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ================= MODAL DE IMAGEM ================= */
+  const imgModal = document.createElement("div");
+  imgModal.className = "img-modal";
+  imgModal.innerHTML = `<img src="" alt="Imagem ampliada">`;
+  document.body.appendChild(imgModal);
+
+  imgModal.addEventListener("click", () => {
+    imgModal.classList.remove("active");
+  });
+
+  /* ================= ELEMENTOS ================= */
   const filterButtons = document.querySelectorAll('.filtro-btn');
   const paginationContainer = document.querySelector('.pagination');
   const produtosContainer = document.getElementById('produtos-container');
@@ -11,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const DEFAULT_WHATSAPP = "5531996005196";
 
-  // ================= CREATE CARD =================
+  /* ================= CREATE CARD ================= */
   function createCard(item) {
 
     const nome = item.nome || "Sem nome";
@@ -29,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
       : "";
 
     card.innerHTML = `
-      <img src="${img}">
+      <img class="produto-img" src="${img}" alt="${nome}">
       <div class="card-content">
         <h3>${nome}</h3>
         <div class="desc">${descricao}</div>
@@ -42,10 +53,17 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
 
+    /* 🔍 ZOOM NA IMAGEM */
+    const imgEl = card.querySelector(".produto-img");
+    imgEl.addEventListener("click", () => {
+      imgModal.querySelector("img").src = img;
+      imgModal.classList.add("active");
+    });
+
     return card;
   }
 
-  // ================= RENDER PAGE =================
+  /* ================= RENDER PAGE ================= */
   function renderPage() {
 
     const btn = document.querySelector('.filtro-btn.active');
@@ -69,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     buildPagination(totalPages);
   }
 
-  // ================= PAGINATION =================
+  /* ================= PAGINATION ================= */
   function buildPagination(totalPages) {
 
     paginationContainer.innerHTML = "";
@@ -95,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     paginationContainer.appendChild(next);
   }
 
-  // ================= FILTER EVENTS =================
+  /* ================= FILTER EVENTS ================= */
   filterButtons.forEach(btn => {
     btn.onclick = () => {
       filterButtons.forEach(b => b.classList.remove("active"));
@@ -105,14 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   });
 
-  // ================= LOAD DATA FROM BACKEND =================
+  /* ================= LOAD DATA FROM BACKEND ================= */
   async function loadData() {
     try {
 
       const r = await fetch("/api/artesanato");
       const dados = await r.json();
 
-      // --- NOVO: Ajuste porque backend retorna { produtos: [] }
       const lista = Array.isArray(dados) ? dados : dados.produtos || [];
 
       produtos = lista.map(item => ({
@@ -134,6 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
   loadData();
 
 });
+
+
 
 
 
