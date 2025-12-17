@@ -1,12 +1,6 @@
 // ======================= AUPAC.JS – Versão Backend =======================
 document.addEventListener('DOMContentLoaded', () => {
 
-// Modal de imagem
-  const imgModal = document.createElement("div");
-  imgModal.className = "img-modal";
-  imgModal.innerHTML = `<img src="" alt="Foto ampliada">`;
-  document.body.appendChild(imgModal);
-
   imgModal.addEventListener("click", () => {
   imgModal.classList.remove("active");
 });
@@ -36,13 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const card = document.createElement('div');
     card.className = "pet-card";
-
-    const imgEl = card.querySelector(".pet-img");
-
-    imgEl.addEventListener("click", () => {
-    imgModal.querySelector("img").src = img;
-    imgModal.classList.add("active");
-});
 
     card.innerHTML = `
       <img class="pet-img" src="${img}" alt="${nome}">
@@ -155,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
   filtroPorte.addEventListener("change", () => { currentPage = 1; renderPage(); });
 
 });
+
 
 
 
