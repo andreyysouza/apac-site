@@ -1,10 +1,17 @@
-// ======================= AUPAC.JS – Versão Backend =======================
+// ======================= AUPAC.JS – Versão Backend (CORRIGIDA) =======================
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ================= MODAL DE IMAGEM ================= */
+  const imgModal = document.createElement("div");
+  imgModal.className = "img-modal";
+  imgModal.innerHTML = `<img src="" alt="Foto ampliada">`;
+  document.body.appendChild(imgModal);
+
   imgModal.addEventListener("click", () => {
-  imgModal.classList.remove("active");
-});
-  
+    imgModal.classList.remove("active");
+  });
+
+  /* ================= ELEMENTOS ================= */
   const petsContainer = document.getElementById('pets-container');
   const paginationContainer = document.getElementById('pagination-aupac');
 
@@ -19,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const DEFAULT_WHATSAPP = "5531996005196";
 
-  // Criar card
+  /* ================= CRIAR CARD ================= */
   function createPetCard(pet) {
     const img = pet.imagem || "img/imagem_padrao.jpg";
     const nome = pet.nome || "Sem nome";
@@ -44,6 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
 
+    /* 🔍 Clique para ampliar imagem */
+    const imgEl = card.querySelector(".pet-img");
+    imgEl.addEventListener("click", () => {
+      imgModal.querySelector("img").src = img;
+      imgModal.classList.add("active");
+    });
+
+    /* WhatsApp */
     card.querySelector(".adotar-btn").onclick = () => {
       const msg = encodeURIComponent(`Olá! Tenho interesse em adotar o(a) ${nome}.`);
       window.open(`https://wa.me/${whatsapp}?text=${msg}`, "_blank");
@@ -52,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return card;
   }
 
-  // Aplicar filtros
+  /* ================= FILTROS ================= */
   function applyFilters() {
     const fIdade = filtroIdade.value || "all";
     const fSexo = filtroSexo.value || "all";
@@ -66,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Paginação
+  /* ================= PAGINAÇÃO ================= */
   function buildPagination(totalPages) {
     paginationContainer.innerHTML = "";
 
@@ -91,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     paginationContainer.appendChild(nextBtn);
   }
 
-  // Render page
+  /* ================= RENDER ================= */
   function renderPage() {
     applyFilters();
 
@@ -111,13 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
     buildPagination(totalPages);
   }
 
-  // Carregar backend
+  /* ================= BACKEND ================= */
   async function loadData() {
     try {
       const r = await fetch("/api/aupac");
       const dados = await r.json();
 
-      // Backend devolve { cachorros: [...] } → corrigido:
       const lista = Array.isArray(dados) ? dados : dados.cachorros || [];
 
       allPets = lista.map(item => ({
@@ -137,11 +151,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadData();
 
+  /* ================= EVENTOS ================= */
   filtroIdade.addEventListener("change", () => { currentPage = 1; renderPage(); });
   filtroSexo.addEventListener("change", () => { currentPage = 1; renderPage(); });
   filtroPorte.addEventListener("change", () => { currentPage = 1; renderPage(); });
 
 });
+
+
 
 
 
