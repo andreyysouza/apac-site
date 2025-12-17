@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const card = document.createElement('div');
     card.className = "pet-card";
 
+    const imgEl = card.querySelector(".pet-img");
+
+    imgEl.addEventListener("click", () => {
+    imgModal.querySelector("img").src = img;
+    imgModal.classList.add("active");
+});
+
     card.innerHTML = `
       <img class="pet-img" src="${img}" alt="${nome}">
       <div class="pet-body">
@@ -56,15 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     return card;
-
-  const imgEl = card.querySelector(".pet-img");
-
-    imgEl.addEventListener("click", () => {
-    imgModal.querySelector("img").src = img;
-    imgModal.classList.add("active");
-});
-
-    
   }
 
   // Aplicar filtros
@@ -157,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
   filtroPorte.addEventListener("change", () => { currentPage = 1; renderPage(); });
 
 });
+
 
 
 
