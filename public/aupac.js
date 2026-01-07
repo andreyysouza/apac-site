@@ -158,6 +158,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+// MENU HAMBURGUER MOBILE
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("menu-toggle");
+  const links = document.getElementById("menu-links");
+
+  if (toggle && links) {
+    toggle.addEventListener("click", () => {
+      links.classList.toggle("active");
+    });
+  }
+});
+
+
+
 
 
 
