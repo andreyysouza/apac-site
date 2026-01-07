@@ -15,53 +15,67 @@ body{
   font-size: 14px;
 }
 
-/* ================= MENU RESPONSIVO ================= */
+/* ================= MENU INSTITUCIONAL PROFISSIONAL ================= */
 
 .menu {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: 64px;
   background: #001051;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
+  padding: 0 20px;
   z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,.15);
 }
 
-/* Logo texto */
+/* Logo / nome */
 .menu-logo {
   color: #fff;
   font-weight: 700;
   font-size: 16px;
+  letter-spacing: 0.5px;
 }
 
 /* Links desktop */
 .menu-links {
   list-style: none;
   display: flex;
-  gap: 18px;
-  margin: 0;
-  padding: 0;
+  gap: 22px;
 }
 
 .menu-links li a {
   color: #fff;
-  font-weight: 600;
   font-size: 14px;
+  font-weight: 600;
   text-decoration: none;
+  position: relative;
 }
 
-.menu-links li a:hover {
-  text-decoration: underline;
+/* underline suave */
+.menu-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width .3s ease;
+}
+
+.menu-links li a:hover::after {
+  width: 100%;
 }
 
 /* Botão hamburguer */
 .menu-toggle {
   display: none;
   font-size: 26px;
-  color: white;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -69,40 +83,66 @@ body{
 @media (max-width: 768px) {
 
   .menu {
-    flex-wrap: wrap;
+    padding: 0 16px;
   }
 
   /* Esconde menu horizontal */
   .menu-links {
+    position: absolute;
+    top: 64px;
+    left: 0;
     width: 100%;
+    background: #fff;
     flex-direction: column;
+    gap: 0;
     display: none;
-    margin-top: 10px;
-    background: #001051;
-    border-top: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,.15);
+    animation: slideDown .3s ease;
   }
 
   .menu-links li {
-    padding: 12px 0;
-    text-align: center;
+    border-bottom: 1px solid #eee;
   }
 
-  /* Mostra botão ☰ */
+  .menu-links li a {
+    display: block;
+    padding: 16px;
+    color: #001051;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .menu-links li a::after {
+    display: none;
+  }
+
+  /* botão hamburguer visível */
   .menu-toggle {
     display: block;
   }
 
-  /* Quando menu estiver ativo */
+  /* menu aberto */
   .menu-links.active {
     display: flex;
   }
 }
 
-/* Espaço para o conteúdo não ficar escondido */
-body {
-  padding-top: 70px;
+/* animação */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* Espaço para não esconder conteúdo */
+body {
+  padding-top: 64px;
+}
 
 /* ======== HEADER ======== */
 .header-apac{
@@ -212,4 +252,5 @@ body {
   .slider{ height:540px; } /* altura reduzida em telas pequenas */
   .overlay h2{ font-size:18px; }
 }
+
 
