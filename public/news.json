@@ -1,14 +1,15 @@
 {
   "noticias": [
     {
-      "titulo": "Dezembro verde",
-      "descricao": "Diga NÃO ao abandono de animais!",
-      "imagem": "dezembro_verde.jpeg"
+      "titulo": "Mais um pet encontrou um lar!",
+      "descricao": "Pandora foi adotada para colorir ainda mais a vida de sua nova família!",
+      "imagem": "post_1.png"
     },
     {
-      "titulo": "Dezembro verde",
-      "descricao": "Diga NÃO ao abandono de animais!",
-      "imagem": "dezembro_verde2.jpeg"
+      "titulo": "Rodolfo está de casa nova!",
+      "descricao": "Rodolfo agora poderá demonstrar todo o seu amor para sua nova família!",
+      "imagem": "post_2.png"
     }
   ]
 }
+
