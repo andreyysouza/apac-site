@@ -70,46 +70,94 @@ header h2 {
     background-color: #405881;
 }
 
-/* ======================= MENU NAVEGACAO ======================= */
+/* ================= MENU RESPONSIVO ================= */
 
 .menu {
-    position: fixed;
-    top: 15px;      /* distância da borda superior */
-    right: 20px;    /* distância da borda direita */
-    z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #001051;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  z-index: 1000;
 }
 
-.menu ul {
-    color: white; 
+/* Logo texto */
+.menu-logo {
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* Links desktop */
+.menu-links {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-links li a {
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.menu-links li a:hover {
+  text-decoration: underline;
+}
+
+/* Botão hamburguer */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  .menu {
+    flex-wrap: wrap;
+  }
+
+  /* Esconde menu horizontal */
+  .menu-links {
+    width: 100%;
+    flex-direction: column;
+    display: none;
+    margin-top: 10px;
+    background: #001051;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .menu-links li {
+    padding: 12px 0;
+    text-align: center;
+  }
+
+  /* Mostra botão ☰ */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Quando menu estiver ativo */
+  .menu-links.active {
     display: flex;
-    gap: 20px;              /* separa os botões */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    padding: 10px 15px;
-    border-radius: 12px;    /* deixa arredondado */
+  }
 }
 
-.menu ul li {
-    color: white;
-    font-size: 14px;        /* tamanho menor */
-    font-weight: 600;
-    padding: 6px 12px;      /* tamanho do “botão” */
-    background: #001051;    /* cor dos botões */
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.menu ul li:hover {
-    background: #405881;
-    color: white;
-}
-
-/* Adiciona espaço para o conteúdo não ficar escondido atrás do menu */
+/* Espaço para o conteúdo não ficar escondido */
 body {
-    padding-top: 80px; /* ajuste conforme o tamanho do menu */
+  padding-top: 70px;
 }
+
 
 /* ===================== FILTROS (botões) ===================== */
 .filtros {
@@ -475,6 +523,7 @@ footer img {
 .img-modal {
     cursor: zoom-out;
 }
+
 
 
 
