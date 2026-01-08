@@ -25,12 +25,12 @@ html, body {
   width: 100%;
   z-index: 1000;
 
-  /* Degradê termina suavemente */
+  /* degradê que prepara o hero */
   background: linear-gradient(
     180deg,
     #001051 0%,
-    #001a6b 70%,
-    rgba(0,26,107,.85) 100%
+    #001a6b 65%,
+    #3f5f94 100%
   );
 }
 
@@ -56,9 +56,10 @@ html, body {
   color: #fff;
   font-weight: 700;
   font-size: 16px;
+  letter-spacing: .6px;
 }
 
-/* Links */
+/* Links desktop */
 .menu-links {
   list-style: none;
   display: flex;
@@ -73,7 +74,7 @@ html, body {
   position: relative;
 }
 
-/* Linha animada */
+/* Linha animada desktop */
 .menu-links a::after {
   content: "";
   position: absolute;
@@ -96,6 +97,7 @@ html, body {
   border: none;
   font-size: 26px;
   color: #fff;
+  cursor: pointer;
 }
 
 /* ================= HERO / CABEÇALHO ================= */
@@ -105,28 +107,29 @@ html, body {
   text-align: center;
   color: #fff;
 
-  /* Degradê começa suave, não seco */
+  /* encontro suave com o menu */
   background: linear-gradient(
     180deg,
-    rgba(0,26,107,.85) 0%,
-    #6b82ad 30%,
-    #5b74a0 65%,
+    #3f5f94 0%,
+    #6b82ad 35%,
+    #5b74a0 70%,
     #4a6390 100%
   );
 }
 
-/* TÍTULO */
+/* TÍTULO – microtipografia institucional */
 .hero h1 {
-  font-size: 2.25rem;
+  font-size: 2.35rem;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.6px;
+  line-height: 1.15;
 }
 
 /* Linha refinada */
 .hero h1::after {
   content: "";
   display: block;
-  width: 72px;
+  width: 76px;
   height: 3px;
   margin: 18px auto 16px;
   background: linear-gradient(
@@ -138,12 +141,12 @@ html, body {
   border-radius: 2px;
 }
 
-/* SUBTÍTULO */
+/* Subtítulo */
 .hero p {
   font-size: 1.15rem;
   font-weight: 500;
   opacity: .95;
-  letter-spacing: .2px;
+  letter-spacing: .3px;
 }
 
 /* ================= SLIDER ================= */
@@ -183,15 +186,6 @@ html, body {
   color: #fff;
 }
 
-.overlay h2 {
-  font-size: 18px;
-}
-
-.overlay p {
-  font-size: 14px;
-  opacity: .9;
-}
-
 /* ================= CONTROLES ================= */
 .slider-controls {
   position: absolute;
@@ -218,6 +212,7 @@ html, body {
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
+  /* Hamburguer */
   .menu-toggle {
     display: flex;
     align-items: center;
@@ -225,9 +220,15 @@ html, body {
     width: 40px;
     height: 40px;
     border-radius: 8px;
-    background: rgba(255,255,255,.12);
+    background: rgba(255,255,255,.14);
+    transition: background .25s ease, transform .2s ease;
   }
 
+  .menu-toggle:active {
+    transform: scale(.95);
+  }
+
+  /* MENU MOBILE COMO PAINEL */
   .menu-links {
     position: fixed;
     top: 104px;
@@ -235,17 +236,43 @@ html, body {
     width: 100%;
     background: #fff;
     flex-direction: column;
+
     display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+
+    transition: opacity .25s ease, transform .25s ease;
     z-index: 10000;
   }
 
   .menu-links.active {
     display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .menu-links li {
+    border-bottom: 1px solid #eee;
   }
 
   .menu-links a {
     color: #001051;
-    padding: 16px;
+    font-size: 15px;
+    font-weight: 600;
+
+    padding: 18px 20px;
+    width: 100%;
+    display: block;
+
+    transition: background .2s ease;
+  }
+
+  .menu-links a:hover {
+    background: rgba(0,16,81,.05);
+  }
+
+  .menu-links a:active {
+    background: rgba(0,16,81,.1);
   }
 
   .hero {
@@ -253,7 +280,7 @@ html, body {
   }
 
   .hero h1 {
-    font-size: 1.85rem;
+    font-size: 1.9rem;
   }
 
   .hero p {
@@ -264,6 +291,8 @@ html, body {
     height: 520px;
   }
 }
+
+
 
 
 
