@@ -1,527 +1,319 @@
-/* ======================= CONFIGURAÇÕES GERAIS ======================= */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "Poppins", sans-serif;
-    background-color: #f7f7f7;
-    color: black;
+/* ======================= RESET GLOBAL ======================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Remover sublinhado padrão dos links */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+  background-color: #f7f7f7;
+  color: #001051;
+}
+
 a {
-    text-decoration: none;
-}
-
-.menu a,
-.menu a:visited {
-  color: white
-  ;   
   text-decoration: none;
 }
 
-/* ======================= CABEÇALHO ======================= */
-
-.barra-institucional {
-    width: 100%;
-    background: #001051;
-    color: #fff;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-header {
-    background-color: #5b74a0;
-    background-size: cover;
-    background-position: center;
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    padding: 20px;
-}
-
-header h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin: 10px;
-}
-
-header h2 {
-    font-size: 2rem;
-    font-weight: 550;
-    margin: 10px;
-}
-
-.btn {
-    display: inline-block;
-    background-color: #001051; 
-    color: white;
-    padding: 12px 25px;
-    border-radius: 8px;
-    transition: 0.3s ease;
-    font-weight: 600;
-}
-
-.btn:hover {
-    background-color: #405881;
-}
-
-/* ================= MENU RESPONSIVO ================= */
-
-.menu {
+/* ======================= TOPO FIXO ======================= */
+.topo {
   position: fixed;
   top: 0;
-  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #001051;
+}
+
+/* Barra institucional */
+.barra-institucional {
   width: 100%;
   background: #001051;
+  color: #fff;
+  text-align: center;
+  padding: 6px 10px;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ======================= MENU ======================= */
+.menu {
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
-  z-index: 1000;
+  padding: 0 20px;
 }
 
-/* Logo texto */
 .menu-logo {
   color: #fff;
   font-weight: 700;
   font-size: 16px;
 }
 
-/* Links desktop */
 .menu-links {
   list-style: none;
   display: flex;
-  gap: 18px;
-  margin: 0;
-  padding: 0;
+  gap: 20px;
 }
 
-.menu-links li a {
+.menu-links a {
   color: #fff;
-  font-weight: 600;
   font-size: 14px;
-  text-decoration: none;
+  font-weight: 600;
+  opacity: 0.9;
 }
 
-.menu-links li a:hover {
+.menu-links a:hover {
+  opacity: 1;
   text-decoration: underline;
 }
 
-/* Botão hamburguer */
 .menu-toggle {
   display: none;
+  background: none;
+  border: none;
   font-size: 26px;
-  color: white;
+  color: #fff;
   cursor: pointer;
 }
 
-/* ================= MOBILE ================= */
+/* ======================= MENU MOBILE ======================= */
 @media (max-width: 768px) {
 
-  .menu {
-    flex-wrap: wrap;
-  }
-
-  /* Esconde menu horizontal */
-  .menu-links {
-    width: 100%;
-    flex-direction: column;
-    display: none;
-    margin-top: 10px;
-    background: #001051;
-    border-top: 1px solid rgba(255,255,255,0.2);
-  }
-
-  .menu-links li {
-    padding: 12px 0;
-    text-align: center;
-  }
-
-  /* Mostra botão ☰ */
   .menu-toggle {
     display: block;
   }
 
-  /* Quando menu estiver ativo */
+  .menu-links {
+    position: fixed;
+    top: 104px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    display: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+  }
+
   .menu-links.active {
     display: flex;
   }
+
+  .menu-links li {
+    border-bottom: 1px solid #eee;
+  }
+
+  .menu-links a {
+    color: #001051;
+    padding: 16px;
+    font-size: 15px;
+  }
 }
 
-/* Espaço para o conteúdo não ficar escondido */
+/* ======================= ESPAÇO DO TOPO ======================= */
 body {
-  padding-top: 70px;
-}
-
-
-/* ===================== FILTROS (botões) ===================== */
-.filtros {
-  margin: 30px auto;
-  text-align: center;
-}
-
-/* cada botão de filtro */
-.filtro-btn {
-  background: #001051; /* cor base */
-  color: #fff; /* texto branco */
-  padding: 8px 14px; /* espaçamento */
-  border: none; /* sem borda */
-  margin: 6px; /* separação entre botões */
-  border-radius: 6px; /* cantos arredondados */
-  cursor: pointer; /* cursor indicador de clique */
-  transition: background 0.2s ease; /* transição suave */
-}
-
-/* hover do botão */
-.filtro-btn:hover { 
-  background: #5b74a0; /* cor ao passar o mouse */
-}
-
-/* botão ativo (destacado) */
-.filtro-btn.active {
-  background: #5b74a0; /* cor amarela quando ativo */
-  color: white; /* texto escuro no botão ativo */
+  padding-top: 104px;
 }
 
 /* ======================= SEÇÃO SOBRE ======================= */
 .sobre {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+  text-align: center;
 }
 
 .sobre h2 {
-    text-align: center;
-    margin-bottom: 20px;
+  margin-bottom: 16px;
+  font-size: 1.8rem;
 }
 
 .sobre p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.6;
 }
+
+/* ======================= FILTROS ======================= */
+.filtros {
+  margin: 40px auto 20px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filtros h2 {
+  margin-bottom: 20px;
+  font-size: 1.9rem;
+}
+
+.filtro-btn {
+  background: #001051;
+  color: #fff;
+  padding: 8px 14px;
+  border: none;
+  margin: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.filtro-btn:hover {
+  background: #5b74a0;
+}
+
+.filtro-btn.active {
+  background: #5b74a0;
+}
+
 /* ======================= CATÁLOGO ======================= */
 .produtos {
-    padding: 60px 10%;
+  padding: 40px 8%;
 }
 
-.produtos h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2rem;
-}
-
-/* Grade responsiva dos produtos */
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 20px;
-    padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
 }
 
-/* Card do produto */
+/* Card */
 .card {
-    background: #ffffff;
-    border-radius: 14px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-    padding: 16px;
-    transition: 0.25s;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: 0.25s;
 }
 
-/* Efeito hover */
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
 
 /* Imagem */
 .card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 12px;
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  background: #f2f2f2;
+  border-radius: 10px;
+  margin-bottom: 12px;
 }
 
 /* Conteúdo */
 .card-content {
-    padding: 0; /* agora o padding está no card */
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Nome */
 .card-content h3 {
-    margin: 0 0 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
-/* Descrição */
-.card-content p {
-    font-size: .9rem;
-    color: #555;
-    flex-grow: 1;
-    margin-bottom: 10px;
+.card-content .desc {
+  font-size: 0.9rem;
+  color: #555;
+  flex-grow: 1;
 }
 
-/* Preço */
 .price {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #2c7a78;
-    margin-bottom: 12px;
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #2c7a78;
 }
 
-/* Botão do WhatsApp */
+/* Botão WhatsApp */
 .whatsapp-btn {
-    margin: 15px auto 0;
-    display: block;
-    width: 70%;
-    text-align: center;
-    padding: 12px;
-    background-color: #001051;
-    color: white;
-    border-radius: 25px;
-    font-weight: 600;
-    transition: 0.3s ease;
+  margin: 16px auto 0;
+  width: 80%;
+  padding: 12px;
+  background: #001051;
+  color: #fff;
+  border-radius: 25px;
+  font-weight: 600;
+  text-align: center;
+  transition: 0.3s;
 }
 
-/* Hover do botão */
 .whatsapp-btn:hover {
-    background-color: #405881;
-}
-
-
-/* ======================= RODAPÉ ======================= */
-footer {
-    background-color: #001051;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    position: relative; 
-}
-
-footer img {
-    width: 120px; /* ajuste como quiser */
-    position: absolute; 
-    left: 60px; /* distância da esquerda */
-    top: 50%;
-    transform: translateY(-50%); /* centraliza verticalmente */
-}
-
-/* ======================= ESCONDE O FILTRO JS ======================= */
-.hide {
-    display: none !important;
+  background: #405881;
 }
 
 /* ======================= PAGINAÇÃO ======================= */
 .pagination {
-   display: flex; 
-    justify-content: center; 
-    gap: 8px; 
-    margin: 30px 0; 
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 30px 0;
+  flex-wrap: wrap;
 }
 
-.page-btn,
-.nav-btn {
-    padding: 8px 14px; 
-    border-radius: 6px; 
-    border: 1px solid #001051; 
-    background: #fff; 
-    cursor: pointer; 
-    transition: 0.2s; 
-    font-weight: 600; 
-
+.pagination button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #001051;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
 }
 
-.page-btn:hover,
-.nav-btn:hover {
-    background: #001051; 
-    color: white; 
-}
-
-.page-btn.active {
+.pagination button:hover,
+.pagination button.active {
   background: #001051;
-  color: white; 
+  color: white;
 }
 
-.nav-btn:disabled {
-  opacity: 0.4; 
+.pagination button:disabled {
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
-/* Animação suave */
-.fade-in {
-  animation: fadeIn 0.4s ease-in-out;
+/* ======================= RODAPÉ ======================= */
+footer {
+  background: #001051;
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
-@keyframes fadeIn {
-  from { 
-    opacity: 0; 
-    transform: translateY(10px); 
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0px); 
-  }
-
+footer img {
+  width: 90px;
 }
 
-/* ======================= RESPONSIVIDADE MOBILE ======================= */
-@media (max-width: 768px) {
+/* ======================= RESPONSIVO ======================= */
+@media (max-width: 600px) {
 
-  /* ===== HEADER ===== */
-  header {
-      height: auto;
-      padding: 60px 20px;
-  }
-
-  header h1 {
-      font-size: 1.9rem;
-      margin-top: 30px;
-  }
-
-  header h2 {
-      font-size: 1.4rem;
-  }
-
-  /* ===== MENU ===== */
-  .menu {
-      top: 5px;
-      right: 5px;
-  }
-
-  .menu ul {
-      gap: 10px;
-      padding: 8px 10px;
-  }
-
-  .menu ul li {
-      font-size: 12px;
-      padding: 5px 10px;
-  }
-
-  body {
-      padding-top: 100px; /* aumenta espaço pra não tampar conteúdo */
-  }
-
-  /* ===== CARDS ===== */
-  .grid {
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 15px;
+  .produtos {
+    padding: 30px 20px;
   }
 
   .card img {
-      height: 130px;
+    height: 140px;
   }
 
   .whatsapp-btn {
-      width: 90%;
-      padding: 10px;
+    width: 90%;
   }
-
-  /* ===== RODAPÉ ===== */
-  footer {
-      padding: 40px 20px;
-      text-align: center;
-  }
-
-  footer img {
-      position: static;
-      transform: none;
-      margin-top: 15px;
-      width: 90px;
-  }
-}
-
-/* ===== TELAS MUITO PEQUENAS ===== */
-@media (max-width: 480px) {
-
-  header h1 {
-      font-size: 1.6rem;
-  }
-
-  header h2 {
-      font-size: 1.2rem;
-  }
-
-  .menu ul li {
-      font-size: 11px;
-      padding: 4px 8px;
-  }
-
-  .card img {
-      height: 120px;
-  }
-
-  .produtos h2 {
-      font-size: 1.5rem;
-  }
-}
-
-/* ======================= MODAL DE IMAGEM (ZOOM) ======================= */
-
-.img-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-
-    z-index: 9999;
-}
-
-.img-modal.active {
-    opacity: 1;
-    pointer-events: all;
-}
-
-.img-modal img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-    animation: zoomIn 0.25s ease;
-}
-
-/* Animação suave */
-@keyframes zoomIn {
-    from {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-/* Cursor indicando que fecha */
-.img-modal {
-    cursor: zoom-out;
 }
 
 
