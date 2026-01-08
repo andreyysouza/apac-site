@@ -1,16 +1,10 @@
 /* ================= RESET ================= */
 * {
+ html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  width: 100%;
 }
-
-body {
-  font-family: "Poppins", sans-serif;
-  background: #f7f7f7;
-  color: #001051;
-}
-
 /* ================= BARRA INSTITUCIONAL ================= */
 .barra-institucional {
   background: #001051;
@@ -268,6 +262,7 @@ body {
     font-size: 18px;
   }
 }
+
 
 
 
