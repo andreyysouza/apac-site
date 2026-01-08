@@ -1,4 +1,4 @@
-/* ======================= RESET GLOBAL ======================= */
+/* ================= RESET GLOBAL ================= */
 * {
   margin: 0;
   padding: 0;
@@ -17,7 +17,7 @@ a {
   text-decoration: none;
 }
 
-/* ======================= TOPO FIXO ======================= */
+/* ================= TOPO FIXO (PADRÃO AUPAC) ================= */
 .topo {
   position: fixed;
   top: 0;
@@ -37,7 +37,7 @@ a {
   border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
-/* ======================= MENU ======================= */
+/* ================= MENU ================= */
 .menu {
   height: 64px;
   display: flex;
@@ -79,7 +79,7 @@ a {
   cursor: pointer;
 }
 
-/* ======================= MENU MOBILE ======================= */
+/* ================= MENU MOBILE ================= */
 @media (max-width: 768px) {
 
   .menu-toggle {
@@ -112,12 +112,30 @@ a {
   }
 }
 
-/* ======================= ESPAÇO DO TOPO ======================= */
+/* Espaço do topo fixo */
 body {
   padding-top: 104px;
 }
 
-/* ======================= SEÇÃO SOBRE ======================= */
+/* ================= HERO DO CATÁLOGO ================= */
+.hero-catalogo {
+  background: #5b74a0;
+  color: #fff;
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.hero-catalogo h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.hero-catalogo p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+/* ================= SOBRE ================= */
 .sobre {
   max-width: 900px;
   margin: 40px auto;
@@ -138,19 +156,23 @@ body {
   line-height: 1.6;
 }
 
-/* ======================= FILTROS ======================= */
+/* ================= FILTROS (CORRIGIDO) ================= */
 .filtros {
   margin: 40px auto 20px;
   text-align: center;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .filtros h2 {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   font-size: 1.9rem;
+}
+
+/* linha horizontal */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
 .filtro-btn {
@@ -158,22 +180,18 @@ body {
   color: #fff;
   padding: 8px 14px;
   border: none;
-  margin: 6px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: background 0.2s ease;
 }
 
-.filtro-btn:hover {
-  background: #5b74a0;
-}
-
+.filtro-btn:hover,
 .filtro-btn.active {
   background: #5b74a0;
 }
 
-/* ======================= CATÁLOGO ======================= */
+/* ================= CATÁLOGO ================= */
 .produtos {
   padding: 40px 8%;
 }
@@ -208,6 +226,7 @@ body {
   background: #f2f2f2;
   border-radius: 10px;
   margin-bottom: 12px;
+  cursor: zoom-in;
 }
 
 /* Conteúdo */
@@ -253,7 +272,7 @@ body {
   background: #405881;
 }
 
-/* ======================= PAGINAÇÃO ======================= */
+/* ================= PAGINAÇÃO ================= */
 .pagination {
   display: flex;
   justify-content: center;
@@ -282,7 +301,34 @@ body {
   cursor: not-allowed;
 }
 
-/* ======================= RODAPÉ ======================= */
+/* ================= MODAL DE IMAGEM (ZOOM) ================= */
+.img-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.img-modal.active {
+  display: flex;
+}
+
+.img-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.img-modal {
+  cursor: zoom-out;
+}
+
+/* ================= RODAPÉ ================= */
 footer {
   background: #001051;
   color: #fff;
@@ -300,7 +346,7 @@ footer img {
   width: 90px;
 }
 
-/* ======================= RESPONSIVO ======================= */
+/* ================= RESPONSIVO ================= */
 @media (max-width: 600px) {
 
   .produtos {
@@ -314,7 +360,17 @@ footer img {
   .whatsapp-btn {
     width: 90%;
   }
+
+  .hero-catalogo h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero-catalogo p {
+    font-size: 1.05rem;
+  }
 }
+
+
 
 
 
