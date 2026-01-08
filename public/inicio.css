@@ -1,41 +1,49 @@
-/* ================= RESET ================= */
+/* RESET TOTAL */
 * {
- html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
-}
-/* ================= BARRA INSTITUCIONAL ================= */
-.barra-institucional {
-  background: #001051;
-  color: #fff;
-  padding: 6px 10px;
-  text-align: center;
-  font-size: 13px;
-  margin: 0;
+  box-sizing: border-box;
 }
 
-/* ================= MENU ================= */
-.menu {
-  position: sticky;
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+  background: #f7f7f7;
+  color: #001051;
+}
+
+/* ===== TOPO ===== */
+.topo {
+  position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1000;
+  background: linear-gradient(180deg, #001051, #001a6b);
+}
+
+/* Barra institucional */
+.barra-institucional {
+  font-size: 12.5px;
+  text-align: center;
+  padding: 6px 10px;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+/* ===== MENU ===== */
+.menu {
   height: 64px;
-  background: linear-gradient(90deg, #001051, #001a7a);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  z-index: 1000;
-  box-shadow: 0 2px 12px rgba(0,0,0,.2);
 }
 
-/* Logo */
 .menu-logo {
   color: #fff;
   font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 1px;
+  font-size: 16px;
 }
 
 /* Links desktop */
@@ -45,224 +53,99 @@
   gap: 22px;
 }
 
-.menu-links li a {
+.menu-links a {
   color: #fff;
+  text-decoration: none;
   font-size: 14px;
   font-weight: 600;
-  text-decoration: none;
-  padding: 6px 0;
-  position: relative;
+  opacity: .9;
 }
 
-/* underline elegante */
-.menu-links li a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  background: #fff;
-  transition: width .3s ease;
+.menu-links a:hover {
+  opacity: 1;
 }
 
-.menu-links li a:hover::after {
-  width: 100%;
-}
-
-/* Botão hamburguer */
+/* Hamburger */
 .menu-toggle {
   display: none;
-  font-size: 28px;
-  color: #fff;
   background: none;
   border: none;
+  font-size: 26px;
+  color: #fff;
   cursor: pointer;
 }
 
-/* ================= MENU MOBILE ================= */
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
-
-  .menu {
-    padding: 0 16px;
-  }
 
   .menu-toggle {
     display: block;
   }
 
   .menu-links {
-    position: absolute;
-    top: 64px;
+    position: fixed;
+    top: 104px; /* barra + menu */
     left: 0;
     width: 100%;
     background: #fff;
     flex-direction: column;
-    gap: 0;
     display: none;
-    box-shadow: 0 10px 20px rgba(0,0,0,.15);
-    animation: slideDown .3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+  }
+
+  .menu-links.active {
+    display: flex;
   }
 
   .menu-links li {
     border-bottom: 1px solid #eee;
   }
 
-  .menu-links li a {
+  .menu-links a {
     color: #001051;
     padding: 16px;
     font-size: 15px;
   }
-
-  .menu-links li a::after {
-    display: none;
-  }
-
-  .menu-links.active {
-    display: flex;
-  }
 }
 
-/* animação do menu */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Espaço para não esconder conteúdo */
-body {
-  padding-top: 64px;
-}
-
-/* ================= HEADER ================= */
-.header-apac {
+/* ===== HERO ===== */
+.hero {
+  margin-top: 104px; /* altura do topo */
   background: #5b74a0;
   color: #fff;
-  min-height: 220px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  padding: 40px 20px;
+  padding: 60px 20px;
 }
 
-.header-apac h1 {
+.hero h1 {
   font-size: 2.4rem;
   font-weight: 700;
 }
 
-.header-apac h2 {
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin-top: 10px;
+.hero p {
+  margin-top: 12px;
+  font-size: 1.2rem;
   line-height: 1.4;
-  opacity: 0.95;
 }
 
-/* ================= HEADER MOBILE ================= */
-@media (max-width: 600px) {
-  .header-apac {
-    padding: 50px 15px;
-  }
-
-  .header-apac h1 {
-    font-size: 1.9rem;
-  }
-
-  .header-apac h2 {
-    font-size: 1.1rem;
-  }
-}
-
-/* ================= SLIDER ================= */
+/* ===== SLIDER ===== */
 .slider {
-  width: 100%;
   max-width: 900px;
-  margin: 40px auto;
   height: 650px;
-  border-radius: 16px;
+  margin: 40px auto;
+  border-radius: 14px;
   overflow: hidden;
   background: #f7f7f7;
   position: relative;
 }
 
-.slide {
-  position: absolute;
-  inset: 0;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #f7f7f7;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .7s ease, transform .7s ease;
-}
-
-.slide.ativo {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Overlay */
-.overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 20px;
-  background: linear-gradient(to top, rgba(0,0,0,.65), transparent);
-  color: #fff;
-}
-
-.overlay h2 {
-  font-size: 20px;
-  margin-bottom: 4px;
-}
-
-.overlay p {
-  font-size: 14px;
-  opacity: .9;
-}
-
-/* Controles */
-.slider-controls {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.ctrl-dot {
-  width: 8px;
-  height: 28px;
-  background: rgba(255,255,255,.3);
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.ctrl-dot.active {
-  background: #fff;
-}
-
-/* ================= SLIDER MOBILE ================= */
 @media (max-width: 600px) {
   .slider {
-    height: 520px;
-    margin: 30px 10px;
-  }
-
-  .overlay h2 {
-    font-size: 18px;
+    height: 540px;
   }
 }
+
+
 
 
 
