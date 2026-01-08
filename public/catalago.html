@@ -62,12 +62,14 @@
   <section class="filtros">
     <h2>Catálogo de Produtos</h2>
 
-    <button class="filtro-btn active" data-filter="all">TODOS</button>
-    <button class="filtro-btn" data-filter="gesso">GESSO</button>
-    <button class="filtro-btn" data-filter="linha">LINHA</button>
-    <button class="filtro-btn" data-filter="marcenaria">MARCENARIA</button>
-    <button class="filtro-btn" data-filter="palito">PALITO</button>
-    <button class="filtro-btn" data-filter="papel">PAPEL</button>
+    <div class="filtros-botoes">
+      <button class="filtro-btn active" data-filter="all">TODOS</button>
+      <button class="filtro-btn" data-filter="gesso">GESSO</button>
+      <button class="filtro-btn" data-filter="linha">LINHA</button>
+      <button class="filtro-btn" data-filter="marcenaria">MARCENARIA</button>
+      <button class="filtro-btn" data-filter="palito">PALITO</button>
+      <button class="filtro-btn" data-filter="papel">PAPEL</button>
+    </div>
   </section>
 
   <!-- CATÁLOGO -->
@@ -77,7 +79,7 @@
     <div class="grid" id="produtos-container"></div>
 
     <!-- PAGINAÇÃO -->
-    <div id="paginacao" class="pagination"></div>
+    <div class="pagination"></div>
   </section>
 
   <!-- RODAPÉ -->
@@ -90,20 +92,9 @@
   <!-- JS -->
   <script src="catalago.js"></script>
 
-  <!-- MENU HAMBURGUER -->
-  <script>
-    const toggle = document.getElementById("menu-toggle");
-    const links = document.getElementById("menu-links");
-
-    if (toggle && links) {
-      toggle.addEventListener("click", () => {
-        links.classList.toggle("active");
-      });
-    }
-  </script>
-
 </body>
 </html>
+
 
 
 
