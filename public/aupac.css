@@ -234,37 +234,61 @@ body {
   margin-top: 40px;
 }
 
-/* ===== MODAL DE IMAGEM ===== */ 
-.img-modal { 
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  width: 100vw; 
-  height: 100vh; 
-  background: rgba(0, 0, 0, 0.85); 
-  display: none; 
-  justify-content: center; 
+/* ================= MODAL DE IMAGEM ================= */
+
+.img-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  display: none;
+  justify-content: center;
   align-items: center;
-  z-index: 9999; 
-} 
-.img-modal img { 
-  max-width: 90%;
-  max-height: 90%; 
-  border-radius: 12px; 
-  box-shadow: 0 10px 40px rgba(0,0,0,0.4); 
-} 
+  z-index: 9999;
+}
+
 .img-modal.active {
-  display: flex; 
-} 
+  display: flex;
+}
+
+.img-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
 .img-modal::after {
-  content: "✕"; 
+  content: "✕";
   position: absolute;
   top: 20px;
-  right: 25px; 
-  color: white; 
-  font-size: 28px; 
-  cursor: pointer; 
+  right: 25px;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
 }
+/* CENTRALIZAR FILTROS */
+.filtros-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filtros-grid {
+  justify-content: center;
+  text-align: center;
+}
+
+.filtros-botoes {
+  justify-content: center;
+}
+/* LOGO DO RODAPÉ */
+footer img {
+  width: 110px;          /* tamanho controlado */
+  max-width: 100%;
+  height: auto;
+  margin: 15px auto 0;
+  display: block;
+}
+
 
 
 
