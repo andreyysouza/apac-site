@@ -16,13 +16,13 @@ html, body {
 
 /* ================= ENTRADA SUAVE ================= */
 body {
-  animation: fadeIn .5s ease;
+  animation: fadeIn .45s ease;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(4px);
   }
   to {
     opacity: 1;
@@ -75,78 +75,67 @@ body {
   font-size: 14px;
   font-weight: 600;
   opacity: .95;
-  transition: opacity .2s ease;
-}
-
-.menu-links a:hover {
-  opacity: 1;
 }
 
 .menu-toggle {
   display: none;
-  background: none;
-  border: none;
-  font-size: 26px;
-  color: #fff;
-  cursor: pointer;
-  z-index: 10001;
 }
 
 /* ================= HERO ================= */
 .hero {
   margin-top: 104px;
-  padding: 60px 20px 40px;
+  padding: 60px 20px 42px;
   background: linear-gradient(135deg, #5b74a0, #4a6390);
   color: #fff;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 2.4rem;
+  font-size: 2.3rem;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.4px;
 }
 
 .hero p {
   margin-top: 12px;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   opacity: .95;
 }
 
-/* ================= CONTAINER INSTITUCIONAL ================= */
+/* ================= ÁREA INSTITUCIONAL ================= */
 .slider-wrapper {
-  max-width: 980px;
-  margin: 40px auto;
-  padding: 0 14px;
+  max-width: 900px;
+  margin: 36px auto 60px;
+  padding: 0 16px;
 }
 
 /* ================= SLIDER ================= */
 .slider {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 520px;               /* DESKTOP CONTROLADO */
   background: #f7f7f7;
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 18px 40px rgba(0,0,0,.18);
-  transition: transform .4s ease, box-shadow .4s ease;
+  box-shadow: 0 16px 36px rgba(0,0,0,.18);
+  transition: transform .35s ease, box-shadow .35s ease;
 }
 
 .slider:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 26px 55px rgba(0,0,0,.22);
+  transform: translateY(-2px);
+  box-shadow: 0 24px 48px rgba(0,0,0,.22);
 }
 
 .slide {
   position: absolute;
   inset: 0;
-  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;    /* IMAGEM CONTIDA */
   background-color: #f7f7f7;
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity .8s ease, transform .8s ease;
+  transform: translateY(14px);
+  transition: opacity .7s ease, transform .7s ease;
 }
 
 .slide.ativo {
@@ -160,9 +149,8 @@ body {
   bottom: 0;
   width: 100%;
   padding: 22px;
-  background: linear-gradient(to top, rgba(0,0,0,.7), transparent);
+  background: linear-gradient(to top, rgba(0,0,0,.72), transparent);
   color: #fff;
-  backdrop-filter: blur(3px);
 }
 
 .overlay h2 {
@@ -173,7 +161,7 @@ body {
 .overlay p {
   font-size: 14px;
   opacity: .9;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 /* ================= CONTROLES ================= */
@@ -189,20 +177,14 @@ body {
 
 .ctrl-dot {
   width: 8px;
-  height: 26px;
-  background: rgba(255,255,255,.3);
+  height: 24px;
+  background: rgba(255,255,255,.35);
   border-radius: 6px;
-  cursor: pointer;
-  transition: background .3s ease, height .3s ease;
-}
-
-.ctrl-dot:hover {
-  background: rgba(255,255,255,.6);
 }
 
 .ctrl-dot.active {
   background: #fff;
-  height: 36px;
+  height: 34px;
 }
 
 /* ================= MOBILE ================= */
@@ -226,11 +208,6 @@ body {
 
   .menu-links.active {
     display: flex;
-    animation: slideDown .3s ease;
-  }
-
-  .menu-links li {
-    border-bottom: 1px solid #eee;
   }
 
   .menu-links a {
@@ -240,28 +217,22 @@ body {
   }
 
   .hero h1 {
-    font-size: 1.9rem;
+    font-size: 1.85rem;
   }
 
   .hero p {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+  }
+
+  .slider {
+    height: 460px;            /* MOBILE AJUSTADO */
+    border-radius: 12px;
+  }
+
+  .overlay {
+    padding: 16px;
   }
 }
-
-/* ================= ANIMAÇÃO MENU ================= */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-
 
 
 
