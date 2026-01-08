@@ -5,33 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AUPAC - Página Oficial</title>
 
-  <!-- Importando a fonte Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="aupac.css">
 </head>
 
 <body>
 
-  <!-- ======================= HEADER / CAPA ======================= -->
-  <header>
-    <div>
-      <img src="logo_aupac.png" alt="Logo AUPAC" class="logo-aupac">
-      <h1>AUPAC – Abrigo e Acolhimento Animal</h1>
-      <h2>Cuidar, proteger e transformar vidas</h2>
-      <a href="#catalago-pets" class="btn">Animais para adoção</a>
-    </div>
-  </header>
-
-    <!-- TOPO FIXO -->
+  <!-- ================= TOPO FIXO ================= -->
   <header class="topo">
 
-    <!-- BARRA INSTITUCIONAL -->
+    <!-- Barra institucional -->
     <div class="barra-institucional">
       Este é um site institucional da APAC de Santa Bárbara
     </div>
 
-    <!-- MENU -->
+    <!-- Menu -->
     <nav class="menu">
       <div class="menu-logo">APAC</div>
 
@@ -43,29 +34,41 @@
         <li><a href="/inicio.html">INÍCIO</a></li>
         <li><a href="/aupac.html">AUPAC</a></li>
         <li><a href="/catalago.html">ARTESANATO</a></li>
+        <li><a href="/adotados.html">ADOTADOS</a></li>
       </ul>
     </nav>
 
   </header>
 
+  <!-- ================= HERO / CAPA ================= -->
+  <section class="hero-aupac">
+    <img src="logo_aupac.png" alt="Logo AUPAC" class="logo-aupac">
 
-  <!-- ======================= SOBRE ======================= -->
+    <h1>AUPAC – Abrigo e Acolhimento Animal</h1>
+    <h2>Cuidar, proteger e transformar vidas</h2>
+
+    <a href="#catalago-pets" class="btn">Animais para adoção</a>
+  </section>
+
+  <!-- ================= SOBRE ================= -->
   <section class="sobre-aupac">
     <h2>Nossa História</h2>
+
     <p>
-      A AUPAC nasceu para acolher cães resgatados de abandono e maus-tratos, oferecendo cuidado, 
-      proteção e a chance de um novo começo. Uma iniciativa que transforma vidas ao unir cães vulneráveis 
-      aos recuperandos do sistema APAC. No projeto, os animais são resgatados por uma ONG (SB Adote um Pet) parceira e 
-      passam a viver em um lar temporário dentro da própria APAC. Ali, recebem alimentação, higiene, 
-      passeios, socialização e acompanhamento veterinário.
+      A AUPAC nasceu para acolher cães resgatados de abandono e maus-tratos, oferecendo cuidado,
+      proteção e a chance de um novo começo. Uma iniciativa que transforma vidas ao unir cães
+      vulneráveis aos recuperandos do sistema APAC.
     </p>
 
     <p>
-      O mais especial é que os recuperandos são os responsáveis pelo bem-estar dos cães, desenvolvendo 
-      empatia, responsabilidade e novas oportunidades de vida. A iniciativa é fundamentada na Teoria do Elo,
-      que demonstra a ligação entre violência contra animais e violência interpessoal. Ao substituir a 
-      violência pelo cuidado, o AUPAC contribui diretamente para a reabilitação humana e ajuda a reduzir 
-      a reincidência.
+      No projeto, os animais são resgatados por uma ONG parceira (SB Adote um Pet) e passam a viver
+      em um lar temporário dentro da própria APAC. Ali, recebem alimentação, higiene, passeios,
+      socialização e acompanhamento veterinário.
+    </p>
+
+    <p>
+      O mais especial é que os recuperandos são os responsáveis pelo bem-estar dos cães,
+      desenvolvendo empatia, responsabilidade e novas oportunidades de vida.
     </p>
 
     <p class="destaque">
@@ -73,14 +76,13 @@
     </p>
   </section>
 
-  <!-- ======================= FILTROS ======================= -->
+  <!-- ================= FILTROS ================= -->
   <section class="filtros-container">
     <h2>Cães disponíveis para adoção</h2>
     <h3>FILTRAR PETS</h3>
 
     <div class="filtros-grid">
-      
-      <!-- PORTE -->
+
       <div class="filtro-group">
         <label>PORTE:</label>
         <select id="filtro-porte">
@@ -91,7 +93,6 @@
         </select>
       </div>
 
-      <!-- IDADE -->
       <div class="filtro-group">
         <label>IDADE:</label>
         <select id="filtro-idade">
@@ -101,7 +102,6 @@
         </select>
       </div>
 
-      <!-- SEXO -->
       <div class="filtro-group">
         <label>SEXO:</label>
         <select id="filtro-sexo">
@@ -113,30 +113,32 @@
 
     </div>
 
-    <!-- Botões -->
     <div class="filtros-botoes">
       <button class="btn-filtrar" id="btn-filtrar">Filtrar</button>
       <button class="btn-limpar" id="btn-limpar">Limpar</button>
     </div>
   </section>
 
-  <!-- ======================= PETS ======================= -->
+  <!-- ================= PETS ================= -->
   <section class="pets-section" id="catalago-pets">
-
     <div id="pets-container" class="pets-container"></div>
-
     <div id="pagination-aupac" class="pagination-aupac"></div>
   </section>
 
-  <!-- ======================= RODAPÉ ======================= -->
+  <!-- ================= RODAPÉ ================= -->
   <footer class="rodape">
     <p>APAC - Associação de Proteção e Assistência aos Condenados</p>
     <p>AUPAC: onde vidas se resgatam mutuamente.</p>
-    <img src="logo_apac.png" />
+    <img src="logo_apac.png" alt="Logo APAC">
   </footer>
+
+  <!-- JS -->
   <script src="aupac.js"></script>
+
 </body>
 </html>
+
+
 
 
 
