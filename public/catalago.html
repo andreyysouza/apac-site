@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Catálogo APAC</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo APAC</title>
 
-    <!-- Importando a fonte Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Link para o arquivo CSS externo -->
-    <link rel="stylesheet" href="catalago.css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="catalago.css" />
 </head>
 
 <body>
-      <!-- TOPO FIXO -->
+
+  <!-- TOPO FIXO -->
   <header class="topo">
 
     <!-- BARRA INSTITUCIONAL -->
@@ -37,50 +38,72 @@
     </nav>
 
   </header>
-    <!-- ======================= SEÇÃO SOBRE ======================= -->
-    <section class="sobre">
-        <h2>Sobre o Projeto</h2>
-        <p>
-            Cada peça produzida pelos recuperandos da APAC representa mais que um artesanato: é um gesto de dignidade, oportunidade e reconstrução.
-            Ao adquirir um produto, você contribui diretamente para o processo de ressocialização e apoia o futuro de pessoas em busca de um novo caminho.
-        </p>
-    </section>
 
-    <!-- ======================= FILTROS DE CATEGORIA ======================= -->
-    <div class="filtros"> 
-        <h2>Catálogo de Produtos</h2>
-        <button class="filtro-btn active" data-filter="all">TODOS</button>
-        <button class="filtro-btn" data-filter="gesso">GESSO</button>
-        <button class="filtro-btn" data-filter="linha">LINHA</button>
-        <button class="filtro-btn" data-filter="marcenaria">MARCENARIA</button>
-        <button class="filtro-btn" data-filter="palito">PALITO</button>
-        <button class="filtro-btn" data-filter="papel">PAPEL</button>
-    </div> 
+  <!-- HERO / APRESENTAÇÃO -->
+  <section class="hero-catalogo">
+    <h1>Artesanato com Propósito</h1>
+    <p>Mãos que fazem o bem</p>
+  </section>
 
-    <!-- ======================= CATÁLOGO ======================= -->
-    <section class="produtos" id="catalogo">
+  <!-- SOBRE O PROJETO -->
+  <section class="sobre">
+    <h2>Sobre o Projeto</h2>
+    <p>
+      Cada peça produzida pelos recuperandos da APAC representa mais que um artesanato:
+      é um gesto de dignidade, oportunidade e reconstrução.
+    </p>
+    <p>
+      Ao adquirir um produto, você contribui diretamente para o processo de ressocialização
+      e apoia o futuro de pessoas em busca de um novo caminho.
+    </p>
+  </section>
 
-        <!-- CONTAINER ONDE OS PRODUTOS SERÃO GERADOS VIA JS -->
-        <div class="grid" id="produtos-container"></div>
+  <!-- FILTROS -->
+  <section class="filtros">
+    <h2>Catálogo de Produtos</h2>
 
-        <!-- PAGINAÇÃO -->
-        <div id="paginacao" class="pagination"></div>
-    </section>
+    <button class="filtro-btn active" data-filter="all">TODOS</button>
+    <button class="filtro-btn" data-filter="gesso">GESSO</button>
+    <button class="filtro-btn" data-filter="linha">LINHA</button>
+    <button class="filtro-btn" data-filter="marcenaria">MARCENARIA</button>
+    <button class="filtro-btn" data-filter="palito">PALITO</button>
+    <button class="filtro-btn" data-filter="papel">PAPEL</button>
+  </section>
 
-    <!-- ======================= RODAPÉ ======================= -->
-    <footer>
-        <p>APAC - Associação de Proteção e Assistência aos Condenados</p>
-        <p>Artesanato criado com dignidade, fé e oportunidade.</p>
-        <img src="logo_apac.png" /> 
-    </footer>
+  <!-- CATÁLOGO -->
+  <section class="produtos" id="catalogo">
 
-    <!-- ======================= JS ======================= -->
-    <script src="catalago.js"></script>
+    <!-- GRID GERADO PELO JS -->
+    <div class="grid" id="produtos-container"></div>
+
+    <!-- PAGINAÇÃO -->
+    <div id="paginacao" class="pagination"></div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="rodape">
+    <p>APAC - Associação de Proteção e Assistência aos Condenados</p>
+    <p>Artesanato criado com dignidade, fé e oportunidade.</p>
+    <img src="logo_apac.png" alt="Logo APAC" />
+  </footer>
+
+  <!-- JS -->
+  <script src="catalago.js"></script>
+
+  <!-- MENU HAMBURGUER -->
+  <script>
+    const toggle = document.getElementById("menu-toggle");
+    const links = document.getElementById("menu-links");
+
+    if (toggle && links) {
+      toggle.addEventListener("click", () => {
+        links.classList.toggle("active");
+      });
+    }
+  </script>
 
 </body>
 </html>
-
-
 
 
 
