@@ -63,12 +63,27 @@ a {
   font-size: 14px;
   font-weight: 600;
   opacity: 0.9;
+  position: relative;
 }
 
-.menu-links a:hover {
-  opacity: 1;
-  text-decoration: underline;
+/* Linha animada do menu */
+.menu-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+
+  transition: width 0.35s ease;
 }
+
+.menu-links a:hover::after {
+  width: 100%;
+}
+
 
 .menu-toggle {
   display: none;
@@ -116,6 +131,11 @@ a {
 body {
   padding-top: 104px;
 }
+
+.menu-links a::after {
+  display: none;
+}
+
 
 /* ================= HERO DO CATÁLOGO ================= */
 .hero-catalogo {
@@ -369,6 +389,7 @@ footer img {
     font-size: 1.05rem;
   }
 }
+
 
 
 
