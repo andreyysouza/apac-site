@@ -9,45 +9,41 @@
 </head>
 <body>
 
-  <!-- ================= BARRA INSTITUCIONAL ================= -->
-  <div class="barra-institucional">
-    Este é um site institucional da APAC de Santa Bárbara
-  </div>
+  <!-- TOPO INSTITUCIONAL -->
+  <header class="topo">
 
-  <!-- ================= MENU ================= -->
-  <nav class="menu">
-    <div class="menu-logo">APAC</div>
-
-    <!-- Botão hamburguer -->
-    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
-      ☰
-    </button>
-
-    <ul class="menu-links" id="menu-links">
-      <li><a href="/inicio.html">INÍCIO</a></li>
-      <li><a href="/aupac.html">AUPAC</a></li>
-      <li><a href="/catalago.html">ARTESANATO</a></li>
-      <li><a href="/adotados.html"></a></li>
-    </ul>
-  </nav>
-
-  <!-- ================= HEADER ================= -->
-  <header class="header-apac">
-    <div class="header-content">
-      <h1>APAC Santa Bárbara</h1>
-      <h2>
-        Trabalho, disciplina<br>
-        e transformação
-      </h2>
+    <div class="barra-institucional">
+      Este é um site institucional da APAC de Santa Bárbara
     </div>
+
+    <nav class="menu">
+      <div class="menu-logo">APAC</div>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+        ☰
+      </button>
+
+      <ul class="menu-links" id="menu-links">
+        <li><a href="/inicio.html">INÍCIO</a></li>
+        <li><a href="/aupac.html">AUPAC</a></li>
+        <li><a href="/catalago.html">ARTESANATO</a></li>
+        <li><a href="/adotados.html"></a></li>
+      </ul>
+    </nav>
+
   </header>
 
-  <!-- ================= CONTEÚDO PRINCIPAL ================= -->
+  <!-- HEADER PRINCIPAL -->
+  <section class="hero">
+    <h1>APAC Santa Bárbara</h1>
+    <p>Trabalho, disciplina<br>e transformação</p>
+  </section>
+
+  <!-- SLIDER -->
   <main>
     <section id="slider" class="slider"></section>
   </main>
 
-  <!-- ================= SCRIPT MENU ================= -->
   <script>
     const toggle = document.getElementById("menu-toggle");
     const links = document.getElementById("menu-links");
@@ -60,6 +56,7 @@
   <script src="inicio.js"></script>
 </body>
 </html>
+
 
 
 
