@@ -1,4 +1,4 @@
-/* RESET TOTAL */
+/* ================= RESET TOTAL ================= */
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +13,7 @@ html, body {
   color: #001051;
 }
 
-/* ===== TOPO ===== */
+/* ================= TOPO FIXO ================= */
 .topo {
   position: fixed;
   top: 0;
@@ -31,7 +31,7 @@ html, body {
   border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
-/* ===== MENU ===== */
+/* ================= MENU ================= */
 .menu {
   height: 64px;
   display: flex;
@@ -40,10 +40,12 @@ html, body {
   padding: 0 20px;
 }
 
+/* Logo */
 .menu-logo {
   color: #fff;
   font-weight: 700;
   font-size: 16px;
+  letter-spacing: .5px;
 }
 
 /* Links desktop */
@@ -58,23 +60,15 @@ html, body {
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
-  opacity: .9;
+  opacity: .95;
+  transition: opacity .2s ease;
 }
 
-/* animação do menu */
-.menu-links a: slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.menu-links a:hover {
+  opacity: 1;
 }
 
-
-/* Hamburger */
+/* Botão hamburguer */
 .menu-toggle {
   display: none;
   background: none;
@@ -82,44 +76,12 @@ html, body {
   font-size: 26px;
   color: #fff;
   cursor: pointer;
+  z-index: 10001;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .menu-links {
-    position: fixed;
-    top: 104px; /* barra + menu */
-    left: 0;
-    width: 100%;
-    background: #fff;
-    flex-direction: column;
-    display: none;
-    box-shadow: 0 10px 20px rgba(0,0,0,.2);
-  }
-
-  .menu-links.active {
-    display: flex;
-  }
-
-  .menu-links li {
-    border-bottom: 1px solid #eee;
-  }
-
-  .menu-links a {
-    color: #001051;
-    padding: 16px;
-    font-size: 15px;
-  }
-}
-
-/* ===== HERO ===== */
+/* ================= HERO ================= */
 .hero {
-  margin-top: 104px; /* altura do topo */
+  margin-top: 104px; /* topo + menu */
   background: #5b74a0;
   color: #fff;
   text-align: center;
@@ -209,6 +171,53 @@ html, body {
   background: #fff;
 }
 
+/* ================= ANIMAÇÃO MENU ================= */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-links {
+    position: fixed;
+    top: 104px; /* barra + menu */
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    display: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+    z-index: 10000;
+  }
+
+  .menu-links.active {
+    display: flex;
+    animation: slideDown .3s ease;
+  }
+
+  .menu-links li {
+    border-bottom: 1px solid #eee;
+  }
+
+  .menu-links a {
+    color: #001051;
+    padding: 16px;
+    font-size: 15px;
+  }
+}
+
 /* ================= SLIDER MOBILE ================= */
 @media (max-width: 600px) {
   .slider {
@@ -219,8 +228,15 @@ html, body {
   .overlay h2 {
     font-size: 18px;
   }
-}
 
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+}
 
 
 
