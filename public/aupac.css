@@ -234,38 +234,37 @@ body {
   margin-top: 40px;
 }
 
-/* ================= MODAL DE IMAGEM ================= */
-
-.img-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.85);
-  display: none;
-  justify-content: center;
+/* ===== MODAL DE IMAGEM ===== */ 
+.img-modal { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh; 
+  background: rgba(0, 0, 0, 0.85); 
+  display: none; 
+  justify-content: center; 
   align-items: center;
-  z-index: 9999;
-}
-
-.img-modal.active {
-  display: flex;
-}
-
-.img-modal img {
+  z-index: 9999; 
+} 
+.img-modal img { 
   max-width: 90%;
-  max-height: 90%;
-  border-radius: 12px;
-}
-
+  max-height: 90%; 
+  border-radius: 12px; 
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4); 
+} 
+.img-modal.active {
+  display: flex; 
+} 
 .img-modal::after {
-  content: "✕";
+  content: "✕"; 
   position: absolute;
   top: 20px;
-  right: 25px;
-  font-size: 28px;
-  color: white;
-  cursor: pointer;
+  right: 25px; 
+  color: white; 
+  font-size: 28px; 
+  cursor: pointer; 
 }
-
 
 
 
