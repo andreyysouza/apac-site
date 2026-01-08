@@ -167,11 +167,11 @@ body {
   font-size: 1.9rem;
 }
 
-/* linha horizontal */
-.filtros {
+.filtros-botoes {
+  margin-top: 16px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -369,6 +369,7 @@ footer img {
     font-size: 1.05rem;
   }
 }
+
 
 
 
