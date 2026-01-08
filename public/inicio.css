@@ -1,45 +1,46 @@
-/* ======== RESET ======== */
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:"Poppins", sans-serif;
-  background:#f7f7f7;
-  color:#001051;
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* barra */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f7f7f7;
+  color: #001051;
+}
+
+/* ================= BARRA INSTITUCIONAL ================= */
 .barra-institucional {
   background: #001051;
-  color: white;
+  color: #fff;
   padding: 6px 10px;
   text-align: center;
   font-size: 13px;
-  position: relative;
-  z-index: 999;
 }
 
-/* ================= MENU INSTITUCIONAL PROFISSIONAL ================= */
-
+/* ================= MENU ================= */
 .menu {
   position: sticky;
   top: 0;
-  left: 0;
   width: 100%;
   height: 64px;
-  background: #001051;
+  background: linear-gradient(90deg, #001051, #001a7a);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,.15);
+  box-shadow: 0 2px 12px rgba(0,0,0,.2);
 }
 
-/* Logo / nome */
+/* Logo */
 .menu-logo {
   color: #fff;
   font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 0.5px;
+  font-size: 18px;
+  letter-spacing: 1px;
 }
 
 /* Links desktop */
@@ -54,10 +55,11 @@ body{
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
+  padding: 6px 0;
   position: relative;
 }
 
-/* underline suave */
+/* underline elegante */
 .menu-links li a::after {
   content: "";
   position: absolute;
@@ -76,19 +78,24 @@ body{
 /* Botão hamburguer */
 .menu-toggle {
   display: none;
-  font-size: 26px;
+  font-size: 28px;
   color: #fff;
+  background: none;
+  border: none;
   cursor: pointer;
 }
 
-/* ================= MOBILE ================= */
+/* ================= MENU MOBILE ================= */
 @media (max-width: 768px) {
 
   .menu {
     padding: 0 16px;
   }
 
-  /* Esconde menu horizontal */
+  .menu-toggle {
+    display: block;
+  }
+
   .menu-links {
     position: absolute;
     top: 64px;
@@ -107,29 +114,21 @@ body{
   }
 
   .menu-links li a {
-    display: block;
-    padding: 16px;
     color: #001051;
+    padding: 16px;
     font-size: 15px;
-    font-weight: 600;
   }
 
   .menu-links li a::after {
     display: none;
   }
 
-  /* botão hamburguer visível */
-  .menu-toggle {
-    display: block;
-  }
-
-  /* menu aberto */
   .menu-links.active {
     display: flex;
   }
 }
 
-/* animação */
+/* animação do menu */
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -146,128 +145,131 @@ body {
   padding-top: 64px;
 }
 
-/* ======== HEADER ======== */
-.header-apac{
-  background:#5b74a0;
-  color:#fff;
-  height:15vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:20px;
-  padding-top: 40px;
-}
-.header-apac h1{
-  font-size:2.4rem;
-  font-weight:700;
-}
-.header-apac h2{
-  font-size:1.3rem;
-  font-weight:500;
-  margin-top:10px;
-}
-.logo-apac{
-  width:140px;
-  margin-bottom:15px;
-}
-.subtitulo {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-top: 12px;
-  line-height: 1.4;
-  opacity: 0.95; 
+/* ================= HEADER ================= */
+.header-apac {
+  background: #5b74a0;
+  color: #fff;
+  min-height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
 }
 
+.header-apac h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.header-apac h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 10px;
+  line-height: 1.4;
+  opacity: 0.95;
+}
+
+/* ================= HEADER MOBILE ================= */
 @media (max-width: 600px) {
-  .subtitulo {
-    font-size: 1.05rem;
+  .header-apac {
+    padding: 50px 15px;
+  }
+
+  .header-apac h1 {
+    font-size: 1.9rem;
+  }
+
+  .header-apac h2 {
+    font-size: 1.1rem;
   }
 }
 
-/* ======== SLIDER VERTICAL ======== */
-.slider{
-  width:100%;
-  max-width:900px;
-  margin:40px auto;
-  overflow:hidden;
-  border-radius:14px;
-
-  /* >>> AJUSTE PARA IMAGENS VERTICAIS */
-  height:650px;
-
-  background:#f7f7f7;
-  position:relative;
+/* ================= SLIDER ================= */
+.slider {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  height: 650px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f7f7f7;
+  position: relative;
 }
 
-.slide{
-  position:absolute;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-
-  /* >>> MOSTRAR A IMAGEM INTEIRA (SEM CORTAR) */
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
-  background-color:#f7f7f7;
-
-  opacity:0;
-  transform:translateY(20px);
-  transition:opacity .7s ease, transform .7s ease;
-  border-radius:14px;
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f7f7f7;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .7s ease, transform .7s ease;
 }
 
-.slide.ativo{
-  opacity:1;
-  transform:translateY(0);
+.slide.ativo {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* overlay discreto */
-.overlay{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  padding:20px;
-  background:linear-gradient(to top, rgba(0,0,0,.65), transparent);
-  color:white;
-}
-.overlay h2{
-  font-size:20px;
-  margin-bottom:4px;
-}
-.overlay p{
-  font-size:14px;
-  opacity:.9;
+/* Overlay */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,.65), transparent);
+  color: #fff;
 }
 
-/* bolinhas laterais */
-.slider-controls{
-  position:absolute;
-  right:10px;
-  top:50%;
-  transform:translateY(-50%);
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-.ctrl-dot{
-  width:8px;
-  height:28px;
-  background:rgba(255,255,255,.3);
-  border-radius:6px;
-  cursor:pointer;
-}
-.ctrl-dot.active{
-  background:#fff;
+.overlay h2 {
+  font-size: 20px;
+  margin-bottom: 4px;
 }
 
-/* RESPONSIVO */
-@media(max-width:600px){
-  .slider{ height:540px; } /* altura reduzida em telas pequenas */
-  .overlay h2{ font-size:18px; }
+.overlay p {
+  font-size: 14px;
+  opacity: .9;
 }
+
+/* Controles */
+.slider-controls {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ctrl-dot {
+  width: 8px;
+  height: 28px;
+  background: rgba(255,255,255,.3);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ctrl-dot.active {
+  background: #fff;
+}
+
+/* ================= SLIDER MOBILE ================= */
+@media (max-width: 600px) {
+  .slider {
+    height: 520px;
+    margin: 30px 10px;
+  }
+
+  .overlay h2 {
+    font-size: 18px;
+  }
+}
+
+
 
 
 
