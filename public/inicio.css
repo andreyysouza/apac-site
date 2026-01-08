@@ -9,17 +9,14 @@ html, body {
   width: 100%;
   overflow-x: hidden;
   font-family: "Poppins", sans-serif;
-  background: #f7f7f7;
+  background: #f4f5f7;
   color: #001051;
-}
-
-/* ================= ANIMAÇÕES SUAVES GLOBAIS ================= */
-* {
   scroll-behavior: smooth;
 }
 
+/* ================= ENTRADA SUAVE ================= */
 body {
-  animation: fadeIn .6s ease;
+  animation: fadeIn .5s ease;
 }
 
 @keyframes fadeIn {
@@ -42,7 +39,6 @@ body {
   background: linear-gradient(180deg, #001051, #001a6b);
 }
 
-/* Barra institucional */
 .barra-institucional {
   font-size: 12.5px;
   text-align: center;
@@ -51,7 +47,7 @@ body {
   border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
-/* ================= MENU ================= */
+/* ================= MENU (INALTERADO) ================= */
 .menu {
   height: 64px;
   display: flex;
@@ -60,7 +56,6 @@ body {
   padding: 0 20px;
 }
 
-/* Logo */
 .menu-logo {
   color: #fff;
   font-weight: 700;
@@ -68,7 +63,6 @@ body {
   letter-spacing: .5px;
 }
 
-/* Links desktop */
 .menu-links {
   list-style: none;
   display: flex;
@@ -88,7 +82,6 @@ body {
   opacity: 1;
 }
 
-/* Botão hamburguer */
 .menu-toggle {
   display: none;
   background: none;
@@ -101,34 +94,47 @@ body {
 
 /* ================= HERO ================= */
 .hero {
+  margin-top: 104px;
+  padding: 60px 20px 40px;
   background: linear-gradient(135deg, #5b74a0, #4a6390);
+  color: #fff;
+  text-align: center;
 }
 
 .hero h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
   letter-spacing: -0.5px;
 }
 
 .hero p {
+  margin-top: 12px;
+  font-size: 1.2rem;
   opacity: .95;
+}
+
+/* ================= CONTAINER INSTITUCIONAL ================= */
+.slider-wrapper {
+  max-width: 980px;
+  margin: 40px auto;
+  padding: 0 14px;
 }
 
 /* ================= SLIDER ================= */
 .slider {
-  width: 100%;
-  max-width: 900px;
-  margin: 40px auto;
-  height: 650px;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #f7f7f7;
   position: relative;
-  box-shadow: 0 20px 40px rgba(0,0,0,.18);
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: #f7f7f7;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
   transition: transform .4s ease, box-shadow .4s ease;
 }
 
 .slider:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 28px 55px rgba(0,0,0,.22);
+  transform: translateY(-3px);
+  box-shadow: 0 26px 55px rgba(0,0,0,.22);
 }
 
 .slide {
@@ -139,8 +145,8 @@ body {
   background-position: center;
   background-color: #f7f7f7;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .9s ease, transform .9s ease;
+  transform: translateY(16px);
+  transition: opacity .8s ease, transform .8s ease;
 }
 
 .slide.ativo {
@@ -148,31 +154,32 @@ body {
   transform: translateY(0);
 }
 
-/* Overlay */
+/* ================= OVERLAY ================= */
 .overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 20px;
-  background: linear-gradient(to top, rgba(0,0,0,.65), transparent);
+  padding: 22px;
+  background: linear-gradient(to top, rgba(0,0,0,.7), transparent);
   color: #fff;
   backdrop-filter: blur(3px);
 }
 
 .overlay h2 {
   font-size: 20px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .overlay p {
   font-size: 14px;
   opacity: .9;
+  line-height: 1.4;
 }
 
-/* Controles */
+/* ================= CONTROLES ================= */
 .slider-controls {
   position: absolute;
-  right: 12px;
+  right: 14px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -182,7 +189,7 @@ body {
 
 .ctrl-dot {
   width: 8px;
-  height: 28px;
+  height: 26px;
   background: rgba(255,255,255,.3);
   border-radius: 6px;
   cursor: pointer;
@@ -198,18 +205,6 @@ body {
   height: 36px;
 }
 
-/* ================= ANIMAÇÃO MENU ================= */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
@@ -219,7 +214,7 @@ body {
 
   .menu-links {
     position: fixed;
-    top: 104px; /* barra + menu */
+    top: 104px;
     left: 0;
     width: 100%;
     background: #fff;
@@ -243,23 +238,6 @@ body {
     padding: 16px;
     font-size: 15px;
   }
-}
-
-/* ================= SLIDER MOBILE ================= */
-@media (max-width: 600px) {
-  .slider {
-    height: 520px;
-    margin: 30px 10px;
-    border-radius: 12px;
-  }
-
-   .overlay {
-    padding: 16px;
-  }
-
-  .overlay h2 {
-    font-size: 18px;
-  }
 
   .hero h1 {
     font-size: 1.9rem;
@@ -270,6 +248,17 @@ body {
   }
 }
 
+/* ================= ANIMAÇÃO MENU ================= */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
 
