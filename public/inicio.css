@@ -62,7 +62,7 @@ html, body {
 }
 
 /* animação do menu */
-.menu-links a slideDown {
+.menu-links a: slideDown {
   from {
     opacity: 0;
     transform: translateY(-10px);
@@ -220,6 +220,7 @@ html, body {
     font-size: 18px;
   }
 }
+
 
 
 
