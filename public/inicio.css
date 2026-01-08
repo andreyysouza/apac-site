@@ -24,8 +24,6 @@ html, body {
   top: 0;
   width: 100%;
   z-index: 1000;
-
-  /* FUNDO SÓLIDO — sem degradê aqui */
   background: transparent;
 }
 
@@ -35,7 +33,7 @@ html, body {
   text-align: center;
   padding: 6px 10px;
   color: #fff;
-  background: rgba(0,16,81,.9);
+  background: rgba(0,16,81,.95);
 }
 
 /* ================= MENU ================= */
@@ -46,9 +44,9 @@ html, body {
   justify-content: space-between;
   padding: 0 20px;
 
-  /* menu recorta o fundo do hero */
-  background: rgba(0,16,81,.85);
-  backdrop-filter: blur(2px);
+  /* integração refinada com o hero */
+  background: rgba(0,16,81,.88);
+  backdrop-filter: blur(4px);
 }
 
 .menu-logo {
@@ -58,7 +56,7 @@ html, body {
   letter-spacing: .6px;
 }
 
-/* Links */
+/* Links desktop */
 .menu-links {
   list-style: none;
   display: flex;
@@ -98,60 +96,68 @@ html, body {
   color: #fff;
 }
 
-/* ================= HERO (BASE ÚNICA DO DEGRADÊ) ================= */
+/* ================= HERO (POLIMENTO FINAL) ================= */
 .hero {
   margin-top: 0;
-  padding: 132px 20px 72px;
+  padding: 136px 20px 76px;
   text-align: center;
   color: #fff;
 
-  /* DEGRADÊ LIMPO E CONTÍNUO */
-  background: linear-gradient(
-    180deg,
-    #001051 0%,
-    #002070 20%,
-    #5b74a0 55%,
-    #4a6390 100%
-  );
+  /* degradê base */
+  background:
+    /* ponto de luz sutil */
+    radial-gradient(
+      circle at center 20%,
+      rgba(255,255,255,.08),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      #001051 0%,
+      #002070 22%,
+      #5b74a0 58%,
+      #4a6390 100%
+    );
 }
 
-/* Título */
+/* Título refinado */
 .hero h1 {
-  font-size: 2.35rem;
+  font-size: 2.4rem;
   font-weight: 700;
-  letter-spacing: -0.6px;
-  line-height: 1.15;
+  letter-spacing: -0.65px;
+  line-height: 1.12;
 }
 
-/* Linha refinada */
+/* Linha abaixo do título */
 .hero h1::after {
   content: "";
   display: block;
   width: 78px;
   height: 3px;
-  margin: 18px auto 16px;
+  margin: 18px auto 18px;
   background: rgba(255,255,255,.85);
   border-radius: 2px;
 }
 
-/* Subtítulo */
+/* Subtítulo polido */
 .hero p {
-  font-size: 1.15rem;
+  font-size: 1.18rem;
   font-weight: 500;
-  opacity: .95;
+  line-height: 1.55;
+  opacity: .96;
 }
 
 /* ================= SLIDER ================= */
 .slider {
   max-width: 360px;
   width: 100%;
-  margin: 48px auto 60px;
+  margin: 48px auto 64px;
   height: 560px;
   border-radius: 18px;
   overflow: hidden;
   position: relative;
   background: #000;
-  box-shadow: 0 20px 44px rgba(0,0,0,.25);
+  box-shadow: 0 22px 48px rgba(0,0,0,.25);
 }
 
 .slide {
@@ -168,7 +174,7 @@ html, body {
   opacity: 1;
 }
 
-/* ================= LEGENDA ================= */
+/* ================= LEGENDA SLIDER ================= */
 .overlay {
   position: absolute;
   left: 0;
@@ -179,7 +185,7 @@ html, body {
     180deg,
     rgba(0,0,0,0),
     rgba(0,0,0,.65) 35%,
-    rgba(0,0,0,.85)
+    rgba(0,0,0,.88)
   );
   color: #fff;
 }
@@ -187,10 +193,12 @@ html, body {
 .overlay h2 {
   font-size: 18px;
   font-weight: 700;
+  margin-bottom: 4px;
 }
 
 .overlay p {
   font-size: 14px;
+  line-height: 1.45;
   opacity: .95;
 }
 
@@ -253,15 +261,15 @@ html, body {
   }
 
   .hero {
-    padding: 120px 16px 56px;
+    padding: 124px 16px 56px;
   }
 
   .hero h1 {
-    font-size: 1.9rem;
+    font-size: 1.95rem;
   }
 
   .hero p {
-    font-size: 1.05rem;
+    font-size: 1.06rem;
   }
 
   .slider {
