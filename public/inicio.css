@@ -54,7 +54,6 @@ html, body {
   letter-spacing: .6px;
 }
 
-/* Links desktop */
 .menu-links {
   list-style: none;
   display: flex;
@@ -69,7 +68,6 @@ html, body {
   position: relative;
 }
 
-/* Linha discreta */
 .menu-links a::after {
   content: "";
   position: absolute;
@@ -97,28 +95,20 @@ html, body {
 
 /* ================= HERO / CABEÇALHO ================= */
 .hero {
-  position: relative;
   margin-top: 0;
   padding: 136px 20px 72px;
   text-align: center;
   color: #fff;
-  background: #5b74a0;
-}
 
-/* TRANSIÇÃO CURTA ENTRE MENU E HERO */
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 56px;
-  background: linear-gradient(
-    180deg,
-    #001051 0%,
-    rgba(0,16,81,.6) 45%,
-    rgba(0,16,81,0) 100%
-  );
+  /* 🔑 DEGRADÊ CURTO + COR BASE (VISÍVEL E ELEGANTE) */
+  background:
+    linear-gradient(
+      180deg,
+      #001051 0px,
+      #1f3f73 40px,
+      #5b74a0 80px
+    ),
+    #5b74a0;
 }
 
 /* TÍTULO */
@@ -193,7 +183,6 @@ html, body {
 .overlay h2 {
   font-size: 18px;
   font-weight: 700;
-  margin-bottom: 4px;
 }
 
 .overlay p {
@@ -282,6 +271,7 @@ html, body {
     height: 520px;
   }
 }
+
 
 
 
