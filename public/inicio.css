@@ -18,16 +18,17 @@ html, body {
   color: #fff;
 }
 
-/* ================= TOPO ================= */
+/* ================= TOPO FIXO ================= */
 .topo {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+
   background: linear-gradient(180deg, #001051, #001a6b);
-  box-shadow: 0 4px 14px rgba(0,0,0,.25);
 }
 
+/* Barra institucional */
 .barra-institucional {
   font-size: 12.5px;
   text-align: center;
@@ -51,6 +52,7 @@ html, body {
   font-size: 16px;
 }
 
+/* Links desktop */
 .menu-links {
   list-style: none;
   display: flex;
@@ -81,18 +83,23 @@ html, body {
   width: 100%;
 }
 
+/* Botão hamburguer */
 .menu-toggle {
   display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
 }
 
-/* ================= HERO / IDENTIDADE ================= */
+/* ================= HERO / CABEÇALHO ================= */
 .hero {
-  margin-top: 104px;
-  padding: 48px 20px 56px;
+  margin-top: 0; /* remove linha branca */
+  padding: 120px 20px 56px; /* espaço compensado pelo menu fixo */
   text-align: center;
   color: #fff;
 
-  /* Gradiente leve */
   background: linear-gradient(
     180deg,
     #6b82ad 0%,
@@ -100,8 +107,8 @@ html, body {
     #4a6390 100%
   );
 
-  /* Conexão com menu */
-  box-shadow: inset 0 14px 18px rgba(0,0,0,.18);
+  /* separação elegante do menu */
+  box-shadow: inset 0 14px 18px rgba(0,0,0,.25);
 }
 
 .hero h1 {
@@ -110,7 +117,7 @@ html, body {
   letter-spacing: -0.4px;
 }
 
-/* Linha abaixo do título */
+/* Linha institucional */
 .hero h1::after {
   content: "";
   display: block;
@@ -131,7 +138,7 @@ html, body {
 .slider {
   max-width: 360px;
   width: 100%;
-  margin: 40px auto;
+  margin: 40px auto 60px;
   height: 560px;
   border-radius: 16px;
   overflow: hidden;
@@ -145,7 +152,7 @@ html, body {
   inset: 0;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; /* 🔥 CORRIGE MOBILE */
+  background-size: cover;
   opacity: 0;
   transition: opacity .6s ease;
 }
@@ -200,7 +207,18 @@ html, body {
 @media (max-width: 768px) {
 
   .menu-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(255,255,255,.12);
+    transition: background .25s ease, transform .2s ease;
+  }
+
+  .menu-toggle:active {
+    transform: scale(.95);
   }
 
   .menu-links {
@@ -221,6 +239,10 @@ html, body {
   .menu-links a {
     color: #001051;
     padding: 16px;
+  }
+
+  .hero {
+    padding: 112px 16px 48px;
   }
 
   .hero h1 {
