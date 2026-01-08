@@ -54,6 +54,7 @@ html, body {
   letter-spacing: .6px;
 }
 
+/* Links desktop */
 .menu-links {
   list-style: none;
   display: flex;
@@ -83,7 +84,7 @@ html, body {
   width: 100%;
 }
 
-/* Hamburguer */
+/* Botão hamburguer */
 .menu-toggle {
   display: none;
   background: none;
@@ -103,24 +104,27 @@ html, body {
   background: #5b74a0;
 }
 
-/* 🔑 GRADIENTE DE JUNÇÃO (CURTO, SUAVE, HARMÔNICO) */
+/* 🔑 GRADIENTE SUAVE DE JUNÇÃO (VISÍVEL, CURTO, HARMÔNICO) */
 .hero::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 64px;
+  height: 90px;
 
   background: linear-gradient(
     180deg,
     #001051 0%,
-    rgba(0,16,81,.55) 50%,
+    rgba(0,16,81,.75) 35%,
+    rgba(0,16,81,.35) 65%,
     rgba(0,16,81,0) 100%
   );
+
+  pointer-events: none;
 }
 
-/* ================= TÍTULO INSTITUCIONAL ================= */
+/* Título institucional */
 .hero h1 {
   font-size: 2.35rem;
   font-weight: 700;
@@ -128,7 +132,7 @@ html, body {
   line-height: 1.15;
 }
 
-/* Linha elegante e séria */
+/* Linha discreta */
 .hero h1::after {
   content: "";
   display: block;
@@ -282,9 +286,8 @@ html, body {
     height: 520px;
   }
 }
-body {
-  background: red !important;
-}
+
+
 
 
 
