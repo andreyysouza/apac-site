@@ -13,6 +13,26 @@ html, body {
   color: #001051;
 }
 
+/* ================= ANIMAÇÕES SUAVES GLOBAIS ================= */
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  animation: fadeIn .6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ================= TOPO FIXO ================= */
 .topo {
   position: fixed;
@@ -81,22 +101,15 @@ html, body {
 
 /* ================= HERO ================= */
 .hero {
-  margin-top: 104px; /* topo + menu */
-  background: #5b74a0;
-  color: #fff;
-  text-align: center;
-  padding: 60px 20px;
+  background: linear-gradient(135deg, #5b74a0, #4a6390);
 }
 
 .hero h1 {
-  font-size: 2.4rem;
-  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .hero p {
-  margin-top: 12px;
-  font-size: 1.2rem;
-  line-height: 1.4;
+  opacity: .95;
 }
 
 /* ================= SLIDER ================= */
@@ -109,6 +122,13 @@ html, body {
   overflow: hidden;
   background: #f7f7f7;
   position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,.18);
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.slider:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 55px rgba(0,0,0,.22);
 }
 
 .slide {
@@ -120,7 +140,7 @@ html, body {
   background-color: #f7f7f7;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity .7s ease, transform .7s ease;
+  transition: opacity .9s ease, transform .9s ease;
 }
 
 .slide.ativo {
@@ -136,6 +156,7 @@ html, body {
   padding: 20px;
   background: linear-gradient(to top, rgba(0,0,0,.65), transparent);
   color: #fff;
+  backdrop-filter: blur(3px);
 }
 
 .overlay h2 {
@@ -165,10 +186,16 @@ html, body {
   background: rgba(255,255,255,.3);
   border-radius: 6px;
   cursor: pointer;
+  transition: background .3s ease, height .3s ease;
+}
+
+.ctrl-dot:hover {
+  background: rgba(255,255,255,.6);
 }
 
 .ctrl-dot.active {
   background: #fff;
+  height: 36px;
 }
 
 /* ================= ANIMAÇÃO MENU ================= */
@@ -223,6 +250,11 @@ html, body {
   .slider {
     height: 520px;
     margin: 30px 10px;
+    border-radius: 12px;
+  }
+
+   .overlay {
+    padding: 16px;
   }
 
   .overlay h2 {
@@ -237,6 +269,7 @@ html, body {
     font-size: 1.1rem;
   }
 }
+
 
 
 
