@@ -61,9 +61,18 @@ html, body {
   opacity: .9;
 }
 
-.menu-links a:hover {
-  opacity: 1;
+/* animação do menu */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 
 /* Hamburger */
 .menu-toggle {
@@ -211,6 +220,7 @@ html, body {
     font-size: 18px;
   }
 }
+
 
 
 
