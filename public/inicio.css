@@ -24,23 +24,9 @@ html, body {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: linear-gradient(180deg, #001051, #001a6b);
-}
 
-/* ZONA DE FUSÃO VISÍVEL */
-.topo::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -1px;
-  width: 100%;
-  height: 36px;
-  background: linear-gradient(
-    180deg,
-    rgba(0,26,107,1),
-    rgba(0,26,107,0)
-  );
-  pointer-events: none;
+  /* FUNDO SÓLIDO — sem degradê aqui */
+  background: transparent;
 }
 
 /* Barra institucional */
@@ -49,7 +35,7 @@ html, body {
   text-align: center;
   padding: 6px 10px;
   color: #fff;
-  border-bottom: 1px solid rgba(255,255,255,.15);
+  background: rgba(0,16,81,.9);
 }
 
 /* ================= MENU ================= */
@@ -59,6 +45,10 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+
+  /* menu recorta o fundo do hero */
+  background: rgba(0,16,81,.85);
+  backdrop-filter: blur(2px);
 }
 
 .menu-logo {
@@ -68,6 +58,7 @@ html, body {
   letter-spacing: .6px;
 }
 
+/* Links */
 .menu-links {
   list-style: none;
   display: flex;
@@ -107,36 +98,20 @@ html, body {
   color: #fff;
 }
 
-/* ================= HERO ================= */
+/* ================= HERO (BASE ÚNICA DO DEGRADÊ) ================= */
 .hero {
-  position: relative;
   margin-top: 0;
   padding: 132px 20px 72px;
   text-align: center;
   color: #fff;
 
-  /* HERO COMEÇA TRANSPARENTE */
+  /* DEGRADÊ LIMPO E CONTÍNUO */
   background: linear-gradient(
     180deg,
-    rgba(0,26,107,0) 0%,
-    #6b82ad 35%,
-    #5b74a0 70%,
+    #001051 0%,
+    #002070 20%,
+    #5b74a0 55%,
     #4a6390 100%
-  );
-}
-
-/* Reforço de fusão */
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 48px;
-  background: linear-gradient(
-    180deg,
-    rgba(0,26,107,.9),
-    rgba(0,26,107,0)
   );
 }
 
@@ -193,7 +168,7 @@ html, body {
   opacity: 1;
 }
 
-/* ================= LEGENDA SLIDER (RESTAURADA) ================= */
+/* ================= LEGENDA ================= */
 .overlay {
   position: absolute;
   left: 0;
@@ -212,12 +187,10 @@ html, body {
 .overlay h2 {
   font-size: 18px;
   font-weight: 700;
-  margin-bottom: 4px;
 }
 
 .overlay p {
   font-size: 14px;
-  line-height: 1.4;
   opacity: .95;
 }
 
@@ -272,14 +245,8 @@ html, body {
     display: flex;
   }
 
-  .menu-links li {
-    border-bottom: 1px solid #eee;
-  }
-
   .menu-links a {
     color: #001051;
-    font-size: 15px;
-    font-weight: 600;
     padding: 18px 20px;
     display: block;
     width: 100%;
