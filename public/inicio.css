@@ -14,7 +14,6 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* Seleção de texto */
 ::selection {
   background: #001051;
   color: #fff;
@@ -42,11 +41,15 @@ body {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: linear-gradient(180deg, #001051, #001a6b);
-  transition: box-shadow .3s ease;
-}
 
-.topo {
+  /* Conecta menu com a faixa */
+  background: linear-gradient(
+    180deg,
+    #001051 0%,
+    #001a6b 70%,
+    #5b74a0 100%
+  );
+
   box-shadow: 0 6px 18px rgba(0,0,0,.25);
 }
 
@@ -59,7 +62,7 @@ body {
   border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
-/* ================= MENU (ESTRUTURA INTACTA) ================= */
+/* ================= MENU (INALTERADO) ================= */
 .menu {
   height: 64px;
   display: flex;
@@ -75,7 +78,6 @@ body {
   letter-spacing: .5px;
 }
 
-/* Links desktop */
 .menu-links {
   list-style: none;
   display: flex;
@@ -91,7 +93,7 @@ body {
   position: relative;
 }
 
-/* Linha animada no hover */
+/* Linha animada no menu */
 .menu-links a::after {
   content: "";
   position: absolute;
@@ -118,35 +120,54 @@ body {
   z-index: 10001;
 }
 
-/* ================= HERO ================= */
-.hero {
+/* ================= FAIXA IDENTIDADE (HOME) ================= */
+.identidade {
   margin-top: 104px;
-  padding: 60px 20px 42px;
-  background: linear-gradient(135deg, #5b74a0, #4a6390);
-  color: #fff;
+  padding: 48px 20px 56px;
   text-align: center;
+  color: #fff;
+
+  background: linear-gradient(
+    180deg,
+    #6b82ad 0%,
+    #5b74a0 60%,
+    #4a6390 100%
+  );
+
+  /* Faz a faixa “abraçar” o menu */
+  box-shadow: inset 0 14px 18px rgba(0,0,0,.18);
 }
 
-.hero h1 {
-  font-size: 2.3rem;
+.identidade h1 {
+  font-size: 2.1rem;
   font-weight: 700;
   letter-spacing: -0.4px;
 }
 
-.hero p {
-  margin-top: 12px;
-  font-size: 1.15rem;
+/* Linha institucional */
+.identidade h1::after {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 3px;
+  margin: 16px auto 14px;
+  background: rgba(255,255,255,.85);
+  border-radius: 2px;
+}
+
+.identidade p {
+  font-size: 1.1rem;
+  font-weight: 500;
   opacity: .95;
 }
 
-/* ================= ÁREA INSTITUCIONAL ================= */
+/* ================= ÁREA SLIDER ================= */
 .slider-wrapper {
   max-width: 900px;
   margin: 36px auto 60px;
   padding: 0 16px;
 }
 
-/* ================= SLIDER ================= */
 .slider {
   position: relative;
   width: 100%;
@@ -230,6 +251,18 @@ body {
   height: 34px;
 }
 
+/* ================= ANIMAÇÃO AO ROLAR ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
@@ -262,18 +295,17 @@ body {
     color: #001051;
     padding: 16px;
     font-size: 15px;
-    transition: background .2s ease;
   }
 
-  .menu-links a:active {
-    background: rgba(0,16,81,.08);
+  .identidade {
+    padding: 40px 16px 48px;
   }
 
-  .hero h1 {
-    font-size: 1.85rem;
+  .identidade h1 {
+    font-size: 1.75rem;
   }
 
-  .hero p {
+  .identidade p {
     font-size: 1.05rem;
   }
 
@@ -298,6 +330,8 @@ body {
     transform: translateY(0);
   }
 }
+
+
 
 
 
