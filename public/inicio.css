@@ -54,6 +54,7 @@ html, body {
   letter-spacing: .6px;
 }
 
+/* Links desktop */
 .menu-links {
   list-style: none;
   display: flex;
@@ -68,6 +69,7 @@ html, body {
   position: relative;
 }
 
+/* Linha sutil no hover */
 .menu-links a::after {
   content: "";
   position: absolute;
@@ -83,7 +85,7 @@ html, body {
   width: 100%;
 }
 
-/* Hamburguer */
+/* Botão hamburguer */
 .menu-toggle {
   display: none;
   background: none;
@@ -95,23 +97,20 @@ html, body {
 
 /* ================= HERO / CABEÇALHO ================= */
 .hero {
+  position: relative;
   margin-top: 0;
   padding: 136px 20px 72px;
   text-align: center;
   color: #fff;
 
-  /* 🔑 DEGRADÊ CURTO + COR BASE (VISÍVEL E ELEGANTE) */
-  background:
-    linear-gradient(
-      180deg,
-      #001051 0px,
-      #1f3f73 40px,
-      #5b74a0 80px
-    ),
-    #5b74a0;
+  /* cor sólida */
+  background: #5b74a0;
+
+  /* 🔑 JUNÇÃO INVISÍVEL COM O MENU */
+  box-shadow: inset 0 10px 10px -10px rgba(0,16,81,.85);
 }
 
-/* TÍTULO */
+/* Título */
 .hero h1 {
   font-size: 2.3rem;
   font-weight: 700;
@@ -183,6 +182,7 @@ html, body {
 .overlay h2 {
   font-size: 18px;
   font-weight: 700;
+  margin-bottom: 4px;
 }
 
 .overlay p {
