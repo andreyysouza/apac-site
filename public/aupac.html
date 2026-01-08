@@ -13,10 +13,6 @@
 
 <body>
 
-  <div class="barra-institucional">
-    Este é um site institucional da APAC de Santa Bárbara
-  </div>
-
   <!-- ======================= HEADER / CAPA ======================= -->
   <header>
     <div>
@@ -27,23 +23,30 @@
     </div>
   </header>
 
-  <!-- ======================= MENU ======================= -->
- <nav class="menu">
-  <div class="menu-logo">APAC</div>
+    <!-- TOPO FIXO -->
+  <header class="topo">
 
-  <!-- Botão hamburguer (mobile) -->
-  <div class="menu-toggle" id="menu-toggle">
-    ☰
-  </div>
+    <!-- BARRA INSTITUCIONAL -->
+    <div class="barra-institucional">
+      Este é um site institucional da APAC de Santa Bárbara
+    </div>
 
-  <!-- Links -->
-  <ul class="menu-links" id="menu-links">
-    <li><a href="/inicio.html">INÍCIO</a></li>
-    <li><a href="/aupac.html">AUPAC</a></li>
-    <li><a href="/catalago.html">ARTESANATO</a></li>
-    <li><a href="/adotados.html"></a></li>
-  </ul>
-</nav>
+    <!-- MENU -->
+    <nav class="menu">
+      <div class="menu-logo">APAC</div>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+        ☰
+      </button>
+
+      <ul class="menu-links" id="menu-links">
+        <li><a href="/inicio.html">INÍCIO</a></li>
+        <li><a href="/aupac.html">AUPAC</a></li>
+        <li><a href="/catalago.html">ARTESANATO</a></li>
+      </ul>
+    </nav>
+
+  </header>
 
 
   <!-- ======================= SOBRE ======================= -->
@@ -134,6 +137,7 @@
   <script src="aupac.js"></script>
 </body>
 </html>
+
 
 
 
