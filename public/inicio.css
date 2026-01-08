@@ -14,6 +14,12 @@ html, body {
   scroll-behavior: smooth;
 }
 
+/* Seleção de texto */
+::selection {
+  background: #001051;
+  color: #fff;
+}
+
 /* ================= ENTRADA SUAVE ================= */
 body {
   animation: fadeIn .45s ease;
@@ -37,8 +43,14 @@ body {
   width: 100%;
   z-index: 1000;
   background: linear-gradient(180deg, #001051, #001a6b);
+  transition: box-shadow .3s ease;
 }
 
+.topo {
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+/* Barra institucional */
 .barra-institucional {
   font-size: 12.5px;
   text-align: center;
@@ -47,7 +59,7 @@ body {
   border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
-/* ================= MENU (INALTERADO) ================= */
+/* ================= MENU (ESTRUTURA INTACTA) ================= */
 .menu {
   height: 64px;
   display: flex;
@@ -63,6 +75,7 @@ body {
   letter-spacing: .5px;
 }
 
+/* Links desktop */
 .menu-links {
   list-style: none;
   display: flex;
@@ -75,10 +88,34 @@ body {
   font-size: 14px;
   font-weight: 600;
   opacity: .95;
+  position: relative;
 }
 
+/* Linha animada no hover */
+.menu-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: rgba(255,255,255,.85);
+  transition: width .25s ease;
+}
+
+.menu-links a:hover::after {
+  width: 100%;
+}
+
+/* Botão hamburguer */
 .menu-toggle {
   display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10001;
 }
 
 /* ================= HERO ================= */
@@ -113,7 +150,7 @@ body {
 .slider {
   position: relative;
   width: 100%;
-  height: 520px;               /* DESKTOP CONTROLADO */
+  height: 520px;
   background: #f7f7f7;
   border-radius: 16px;
   overflow: hidden;
@@ -131,7 +168,7 @@ body {
   inset: 0;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;    /* IMAGEM CONTIDA */
+  background-size: contain;
   background-color: #f7f7f7;
   opacity: 0;
   transform: translateY(14px);
@@ -180,6 +217,12 @@ body {
   height: 24px;
   background: rgba(255,255,255,.35);
   border-radius: 6px;
+  cursor: pointer;
+  transition: height .25s ease, background .25s ease;
+}
+
+.ctrl-dot:hover {
+  background: rgba(255,255,255,.6);
 }
 
 .ctrl-dot.active {
@@ -208,12 +251,22 @@ body {
 
   .menu-links.active {
     display: flex;
+    animation: slideDown .3s ease;
+  }
+
+  .menu-links li {
+    border-bottom: 1px solid #eee;
   }
 
   .menu-links a {
     color: #001051;
     padding: 16px;
     font-size: 15px;
+    transition: background .2s ease;
+  }
+
+  .menu-links a:active {
+    background: rgba(0,16,81,.08);
   }
 
   .hero h1 {
@@ -225,7 +278,7 @@ body {
   }
 
   .slider {
-    height: 460px;            /* MOBILE AJUSTADO */
+    height: 460px;
     border-radius: 12px;
   }
 
@@ -233,6 +286,20 @@ body {
     padding: 16px;
   }
 }
+
+/* ================= ANIMAÇÃO MENU MOBILE ================= */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 
 
 
