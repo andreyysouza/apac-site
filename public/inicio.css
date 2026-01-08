@@ -25,12 +25,12 @@ html, body {
   width: 100%;
   z-index: 1000;
 
-  /* degradê que prepara o hero */
+  /* DEGRADÊ DO MENU */
   background: linear-gradient(
     180deg,
     #001051 0%,
-    #001a6b 65%,
-    #3f5f94 100%
+    #001a6b 55%,
+    #2f4f85 100%
   );
 }
 
@@ -59,7 +59,6 @@ html, body {
   letter-spacing: .6px;
 }
 
-/* Links desktop */
 .menu-links {
   list-style: none;
   display: flex;
@@ -97,27 +96,45 @@ html, body {
   border: none;
   font-size: 26px;
   color: #fff;
-  cursor: pointer;
 }
 
 /* ================= HERO / CABEÇALHO ================= */
 .hero {
+  position: relative;
   margin-top: 0;
   padding: 132px 20px 64px;
   text-align: center;
   color: #fff;
 
-  /* encontro suave com o menu */
+  /* COMEÇA EXATAMENTE DA ÚLTIMA COR DO MENU */
   background: linear-gradient(
     180deg,
-    #3f5f94 0%,
+    #2f4f85 0%,
     #6b82ad 35%,
     #5b74a0 70%,
     #4a6390 100%
   );
 }
 
-/* TÍTULO – microtipografia institucional */
+/* ZONA DE FUSÃO (SEGREDO DA CONTINUIDADE) */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 32px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(47,79,133,.85),
+    rgba(47,79,133,0)
+  );
+
+  pointer-events: none;
+}
+
+/* TÍTULO */
 .hero h1 {
   font-size: 2.35rem;
   font-weight: 700;
@@ -176,16 +193,6 @@ html, body {
   opacity: 1;
 }
 
-/* Overlay */
-.overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 18px;
-  background: linear-gradient(to top, rgba(0,0,0,.75), transparent);
-  color: #fff;
-}
-
 /* ================= CONTROLES ================= */
 .slider-controls {
   position: absolute;
@@ -212,7 +219,6 @@ html, body {
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
-  /* Hamburguer */
   .menu-toggle {
     display: flex;
     align-items: center;
@@ -228,7 +234,6 @@ html, body {
     transform: scale(.95);
   }
 
-  /* MENU MOBILE COMO PAINEL */
   .menu-links {
     position: fixed;
     top: 104px;
@@ -236,19 +241,12 @@ html, body {
     width: 100%;
     background: #fff;
     flex-direction: column;
-
     display: none;
-    opacity: 0;
-    transform: translateY(-10px);
-
-    transition: opacity .25s ease, transform .25s ease;
     z-index: 10000;
   }
 
   .menu-links.active {
     display: flex;
-    opacity: 1;
-    transform: translateY(0);
   }
 
   .menu-links li {
@@ -259,20 +257,9 @@ html, body {
     color: #001051;
     font-size: 15px;
     font-weight: 600;
-
     padding: 18px 20px;
     width: 100%;
     display: block;
-
-    transition: background .2s ease;
-  }
-
-  .menu-links a:hover {
-    background: rgba(0,16,81,.05);
-  }
-
-  .menu-links a:active {
-    background: rgba(0,16,81,.1);
   }
 
   .hero {
@@ -291,6 +278,7 @@ html, body {
     height: 520px;
   }
 }
+
 
 
 
