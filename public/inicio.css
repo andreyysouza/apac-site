@@ -12,6 +12,7 @@
   padding: 6px 10px;
   text-align: center;
   font-size: 13px;
+  margin: 0;
 }
 
 /* ================= MENU ================= */
@@ -262,6 +263,7 @@ body {
     font-size: 18px;
   }
 }
+
 
 
 
