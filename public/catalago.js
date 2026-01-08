@@ -1,5 +1,15 @@
-/// ======================= CATALAGO.JS – Backend =======================
-document.addEventListener('DOMContentLoaded', () => {
+// ======================= CATALAGO.JS – Backend (FINAL) =======================
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ================= MENU HAMBURGUER ================= */
+  const toggle = document.getElementById("menu-toggle");
+  const links = document.getElementById("menu-links");
+
+  if (toggle && links) {
+    toggle.addEventListener("click", () => {
+      links.classList.toggle("active");
+    });
+  }
 
   /* ================= MODAL DE IMAGEM ================= */
   const imgModal = document.createElement("div");
@@ -12,9 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ================= ELEMENTOS ================= */
-  const filterButtons = document.querySelectorAll('.filtro-btn');
-  const paginationContainer = document.querySelector('.pagination');
-  const produtosContainer = document.getElementById('produtos-container');
+  const filterButtons = document.querySelectorAll(".filtro-btn");
+  const paginationContainer = document.querySelector(".pagination");
+  const produtosContainer = document.getElementById("produtos-container");
 
   let produtos = [];
   let currentPage = 1;
@@ -36,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card.className = `card produto ${categoria}`;
 
     const precoHTML = preco
-      ? `<p class="price">R$ ${preco.toFixed(2).replace('.', ',')}</p>`
+      ? `<p class="price">R$ ${preco.toFixed(2).replace(".", ",")}</p>`
       : "";
 
     card.innerHTML = `
@@ -45,8 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <h3>${nome}</h3>
         <div class="desc">${descricao}</div>
         ${precoHTML}
-        <a class="whatsapp-btn" 
-           href="https://wa.me/${whatsapp}?text=${encodeURIComponent(`Olá! Tenho interesse no produto: ${nome}`)}"
+        <a class="whatsapp-btn"
+           href="https://wa.me/${whatsapp}?text=${encodeURIComponent(
+             `Olá! Tenho interesse no produto: ${nome}`
+           )}"
            target="_blank">
            Fazer Pedido
         </a>
@@ -55,7 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* 🔍 ZOOM NA IMAGEM */
     const imgEl = card.querySelector(".produto-img");
-    imgEl.addEventListener("click", () => {
+    imgEl.addEventListener("click", (e) => {
+      e.stopPropagation();
       imgModal.querySelector("img").src = img;
       imgModal.classList.add("active");
     });
@@ -66,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ================= RENDER PAGE ================= */
   function renderPage() {
 
-    const btn = document.querySelector('.filtro-btn.active');
+    const btn = document.querySelector(".filtro-btn.active");
     const categoriaFiltro = btn ? btn.dataset.filter : "all";
 
     const filtrados = produtos.filter(p =>
@@ -80,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const end = start + itemsPerPage;
 
     produtosContainer.innerHTML = "";
+
     filtrados.slice(start, end).forEach(item => {
       produtosContainer.appendChild(createCard(item));
     });
@@ -95,38 +109,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const prev = document.createElement("button");
     prev.innerText = "⟨ Anterior";
     prev.disabled = currentPage === 1;
-    prev.onclick = () => { currentPage--; renderPage(); };
+    prev.onclick = () => {
+      currentPage--;
+      renderPage();
+    };
     paginationContainer.appendChild(prev);
 
     for (let i = 1; i <= totalPages; i++) {
       const btn = document.createElement("button");
       btn.innerText = i;
       if (i === currentPage) btn.classList.add("active");
-      btn.onclick = () => { currentPage = i; renderPage(); };
+      btn.onclick = () => {
+        currentPage = i;
+        renderPage();
+      };
       paginationContainer.appendChild(btn);
     }
 
     const next = document.createElement("button");
     next.innerText = "Próximo ⟩";
     next.disabled = currentPage === totalPages;
-    next.onclick = () => { currentPage++; renderPage(); };
+    next.onclick = () => {
+      currentPage++;
+      renderPage();
+    };
     paginationContainer.appendChild(next);
   }
 
   /* ================= FILTER EVENTS ================= */
   filterButtons.forEach(btn => {
-    btn.onclick = () => {
+    btn.addEventListener("click", () => {
       filterButtons.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       currentPage = 1;
       renderPage();
-    };
+    });
   });
 
-  /* ================= LOAD DATA FROM BACKEND ================= */
+  /* ================= LOAD DATA ================= */
   async function loadData() {
     try {
-
       const r = await fetch("/api/artesanato");
       const dados = await r.json();
 
@@ -149,25 +171,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   loadData();
-
 });
-
-// MENU HAMBURGUER MOBILE
-document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.getElementById("menu-toggle");
-  const links = document.getElementById("menu-links");
-
-  if (toggle && links) {
-    toggle.addEventListener("click", () => {
-      links.classList.toggle("active");
-    });
-  }
-});
-
-
-
-
-
-
-
-
