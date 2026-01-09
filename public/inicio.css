@@ -13,13 +13,20 @@ html, body {
   color: #001051;
 }
 
+::selection {
+  background: #001051;
+  color: #fff;
+}
+
 /* ================= TOPO FIXO ================= */
 .topo {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: #001051;
+
+  /* FUNDO SÓLIDO — sem degradê aqui */
+  background: transparent;
 }
 
 /* Barra institucional */
@@ -28,7 +35,7 @@ html, body {
   text-align: center;
   padding: 6px 10px;
   color: #fff;
-  border-bottom: 1px solid rgba(255,255,255,.15);
+  background: rgba(0,16,81,.9);
 }
 
 /* ================= MENU ================= */
@@ -38,55 +45,20 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-}/* ================= RESET ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-  font-family: "Poppins", sans-serif;
-  background: #f4f5f7;
-  color: #001051;
-}
-
-/* ================= TOPO FIXO ================= */
-.topo {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 105px; /* 🔑 VALOR REAL */
-  z-index: 1000;
-  background: #001051;
-}
-
-/* Barra institucional */
-.barra-institucional {
-  font-size: 12.5px;
-  text-align: center;
-  padding: 6px 10px;
-  color: #fff;
-  border-bottom: 1px solid rgba(255,255,255,.15);
-}
-
-/* ================= MENU ================= */
-.menu {
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
+  /* menu recorta o fundo do hero */
+  background: rgba(0,16,81,.85);
+  backdrop-filter: blur(2px);
 }
 
 .menu-logo {
   color: #fff;
   font-weight: 700;
   font-size: 16px;
+  letter-spacing: .6px;
 }
 
+/* Links */
 .menu-links {
   list-style: none;
   display: flex;
@@ -101,6 +73,7 @@ html, body {
   position: relative;
 }
 
+/* Linha animada */
 .menu-links a::after {
   content: "";
   position: absolute;
@@ -125,75 +98,68 @@ html, body {
   color: #fff;
 }
 
-/* ================= HERO ================= */
+/* ================= HERO (BASE ÚNICA DO DEGRADÊ) ================= */
 .hero {
-  /* 🔑 começa EXATAMENTE após o topo */
-  margin-top: 105px;
-
-  padding: 120px 20px 140px;
+  margin-top: 0;
+  padding: 132px 20px 72px;
   text-align: center;
   color: #fff;
 
-  /* 🔑 GRADIENTE CORRETO E CONTÍNUO */
+  /* DEGRADÊ LIMPO E CONTÍNUO */
   background: linear-gradient(
     180deg,
     #001051 0%,
-    #2f5083 30%,
-    #4f6fa3 55%,
-    #5b74a0 70%,
-    #f4f5f7 100%
+    #002070 20%,
+    #5b74a0 55%,
+    #4a6390 100%
   );
 }
 
 /* Título */
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 2.35rem;
   font-weight: 700;
   letter-spacing: -0.6px;
   line-height: 1.15;
 }
 
-/* Linha institucional */
+/* Linha refinada */
 .hero h1::after {
   content: "";
   display: block;
-  width: 80px;
+  width: 78px;
   height: 3px;
-  margin: 22px auto 18px;
-  background: rgba(255,255,255,.9);
+  margin: 18px auto 16px;
+  background: rgba(255,255,255,.85);
   border-radius: 2px;
 }
 
 /* Subtítulo */
 .hero p {
-  font-size: 1.18rem;
+  font-size: 1.15rem;
   font-weight: 500;
-  line-height: 1.55;
   opacity: .95;
-  max-width: 520px;
-  margin: 0 auto;
 }
 
 /* ================= SLIDER ================= */
 .slider {
   max-width: 360px;
   width: 100%;
-  margin: -80px auto 64px; /* encaixa visualmente no hero */
+  margin: 48px auto 60px;
   height: 560px;
   border-radius: 18px;
   overflow: hidden;
   position: relative;
   background: #000;
-  box-shadow: 0 22px 46px rgba(0,0,0,.28);
+  box-shadow: 0 20px 44px rgba(0,0,0,.25);
 }
 
-/* Slides */
 .slide {
   position: absolute;
   inset: 0;
-  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   opacity: 0;
   transition: opacity .6s ease;
 }
@@ -202,7 +168,7 @@ html, body {
   opacity: 1;
 }
 
-/* Overlay */
+/* ================= LEGENDA ================= */
 .overlay {
   position: absolute;
   left: 0;
@@ -212,8 +178,8 @@ html, body {
   background: linear-gradient(
     180deg,
     rgba(0,0,0,0),
-    rgba(0,0,0,.65) 40%,
-    rgba(0,0,0,.88)
+    rgba(0,0,0,.65) 35%,
+    rgba(0,0,0,.85)
   );
   color: #fff;
 }
@@ -221,12 +187,10 @@ html, body {
 .overlay h2 {
   font-size: 18px;
   font-weight: 700;
-  margin-bottom: 4px;
 }
 
 .overlay p {
   font-size: 14px;
-  line-height: 1.45;
   opacity: .95;
 }
 
@@ -239,7 +203,6 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  z-index: 5;
 }
 
 .ctrl-dot {
@@ -269,7 +232,7 @@ html, body {
 
   .menu-links {
     position: fixed;
-    top: 105px;
+    top: 104px;
     left: 0;
     width: 100%;
     background: #fff;
@@ -282,26 +245,19 @@ html, body {
     display: flex;
   }
 
-  .menu-links li {
-    border-bottom: 1px solid #eee;
-  }
-
   .menu-links a {
     color: #001051;
-    font-size: 15px;
-    font-weight: 600;
     padding: 18px 20px;
     display: block;
     width: 100%;
   }
 
   .hero {
-    margin-top: 105px;
-    padding: 100px 16px 120px;
+    padding: 120px 16px 56px;
   }
 
   .hero h1 {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 
   .hero p {
@@ -309,10 +265,10 @@ html, body {
   }
 
   .slider {
-    margin-top: -60px;
     height: 520px;
   }
 }
+
 
 
 
