@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("ANIMATION JS CARREGOU");
 
-  /* ================= CONFIGURAÇÃO ================= */
+  console.log("animation.js ativo");
 
-  // Tudo que pode animar entra aqui
-  const ANIMATED_SELECTORS = [
+  const selectors = [
     ".hero h1",
     ".hero p",
     ".slider",
@@ -14,38 +12,46 @@ document.addEventListener("DOMContentLoaded", () => {
     ".box"
   ];
 
-  const animatedElements = document.querySelectorAll(
-    ANIMATED_SELECTORS.join(",")
-  );
+  const elements = [];
 
-  if (!animatedElements.length) return;
+  selectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      elements.push(el);
+    });
+  });
 
-  /* ================= PREPARAÇÃO ================= */
+  if (!elements.length) return;
 
-  animatedElements.forEach(el => {
+  // 1️⃣ aplica estado inicial
+  elements.forEach(el => {
     el.classList.add("will-animate");
   });
 
-  /* ================= OBSERVER ================= */
+  // 2️⃣ espera um frame real de renderização
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-          entry.target.classList.remove("will-animate");
-
-          // anima uma vez só
-          observer.unobserve(entry.target);
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              entry.target.classList.remove("will-animate");
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -80px 0px"
         }
-      });
-    },
-    {
-      threshold: 0.15,
-      rootMargin: "0px 0px -60px 0px"
-    }
-  );
+      );
 
-  animatedElements.forEach(el => observer.observe(el));
+      elements.forEach(el => observer.observe(el));
+
+    });
+  });
 
 });
+
+
