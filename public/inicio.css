@@ -106,9 +106,10 @@ html, body {
   /* Gradiente contínuo menu → hero */
   background: linear-gradient(
     180deg,
-    #001051 0%,
-    #002070 22%,
-    #4f6fa3 60%,
+    rgba(0,16,81,.85) 0%,
+    #001051 14%,
+    #002070 30%,
+    #4f6fa3 65%,
     #4a6390 100%
   );
 }
@@ -144,15 +145,24 @@ html, body {
   width: 78px;
   height: 3px;
   margin: 18px auto 16px;
-  background: rgba(255,255,255,.85);
+  background: rgba(255,255,255,.9);
   border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
 }
 
 /* Subtítulo */
 .hero p {
   font-size: 1.15rem;
   font-weight: 500;
-  opacity: .95;
+  opacity: .98;
+}
+
+/* Contraste óptico refinado */
+.hero h1,
+.hero p {
+  text-shadow:
+    0 2px 6px rgba(0,0,0,0.25),
+    0 6px 20px rgba(0,0,0,0.15);
 }
 
 /* ================= SLIDER ================= */
@@ -282,6 +292,7 @@ html, body {
     height: 520px;
   }
 }
+
 
 
 
