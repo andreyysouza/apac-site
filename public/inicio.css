@@ -38,6 +38,47 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+}/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+  background: #f4f5f7;
+  color: #001051;
+}
+
+/* ================= TOPO FIXO ================= */
+.topo {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 105px; /* 🔑 VALOR REAL */
+  z-index: 1000;
+  background: #001051;
+}
+
+/* Barra institucional */
+.barra-institucional {
+  font-size: 12.5px;
+  text-align: center;
+  padding: 6px 10px;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+/* ================= MENU ================= */
+.menu {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .menu-logo {
@@ -86,30 +127,27 @@ html, body {
 
 /* ================= HERO ================= */
 .hero {
-  /* 🔑 compensa header fixo */
-  margin-top: 104px;
+  /* 🔑 começa EXATAMENTE após o topo */
+  margin-top: 105px;
 
   padding: 120px 20px 140px;
   text-align: center;
   color: #fff;
 
-  /* 🔑 gradiente de transição REAL */
+  /* 🔑 GRADIENTE CORRETO E CONTÍNUO */
   background: linear-gradient(
     180deg,
     #001051 0%,
-    #2e4f80 28%,
+    #2f5083 30%,
     #4f6fa3 55%,
-    #5b74a0 72%,
+    #5b74a0 70%,
     #f4f5f7 100%
   );
-
-  /* micro profundidade (não vira sombra visível) */
-  box-shadow: inset 0 -40px 60px rgba(0,0,0,.06);
 }
 
 /* Título */
 .hero h1 {
-  font-size: 2.45rem;
+  font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: -0.6px;
   line-height: 1.15;
@@ -119,16 +157,16 @@ html, body {
 .hero h1::after {
   content: "";
   display: block;
-  width: 76px;
+  width: 80px;
   height: 3px;
-  margin: 20px auto 16px;
+  margin: 22px auto 18px;
   background: rgba(255,255,255,.9);
   border-radius: 2px;
 }
 
 /* Subtítulo */
 .hero p {
-  font-size: 1.16rem;
+  font-size: 1.18rem;
   font-weight: 500;
   line-height: 1.55;
   opacity: .95;
@@ -140,7 +178,7 @@ html, body {
 .slider {
   max-width: 360px;
   width: 100%;
-  margin: -80px auto 64px; /* 🔑 encaixa no hero */
+  margin: -80px auto 64px; /* encaixa visualmente no hero */
   height: 560px;
   border-radius: 18px;
   overflow: hidden;
@@ -231,7 +269,7 @@ html, body {
 
   .menu-links {
     position: fixed;
-    top: 104px;
+    top: 105px;
     left: 0;
     width: 100%;
     background: #fff;
@@ -258,7 +296,7 @@ html, body {
   }
 
   .hero {
-    margin-top: 104px;
+    margin-top: 105px;
     padding: 100px 16px 120px;
   }
 
@@ -275,6 +313,7 @@ html, body {
     height: 520px;
   }
 }
+
 
 
 
