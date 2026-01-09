@@ -24,7 +24,7 @@ html, body {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: #001051; /* COR ÚNICA */
+  background: #001051;
 }
 
 /* Barra institucional */
@@ -44,8 +44,7 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  background: #001051; /* MESMA COR DO HERO */
-  backdrop-filter: blur(2px);
+  background: #001051;
 }
 
 .menu-logo {
@@ -97,7 +96,7 @@ html, body {
 
 /* ================= HERO ================= */
 .hero {
-  /* COMPENSA TOPO FIXO */
+  /* compensa topo fixo */
   padding-top: calc(28px + 64px + 80px);
   padding-bottom: 72px;
   padding-left: 20px;
@@ -108,13 +107,13 @@ html, body {
   position: relative;
   overflow: hidden;
 
-  /* COMEÇA EXATAMENTE IGUAL AO MENU */
+  /* FAIXA SÓLIDA LONGA + DEGRADÊ CONTROLADO */
   background: linear-gradient(
     180deg,
-    #001051 0%,
-    #001051 38%,
-    #002070 58%,
-    #4f6fa3 78%,
+    #001051 0px,
+    #001051 180px,
+    #002070 300px,
+    #4f6fa3 560px,
     #4a6390 100%
   );
 }
@@ -126,7 +125,7 @@ html, body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 320px;
+  height: 340px;
   background: linear-gradient(
     180deg,
     rgba(74,99,144,0) 0%,
@@ -154,9 +153,9 @@ html, body {
   margin: 18px auto 16px;
   background: linear-gradient(
     90deg,
-    rgba(255,255,255,.2),
+    rgba(255,255,255,.15),
     #ffffff,
-    rgba(255,255,255,.2)
+    rgba(255,255,255,.15)
   );
   border-radius: 3px;
 }
@@ -259,6 +258,16 @@ html, body {
   .hero {
     padding-top: calc(28px + 64px + 64px);
     padding-bottom: 56px;
+
+    /* versão mobile do gradiente */
+    background: linear-gradient(
+      180deg,
+      #001051 0px,
+      #001051 140px,
+      #002070 240px,
+      #4f6fa3 460px,
+      #4a6390 100%
+    );
   }
 
   .hero h1 {
@@ -273,7 +282,6 @@ html, body {
     height: 520px;
   }
 }
-
 
 
 
