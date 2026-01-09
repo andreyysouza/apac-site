@@ -86,61 +86,39 @@ html, body {
   color: #fff;
 }
 
-/* ================= HERO ================= */
+/* ================= HERO → INTRO INSTITUCIONAL ================= */
 .hero {
-  position: relative;
-  padding: 160px 20px 100px;
+  padding: 128px 20px 56px; /* MENOS ALTURA */
   text-align: center;
   color: #fff;
   background: #5b74a0;
-  overflow: hidden;
 }
 
-/* 🔑 TEXTURA MUITO SUAVE (TIRA O “CRU”) */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
-    radial-gradient(rgba(0,0,0,.06) 1px, transparent 1px);
-  background-size: 28px 28px;
-  background-position: 0 0, 14px 14px;
-  opacity: .35;
-  pointer-events: none;
-}
-
-/* Conteúdo acima da textura */
-.hero > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Título institucional */
+/* Título institucional (menos hero, mais identidade) */
 .hero h1 {
-  font-size: 2.65rem;
+  font-size: 2.35rem;
   font-weight: 700;
-  letter-spacing: -0.7px;
-  line-height: 1.12;
+  letter-spacing: -0.6px;
+  line-height: 1.15;
 }
 
-/* Linha elegante */
+/* Linha institucional */
 .hero h1::after {
   content: "";
   display: block;
-  width: 84px;
+  width: 72px;
   height: 3px;
-  margin: 24px auto 18px;
+  margin: 18px auto 14px;
   background: rgba(255,255,255,.9);
   border-radius: 2px;
 }
 
 /* Subtítulo */
 .hero p {
-  font-size: 1.22rem;
+  font-size: 1.15rem;
   font-weight: 500;
-  line-height: 1.6;
-  opacity: .96;
+  line-height: 1.55;
+  opacity: .95;
   max-width: 520px;
   margin: 0 auto;
 }
@@ -149,7 +127,7 @@ html, body {
 .slider {
   max-width: 360px;
   width: 100%;
-  margin: 64px auto 64px;
+  margin: 32px auto 64px; /* APROXIMA HERO + SLIDER */
   height: 560px;
   border-radius: 18px;
   overflow: hidden;
@@ -267,24 +245,21 @@ html, body {
   }
 
   .hero {
-    padding: 140px 16px 90px;
+    padding: 116px 16px 44px;
   }
 
   .hero h1 {
-    font-size: 2.05rem;
+    font-size: 1.95rem;
   }
 
   .hero p {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .slider {
     height: 520px;
   }
 }
-
-
-
 
 
 
