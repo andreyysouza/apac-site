@@ -24,7 +24,7 @@ html, body {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(0,16,81,.95); /* evita qualquer vazamento */
+  background: #001051; /* COR ÚNICA */
 }
 
 /* Barra institucional */
@@ -34,7 +34,7 @@ html, body {
   font-size: 12.5px;
   text-align: center;
   color: #fff;
-  background: rgba(0,16,81,.95);
+  background: #001051;
 }
 
 /* ================= MENU ================= */
@@ -44,7 +44,7 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  background: rgba(0,16,81,.95);
+  background: #001051; /* MESMA COR DO HERO */
   backdrop-filter: blur(2px);
 }
 
@@ -97,7 +97,7 @@ html, body {
 
 /* ================= HERO ================= */
 .hero {
-  /* COMPENSA O TOPO FIXO SEM CRIAR GAP */
+  /* COMPENSA TOPO FIXO */
   padding-top: calc(28px + 64px + 80px);
   padding-bottom: 72px;
   padding-left: 20px;
@@ -108,18 +108,18 @@ html, body {
   position: relative;
   overflow: hidden;
 
-  /* HERO COMEÇA EXATAMENTE IGUAL AO MENU */
+  /* COMEÇA EXATAMENTE IGUAL AO MENU */
   background: linear-gradient(
     180deg,
     #001051 0%,
-    #001051 35%,
-    #002070 55%,
-    #4f6fa3 75%,
+    #001051 38%,
+    #002070 58%,
+    #4f6fa3 78%,
     #4a6390 100%
   );
 }
 
-/* Dissolve suave para o fundo */
+/* Dissolve hero → fundo */
 .hero::after {
   content: "";
   position: absolute;
@@ -129,7 +129,7 @@ html, body {
   height: 320px;
   background: linear-gradient(
     180deg,
-    rgba(74, 99, 144, 0) 0%,
+    rgba(74,99,144,0) 0%,
     #f4f5f7 100%
   );
   pointer-events: none;
@@ -154,9 +154,9 @@ html, body {
   margin: 18px auto 16px;
   background: linear-gradient(
     90deg,
-    rgba(255,255,255,.15),
-    rgba(255,255,255,1),
-    rgba(255,255,255,.15)
+    rgba(255,255,255,.2),
+    #ffffff,
+    rgba(255,255,255,.2)
   );
   border-radius: 3px;
 }
@@ -170,7 +170,7 @@ html, body {
   z-index: 1;
 }
 
-/* CONTRASTE REAL (texto não fica apagado) */
+/* CONTRASTE REAL */
 .hero h1,
 .hero p {
   text-shadow:
@@ -219,39 +219,6 @@ html, body {
     rgba(0,0,0,.85)
   );
   color: #fff;
-}
-
-.overlay h2 {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.overlay p {
-  font-size: 14px;
-  opacity: .95;
-}
-
-/* ================= CONTROLES ================= */
-.slider-controls {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.ctrl-dot {
-  width: 8px;
-  height: 24px;
-  background: rgba(255,255,255,.35);
-  border-radius: 6px;
-}
-
-.ctrl-dot.active {
-  background: #fff;
-  height: 34px;
 }
 
 /* ================= MOBILE ================= */
@@ -306,6 +273,7 @@ html, body {
     height: 520px;
   }
 }
+
 
 
 
