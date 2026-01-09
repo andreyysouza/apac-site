@@ -24,14 +24,15 @@ html, body {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: transparent;
+  background: rgba(0,16,81,.95); /* evita qualquer vazamento */
 }
 
 /* Barra institucional */
 .barra-institucional {
+  height: 28px;
+  line-height: 28px;
   font-size: 12.5px;
   text-align: center;
-  padding: 6px 10px;
   color: #fff;
   background: rgba(0,16,81,.95);
 }
@@ -96,22 +97,24 @@ html, body {
 
 /* ================= HERO ================= */
 .hero {
-  /* COMPENSA O TOPO FIXO (barra + menu) */
-  margin-top: 92px;
+  /* COMPENSA O TOPO FIXO SEM CRIAR GAP */
+  padding-top: calc(28px + 64px + 80px);
+  padding-bottom: 72px;
+  padding-left: 20px;
+  padding-right: 20px;
 
-  padding: 80px 20px 72px;
   text-align: center;
   color: #fff;
   position: relative;
   overflow: hidden;
 
-  /* HERO COMEÇA SÓLIDO NA ÁREA VISÍVEL */
+  /* HERO COMEÇA EXATAMENTE IGUAL AO MENU */
   background: linear-gradient(
     180deg,
     #001051 0%,
-    #001051 40%,
-    #002070 58%,
-    #4f6fa3 78%,
+    #001051 35%,
+    #002070 55%,
+    #4f6fa3 75%,
     #4a6390 100%
   );
 }
@@ -120,10 +123,10 @@ html, body {
 .hero::after {
   content: "";
   position: absolute;
-  bottom: -1px;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 280px;
+  height: 320px;
   background: linear-gradient(
     180deg,
     rgba(74, 99, 144, 0) 0%,
@@ -138,33 +141,41 @@ html, body {
   font-weight: 700;
   letter-spacing: -0.6px;
   line-height: 1.15;
+  position: relative;
+  z-index: 1;
 }
 
-/* Linha refinada */
+/* Linha com gradiente */
 .hero h1::after {
   content: "";
   display: block;
   width: 78px;
   height: 3px;
   margin: 18px auto 16px;
-  background: rgba(255,255,255,.95);
-  border-radius: 2px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,.15),
+    rgba(255,255,255,1),
+    rgba(255,255,255,.15)
+  );
+  border-radius: 3px;
 }
 
 /* Subtítulo */
 .hero p {
   font-size: 1.15rem;
   font-weight: 500;
-  opacity: .98;
+  opacity: 1;
+  position: relative;
+  z-index: 1;
 }
 
-/* Contraste óptico */
+/* CONTRASTE REAL (texto não fica apagado) */
 .hero h1,
 .hero p {
   text-shadow:
-    0 2px 6px rgba(0,0,0,.28),
-    0 8px 22px rgba(0,0,0,.18);
+    0 3px 6px rgba(0,0,0,.45),
+    0 10px 24px rgba(0,0,0,.35);
 }
 
 /* ================= SLIDER ================= */
@@ -258,7 +269,7 @@ html, body {
 
   .menu-links {
     position: fixed;
-    top: 104px;
+    top: 92px;
     left: 0;
     width: 100%;
     background: #fff;
@@ -279,8 +290,8 @@ html, body {
   }
 
   .hero {
-    margin-top: 92px;
-    padding: 64px 16px 56px;
+    padding-top: calc(28px + 64px + 64px);
+    padding-bottom: 56px;
   }
 
   .hero h1 {
@@ -295,6 +306,7 @@ html, body {
     height: 520px;
   }
 }
+
 
 
 
