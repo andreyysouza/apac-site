@@ -96,20 +96,22 @@ html, body {
 
 /* ================= HERO ================= */
 .hero {
-  margin-top: 0;
-  padding: 132px 20px 72px;
+  /* COMPENSA O TOPO FIXO (barra + menu) */
+  margin-top: 92px;
+
+  padding: 80px 20px 72px;
   text-align: center;
   color: #fff;
   position: relative;
   overflow: hidden;
 
-  /* HERO COMEÇA SÓLIDO, DEPOIS CLAREIA */
+  /* HERO COMEÇA SÓLIDO NA ÁREA VISÍVEL */
   background: linear-gradient(
     180deg,
     #001051 0%,
-    #001051 28%,
-    #002070 45%,
-    #4f6fa3 70%,
+    #001051 40%,
+    #002070 58%,
+    #4f6fa3 78%,
     #4a6390 100%
   );
 }
@@ -277,7 +279,8 @@ html, body {
   }
 
   .hero {
-    padding: 120px 16px 56px;
+    margin-top: 92px;
+    padding: 64px 16px 56px;
   }
 
   .hero h1 {
@@ -292,6 +295,8 @@ html, body {
     height: 520px;
   }
 }
+
+
 
 
 
