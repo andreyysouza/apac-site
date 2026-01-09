@@ -20,7 +20,6 @@ html, body {
   width: 100%;
   z-index: 1000;
   background: #001051;
-  box-shadow: 0 4px 14px rgba(0,0,0,.25);
 }
 
 /* Barra institucional */
@@ -47,7 +46,6 @@ html, body {
   font-size: 16px;
 }
 
-/* Links */
 .menu-links {
   list-style: none;
   display: flex;
@@ -86,17 +84,26 @@ html, body {
   color: #fff;
 }
 
-/* ================= HERO → INTRO INSTITUCIONAL ================= */
+/* ================= HERO ================= */
 .hero {
-  padding: 128px 20px 56px; /* MENOS ALTURA */
+  padding: 150px 20px 110px;
   text-align: center;
   color: #fff;
-  background: #5b74a0;
+
+  /* 🔑 GRADIENTE REAL (menu → hero → página) */
+  background:
+    linear-gradient(
+      180deg,
+      #001051 0%,
+      #3f5f8f 30%,
+      #5b74a0 55%,
+      #e9edf3 100%
+    );
 }
 
-/* Título institucional (menos hero, mais identidade) */
+/* Título */
 .hero h1 {
-  font-size: 2.35rem;
+  font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: -0.6px;
   line-height: 1.15;
@@ -106,16 +113,16 @@ html, body {
 .hero h1::after {
   content: "";
   display: block;
-  width: 72px;
+  width: 80px;
   height: 3px;
-  margin: 18px auto 14px;
+  margin: 22px auto 18px;
   background: rgba(255,255,255,.9);
   border-radius: 2px;
 }
 
 /* Subtítulo */
 .hero p {
-  font-size: 1.15rem;
+  font-size: 1.18rem;
   font-weight: 500;
   line-height: 1.55;
   opacity: .95;
@@ -127,7 +134,7 @@ html, body {
 .slider {
   max-width: 360px;
   width: 100%;
-  margin: 32px auto 64px; /* APROXIMA HERO + SLIDER */
+  margin: 0 auto 64px; /* começa já no branco */
   height: 560px;
   border-radius: 18px;
   overflow: hidden;
@@ -179,7 +186,7 @@ html, body {
   opacity: .95;
 }
 
-/* Controles */
+/* ================= CONTROLES ================= */
 .slider-controls {
   position: absolute;
   right: 12px;
@@ -245,11 +252,11 @@ html, body {
   }
 
   .hero {
-    padding: 116px 16px 44px;
+    padding: 130px 16px 90px;
   }
 
   .hero h1 {
-    font-size: 1.95rem;
+    font-size: 2rem;
   }
 
   .hero p {
