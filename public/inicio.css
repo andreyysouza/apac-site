@@ -86,24 +86,30 @@ html, body {
 
 /* ================= HERO ================= */
 .hero {
-  padding: 150px 20px 110px;
+  /* 🔑 compensa header fixo */
+  margin-top: 104px;
+
+  padding: 120px 20px 140px;
   text-align: center;
   color: #fff;
 
-  /* 🔑 GRADIENTE REAL (menu → hero → página) */
-  background:
-    linear-gradient(
-      180deg,
-      #001051 0%,
-      #3f5f8f 30%,
-      #5b74a0 55%,
-      #e9edf3 100%
-    );
+  /* 🔑 gradiente de transição REAL */
+  background: linear-gradient(
+    180deg,
+    #001051 0%,
+    #2e4f80 28%,
+    #4f6fa3 55%,
+    #5b74a0 72%,
+    #f4f5f7 100%
+  );
+
+  /* micro profundidade (não vira sombra visível) */
+  box-shadow: inset 0 -40px 60px rgba(0,0,0,.06);
 }
 
 /* Título */
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 2.45rem;
   font-weight: 700;
   letter-spacing: -0.6px;
   line-height: 1.15;
@@ -113,16 +119,16 @@ html, body {
 .hero h1::after {
   content: "";
   display: block;
-  width: 80px;
+  width: 76px;
   height: 3px;
-  margin: 22px auto 18px;
+  margin: 20px auto 16px;
   background: rgba(255,255,255,.9);
   border-radius: 2px;
 }
 
 /* Subtítulo */
 .hero p {
-  font-size: 1.18rem;
+  font-size: 1.16rem;
   font-weight: 500;
   line-height: 1.55;
   opacity: .95;
@@ -134,13 +140,13 @@ html, body {
 .slider {
   max-width: 360px;
   width: 100%;
-  margin: 0 auto 64px; /* começa já no branco */
+  margin: -80px auto 64px; /* 🔑 encaixa no hero */
   height: 560px;
   border-radius: 18px;
   overflow: hidden;
   position: relative;
   background: #000;
-  box-shadow: 0 20px 44px rgba(0,0,0,.25);
+  box-shadow: 0 22px 46px rgba(0,0,0,.28);
 }
 
 /* Slides */
@@ -252,7 +258,8 @@ html, body {
   }
 
   .hero {
-    padding: 130px 16px 90px;
+    margin-top: 104px;
+    padding: 100px 16px 120px;
   }
 
   .hero h1 {
@@ -264,6 +271,7 @@ html, body {
   }
 
   .slider {
+    margin-top: -60px;
     height: 520px;
   }
 }
