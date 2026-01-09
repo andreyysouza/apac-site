@@ -25,6 +25,9 @@ html, body {
   width: 100%;
   z-index: 1000;
   background: #001051;
+
+  /* 🔑 PROFUNDIDADE REAL */
+  box-shadow: 0 6px 20px rgba(0,0,0,.22);
 }
 
 /* Barra institucional */
@@ -67,6 +70,7 @@ html, body {
   position: relative;
 }
 
+/* Linha discreta */
 .menu-links a::after {
   content: "";
   position: absolute;
@@ -82,7 +86,7 @@ html, body {
   width: 100%;
 }
 
-/* Hamburguer */
+/* Botão hamburguer */
 .menu-toggle {
   display: none;
   background: none;
@@ -94,68 +98,50 @@ html, body {
 
 /* ================= HERO ================= */
 .hero {
-  position: relative;
-  padding: 160px 20px 80px; /* espaço real para o header fixo */
+  padding: 160px 20px 90px; /* espaço real para menu fixo */
   text-align: center;
   color: #fff;
   background: #5b74a0;
 }
 
-/* 🔑 GRADIENTE DE JUNÇÃO (AGORA FUNCIONA) */
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background: linear-gradient(
-    180deg,
-    #001051 0%,
-    rgba(0,16,81,.55) 45%,
-    rgba(0,16,81,0) 100%
-  );
-  pointer-events: none;
-}
-
-/* Título */
+/* ================= TÍTULO INSTITUCIONAL ================= */
 .hero h1 {
-  font-size: 2.4rem;
+  font-size: 2.45rem;
   font-weight: 700;
   letter-spacing: -0.6px;
-  line-height: 1.15;
+  line-height: 1.12;
 }
 
-/* Linha elegante */
+/* Linha institucional refinada */
 .hero h1::after {
   content: "";
   display: block;
-  width: 72px;
+  width: 78px;
   height: 3px;
-  margin: 18px auto 16px;
+  margin: 20px auto 18px;
   background: rgba(255,255,255,.85);
   border-radius: 2px;
 }
 
 /* Subtítulo */
 .hero p {
-  font-size: 1.15rem;
+  font-size: 1.18rem;
   font-weight: 500;
   line-height: 1.55;
-  opacity: .95;
+  opacity: .96;
 }
 
 /* ================= SLIDER ================= */
 .slider {
   max-width: 360px;
   width: 100%;
-  margin: 48px auto 64px;
+  margin: -40px auto 64px; /* 🔑 aproxima o conteúdo e dá coesão */
   height: 560px;
   border-radius: 18px;
   overflow: hidden;
-  position: relative; /* OBRIGATÓRIO pro JS */
+  position: relative;
   background: #000;
-  box-shadow: 0 20px 44px rgba(0,0,0,.25);
+  box-shadow: 0 22px 48px rgba(0,0,0,.25);
 }
 
 /* Slides */
@@ -173,7 +159,7 @@ html, body {
   opacity: 1;
 }
 
-/* Overlay (legenda) */
+/* Overlay da legenda */
 .overlay {
   position: absolute;
   left: 0;
@@ -184,7 +170,7 @@ html, body {
     180deg,
     rgba(0,0,0,0),
     rgba(0,0,0,.65) 40%,
-    rgba(0,0,0,.85)
+    rgba(0,0,0,.88)
   );
   color: #fff;
 }
@@ -268,21 +254,23 @@ html, body {
   }
 
   .hero {
-    padding: 140px 16px 60px;
+    padding: 140px 16px 72px;
   }
 
   .hero h1 {
-    font-size: 1.9rem;
+    font-size: 1.95rem;
   }
 
   .hero p {
-    font-size: 1.05rem;
+    font-size: 1.08rem;
   }
 
   .slider {
+    margin-top: -32px;
     height: 520px;
   }
 }
+
 
 
 
