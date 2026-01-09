@@ -27,27 +27,7 @@ html, body {
   background: #001051;
 }
 
-/* 🔑 GRADIENTE DE JUNÇÃO (AGORA NO LUGAR CERTO) */
-.topo::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -1px;
-  width: 100%;
-  height: 72px;
-
-  background: linear-gradient(
-    180deg,
-    #001051 0%,
-    rgba(0,16,81,.65) 45%,
-    rgba(0,16,81,.3) 70%,
-    rgba(0,16,81,0) 100%
-  );
-
-  pointer-events: none;
-}
-
-/* ================= BARRA INSTITUCIONAL ================= */
+/* Barra institucional */
 .barra-institucional {
   font-size: 12.5px;
   text-align: center;
@@ -87,7 +67,6 @@ html, body {
   position: relative;
 }
 
-/* Linha discreta */
 .menu-links a::after {
   content: "";
   position: absolute;
@@ -115,14 +94,31 @@ html, body {
 
 /* ================= HERO ================= */
 .hero {
-  margin-top: 104px; /* barra + menu */
-  padding: 72px 20px 76px;
+  position: relative;
+  padding: 160px 20px 80px; /* espaço real para o header fixo */
   text-align: center;
   color: #fff;
   background: #5b74a0;
 }
 
-/* ================= TÍTULO INSTITUCIONAL ================= */
+/* 🔑 GRADIENTE DE JUNÇÃO (AGORA FUNCIONA) */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(
+    180deg,
+    #001051 0%,
+    rgba(0,16,81,.55) 45%,
+    rgba(0,16,81,0) 100%
+  );
+  pointer-events: none;
+}
+
+/* Título */
 .hero h1 {
   font-size: 2.4rem;
   font-weight: 700;
@@ -157,8 +153,77 @@ html, body {
   height: 560px;
   border-radius: 18px;
   overflow: hidden;
+  position: relative; /* OBRIGATÓRIO pro JS */
   background: #000;
   box-shadow: 0 20px 44px rgba(0,0,0,.25);
+}
+
+/* Slides */
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+
+.slide.ativo {
+  opacity: 1;
+}
+
+/* Overlay (legenda) */
+.overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0),
+    rgba(0,0,0,.65) 40%,
+    rgba(0,0,0,.85)
+  );
+  color: #fff;
+}
+
+.overlay h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.overlay p {
+  font-size: 14px;
+  line-height: 1.45;
+  opacity: .95;
+}
+
+/* ================= CONTROLES ================= */
+.slider-controls {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 5;
+}
+
+.ctrl-dot {
+  width: 8px;
+  height: 24px;
+  background: rgba(255,255,255,.35);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ctrl-dot.active {
+  background: #fff;
+  height: 34px;
 }
 
 /* ================= MOBILE ================= */
@@ -203,7 +268,7 @@ html, body {
   }
 
   .hero {
-    padding: 64px 16px 56px;
+    padding: 140px 16px 60px;
   }
 
   .hero h1 {
@@ -213,10 +278,11 @@ html, body {
   .hero p {
     font-size: 1.05rem;
   }
+
+  .slider {
+    height: 520px;
+  }
 }
-
-
-
 
 
 
