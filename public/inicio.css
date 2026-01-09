@@ -13,11 +13,6 @@ html, body {
   color: #001051;
 }
 
-::selection {
-  background: #001051;
-  color: #fff;
-}
-
 /* ================= TOPO FIXO ================= */
 .topo {
   position: fixed;
@@ -25,6 +20,7 @@ html, body {
   width: 100%;
   z-index: 1000;
   background: #001051;
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
 }
 
 /* Barra institucional */
@@ -49,10 +45,9 @@ html, body {
   color: #fff;
   font-weight: 700;
   font-size: 16px;
-  letter-spacing: .6px;
 }
 
-/* Links desktop */
+/* Links */
 .menu-links {
   list-style: none;
   display: flex;
@@ -89,73 +84,53 @@ html, body {
   border: none;
   font-size: 26px;
   color: #fff;
-  cursor: pointer;
 }
 
 /* ================= HERO ================= */
 .hero {
-  padding: 160px 20px 110px;
-  background: #5b74a0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* 🔑 BLOCO INSTITUCIONAL INTERNO */
-.hero > * {
-  max-width: 720px;
-  width: 100%;
+  padding: 160px 20px 90px;
   text-align: center;
-
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.18);
-  padding: 48px 32px 44px;
-  border-radius: 14px;
-
-  box-shadow:
-    0 18px 40px rgba(0,0,0,.22),
-    inset 0 1px 0 rgba(255,255,255,.25);
+  color: #fff;
+  background: #5b74a0;
 }
 
-/* Título */
+/* Título institucional */
 .hero h1 {
-  color: #fff;
-  font-size: 2.35rem;
+  font-size: 2.6rem;
   font-weight: 700;
   letter-spacing: -0.6px;
-  line-height: 1.15;
 }
 
-/* Linha institucional */
+/* Linha elegante */
 .hero h1::after {
   content: "";
   display: block;
-  width: 72px;
+  width: 80px;
   height: 3px;
-  margin: 20px auto 18px;
+  margin: 22px auto 18px;
   background: rgba(255,255,255,.9);
   border-radius: 2px;
 }
 
 /* Subtítulo */
 .hero p {
-  color: #f0f4ff;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 500;
-  line-height: 1.55;
+  line-height: 1.6;
+  opacity: .95;
 }
 
 /* ================= SLIDER ================= */
 .slider {
   max-width: 360px;
   width: 100%;
-  margin: -56px auto 64px; /* conecta visualmente com o bloco */
+  margin: 56px auto 64px; /* SEM SOBREPOSIÇÃO */
   height: 560px;
   border-radius: 18px;
   overflow: hidden;
   position: relative;
   background: #000;
-  box-shadow: 0 22px 48px rgba(0,0,0,.25);
+  box-shadow: 0 20px 44px rgba(0,0,0,.25);
 }
 
 /* Slides */
@@ -173,7 +148,7 @@ html, body {
   opacity: 1;
 }
 
-/* Overlay da legenda */
+/* Overlay */
 .overlay {
   position: absolute;
   left: 0;
@@ -201,7 +176,7 @@ html, body {
   opacity: .95;
 }
 
-/* ================= CONTROLES ================= */
+/* Controles */
 .slider-controls {
   position: absolute;
   right: 12px;
@@ -218,7 +193,6 @@ html, body {
   height: 24px;
   background: rgba(255,255,255,.35);
   border-radius: 6px;
-  cursor: pointer;
 }
 
 .ctrl-dot.active {
@@ -268,23 +242,18 @@ html, body {
   }
 
   .hero {
-    padding: 140px 16px 100px;
-  }
-
-  .hero > * {
-    padding: 36px 22px 34px;
+    padding: 140px 16px 80px;
   }
 
   .hero h1 {
-    font-size: 1.9rem;
+    font-size: 2rem;
   }
 
   .hero p {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
 
   .slider {
-    margin-top: -40px;
     height: 520px;
   }
 }
