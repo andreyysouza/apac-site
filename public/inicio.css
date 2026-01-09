@@ -217,15 +217,15 @@ html, body {
   color: #fff;
 }
 
-/* ================= ANIMAÇÕES ================= */
+/* ================= ANIMAÇÕES MAIS PERCEPTÍVEIS ================= */
 
 /* Estado inicial */
 .will-animate {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(48px);
   transition:
-    opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 1100ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Estado final */
@@ -234,20 +234,23 @@ html, body {
   transform: translateY(0);
 }
 
-/* Hero entra mais suave */
-.hero h1.will-animate,
+/* HERO — narrativa em sequência */
+.hero h1.will-animate {
+  transition-delay: 0ms;
+}
+
 .hero p.will-animate {
-  transform: translateY(16px);
-  transition-duration: 900ms;
+  transition-delay: 180ms;
 }
 
 /* Linha acompanha o título */
 .hero h1.will-animate::after {
   opacity: 0;
-  transform: scaleX(0.6);
+  transform: scaleX(0.4);
   transition:
-    opacity 700ms ease,
-    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 900ms ease,
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 220ms;
 }
 
 .hero h1.in-view::after {
@@ -255,10 +258,11 @@ html, body {
   transform: scaleX(1);
 }
 
-/* Slider */
+/* SLIDER entra depois do hero */
 .slider.will-animate {
-  transform: translateY(32px);
-  transition-duration: 900ms;
+  transform: translateY(64px);
+  transition-duration: 1200ms;
+  transition-delay: 220ms;
 }
 
 /* ================= MOBILE ================= */
@@ -331,6 +335,8 @@ html, body {
     transition: none !important;
   }
 }
+
+
 
 
 
