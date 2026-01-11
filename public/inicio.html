@@ -1,42 +1,66 @@
-<!DOCTYPE html> 
-<html lang="pt-BR"> 
-<head> 
-  <meta charset="utf-8" /> 
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-  <title>APAC Santa Bárbara — Início</title> 
-  <link rel="stylesheet" href="inicio.css" /> 
-</head> 
-<body> 
-  <!-- TOPO FIXO --> 
-  <header class="topo"> <!-- BARRA INSTITUCIONAL -->
-    <div class="barra-institucional"> Este é um site institucional da APAC de Santa Bárbara - MG </div> 
-    <!-- MENU --> 
-    <nav class="menu"> 
-      <div class="menu-logo">APAC</div> 
-      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu"> ☰ 
-      </button> 
-      <ul class="menu-links" id="menu-links"> 
-        <li><a href="/inicio.html">INÍCIO</a></li> 
-        <li><a href="/aupac.html">AUPAC</a></li> 
-        <li><a href="/catalago.html">ARTESANATO</a></li> 
-      </ul> 
-    </nav> 
-  </header> 
-  <!-- HERO -->
-  <section class="hero"> 
-    <h1>APAC Santa Bárbara - MG</h1> 
-    <p class="hero-typing">
-      <span id="typing-text"></span><span class="cursor">|</span>
-    </p>
-  </section> 
-  <!-- SLIDER -->
-  <main> 
-    <section id="slider" class="slider"></section> 
-  </main> 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>APAC Santa Bárbara — Início</title>
+  <link rel="stylesheet" href="inicio.css" />
+</head>
+
+<body>
+
+  <!-- TOPO FIXO -->
+  <header class="topo">
+
+    <!-- BARRA INSTITUCIONAL -->
+    <div class="barra-institucional">
+      Este é um site institucional da APAC de Santa Bárbara - MG
+    </div>
+
+    <!-- MENU -->
+    <nav class="menu">
+
+      <!-- LOGO -->
+      <div class="menu-logo">
+        <img src="/public/logo_aoac.png" alt="APAC Santa Bárbara">
+      </div>
+
+      <!-- BOTÃO MOBILE -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+        ☰
+      </button>
+
+      <!-- LINKS -->
+      <ul class="menu-links" id="menu-links">
+        <li><a href="/inicio.html">INÍCIO</a></li>
+        <li><a href="/aupac.html">AUPAC</a></li>
+        <li><a href="/catalago.html">ARTESANATO</a></li>
+      </ul>
+
+    </nav>
+
+    <!-- HERO INTEGRADO AO HEADER (DESKTOP) -->
+    <section class="hero hero-header">
+      <h1>APAC Santa Bárbara - MG</h1>
+      <p class="hero-typing">
+        <span id="typing-text"></span><span class="cursor">|</span>
+      </p>
+    </section>
+
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main>
+    <!-- SLIDER -->
+    <section id="slider" class="slider"></section>
+  </main>
+
   <script src="inicio.js"></script>
   <script src="hero-typing.js"></script>
-</body> 
+
+</body>
 </html>
+
 
 
 
