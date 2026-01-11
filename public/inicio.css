@@ -24,16 +24,16 @@ html, body {
   background: linear-gradient(
     90deg,
     #001051 0%,
-    #001a66 30%,
-    #1e3a8a 60%,
+    #001051 45%,
+    #0b2a78 70%,
     #001051 100%
   );
-  background-size: 280% 100%;
-  animation: header-breath 22s ease-in-out infinite;
+  background-size: 240% 100%;
+  animation: header-breath 26s ease-in-out infinite;
   overflow: hidden;
 }
 
-/* Respiração horizontal sem perder o azul */
+/* Respiração horizontal SEM clarear */
 @keyframes header-breath {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
@@ -55,7 +55,7 @@ html, body {
   line-height: 26px;
   font-size: 11px;
   text-align: center;
-  color: rgba(255,255,255,.85);
+  color: rgba(255,255,255,.9);
   letter-spacing: .3px;
 }
 
@@ -73,12 +73,12 @@ html, body {
 .menu-logo {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   color: #fff;
 }
 
 .logo-apac {
-  height: 44px;
+  height: 56px; /* LOGO MAIOR */
   width: auto;
 }
 
@@ -90,9 +90,9 @@ html, body {
 }
 
 .logo-texto strong {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.15;
   letter-spacing: .4px;
 }
 
@@ -140,8 +140,8 @@ html, body {
 .hero {
   display: flex;
   align-items: flex-start;
-  padding-top: calc(26px + 64px + 12px);
-  padding-bottom: 28px;
+  padding-top: calc(26px + 64px + 8px);
+  padding-bottom: 24px;
   padding-inline: 22px;
   color: #fff;
   position: relative;
@@ -150,9 +150,9 @@ html, body {
 
 /* Texto animado abaixo do nome */
 .hero-typing {
-  margin-left: 58px; /* alinha após a logo */
-  margin-top: 6px;
-  font-size: 1.05rem;
+  margin-left: 72px; /* alinhado após logo */
+  margin-top: 2px;   /* SUBIU */
+  font-size: 0.95rem; /* MENOR QUE O TÍTULO */
   font-weight: 500;
   opacity: .95;
 }
@@ -164,7 +164,7 @@ html, body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 220px;
+  height: 200px;
   background: linear-gradient(
     180deg,
     rgba(244,245,247,0) 0%,
@@ -177,43 +177,13 @@ html, body {
 .slider {
   max-width: 360px;
   width: 100%;
-  margin: 32px auto 60px;
+  margin: 24px auto 60px;
   height: 560px;
   border-radius: 18px;
   overflow: hidden;
   position: relative;
   background: #000;
   box-shadow: 0 20px 44px rgba(0,0,0,.25);
-}
-
-.slide {
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0;
-  transition: opacity .6s ease;
-}
-
-.slide.ativo {
-  opacity: 1;
-}
-
-/* ================= LEGENDA ================= */
-.overlay {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 20px;
-  background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0),
-    rgba(0,0,0,.65) 35%,
-    rgba(0,0,0,.85)
-  );
-  color: #fff;
 }
 
 /* ================= MOBILE ================= */
@@ -251,14 +221,23 @@ html, body {
     width: 100%;
   }
 
+  .logo-apac {
+    height: 48px;
+  }
+
+  .logo-texto strong {
+    font-size: 16px;
+  }
+
   .hero {
-    padding-top: calc(26px + 64px + 8px);
-    padding-bottom: 22px;
+    padding-top: calc(26px + 64px + 6px);
+    padding-bottom: 20px;
   }
 
   .hero-typing {
     margin-left: 0;
-    font-size: 1rem;
+    margin-top: 6px;
+    font-size: 0.9rem;
   }
 
   .slider {
@@ -273,6 +252,7 @@ html, body {
     background-position: center;
   }
 }
+
 
 
 
