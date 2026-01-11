@@ -24,15 +24,16 @@ html, body {
   background: linear-gradient(
     90deg,
     #001051 0%,
-    #243b6b 45%,
-    #6e7fa6 100%
+    #001a66 35%,
+    #1e3a8a 70%,
+    #001051 100%
   );
-  background-size: 200% 100%;
-  animation: header-breath 18s ease-in-out infinite;
+  background-size: 300% 100%;
+  animation: header-breath 22s ease-in-out infinite;
   overflow: hidden;
 }
 
-/* Respiração horizontal */
+/* Respiração SEM perder o azul escuro */
 @keyframes header-breath {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
@@ -300,6 +301,37 @@ html, body {
     transform: scaleX(1);
   }
 }
+
+/* ================= IDENTIDADE LATERAL ================= */
+
+.menu-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-apac {
+  height: 46px;
+  width: auto;
+}
+
+/* Hero vira extensão do header */
+.hero {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 20px;
+  padding-bottom: 28px;
+}
+
+/* Texto animado à esquerda */
+.hero-typing {
+  margin-left: 22px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  opacity: .95;
+}
+
+
 
 
 
