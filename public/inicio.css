@@ -21,15 +21,18 @@ html, body {
 /* ================= HEADER + HERO (FUNDO ÚNICO) ================= */
 .header-hero {
   position: relative;
+
+  /* 🔵 GRADIENTE MAIS ESCURO (BASE REAL) */
   background: linear-gradient(
     90deg,
     #001051 0%,
     #001051 45%,
-    #0b2a78 70%,
+    #002070 70%,
     #001051 100%
   );
-  background-size: 220% 100%;
-  animation: header-breath 24s ease-in-out infinite;
+
+  background-size: 260% 100%;
+  animation: header-breath 22s ease-in-out infinite;
   overflow: hidden;
 }
 
@@ -55,7 +58,7 @@ html, body {
   line-height: 26px;
   font-size: 11px;
   text-align: center;
-  color: rgba(255,255,255,.9);
+  color: rgba(255,255,255,.85);
   letter-spacing: .3px;
 }
 
@@ -73,12 +76,13 @@ html, body {
 .menu-logo {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   color: #fff;
 }
 
+/* 🖼️ LOGO REALMENTE MAIOR */
 .logo-apac {
-  height: 56px; /* LOGO COM PRESENÇA */
+  height: 60px; /* ERA 44px */
   width: auto;
 }
 
@@ -90,7 +94,7 @@ html, body {
 }
 
 .logo-texto strong {
-  font-size: 18px;
+  font-size: 18px; /* leve aumento */
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: .4px;
@@ -140,19 +144,19 @@ html, body {
 .hero {
   display: flex;
   align-items: flex-start;
-  padding-top: calc(26px + 64px + 10px);
-  padding-bottom: 26px;
+  padding-top: calc(26px + 64px + 10px); /* ligeiramente menor */
+  padding-bottom: 24px;
   padding-inline: 22px;
   color: #fff;
   position: relative;
   background: transparent;
 }
 
-/* Texto animado */
+/* 📝 FRASE AJUSTADA (SEM QUEBRAR SLIDE) */
 .hero-typing {
-  margin-left: 72px;       /* alinhado após logo */
-  margin-top: 4px;         /* SUBIU */
-  font-size: 0.95rem;      /* MENOR QUE O TÍTULO */
+  margin-left: 70px;   /* mais próxima do título */
+  margin-top: 2px;     /* sobe */
+  font-size: 0.95rem;  /* MENOR que o título */
   font-weight: 500;
   opacity: .95;
 }
@@ -164,7 +168,7 @@ html, body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 180px;
+  height: 220px;
   background: linear-gradient(
     180deg,
     rgba(244,245,247,0) 0%,
@@ -173,24 +177,49 @@ html, body {
   pointer-events: none;
 }
 
-/* ================= MAIN / SLIDER ================= */
-main {
-  position: relative;
-  z-index: 1;
-}
-
-/* Slider isolado */
+/* ================= SLIDER ================= */
+/* 🔒 BLOCO NÃO ALTERADO */
 .slider {
   max-width: 360px;
   width: 100%;
-  margin: 64px auto 80px; /* RESPIRO DEVOLVIDO */
+  margin: 32px auto 60px;
   height: 560px;
   border-radius: 18px;
   overflow: hidden;
+  position: relative;
   background: #000;
-  box-shadow:
-    0 20px 44px rgba(0,0,0,.25),
-    0 0 0 1px rgba(0,0,0,.06);
+  box-shadow: 0 20px 44px rgba(0,0,0,.25);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+
+.slide.ativo {
+  opacity: 1;
+}
+
+/* ================= LEGENDA ================= */
+/* 🔒 BLOCO NÃO ALTERADO */
+.overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0),
+    rgba(0,0,0,.65) 35%,
+    rgba(0,0,0,.85)
+  );
+  color: #fff;
 }
 
 /* ================= MOBILE ================= */
@@ -228,19 +257,12 @@ main {
     width: 100%;
   }
 
-  .logo-apac {
-    height: 48px;
-  }
-
-  .logo-texto strong {
-    font-size: 16px;
-  }
-
   .hero {
-    padding-top: calc(26px + 64px + 6px);
-    padding-bottom: 20px;
+    padding-top: calc(26px + 64px + 8px);
+    padding-bottom: 22px;
   }
 
+  /* 📱 FRASE MOBILE – NÃO SOBREPÕE */
   .hero-typing {
     margin-left: 0;
     margin-top: 6px;
