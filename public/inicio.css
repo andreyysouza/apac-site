@@ -28,12 +28,12 @@ html, body {
     #0b2a78 70%,
     #001051 100%
   );
-  background-size: 240% 100%;
-  animation: header-breath 26s ease-in-out infinite;
+  background-size: 220% 100%;
+  animation: header-breath 24s ease-in-out infinite;
   overflow: hidden;
 }
 
-/* Respiração horizontal SEM clarear */
+/* Respiração horizontal sem clarear */
 @keyframes header-breath {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
@@ -78,7 +78,7 @@ html, body {
 }
 
 .logo-apac {
-  height: 56px; /* LOGO MAIOR */
+  height: 56px; /* LOGO COM PRESENÇA */
   width: auto;
 }
 
@@ -140,19 +140,19 @@ html, body {
 .hero {
   display: flex;
   align-items: flex-start;
-  padding-top: calc(26px + 64px + 8px);
-  padding-bottom: 24px;
+  padding-top: calc(26px + 64px + 10px);
+  padding-bottom: 26px;
   padding-inline: 22px;
   color: #fff;
   position: relative;
   background: transparent;
 }
 
-/* Texto animado abaixo do nome */
+/* Texto animado */
 .hero-typing {
-  margin-left: 72px; /* alinhado após logo */
-  margin-top: 2px;   /* SUBIU */
-  font-size: 0.95rem; /* MENOR QUE O TÍTULO */
+  margin-left: 72px;       /* alinhado após logo */
+  margin-top: 4px;         /* SUBIU */
+  font-size: 0.95rem;      /* MENOR QUE O TÍTULO */
   font-weight: 500;
   opacity: .95;
 }
@@ -164,7 +164,7 @@ html, body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 200px;
+  height: 180px;
   background: linear-gradient(
     180deg,
     rgba(244,245,247,0) 0%,
@@ -173,17 +173,24 @@ html, body {
   pointer-events: none;
 }
 
-/* ================= SLIDER ================= */
+/* ================= MAIN / SLIDER ================= */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Slider isolado */
 .slider {
   max-width: 360px;
   width: 100%;
-  margin: 24px auto 60px;
+  margin: 64px auto 80px; /* RESPIRO DEVOLVIDO */
   height: 560px;
   border-radius: 18px;
   overflow: hidden;
-  position: relative;
   background: #000;
-  box-shadow: 0 20px 44px rgba(0,0,0,.25);
+  box-shadow:
+    0 20px 44px rgba(0,0,0,.25),
+    0 0 0 1px rgba(0,0,0,.06);
 }
 
 /* ================= MOBILE ================= */
