@@ -47,26 +47,29 @@ html, body {
 
 /* ================= MENU ================= */
 .menu {
-  height: 64px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
-  background: transparent;
+  padding: 0 28px;
 }
 
+/* LOGO */
 .menu-logo {
-  color: #fff;
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: .6px;
+  display: flex;
+  align-items: center;
+}
+
+.menu-logo img {
+  height: 42px;
+  width: auto;
 }
 
 /* Links */
 .menu-links {
   list-style: none;
   display: flex;
-  gap: 22px;
+  gap: 26px;
 }
 
 .menu-links a {
@@ -77,7 +80,7 @@ html, body {
   position: relative;
 }
 
-/* Linha animada (hover) */
+/* Linha animada */
 .menu-links a::after {
   content: "";
   position: absolute;
@@ -102,39 +105,28 @@ html, body {
   color: #fff;
 }
 
-/* ================= HERO ================= */
+/* ================= HERO INTEGRADO (DESKTOP) ================= */
 .hero {
-  padding-top: calc(28px + 64px + 48px);
-  padding-bottom: 48px;
-  padding-inline: 20px;
+  padding: 26px 20px 34px;
   text-align: center;
   color: #fff;
-  position: relative;
-
-  /* DESKTOP: HERO SEM FUNDO */
-  background: transparent;
 }
 
-/* remove dissolve no desktop */
-.hero::after {
-  display: none;
-}
-
-/* ================= HERO TEXTO ================= */
+/* HERO TEXTO */
 .hero h1 {
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   font-weight: 700;
   letter-spacing: -0.6px;
   line-height: 1.15;
 }
 
-/* LINHA ASSINATURA */
+/* Linha assinatura */
 .hero h1::after {
   content: "";
   display: block;
-  width: 78px;
+  width: 72px;
   height: 3px;
-  margin: 16px auto 14px;
+  margin: 14px auto 12px;
   border-radius: 3px;
   background: linear-gradient(
     90deg,
@@ -142,27 +134,26 @@ html, body {
     #ffffff,
     rgba(255,255,255,.2)
   );
-  transform: scaleX(0);
-  animation: underline-sign 1.2s cubic-bezier(0.22,1,0.36,1) forwards;
-  animation-delay: .5s;
 }
 
-@keyframes underline-sign {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-
+/* Frase dinâmica */
 .hero p {
   font-size: 1.05rem;
   font-weight: 500;
 }
 
-/* CONTRASTE */
+/* Contraste */
 .hero h1,
 .hero p {
   text-shadow:
     0 3px 6px rgba(0,0,0,.45),
     0 10px 24px rgba(0,0,0,.35);
+}
+
+/* ================= CONTEÚDO ================= */
+main {
+  /* COMPENSA ALTURA REAL DO HEADER */
+  margin-top: calc(28px + 72px + 96px);
 }
 
 /* ================= SLIDER ================= */
@@ -181,9 +172,17 @@ html, body {
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
-  /* TOPO VOLTA A SER SÓLIDO */
   .topo {
     background: #001051;
+  }
+
+  .menu {
+    height: 64px;
+    padding: 0 20px;
+  }
+
+  .menu-logo img {
+    height: 36px;
   }
 
   .menu-toggle {
@@ -258,6 +257,10 @@ html, body {
     font-size: 1.05rem;
   }
 
+  main {
+    margin-top: 0;
+  }
+
   .slider {
     height: 520px;
   }
@@ -268,13 +271,7 @@ html, body {
   .hero {
     animation: none;
   }
-
-  .hero h1::after {
-    animation: none;
-    transform: scaleX(1);
-  }
 }
-
 
 
 
