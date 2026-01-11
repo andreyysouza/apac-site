@@ -25,7 +25,6 @@ html, body {
   width: 100%;
   z-index: 1000;
 
-  /* DESKTOP: GRADIENTE LATERAL */
   background: linear-gradient(
     90deg,
     #001051 0%,
@@ -42,7 +41,6 @@ html, body {
   font-size: 12.5px;
   text-align: center;
   color: #fff;
-  background: transparent;
 }
 
 /* ================= MENU ================= */
@@ -52,6 +50,8 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 0 28px;
+  position: relative;
+  z-index: 2;
 }
 
 /* LOGO */
@@ -63,6 +63,7 @@ html, body {
 .menu-logo img {
   height: 42px;
   width: auto;
+  display: block;
 }
 
 /* Links */
@@ -80,7 +81,6 @@ html, body {
   position: relative;
 }
 
-/* Linha animada */
 .menu-links a::after {
   content: "";
   position: absolute;
@@ -105,14 +105,22 @@ html, body {
   color: #fff;
 }
 
-/* ================= HERO INTEGRADO (DESKTOP) ================= */
+/* ================= HERO NO HEADER (DESKTOP) ================= */
 .hero {
-  padding: 26px 20px 34px;
+  padding: 24px 20px 32px;
   text-align: center;
   color: #fff;
+  position: relative;
+  z-index: 1;
 }
 
-/* HERO TEXTO */
+/* Limita largura e centraliza */
+.hero h1,
+.hero p {
+  max-width: 820px;
+  margin-inline: auto;
+}
+
 .hero h1 {
   font-size: 2.1rem;
   font-weight: 700;
@@ -120,7 +128,6 @@ html, body {
   line-height: 1.15;
 }
 
-/* Linha assinatura */
 .hero h1::after {
   content: "";
   display: block;
@@ -136,7 +143,6 @@ html, body {
   );
 }
 
-/* Frase dinâmica */
 .hero p {
   font-size: 1.05rem;
   font-weight: 500;
@@ -152,8 +158,7 @@ html, body {
 
 /* ================= CONTEÚDO ================= */
 main {
-  /* COMPENSA ALTURA REAL DO HEADER */
-  margin-top: calc(28px + 72px + 96px);
+  padding-top: 220px; /* valor estável para desktop */
 }
 
 /* ================= SLIDER ================= */
@@ -164,7 +169,6 @@ main {
   height: 560px;
   border-radius: 18px;
   overflow: hidden;
-  position: relative;
   background: #000;
   box-shadow: 0 20px 44px rgba(0,0,0,.25);
 }
@@ -214,10 +218,9 @@ main {
     color: #001051;
     padding: 18px 20px;
     display: block;
-    width: 100%;
   }
 
-  /* HERO MOBILE ORIGINAL */
+  /* HERO MOBILE */
   .hero {
     padding-top: calc(28px + 64px + 64px);
     padding-bottom: 56px;
@@ -253,12 +256,8 @@ main {
     font-size: 1.9rem;
   }
 
-  .hero p {
-    font-size: 1.05rem;
-  }
-
   main {
-    margin-top: 0;
+    padding-top: 0;
   }
 
   .slider {
@@ -272,6 +271,9 @@ main {
     animation: none;
   }
 }
+
+
+
 
 
 
