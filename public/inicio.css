@@ -282,16 +282,31 @@ body.scrolled .menu-logo {
     height: 52px;
   }
 
-  /* CENTRALIZA SOMENTE O TEXTO */
+  /* 🔒 BLOCO DO TEXTO COM ALTURA FIXA */
   .logo-texto {
+    position: relative;
     align-items: center;
     text-align: center;
-    min-height: 48px;
+
+    height: 52px;   /* TRAVA O APAC */
+    justify-content: flex-start;
   }
 
+  /* APAC FIXO */
+  .logo-texto strong {
+    line-height: 1.1;
+  }
+
+  /* FRASE DIGITADA NÃO MEXE NO LAYOUT */
   .hero-typing {
+    position: absolute;
+    top: 28px;           /* sempre abaixo do APAC */
+    left: 50%;
+    transform: translateX(-50%);
+
     max-width: 220px;
     min-height: 2.6em;
+
     white-space: normal;
     overflow: hidden;
     text-align: center;
@@ -301,6 +316,7 @@ body.scrolled .menu-logo {
     height: 520px;
   }
 }
+
 
 /* ================= ACESSIBILIDADE ================= */
 @media (prefers-reduced-motion: reduce) {
@@ -361,6 +377,7 @@ body.scrolled .menu-logo {
     pointer-events: none;
   }
 }
+
 
 
 
