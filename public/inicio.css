@@ -18,20 +18,21 @@ html, body {
   color: #fff;
 }
 
-/* ================= HEADER ESCURO HORIZONTAL ================= */
+/* ================= HEADER ESCURO (IGUAL À FOTO) ================= */
 .header-hero {
   position: relative;
-  height: 150px; /* MAIS ENXUTO */
+  height: 140px; /* HEADER MAIS ENXUTO */
 
   background: linear-gradient(
     90deg,
     #001051 0%,
-    #001051 65%,
-    #0b2a6f 100%
+    #001051 60%,
+    #0a2a6b 85%,
+    #001051 100%
   );
 
-  background-size: 220% 100%;
-  animation: header-breath 28s linear infinite;
+  background-size: 200% 100%;
+  animation: header-breath 30s linear infinite;
   z-index: 2000;
 }
 
@@ -59,7 +60,7 @@ html, body {
 
 /* ================= MENU ================= */
 .menu {
-  height: 56px; /* HEADER MAIS BAIXO */
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -71,15 +72,15 @@ html, body {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   color: #fff;
   max-width: calc(100% - 60px);
   transition: opacity .35s ease, transform .35s ease;
 }
 
-/* LOGO */
+/* LOGO MAIOR */
 .logo-apac {
-  height: 52px;
+  height: 56px; /* ↑ aumentada */
   width: auto;
   flex-shrink: 0;
 }
@@ -98,20 +99,23 @@ html, body {
   white-space: nowrap;
 }
 
-/* ================= FRASE DIGITADA (FORA DO FLUXO) ================= */
+/* ================= FRASE DIGITADA ================= */
 .hero-typing {
   position: absolute;
-  left: 60px;           /* alinhada após a logo */
-  top: 36px;
+  left: 64px;
+  top: 34px;
 
-  height: 32px;         /* ÁREA FIXA */
-  max-width: 260px;
+  height: 30px;
+  max-width: 280px;
 
   font-size: 0.78rem;
   line-height: 1.2;
   opacity: .85;
 
+  white-space: nowrap;        /* ❗ desktop NÃO quebra */
   overflow: hidden;
+  text-overflow: ellipsis;
+
   pointer-events: none;
 }
 
@@ -119,7 +123,7 @@ html, body {
 .menu-links {
   list-style: none;
   display: flex;
-  gap: 24px;
+  gap: 26px;
 }
 
 .menu-links a {
@@ -159,7 +163,7 @@ html, body {
 
 /* ================= CONTEÚDO ================= */
 main {
-  padding-top: 160px; /* HEADER REAL */
+  padding-top: 150px;
   position: relative;
   z-index: 1;
 }
@@ -175,20 +179,6 @@ main {
   position: relative;
   background: #000;
   box-shadow: 0 20px 44px rgba(0,0,0,.25);
-}
-
-.slide {
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0;
-  transition: opacity .6s ease;
-}
-
-.slide.ativo {
-  opacity: 1;
 }
 
 /* ================= LEGENDA ================= */
@@ -218,7 +208,7 @@ body.scrolled .menu-logo {
 @media (max-width: 768px) {
 
   .header-hero {
-    height: 160px;
+    height: 150px;
   }
 
   .menu {
@@ -231,9 +221,10 @@ body.scrolled .menu-logo {
     justify-content: center;
   }
 
+  /* 🔥 MENU MOBILE CLICÁVEL INTEIRO */
   .menu-links {
     position: fixed;
-    top: 84px;
+    top: 80px;
     left: 0;
     width: 100%;
     background: #fff;
@@ -246,30 +237,35 @@ body.scrolled .menu-logo {
     display: flex;
   }
 
-  .menu-links a {
-    color: #001051;
-    padding: 18px 20px;
+  .menu-links li {
     width: 100%;
   }
 
+  .menu-links a {
+    display: block;              /* ✔ área inteira clicável */
+    width: 100%;
+    color: #001051;
+    padding: 18px 20px;
+  }
+
   .logo-apac {
-    height: 46px;
+    height: 48px;
   }
 
   .logo-texto strong {
     font-size: 15px;
   }
 
-  /* FRASE EM 2 LINHAS, SEM EMPURRAR NADA */
+  /* FRASE PODE QUEBRAR NO MOBILE */
   .hero-typing {
     max-width: 200px;
     height: 36px;
-    font-size: 0.75rem;
     white-space: normal;
+    font-size: 0.75rem;
   }
 
   main {
-    padding-top: 170px;
+    padding-top: 160px;
   }
 
   .slider {
@@ -284,6 +280,7 @@ body.scrolled .menu-logo {
     background-position: center;
   }
 }
+
 
 
 
