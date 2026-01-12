@@ -21,18 +21,19 @@ html, body {
 /* ================= HEADER ESCURO HORIZONTAL ================= */
 .header-hero {
   position: relative;
-  height: 160px; /* garante área real do gradiente */
+  height: 170px;
 
+  /* 🔵 GRADIENTE HORIZONTAL ESCURO REAL */
   background: linear-gradient(
     90deg,
     #001051 0%,
-    #001051 45%,
-    #001845 70%,
+    #001051 55%,
+    #001033 75%,
     #001051 100%
   );
 
-  background-size: 220% 100%;
-  animation: header-breath 26s linear infinite;
+  background-size: 260% 100%;
+  animation: header-breath 30s linear infinite;
   z-index: 2000;
 }
 
@@ -73,31 +74,41 @@ html, body {
   align-items: center;
   gap: 18px;
   color: #fff;
-  transition: opacity .3s ease, transform .3s ease;
+  max-width: calc(100% - 64px);
+  transition: opacity .35s ease, transform .35s ease;
 }
 
+/* LOGO COM MAIS PRESENÇA */
 .logo-apac {
-  height: 78px; /* logo maior */
+  height: 82px;
   width: auto;
+  flex-shrink: 0;
 }
 
+/* TEXTO */
 .logo-texto {
   display: flex;
   flex-direction: column;
   line-height: 1.15;
+  max-width: 100%;
 }
 
 .logo-texto strong {
   font-size: 19px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
-/* Frase digitada */
+/* FRASE DIGITADA (CONTROLADA) */
 .hero-typing {
   margin-top: 4px;
   font-size: 0.85rem;
   opacity: .85;
+  max-width: 260px;
+  line-height: 1.25;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ================= NAVEGAÇÃO ================= */
@@ -130,17 +141,21 @@ html, body {
   width: 100%;
 }
 
+/* HAMBURGUER */
 .menu-toggle {
   display: none;
-  background: none;
+  background: rgba(255,255,255,.14);
   border: none;
   font-size: 26px;
   color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
 }
 
-/* ================= HERO (APENAS ESPAÇO) ================= */
+/* ================= HERO (ESPAÇADOR) ================= */
 .hero {
-  padding-top: calc(26px + 72px + 14px);
+  padding-top: calc(26px + 72px + 16px);
   padding-bottom: 20px;
   position: relative;
 }
@@ -163,12 +178,12 @@ html, body {
 
 /* ================= CONTEÚDO ================= */
 main {
-  padding-top: 180px; /* impede slider atrás do menu */
+  padding-top: 190px;
   position: relative;
   z-index: 1;
 }
 
-/* ================= SLIDER (INALTERADO) ================= */
+/* ================= SLIDER ================= */
 .slider {
   max-width: 360px;
   width: 100%;
@@ -212,10 +227,9 @@ main {
 }
 
 /* ================= SCROLL ================= */
-/* identidade some, navegação fica */
 body.scrolled .menu-logo {
   opacity: 0;
-  transform: translateY(-10px);
+  transform: translateY(-12px);
   pointer-events: none;
 }
 
@@ -223,17 +237,13 @@ body.scrolled .menu-logo {
 @media (max-width: 768px) {
 
   .header-hero {
-    height: 170px;
+    height: 180px;
   }
 
   .menu-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    background: rgba(255,255,255,.14);
   }
 
   .menu-links {
@@ -258,19 +268,22 @@ body.scrolled .menu-logo {
   }
 
   .logo-apac {
-    height: 62px;
+    height: 64px;
   }
 
   .logo-texto strong {
     font-size: 16px;
   }
 
+  /* FRASE QUEBRA EM 2 LINHAS NO MOBILE */
   .hero-typing {
+    max-width: 200px;
+    white-space: normal;
     font-size: 0.78rem;
   }
 
   main {
-    padding-top: 190px;
+    padding-top: 200px;
   }
 
   .slider {
@@ -285,6 +298,8 @@ body.scrolled .menu-logo {
     background-position: center;
   }
 }
+
+
 
 
 
