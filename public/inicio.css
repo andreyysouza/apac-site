@@ -18,24 +18,11 @@ html, body {
   color: #fff;
 }
 
-/* ================= HEADER ESCURO (REFERÊNCIA) ================= */
-.header-hero {
-  position: relative;
-  height: 96px; /* 🔥 elimina a faixa azul */
-
-  background: linear-gradient(
-    90deg,
-    #001051 0%,
-    #001845 25%,
-    #2f4f8f 50%,
-    #001845 75%,
-    #001051 100%
-  );
-
-  background-size: 400% 100%;
-  animation: menu-flow 48s ease-in-out infinite alternate;
+/* ================= ANIMAÇÃO ÚNICA ================= */
+@keyframes menu-flow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
-
 
 /* ================= TOPO FIXO ================= */
 .topo {
@@ -45,13 +32,10 @@ html, body {
   z-index: 3000;
 }
 
-/* Barra institucional */
-.barra-institucional {
-  height: 24px;
-  line-height: 24px;
-  font-size: 11px;
-  text-align: center;
-  color: rgba(255,255,255,.9);
+/* ================= HEADER ================= */
+.header-hero {
+  position: relative;
+  height: 96px;
 
   background: linear-gradient(
     90deg,
@@ -66,6 +50,16 @@ html, body {
   animation: menu-flow 48s ease-in-out infinite alternate;
 }
 
+/* ================= BARRA INSTITUCIONAL ================= */
+.barra-institucional {
+  height: 24px;
+  line-height: 24px;
+  font-size: 11px;
+  text-align: center;
+  color: rgba(255,255,255,.9);
+
+  background: inherit;
+}
 
 /* ================= MENU ================= */
 .menu {
@@ -75,25 +69,7 @@ html, body {
   justify-content: space-between;
   padding: 0 28px;
 
-  background: linear-gradient(
-    90deg,
-    #001051 0%,
-    #001845 25%,
-    #2f4f8f 50%,
-    #001845 75%,
-    #001051 100%
-  );
-
-  background-size: 400% 100%;
-  animation: menu-flow 48s ease-in-out infinite alternate;
-}
-
-
-  /* MUITO IMPORTANTE */
-  background-size: 400% 100%;
-
-  /* animação contínua, sem tranco */
-  animation: menu-flow 32s linear infinite;
+  background: inherit;
 }
 
 /* ================= IDENTIDADE ================= */
@@ -106,14 +82,12 @@ html, body {
   transition: opacity .35s ease, transform .35s ease;
 }
 
-/* LOGO */
 .logo-apac {
-  height: 64px; /* logo maior sem inflar header */
+  height: 64px;
   width: auto;
   flex-shrink: 0;
 }
 
-/* TEXTO */
 .logo-texto {
   display: flex;
   flex-direction: column;
@@ -121,7 +95,6 @@ html, body {
   line-height: 1.15;
 }
 
-/* TÍTULO */
 .logo-texto strong {
   font-size: 16px;
   font-weight: 700;
@@ -134,11 +107,7 @@ html, body {
   opacity: .85;
   margin-top: 2px;
 
-  /* NÃO altera layout */
   white-space: nowrap;
-  overflow: visible;
-  text-overflow: unset;
-
   pointer-events: none;
 }
 
@@ -214,20 +183,26 @@ main {
   box-shadow: 0 20px 44px rgba(0,0,0,.25);
 }
 
-/* ================= LEGENDA ================= */
-.overlay {
+.slide {
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 20px;
-  background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0),
-    rgba(0,0,0,.65) 35%,
-    rgba(0,0,0,.85)
-  );
-  color: #fff;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity .6s ease;
+}
+
+.slide.ativo {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide .overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 3;
 }
 
 /* ================= SCROLL ================= */
@@ -240,24 +215,21 @@ body.scrolled .menu-logo {
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
-  .hero-typing {
-    white-space: normal;
-    max-width: 200px;
-    max-height: 2.4em; /* 🔥 trava altura */
-    overflow: hidden;
-  }
-
-  .header-hero {
-    height: 110px;
-  }
-
+  .header-hero,
   .header-spacer {
     height: 110px;
   }
-}
 
+  .menu {
+    height: 60px;
+  }
 
-  /* MENU MOBILE */
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .menu-links {
     position: fixed;
     top: 80px;
@@ -292,11 +264,12 @@ body.scrolled .menu-logo {
     font-size: 15px;
   }
 
-  /* FRASE PODE QUEBRAR NO MOBILE */
   .hero-typing {
     white-space: normal;
-    font-size: 0.75rem;
     max-width: 220px;
+    max-height: 2.4em;
+    overflow: hidden;
+    font-size: 0.75rem;
   }
 
   .slider {
@@ -309,48 +282,6 @@ body.scrolled .menu-logo {
   .header-hero {
     animation: none;
     background-position: center;
-  }
-}
-
-/* ================= FIX SLIDER ================= */
-
-/* garante empilhamento correto */
-.slider {
-  position: relative;
-}
-
-/* cada slide ocupa o slider inteiro */
-.slide {
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  opacity: 0;
-  z-index: 1;
-  transition: opacity .6s ease;
-}
-
-/* slide ativo aparece */
-.slide.ativo {
-  opacity: 1;
-  z-index: 2;
-}
-
-/* legenda sempre acima da imagem */
-.slide .overlay {
-  position: absolute;
-  inset: auto 0 0 0;
-  z-index: 3;
-}
-
-@keyframes menu-flow {
-  from {
-    background-position: 0% 50%;
-  }
-  to {
-    background-position: 100% 50%;
   }
 }
 
