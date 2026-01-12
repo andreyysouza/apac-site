@@ -1,88 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>APAC Santa Bárbara — Início</title>
-    <link rel="stylesheet" href="inicio.css" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>APAC Santa Bárbara — Início</title>
+  <link rel="stylesheet" href="inicio.css" />
+</head>
 
-  <body>
+<body>
 
-    <!-- HEADER + HERO INTEGRADOS -->
+  <!-- HEADER FIXO -->
+  <header class="topo">
     <div class="header-hero">
 
-      <!-- TOPO FIXO -->
-      <header class="topo">
+      <!-- BARRA INSTITUCIONAL -->
+      <div class="barra-institucional">
+        Este é um site institucional da APAC de Santa Bárbara - MG
+      </div>
 
-        <!-- BARRA INSTITUCIONAL -->
-        <div class="barra-institucional">
-          Este é um site institucional da APAC de Santa Bárbara - MG
-        </div>
+      <!-- MENU -->
+      <nav class="menu">
 
-        <!-- MENU -->
-        <nav class="menu">
+        <!-- IDENTIDADE (SOME NO SCROLL) -->
+        <div class="menu-logo">
 
-          <!-- LOGO + IDENTIDADE -->
-          <div class="menu-logo">
+          <img
+            src="logo_apac.png"
+            alt="Logo da APAC"
+            class="logo-apac"
+          />
 
-            <!-- LOGO DA APAC (substitua o src quando quiser) -->
-            <img
-              src="logo_apac.png"
-              alt="Logo da APAC"
-              class="logo-apac"
-            />
-
-            <!-- NOME DA INSTITUIÇÃO -->
-            <div class="logo-texto">
-              <strong>APAC Santa Bárbara – MG</strong>
-            </div>
-
+          <div class="logo-texto">
+            <strong>APAC Santa Bárbara – MG</strong>
+            <p class="hero-typing">
+              <span id="typing-text"></span><span class="cursor">|</span>
+            </p>
           </div>
 
-          <!-- BOTÃO HAMBURGUER -->
-          <button
-            class="menu-toggle"
-            id="menu-toggle"
-            aria-label="Abrir menu"
-          >
-            ☰
-          </button>
+        </div>
 
-          <!-- LINKS -->
-          <ul class="menu-links" id="menu-links">
-            <li><a href="/inicio.html">INÍCIO</a></li>
-            <li><a href="/aupac.html">AUPAC</a></li>
-            <li><a href="/catalago.html">ARTESANATO</a></li>
-          </ul>
+        <!-- BOTÃO HAMBURGUER -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+          ☰
+        </button>
 
-        </nav>
+        <!-- LINKS (FICAM NO SCROLL) -->
+        <ul class="menu-links" id="menu-links">
+          <li><a href="/inicio.html">INÍCIO</a></li>
+          <li><a href="/aupac.html">AUPAC</a></li>
+          <li><a href="/catalago.html">ARTESANATO</a></li>
+        </ul>
 
-      </header>
-
-      <!-- HERO (EXTENSÃO DO HEADER) -->
-      <section class="hero">
-
-        <!-- FRASE / TEXTO ANIMADO -->
-        <p class="hero-typing">
-          <span id="typing-text"></span>
-          <span class="cursor">|</span>
-        </p>
-
-      </section>
+      </nav>
 
     </div>
+  </header>
 
-    <!-- SLIDER -->
-    <main>
-      <section id="slider" class="slider"></section>
-    </main>
+  <!-- ESPAÇADOR DO HEADER FIXO -->
+  <div class="header-spacer"></div>
 
-    <!-- SCRIPTS -->
-    <script src="inicio.js"></script>
-    <script src="hero-typing.js"></script>
+  <!-- CONTEÚDO -->
+  <main>
+    <section id="slider" class="slider"></section>
+  </main>
 
-  </body>
+  <!-- SCRIPTS -->
+  <script src="inicio.js"></script>
+  <script src="hero-typing.js"></script>
+  <script src="header-scroll.js"></script>
+
+</body>
 </html>
 
 
