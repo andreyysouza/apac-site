@@ -21,7 +21,7 @@ html, body {
 /* ================= HEADER ESCURO (IGUAL À FOTO) ================= */
 .header-hero {
   position: relative;
-  height: 140px; /* HEADER MAIS ENXUTO */
+  height: 130px; /* ↓ header mais baixo */
 
   background: linear-gradient(
     90deg,
@@ -71,27 +71,29 @@ html, body {
 .menu-logo {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: 16px;
+  flex-direction: column; /* permite frase abaixo sem empurrar */
+  justify-content: center;
+  gap: 2px;
   color: #fff;
   max-width: calc(100% - 60px);
   transition: opacity .35s ease, transform .35s ease;
 }
 
-/* LOGO MAIOR */
+/* linha principal: logo + nome */
+.menu-logo-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* LOGO MAIOR (sem aumentar header) */
 .logo-apac {
-  height: 56px; /* ↑ aumentada */
+  height: 60px; /* ↑ aumentada */
   width: auto;
   flex-shrink: 0;
 }
 
 /* TEXTO */
-.logo-texto {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .logo-texto strong {
   font-size: 16px;
   font-weight: 700;
@@ -101,20 +103,14 @@ html, body {
 
 /* ================= FRASE DIGITADA ================= */
 .hero-typing {
-  position: absolute;
-  left: 64px;
-  top: 34px;
-
-  height: 30px;
-  max-width: 280px;
-
+  margin-left: 76px; /* alinha exatamente com o texto do nome */
   font-size: 0.78rem;
   line-height: 1.2;
   opacity: .85;
 
-  white-space: nowrap;        /* ❗ desktop NÃO quebra */
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: nowrap;   /* desktop NÃO quebra */
+  overflow: visible;     /* ❌ remove os "..." */
+  text-overflow: unset;
 
   pointer-events: none;
 }
@@ -221,7 +217,6 @@ body.scrolled .menu-logo {
     justify-content: center;
   }
 
-  /* 🔥 MENU MOBILE CLICÁVEL INTEIRO */
   .menu-links {
     position: fixed;
     top: 80px;
@@ -242,7 +237,7 @@ body.scrolled .menu-logo {
   }
 
   .menu-links a {
-    display: block;              /* ✔ área inteira clicável */
+    display: block;
     width: 100%;
     color: #001051;
     padding: 18px 20px;
@@ -256,10 +251,10 @@ body.scrolled .menu-logo {
     font-size: 15px;
   }
 
-  /* FRASE PODE QUEBRAR NO MOBILE */
+  /* no mobile pode quebrar, sem empurrar */
   .hero-typing {
+    margin-left: 64px;
     max-width: 200px;
-    height: 36px;
     white-space: normal;
     font-size: 0.75rem;
   }
@@ -280,6 +275,7 @@ body.scrolled .menu-logo {
     background-position: center;
   }
 }
+
 
 
 
