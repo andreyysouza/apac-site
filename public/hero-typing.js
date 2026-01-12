@@ -6,8 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
     "Associação de Proteção e Assistência aos Condenados"
   ];
 
-  const textEl = document.getElementById("typing-text");
-  if (!textEl) return;
+  // pega os dois possíveis destinos do texto (desktop e mobile)
+  const typingTargets = [
+    document.getElementById("typing-text"),
+    document.getElementById("typing-text-mobile")
+  ].filter(Boolean); // remove null se algum não existir
+
+  if (typingTargets.length === 0) return;
 
   let phraseIndex = 0;
   let charIndex = 0;
@@ -18,19 +23,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const holdAfterType = 2000;
   const holdAfterDelete = 600;
 
+  function updateText(text) {
+    typingTargets.forEach(el => {
+      el.textContent = text;
+    });
+  }
+
   function typeLoop() {
     const currentPhrase = phrases[phraseIndex];
 
     if (!isDeleting) {
-      textEl.textContent = currentPhrase.slice(0, charIndex + 1);
       charIndex++;
+      updateText(currentPhrase.slice(0, charIndex));
 
       if (charIndex === currentPhrase.length) {
-        setTimeout(() => isDeleting = true, holdAfterType);
+        setTimeout(() => {
+          isDeleting = true;
+        }, holdAfterType);
       }
+
     } else {
-      textEl.textContent = currentPhrase.slice(0, charIndex - 1);
       charIndex--;
+      updateText(currentPhrase.slice(0, charIndex));
 
       if (charIndex === 0) {
         isDeleting = false;
@@ -44,4 +58,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   typeLoop();
 });
+
 
