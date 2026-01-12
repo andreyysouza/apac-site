@@ -18,35 +18,35 @@ html, body {
   color: #fff;
 }
 
-/* ================= HEADER ESCURO LATERAL ================= */
+/* ================= HEADER ESCURO HORIZONTAL ================= */
 .header-hero {
   position: relative;
+  height: 160px; /* garante área real do gradiente */
 
-  /* 🔵 GRADIENTE HORIZONTAL, ESCURO, SEM LAVAR */
   background: linear-gradient(
     90deg,
     #001051 0%,
-    #001051 60%,
-    #001845 85%,
+    #001051 45%,
+    #001845 70%,
     #001051 100%
   );
 
-  background-size: 260% 100%;
-  animation: header-breath 28s linear infinite;
+  background-size: 220% 100%;
+  animation: header-breath 26s linear infinite;
+  z-index: 2000;
 }
 
-/* Respiração lateral */
 @keyframes header-breath {
   from { background-position: 0% 50%; }
   to   { background-position: 100% 50%; }
 }
 
-/* ================= TOPO ================= */
+/* ================= TOPO FIXO ================= */
 .topo {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 3000;
 }
 
 /* Barra institucional */
@@ -67,7 +67,7 @@ html, body {
   padding: 0 28px;
 }
 
-/* ===== IDENTIDADE (SOME AO SCROLL) ===== */
+/* ===== IDENTIDADE ===== */
 .menu-logo {
   display: flex;
   align-items: center;
@@ -76,13 +76,11 @@ html, body {
   transition: opacity .3s ease, transform .3s ease;
 }
 
-/* LOGO COM PRESENÇA */
 .logo-apac {
-  height: 74px;
+  height: 78px; /* logo maior */
   width: auto;
 }
 
-/* TEXTO */
 .logo-texto {
   display: flex;
   flex-direction: column;
@@ -94,14 +92,15 @@ html, body {
   font-weight: 700;
 }
 
-/* FRASE COMO SUBTÍTULO REAL */
+/* Frase digitada */
 .hero-typing {
-  margin-top: 2px;
+  margin-top: 4px;
   font-size: 0.85rem;
-  opacity: .8;
+  opacity: .85;
+  white-space: nowrap;
 }
 
-/* ===== NAVEGAÇÃO (FICA FIXA) ===== */
+/* ================= NAVEGAÇÃO ================= */
 .menu-links {
   list-style: none;
   display: flex;
@@ -139,10 +138,11 @@ html, body {
   color: #fff;
 }
 
-/* ================= HERO (APENAS ESPAÇADOR) ================= */
+/* ================= HERO (APENAS ESPAÇO) ================= */
 .hero {
-  padding-top: calc(26px + 72px + 12px);
+  padding-top: calc(26px + 72px + 14px);
   padding-bottom: 20px;
+  position: relative;
 }
 
 /* dissolve curto */
@@ -159,6 +159,13 @@ html, body {
     #f4f5f7 100%
   );
   pointer-events: none;
+}
+
+/* ================= CONTEÚDO ================= */
+main {
+  padding-top: 180px; /* impede slider atrás do menu */
+  position: relative;
+  z-index: 1;
 }
 
 /* ================= SLIDER (INALTERADO) ================= */
@@ -188,7 +195,7 @@ html, body {
   opacity: 1;
 }
 
-/* ================= LEGENDA (INALTERADA) ================= */
+/* ================= LEGENDA ================= */
 .overlay {
   position: absolute;
   left: 0;
@@ -204,15 +211,20 @@ html, body {
   color: #fff;
 }
 
-/* ================= SCROLL – ESCONDE IDENTIDADE ================= */
+/* ================= SCROLL ================= */
+/* identidade some, navegação fica */
 body.scrolled .menu-logo {
   opacity: 0;
-  transform: translateY(-8px);
+  transform: translateY(-10px);
   pointer-events: none;
 }
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
+
+  .header-hero {
+    height: 170px;
+  }
 
   .menu-toggle {
     display: flex;
@@ -242,24 +254,23 @@ body.scrolled .menu-logo {
   .menu-links a {
     color: #001051;
     padding: 18px 20px;
-    display: block;
     width: 100%;
   }
 
   .logo-apac {
-    height: 60px;
+    height: 62px;
   }
 
   .logo-texto strong {
     font-size: 16px;
   }
 
-  .hero {
-    padding-top: calc(26px + 72px + 10px);
+  .hero-typing {
+    font-size: 0.78rem;
   }
 
-  .hero-typing {
-    font-size: 0.8rem;
+  main {
+    padding-top: 190px;
   }
 
   .slider {
@@ -274,6 +285,7 @@ body.scrolled .menu-logo {
     background-position: center;
   }
 }
+
 
 
 
