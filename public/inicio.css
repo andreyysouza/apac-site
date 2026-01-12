@@ -60,15 +60,15 @@ html, body {
   overflow: hidden;
 }
 
-/* linha animada */
+/* linha branca animada */
 .barra-institucional::after {
   content: "";
   position: absolute;
   left: 50%;
   bottom: 0;
+  transform: translateX(-50%);
   width: 0;
   height: 1px;
-  transform: translateX(-50%);
   background: linear-gradient(
     90deg,
     rgba(255,255,255,0) 0%,
@@ -80,7 +80,7 @@ html, body {
 
 @keyframes linha-institucional {
   from { width: 0; opacity: 0; }
-  to   { width: 72%; opacity: 1; }
+  to   { width: 70%; opacity: 1; }
 }
 
 /* ================= MENU ================= */
@@ -103,7 +103,7 @@ html, body {
   transition: opacity .35s ease, transform .35s ease;
 }
 
-/* logo MAIOR (desktop) */
+/* LOGO UM POUCO MAIOR (desktop) */
 .logo-apac {
   height: 70px;
   width: auto;
@@ -204,6 +204,28 @@ main {
   box-shadow: 0 20px 44px rgba(0,0,0,.25);
 }
 
+.slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity .6s ease;
+}
+
+.slide.ativo {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide .overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 3;
+}
+
 /* ================= SCROLL ================= */
 body.scrolled .menu-logo {
   opacity: 0;
@@ -229,36 +251,55 @@ body.scrolled .menu-logo {
     justify-content: center;
   }
 
-  /* CENTRALIZA LOGO + TEXTO */
-  .menu-logo {
-    justify-content: center;
+  .menu-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
     width: 100%;
-    text-align: center;
+    background: #fff;
+    flex-direction: column;
+    display: none;
+    z-index: 10000;
   }
 
+  .menu-links.active {
+    display: flex;
+  }
+
+  .menu-links li {
+    width: 100%;
+  }
+
+  .menu-links a {
+    display: block;
+    width: 100%;
+    padding: 18px 20px;
+    color: #001051;
+  }
+
+  /* LOGO UM POUCO MAIOR (mobile) */
+  .logo-apac {
+    height: 52px;
+  }
+
+  /* CENTRALIZA SOMENTE O TEXTO */
   .logo-texto {
     align-items: center;
-    min-height: 52px;
+    text-align: center;
+    min-height: 48px;
   }
 
-  .logo-texto strong {
-    font-size: 16px;
-  }
-
-  /* logo MAIOR no mobile */
-  .logo-apac {
-    height: 54px;
-  }
-
-  /* FRASE DIGITADA CENTRALIZADA */
   .hero-typing {
-    max-width: 240px;
+    max-width: 220px;
     min-height: 2.6em;
     white-space: normal;
     overflow: hidden;
     text-align: center;
   }
 
+  .slider {
+    height: 520px;
+  }
 }
 
 /* ================= ACESSIBILIDADE ================= */
@@ -269,13 +310,42 @@ body.scrolled .menu-logo {
   }
 }
 
-/* ================= DESKTOP OUSADO (HALO) ================= */
+/* ================= LEGENDA ================= */
+.overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 22px 20px 26px;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.55) 35%,
+    rgba(0,0,0,0.85) 100%
+  );
+  color: #ffffff;
+  z-index: 3;
+}
+
+.overlay h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.overlay p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #f1f1f1;
+}
+
+/* ================= DESKTOP HALO ================= */
 @media (min-width: 1200px) {
 
   .slider {
     position: relative;
     z-index: 1;
-    overflow: visible;
   }
 
   .slider::before {
@@ -290,8 +360,8 @@ body.scrolled .menu-logo {
     z-index: -1;
     pointer-events: none;
   }
-
 }
+
 
 
 
