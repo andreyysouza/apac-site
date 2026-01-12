@@ -10,6 +10,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+  /* ================= SCROLL HEADER (NOVO) ================= */
+  let lastScroll = 0;
+
+  window.addEventListener("scroll", () => {
+    const current = window.scrollY;
+
+    // adiciona classe ao passar do header
+    if (current > 80) {
+      document.body.classList.add("scrolled");
+    } else {
+      document.body.classList.remove("scrolled");
+    }
+
+    // fecha menu mobile ao rolar
+    if (current > lastScroll && links?.classList.contains("active")) {
+      links.classList.remove("active");
+    }
+
+    lastScroll = current;
+  });
+
   /* ================= SLIDER ================= */
   const slider = document.getElementById("slider");
   const interval = 4500;
@@ -29,7 +50,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     slider.innerHTML = "";
 
     if (!list.length) {
-      slider.innerHTML = "<p style='padding:20px;text-align:center;'>Nenhuma notícia encontrada.</p>";
+      slider.innerHTML =
+        "<p style='padding:20px;text-align:center;'>Nenhuma notícia encontrada.</p>";
       return [];
     }
 
@@ -89,6 +111,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
 });
+
 
 
 
