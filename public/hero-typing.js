@@ -13,16 +13,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let charIndex = 0;
   let isDeleting = false;
 
-  const typingSpeed = 55;      // velocidade de digitação
-  const deletingSpeed = 35;    // velocidade de apagar
-  const holdAfterType = 2000;  // pausa após digitar
-  const holdAfterDelete = 500; // pausa após apagar
+  const typingSpeed = 55;
+  const deletingSpeed = 35;
+  const holdAfterType = 2000;
+  const holdAfterDelete = 600;
 
   function typeLoop() {
     const currentPhrase = phrases[phraseIndex];
 
     if (!isDeleting) {
-      // digitando
       textEl.textContent = currentPhrase.slice(0, charIndex + 1);
       charIndex++;
 
@@ -30,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => isDeleting = true, holdAfterType);
       }
     } else {
-      // apagando
       textEl.textContent = currentPhrase.slice(0, charIndex - 1);
       charIndex--;
 
@@ -41,10 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    const delay = isDeleting ? deletingSpeed : typingSpeed;
-    setTimeout(typeLoop, delay);
+    setTimeout(typeLoop, isDeleting ? deletingSpeed : typingSpeed);
   }
 
   typeLoop();
-
 });
+
