@@ -322,6 +322,31 @@ body.scrolled .menu-logo {
   color: #f1f1f1;
 }
 
+@media (min-width: 1200px) {
+
+  main::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        circle at center,
+        rgba(0,16,81,.08),
+        transparent 65%
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+  }
+
+}
+
+
+
 
 
 
