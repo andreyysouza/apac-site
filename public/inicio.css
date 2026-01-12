@@ -265,17 +265,32 @@ body.scrolled .menu-logo {
   }
 
   .hero-typing {
+    max-width: 200px;
+    min-height: 2.6em;
+
     white-space: normal;
-    max-width: 220px;
-    max-height: 2.4em;
     overflow: hidden;
-    font-size: 0.75rem;
+    text-align: left;
   }
 
   .slider {
     height: 520px;
   }
+  
+  .menu-logo {
+    align-items: center;
+  }
+
+  .logo-texto {
+    min-height: 48px; /* espaço fixo do bloco */
+    justify-content: center;
+  }
+  .logo-texto strong {
+    font-size: 16px;
+  }
+
 }
+
 
 /* ================= ACESSIBILIDADE ================= */
 @media (prefers-reduced-motion: reduce) {
@@ -344,6 +359,7 @@ body.scrolled .menu-logo {
   }
 
 }
+
 
 
 
