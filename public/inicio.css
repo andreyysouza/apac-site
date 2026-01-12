@@ -18,38 +18,35 @@ html, body {
   color: #fff;
 }
 
-/* ================= HEADER (BLOCO ESCURO INDEPENDENTE) ================= */
+/* ================= HEADER ESCURO LATERAL ================= */
 .header-hero {
   position: relative;
 
-  /* 🔵 MAIS ESCURO, SEM LAVAR */
+  /* 🔵 GRADIENTE HORIZONTAL, ESCURO, SEM LAVAR */
   background: linear-gradient(
     90deg,
     #001051 0%,
-    #001051 55%,
-    #001845 75%,
+    #001051 60%,
+    #001845 85%,
     #001051 100%
   );
 
-  background-size: 220% 100%;
-  animation: header-breath 26s ease-in-out infinite;
-  overflow: hidden;
+  background-size: 260% 100%;
+  animation: header-breath 28s linear infinite;
 }
 
-/* Respiração horizontal SUTIL */
+/* Respiração lateral */
 @keyframes header-breath {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  from { background-position: 0% 50%; }
+  to   { background-position: 100% 50%; }
 }
 
-/* ================= TOPO FIXO ================= */
+/* ================= TOPO ================= */
 .topo {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: transparent;
 }
 
 /* Barra institucional */
@@ -59,33 +56,33 @@ html, body {
   font-size: 11px;
   text-align: center;
   color: rgba(255,255,255,.9);
-  letter-spacing: .3px;
 }
 
 /* ================= MENU ================= */
 .menu {
-  height: 70px; /* header mais firme */
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 28px;
 }
 
-/* LOGO + IDENTIDADE */
+/* ===== IDENTIDADE (SOME AO SCROLL) ===== */
 .menu-logo {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   color: #fff;
+  transition: opacity .3s ease, transform .3s ease;
 }
 
-/* 🖼️ LOGO MAIOR DE VERDADE */
+/* LOGO COM PRESENÇA */
 .logo-apac {
-  height: 68px; /* AUMENTO REAL */
+  height: 74px;
   width: auto;
 }
 
-/* TEXTO DO NOME */
+/* TEXTO */
 .logo-texto {
   display: flex;
   flex-direction: column;
@@ -97,7 +94,14 @@ html, body {
   font-weight: 700;
 }
 
-/* ================= LINKS MENU ================= */
+/* FRASE COMO SUBTÍTULO REAL */
+.hero-typing {
+  margin-top: 2px;
+  font-size: 0.85rem;
+  opacity: .8;
+}
+
+/* ===== NAVEGAÇÃO (FICA FIXA) ===== */
 .menu-links {
   list-style: none;
   display: flex;
@@ -135,31 +139,20 @@ html, body {
   color: #fff;
 }
 
-/* ================= HERO (APOIO DO HEADER, NÃO MAIS HERO CLÁSSICO) ================= */
+/* ================= HERO (APENAS ESPAÇADOR) ================= */
 .hero {
-  padding: calc(26px + 70px + 6px) 28px 18px;
-  color: #fff;
-  position: relative;
+  padding-top: calc(26px + 72px + 12px);
+  padding-bottom: 20px;
 }
 
-/* 📝 FRASE DIGITADA – FORMATADA CORRETAMENTE */
-.hero-typing {
-  margin-left: 84px;        /* alinhada com texto */
-  margin-top: 2px;
-  font-size: 0.88rem;       /* MENOR */
-  font-weight: 500;
-  opacity: .85;
-  max-width: 520px;
-}
-
-/* Dissolve MAIS CURTO (não clareia tudo) */
+/* dissolve curto */
 .hero::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 140px;
+  height: 120px;
   background: linear-gradient(
     180deg,
     rgba(0,16,81,0) 0%,
@@ -211,6 +204,13 @@ html, body {
   color: #fff;
 }
 
+/* ================= SCROLL – ESCONDE IDENTIDADE ================= */
+body.scrolled .menu-logo {
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+}
+
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
@@ -226,7 +226,7 @@ html, body {
 
   .menu-links {
     position: fixed;
-    top: 96px;
+    top: 98px;
     left: 0;
     width: 100%;
     background: #fff;
@@ -247,7 +247,7 @@ html, body {
   }
 
   .logo-apac {
-    height: 56px;
+    height: 60px;
   }
 
   .logo-texto strong {
@@ -255,13 +255,11 @@ html, body {
   }
 
   .hero {
-    padding: calc(26px + 70px + 8px) 18px 16px;
+    padding-top: calc(26px + 72px + 10px);
   }
 
   .hero-typing {
-    margin-left: 0;
-    margin-top: 6px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .slider {
@@ -276,7 +274,6 @@ html, body {
     background-position: center;
   }
 }
-
 
 
 
