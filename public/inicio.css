@@ -18,22 +18,21 @@ html, body {
   color: #fff;
 }
 
-/* ================= HEADER ESCURO (IGUAL À FOTO) ================= */
+/* ================= HEADER ESCURO (REFERÊNCIA) ================= */
 .header-hero {
   position: relative;
-  height: 130px; /* ↓ header mais baixo */
+  height: 128px; /* header enxuto */
 
   background: linear-gradient(
     90deg,
     #001051 0%,
-    #001051 60%,
-    #0a2a6b 85%,
+    #001051 55%,
+    #0a2a6b 80%,
     #001051 100%
   );
 
   background-size: 200% 100%;
   animation: header-breath 30s linear infinite;
-  z-index: 2000;
 }
 
 @keyframes header-breath {
@@ -67,49 +66,47 @@ html, body {
   padding: 0 24px;
 }
 
-/* ===== IDENTIDADE ===== */
+/* ================= IDENTIDADE ================= */
 .menu-logo {
-  position: relative;
   display: flex;
-  flex-direction: column; /* permite frase abaixo sem empurrar */
-  justify-content: center;
-  gap: 2px;
+  align-items: center;
+  gap: 16px;
   color: #fff;
   max-width: calc(100% - 60px);
   transition: opacity .35s ease, transform .35s ease;
 }
 
-/* linha principal: logo + nome */
-.menu-logo-top {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-/* LOGO MAIOR (sem aumentar header) */
+/* LOGO */
 .logo-apac {
-  height: 60px; /* ↑ aumentada */
+  height: 64px; /* logo maior sem inflar header */
   width: auto;
   flex-shrink: 0;
 }
 
 /* TEXTO */
+.logo-texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.15;
+}
+
+/* TÍTULO */
 .logo-texto strong {
   font-size: 16px;
   font-weight: 700;
-  line-height: 1.1;
   white-space: nowrap;
 }
 
 /* ================= FRASE DIGITADA ================= */
 .hero-typing {
-  margin-left: 76px; /* alinha exatamente com o texto do nome */
   font-size: 0.78rem;
-  line-height: 1.2;
   opacity: .85;
+  margin-top: 2px;
 
-  white-space: nowrap;   /* desktop NÃO quebra */
-  overflow: visible;     /* ❌ remove os "..." */
+  /* NÃO altera layout */
+  white-space: nowrap;
+  overflow: visible;
   text-overflow: unset;
 
   pointer-events: none;
@@ -122,7 +119,13 @@ html, body {
   gap: 26px;
 }
 
+.menu-links li {
+  display: flex;
+}
+
 .menu-links a {
+  display: block;
+  padding: 6px 0;
   color: #fff;
   text-decoration: none;
   font-size: 14px;
@@ -145,7 +148,7 @@ html, body {
   width: 100%;
 }
 
-/* HAMBURGUER */
+/* ================= HAMBURGUER ================= */
 .menu-toggle {
   display: none;
   background: rgba(255,255,255,.14);
@@ -157,9 +160,13 @@ html, body {
   border-radius: 8px;
 }
 
+/* ================= ESPAÇADOR ================= */
+.header-spacer {
+  height: 128px;
+}
+
 /* ================= CONTEÚDO ================= */
 main {
-  padding-top: 150px;
   position: relative;
   z-index: 1;
 }
@@ -207,6 +214,10 @@ body.scrolled .menu-logo {
     height: 150px;
   }
 
+  .header-spacer {
+    height: 150px;
+  }
+
   .menu {
     height: 60px;
   }
@@ -217,6 +228,7 @@ body.scrolled .menu-logo {
     justify-content: center;
   }
 
+  /* MENU MOBILE */
   .menu-links {
     position: fixed;
     top: 80px;
@@ -239,8 +251,8 @@ body.scrolled .menu-logo {
   .menu-links a {
     display: block;
     width: 100%;
-    color: #001051;
     padding: 18px 20px;
+    color: #001051;
   }
 
   .logo-apac {
@@ -251,16 +263,11 @@ body.scrolled .menu-logo {
     font-size: 15px;
   }
 
-  /* no mobile pode quebrar, sem empurrar */
+  /* FRASE PODE QUEBRAR NO MOBILE */
   .hero-typing {
-    margin-left: 64px;
-    max-width: 200px;
     white-space: normal;
     font-size: 0.75rem;
-  }
-
-  main {
-    padding-top: 160px;
+    max-width: 220px;
   }
 
   .slider {
@@ -275,6 +282,8 @@ body.scrolled .menu-logo {
     background-position: center;
   }
 }
+
+
 
 
 
