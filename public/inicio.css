@@ -385,6 +385,51 @@ body.scrolled .menu-logo {
   }
 }
 
+@media (max-width: 768px) {
+
+  /* transforma o menu em grid de 3 colunas */
+  .menu {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+
+  /* mantém logo à esquerda */
+  .menu-logo {
+    justify-self: start;
+  }
+
+  /* BLOCO CENTRAL (APAC + typing) */
+  .logo-texto {
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    min-height: 52px;
+  }
+
+  /* APAC NÃO SE MEXE */
+  .logo-texto strong {
+    line-height: 1.1;
+  }
+
+  /* FRASE DIGITADA */
+  .hero-typing {
+    max-width: 220px;
+    min-height: 2.6em;
+    white-space: normal;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  /* hambúrguer continua à direita */
+  .menu-toggle {
+    justify-self: end;
+  }
+
+}
+
+
+
 
 
 
