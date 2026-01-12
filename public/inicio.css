@@ -322,7 +322,14 @@ body.scrolled .menu-logo {
   color: #f1f1f1;
 }
 
+
 @media (min-width: 1200px) {
+
+  main {
+    position: relative;
+    min-height: calc(100vh - 96px);
+    padding: 120px 0 140px;
+  }
 
   main::before {
     content: "";
@@ -331,19 +338,20 @@ body.scrolled .menu-logo {
     background:
       radial-gradient(
         circle at center,
-        rgba(0,16,81,.08),
-        transparent 65%
+        rgba(0,16,81,.10),
+        transparent 70%
       );
     pointer-events: none;
     z-index: 0;
   }
 
-  main {
+  main > * {
     position: relative;
     z-index: 1;
   }
 
 }
+
 
 
 
