@@ -18,25 +18,29 @@ html, body {
   color: #fff;
 }
 
-/* ================= HEADER + HERO (REFERÊNCIA DIRETA) ================= */
+/* ================= HEADER (BLOCO ESCURO INDEPENDENTE) ================= */
 .header-hero {
   position: relative;
+
+  /* 🔵 MAIS ESCURO, SEM LAVAR */
   background: linear-gradient(
     90deg,
     #001051 0%,
     #001051 55%,
-    #002070 75%,
+    #001845 75%,
     #001051 100%
   );
-  background-size: 200% 100%;
-  animation: header-breath 30s linear infinite;
+
+  background-size: 220% 100%;
+  animation: header-breath 26s ease-in-out infinite;
   overflow: hidden;
 }
 
-/* animação MUITO sutil */
+/* Respiração horizontal SUTIL */
 @keyframes header-breath {
-  from { background-position: 0% 50%; }
-  to   { background-position: 100% 50%; }
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* ================= TOPO FIXO ================= */
@@ -58,28 +62,30 @@ html, body {
   letter-spacing: .3px;
 }
 
-/* ================= MENU (COMO NA REFERÊNCIA) ================= */
+/* ================= MENU ================= */
 .menu {
-  height: 68px; /* ligeiramente mais baixo e firme */
+  height: 70px; /* header mais firme */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 26px;
+  padding: 0 28px;
 }
 
-/* IDENTIDADE */
+/* LOGO + IDENTIDADE */
 .menu-logo {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   color: #fff;
 }
 
+/* 🖼️ LOGO MAIOR DE VERDADE */
 .logo-apac {
-  height: 56px; /* logo visível, sem exagero */
+  height: 68px; /* AUMENTO REAL */
   width: auto;
 }
 
+/* TEXTO DO NOME */
 .logo-texto {
   display: flex;
   flex-direction: column;
@@ -87,7 +93,7 @@ html, body {
 }
 
 .logo-texto strong {
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
 }
 
@@ -95,7 +101,7 @@ html, body {
 .menu-links {
   list-style: none;
   display: flex;
-  gap: 26px;
+  gap: 28px;
 }
 
 .menu-links a {
@@ -129,30 +135,34 @@ html, body {
   color: #fff;
 }
 
-/* ================= HERO (AGORA SÓ COMPLEMENTO DO HEADER) ================= */
+/* ================= HERO (APOIO DO HEADER, NÃO MAIS HERO CLÁSSICO) ================= */
 .hero {
-  padding: calc(26px + 68px + 4px) 26px 14px; /* HEADER COMPACTO */
+  padding: calc(26px + 70px + 6px) 28px 18px;
   color: #fff;
+  position: relative;
 }
 
-/* FRASE – IGUAL À REFERÊNCIA */
+/* 📝 FRASE DIGITADA – FORMATADA CORRETAMENTE */
 .hero-typing {
-  margin-left: 70px;   /* alinhada ao texto */
-  font-size: 0.9rem;   /* menor */
-  opacity: .9;
+  margin-left: 84px;        /* alinhada com texto */
+  margin-top: 2px;
+  font-size: 0.88rem;       /* MENOR */
+  font-weight: 500;
+  opacity: .85;
+  max-width: 520px;
 }
 
-/* dissolve suave */
+/* Dissolve MAIS CURTO (não clareia tudo) */
 .hero::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 180px;
+  height: 140px;
   background: linear-gradient(
     180deg,
-    rgba(244,245,247,0) 0%,
+    rgba(0,16,81,0) 0%,
     #f4f5f7 100%
   );
   pointer-events: none;
@@ -216,7 +226,7 @@ html, body {
 
   .menu-links {
     position: fixed;
-    top: 94px;
+    top: 96px;
     left: 0;
     width: 100%;
     background: #fff;
@@ -237,7 +247,7 @@ html, body {
   }
 
   .logo-apac {
-    height: 48px;
+    height: 56px;
   }
 
   .logo-texto strong {
@@ -245,7 +255,7 @@ html, body {
   }
 
   .hero {
-    padding: calc(26px + 68px + 6px) 18px 16px;
+    padding: calc(26px + 70px + 8px) 18px 16px;
   }
 
   .hero-typing {
