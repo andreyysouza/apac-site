@@ -325,32 +325,26 @@ body.scrolled .menu-logo {
 
 @media (min-width: 1200px) {
 
-  main {
-    position: relative;
-    min-height: calc(100vh - 96px);
-    padding: 120px 0 140px;
-  }
-
-  main::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(
-        circle at center,
-        rgba(0,16,81,.10),
-        transparent 70%
-      );
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  main > * {
+  .slider {
     position: relative;
     z-index: 1;
   }
 
+  .slider::before {
+    content: "";
+    position: absolute;
+    inset: -180px;
+    background: radial-gradient(
+      circle at center,
+      rgba(0,16,81,.10),
+      transparent 70%
+    );
+    z-index: -1;
+    pointer-events: none;
+  }
+
 }
+
 
 
 
