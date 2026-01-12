@@ -59,11 +59,27 @@ html, body {
 
 /* ================= MENU ================= */
 .menu {
-  height: 56px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 0 28px;
+
+  /* 🔵 GRADIENTE HORIZONTAL IGUAL AO DA IMAGEM */
+  background: linear-gradient(
+    90deg,
+    #001051 0%,
+    #001845 25%,
+    #2f4f8f 50%,
+    #001845 75%,
+    #001051 100%
+  );
+
+  /* MUITO IMPORTANTE */
+  background-size: 400% 100%;
+
+  /* animação contínua, sem tranco */
+  animation: menu-flow 32s linear infinite;
 }
 
 /* ================= IDENTIDADE ================= */
@@ -315,6 +331,17 @@ body.scrolled .menu-logo {
   inset: auto 0 0 0;
   z-index: 3;
 }
+
+@keyframes menu-flow {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+
 
 
 
