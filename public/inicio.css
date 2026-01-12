@@ -21,24 +21,21 @@ html, body {
 /* ================= HEADER ESCURO (REFERÊNCIA) ================= */
 .header-hero {
   position: relative;
-  height: 128px; /* header enxuto */
+  height: 96px; /* 🔥 elimina a faixa azul */
 
   background: linear-gradient(
     90deg,
     #001051 0%,
-    #001051 55%,
-    #0a2a6b 80%,
+    #001845 25%,
+    #2f4f8f 50%,
+    #001845 75%,
     #001051 100%
   );
 
-  background-size: 200% 100%;
-  animation: header-breath 30s linear infinite;
+  background-size: 400% 100%;
+  animation: menu-flow 48s ease-in-out infinite alternate;
 }
 
-@keyframes header-breath {
-  from { background-position: 0% 50%; }
-  to   { background-position: 100% 50%; }
-}
 
 /* ================= TOPO FIXO ================= */
 .topo {
@@ -55,7 +52,20 @@ html, body {
   font-size: 11px;
   text-align: center;
   color: rgba(255,255,255,.9);
+
+  background: linear-gradient(
+    90deg,
+    #001051 0%,
+    #001845 25%,
+    #2f4f8f 50%,
+    #001845 75%,
+    #001051 100%
+  );
+
+  background-size: 400% 100%;
+  animation: menu-flow 48s ease-in-out infinite alternate;
 }
+
 
 /* ================= MENU ================= */
 .menu {
@@ -65,7 +75,6 @@ html, body {
   justify-content: space-between;
   padding: 0 28px;
 
-  /* 🔵 GRADIENTE HORIZONTAL IGUAL AO DA IMAGEM */
   background: linear-gradient(
     90deg,
     #001051 0%,
@@ -74,6 +83,11 @@ html, body {
     #001845 75%,
     #001051 100%
   );
+
+  background-size: 400% 100%;
+  animation: menu-flow 48s ease-in-out infinite alternate;
+}
+
 
   /* MUITO IMPORTANTE */
   background-size: 400% 100%;
@@ -178,7 +192,7 @@ html, body {
 
 /* ================= ESPAÇADOR ================= */
 .header-spacer {
-  height: 128px;
+  height: 96px;
 }
 
 /* ================= CONTEÚDO ================= */
@@ -226,23 +240,22 @@ body.scrolled .menu-logo {
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
+  .hero-typing {
+    white-space: normal;
+    max-width: 200px;
+    max-height: 2.4em; /* 🔥 trava altura */
+    overflow: hidden;
+  }
+
   .header-hero {
-    height: 150px;
+    height: 110px;
   }
 
   .header-spacer {
-    height: 150px;
+    height: 110px;
   }
+}
 
-  .menu {
-    height: 60px;
-  }
-
-  .menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 
   /* MENU MOBILE */
   .menu-links {
@@ -340,6 +353,7 @@ body.scrolled .menu-logo {
     background-position: 100% 50%;
   }
 }
+
 
 
 
