@@ -111,11 +111,18 @@ html, body {
 }
 
 .logo-texto {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  line-height: 1.15;
+  align-items: center;
+  text-align: center;
+
+  height: 52px;
 }
+
 
 .logo-texto strong {
   font-size: 16px;
@@ -377,6 +384,7 @@ body.scrolled .menu-logo {
     pointer-events: none;
   }
 }
+
 
 
 
