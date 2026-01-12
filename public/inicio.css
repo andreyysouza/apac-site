@@ -36,7 +36,6 @@ html, body {
 .header-hero {
   position: relative;
   height: 96px;
-
   background: linear-gradient(
     90deg,
     #001051 0%,
@@ -45,7 +44,6 @@ html, body {
     #001845 75%,
     #001051 100%
   );
-
   background-size: 400% 100%;
   animation: menu-flow 48s ease-in-out infinite alternate;
 }
@@ -57,8 +55,32 @@ html, body {
   font-size: 11px;
   text-align: center;
   color: rgba(255,255,255,.9);
-
   background: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+/* linha animada */
+.barra-institucional::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.6) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: linha-institucional 1.2s ease-out forwards;
+}
+
+@keyframes linha-institucional {
+  from { width: 0; opacity: 0; }
+  to   { width: 72%; opacity: 1; }
 }
 
 /* ================= MENU ================= */
@@ -68,7 +90,6 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 0 28px;
-
   background: inherit;
 }
 
@@ -82,8 +103,9 @@ html, body {
   transition: opacity .35s ease, transform .35s ease;
 }
 
+/* logo MAIOR (desktop) */
 .logo-apac {
-  height: 64px;
+  height: 70px;
   width: auto;
   flex-shrink: 0;
 }
@@ -106,7 +128,6 @@ html, body {
   font-size: 0.78rem;
   opacity: .85;
   margin-top: 2px;
-
   white-space: nowrap;
   pointer-events: none;
 }
@@ -183,28 +204,6 @@ main {
   box-shadow: 0 20px 44px rgba(0,0,0,.25);
 }
 
-.slide {
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0;
-  z-index: 1;
-  transition: opacity .6s ease;
-}
-
-.slide.ativo {
-  opacity: 1;
-  z-index: 2;
-}
-
-.slide .overlay {
-  position: absolute;
-  inset: auto 0 0 0;
-  z-index: 3;
-}
-
 /* ================= SCROLL ================= */
 body.scrolled .menu-logo {
   opacity: 0;
@@ -230,67 +229,37 @@ body.scrolled .menu-logo {
     justify-content: center;
   }
 
-  .menu-links {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background: #fff;
-    flex-direction: column;
-    display: none;
-    z-index: 10000;
-  }
-
-  .menu-links.active {
-    display: flex;
-  }
-
-  .menu-links li {
-    width: 100%;
-  }
-
-  .menu-links a {
-    display: block;
-    width: 100%;
-    padding: 18px 20px;
-    color: #001051;
-  }
-
-  .logo-apac {
-    height: 48px;
-  }
-
-  .logo-texto strong {
-    font-size: 15px;
-  }
-
-  .hero-typing {
-    max-width: 200px;
-    min-height: 2.6em;
-
-    white-space: normal;
-    overflow: hidden;
-    text-align: left;
-  }
-
-  .slider {
-    height: 520px;
-  }
-  
+  /* CENTRALIZA LOGO + TEXTO */
   .menu-logo {
-    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
   }
 
   .logo-texto {
-    min-height: 48px; /* espaço fixo do bloco */
-    justify-content: center;
+    align-items: center;
+    min-height: 52px;
   }
+
   .logo-texto strong {
     font-size: 16px;
   }
 
-}
+  /* logo MAIOR no mobile */
+  .logo-apac {
+    height: 54px;
+  }
 
+  /* FRASE DIGITADA CENTRALIZADA */
+  .hero-typing {
+    max-width: 240px;
+    min-height: 2.6em;
+    white-space: normal;
+    overflow: hidden;
+    text-align: center;
+  }
+
+}
 
 /* ================= ACESSIBILIDADE ================= */
 @media (prefers-reduced-motion: reduce) {
@@ -300,49 +269,13 @@ body.scrolled .menu-logo {
   }
 }
 
-/* ================= LEGENDA (CORREÇÃO VISUAL) ================= */
-.overlay {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-
-  padding: 22px 20px 26px;
-
-  /* 🔥 gradiente correto: escuro → transparente */
-  background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.55) 35%,
-    rgba(0,0,0,0.85) 100%
-  );
-
-  color: #ffffff;
-
-  z-index: 3;
-}
-
-/* títulos da legenda */
-.overlay h2 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-  color: #fff;
-}
-
-/* texto da legenda */
-.overlay p {
-  font-size: 0.9rem;
-  line-height: 1.4;
-  color: #f1f1f1;
-}
-
-
+/* ================= DESKTOP OUSADO (HALO) ================= */
 @media (min-width: 1200px) {
 
   .slider {
     position: relative;
     z-index: 1;
+    overflow: visible;
   }
 
   .slider::before {
@@ -359,6 +292,8 @@ body.scrolled .menu-logo {
   }
 
 }
+
+
 
 
 
