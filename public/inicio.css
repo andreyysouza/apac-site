@@ -502,26 +502,40 @@ body.scrolled .menu-logo {
     display: block !important;
   }
 
-  /* =========================================================
-   OVERRIDE FINAL – CONTROLE DEFINITIVO DO TEXTO DO MENU
+ /* =========================================================
+   OVERRIDE CONTROLADO – HEADER (APAC + TYPING)
+   NÃO REMOVE NADA DO CSS BASE
    ========================================================= */
 
-/* DESKTOP: APAC estático, não segue o typing */
+/* ================= DESKTOP ================= */
+/* Garante APAC totalmente estático */
 @media (min-width: 769px) {
+
   .logo-texto {
     position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .logo-texto strong {
+    display: block;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* Typing não empurra nem anima o APAC */
+  .logo-texto .hero-typing {
+    position: relative;
+    min-height: 1.4em;
+    margin-top: 2px;
   }
 }
 
-/* MOBILE: APAC + FRASE CENTRALIZADOS NO MENU */
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
-  /* esconde o texto original do desktop */
-  .menu-logo .logo-texto {
-    display: none;
-  }
-
-  /* bloco central real do mobile */
+  /* Texto central real do header (não invade logo nem hambúrguer) */
   .menu-center-mobile {
     position: absolute;
     top: 50%;
@@ -531,27 +545,28 @@ body.scrolled .menu-logo {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+
+    width: auto;
+    max-width: 280px;
     text-align: center;
 
-    color: #fff;
     pointer-events: none;
   }
 
-  /* APAC */
+  /* APAC fixo no mobile */
   .menu-center-mobile strong {
-    font-size: 16px;
-    font-weight: 700;
+    display: block;
     line-height: 1.1;
-    margin-bottom: 2px;
+    transform: none !important;
+    animation: none !important;
   }
 
-  /* FRASE DIGITADA */
+  /* Typing não altera layout */
   .menu-center-mobile .hero-typing {
     position: static;
-    margin-top: 0;
-
-    max-width: 260px;
     min-height: 2.6em;
+    margin-top: 2px;
 
     white-space: normal;
     overflow: hidden;
