@@ -86,9 +86,9 @@ html, body {
 /* ================= MENU ================= */
 .menu {
   height: 72px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 28px;
   background: inherit;
 }
@@ -114,10 +114,12 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  justify-content: center;
 
+  text-align: center;
   min-height: 52px;
-  width: max-content;   /* 👈 trava largura */
+
+  width: 180px;        /* 🔒 trava largura */
 }
 
 .logo-texto strong {
@@ -126,6 +128,7 @@ html, body {
 
   display: block;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 /* ================= FRASE DIGITADA ================= */
@@ -137,8 +140,12 @@ html, body {
   white-space: nowrap;
   pointer-events: none;
 
-  min-height: 1.4em;    /* 👈 trava altura */
-  width: 100%;
+  position: absolute;        /* 🔥 isola do fluxo */
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 180px;
   text-align: center;
 }
 
@@ -578,6 +585,7 @@ body.scrolled .menu-logo {
     text-align: center;
   }
 }
+
 
 
 
