@@ -305,19 +305,18 @@ body.scrolled .menu-logo {
   }
 
   /* FRASE DIGITADA NÃO MEXE NO LAYOUT */
-  .hero-typing {
-    position: absolute;
-    top: 28px;           /* sempre abaixo do APAC */
-    left: 50%;
-    transform: translateX(-50%);
+.hero-typing {
+  position: static;        /* <<< ESSA é a correção */
+  margin-top: 4px;         /* espaço abaixo do APAC */
 
-    max-width: 220px;
-    min-height: 2.6em;
+  max-width: 220px;
+  min-height: 2.6em;
 
-    white-space: normal;
-    overflow: hidden;
-    text-align: center;
-  }
+  white-space: normal;
+  overflow: hidden;
+  text-align: center;
+}
+
 
   .slider {
     height: 520px;
@@ -329,17 +328,6 @@ body.scrolled .menu-logo {
     align-items: center;
     justify-content: center;
     text-align: center;
-  }
-
-  /* APAC SEMPRE PRIMEIRO */
-  .menu-center-mobile strong {
-    order: 1;
-    margin-bottom: 2px;
-  }
-
-  /* FRASE SEMPRE ABAIXO */
-  .menu-center-mobile .hero-typing {
-    order: 2;
   }
 }
 
@@ -493,6 +481,7 @@ body.scrolled .menu-logo {
     text-align: center;
   }
 }
+
 
 
 
