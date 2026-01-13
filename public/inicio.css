@@ -111,18 +111,16 @@ html, body {
 }
 
 .logo-texto {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  justify-self: center;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center; /* 🔥 ISSO centraliza verticalmente */
+
   text-align: center;
-
-  height: 52px;
+  min-height: 52px;
 }
-
 
 .logo-texto strong {
   font-size: 16px;
@@ -481,6 +479,7 @@ body.scrolled .menu-logo {
     text-align: center;
   }
 }
+
 
 
 
