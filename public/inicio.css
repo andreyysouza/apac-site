@@ -60,6 +60,7 @@ html, body {
   overflow: hidden;
 }
 
+/* linha branca animada */
 .barra-institucional::after {
   content: "";
   position: absolute;
@@ -102,19 +103,21 @@ html, body {
   transition: opacity .35s ease, transform .35s ease;
 }
 
+/* LOGO UM POUCO MAIOR (desktop) */
 .logo-apac {
   height: 70px;
   width: auto;
   flex-shrink: 0;
 }
 
-/* 🔧 APAC ESTÁTICO NO DESKTOP */
 .logo-texto {
-  position: relative;
+  justify-self: center;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* 🔥 ISSO centraliza verticalmente */
+
   text-align: center;
   min-height: 52px;
 }
@@ -139,6 +142,10 @@ html, body {
   list-style: none;
   display: flex;
   gap: 26px;
+}
+
+.menu-links li {
+  display: flex;
 }
 
 .menu-links a {
@@ -202,6 +209,35 @@ main {
   box-shadow: 0 20px 44px rgba(0,0,0,.25);
 }
 
+.slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity .6s ease;
+}
+
+.slide.ativo {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide .overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 3;
+}
+
+/* ================= SCROLL ================= */
+body.scrolled .menu-logo {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
@@ -212,61 +248,87 @@ main {
 
   .menu {
     height: 60px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-  }
-
-  .menu-logo {
-    justify-self: start;
   }
 
   .menu-toggle {
     display: flex;
-    justify-self: end;
+    align-items: center;
+    justify-content: center;
   }
 
+  .menu-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    display: none;
+    z-index: 10000;
+  }
+
+  .menu-links.active {
+    display: flex;
+  }
+
+  .menu-links li {
+    width: 100%;
+  }
+
+  .menu-links a {
+    display: block;
+    width: 100%;
+    padding: 18px 20px;
+    color: #001051;
+  }
+
+  /* LOGO UM POUCO MAIOR (mobile) */
   .logo-apac {
     height: 52px;
   }
 
-  /* 🔒 TEXTO CENTRAL MOBILE */
-  .menu-logo .logo-texto {
-    display: none;
-  }
-
-  .menu-center-mobile {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    display: flex;
-    flex-direction: column;
+  /* 🔒 BLOCO DO TEXTO COM ALTURA FIXA */
+  .logo-texto {
+    position: relative;
     align-items: center;
     text-align: center;
 
-    color: #fff;
+    height: 52px;   /* TRAVA O APAC */
+    justify-content: flex-start;
   }
 
-  .menu-center-mobile strong {
-    font-size: 16px;
-    font-weight: 700;
+  /* APAC FIXO */
+  .logo-texto strong {
     line-height: 1.1;
   }
 
-  .menu-center-mobile .hero-typing {
-    position: static;
-    margin-top: 2px;
+  /* FRASE DIGITADA NÃO MEXE NO LAYOUT */
+.hero-typing {
+  position: static;        /* <<< ESSA é a correção */
+  margin-top: 4px;         /* espaço abaixo do APAC */
 
-    max-width: 260px;
-    min-height: 2.6em;
+  max-width: 220px;
+  min-height: 2.6em;
 
-    white-space: normal;
-    overflow: hidden;
+  white-space: normal;
+  overflow: hidden;
+  text-align: center;
+}
+
+
+  .slider {
+    height: 520px;
+  }
+
+  .menu-center-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
   }
 }
+
 
 /* ================= ACESSIBILIDADE ================= */
 @media (prefers-reduced-motion: reduce) {
@@ -293,8 +355,22 @@ main {
   z-index: 3;
 }
 
+.overlay h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.overlay p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #f1f1f1;
+}
+
 /* ================= DESKTOP HALO ================= */
 @media (min-width: 1200px) {
+
   .slider {
     position: relative;
     z-index: 1;
@@ -314,11 +390,95 @@ main {
   }
 }
 
+@media (max-width: 768px) {
 
+  /* transforma o menu em grid de 3 colunas */
+  .menu {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
 
+  /* mantém logo à esquerda */
+  .menu-logo {
+    justify-self: start;
+  }
 
+  /* BLOCO CENTRAL (APAC + typing) */
+  .logo-texto {
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    min-height: 52px;
+  }
 
+  /* APAC NÃO SE MEXE */
+  .logo-texto strong {
+    line-height: 1.1;
+  }
 
+  /* FRASE DIGITADA */
+  .hero-typing {
+    max-width: 220px;
+    min-height: 2.6em;
+    white-space: normal;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  /* hambúrguer continua à direita */
+  .menu-toggle {
+    justify-self: end;
+  }
+
+}
+
+/* ================= CONTROLE DEFINITIVO DESKTOP / MOBILE ================= */
+
+/* por padrão (desktop) */
+.menu-center-mobile {
+  display: none;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  /* esconde texto do desktop */
+  .menu-logo .logo-texto {
+    display: none;
+  }
+
+  /* mostra texto central mobile */
+  .menu-center-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    padding: 6px 0 8px;
+
+    color: #fff;
+    text-align: center;
+  }
+
+  .menu-center-mobile strong {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .menu-center-mobile .hero-typing {
+    font-size: 0.78rem;
+    opacity: .85;
+    max-width: 260px;
+    min-height: 2.6em;
+
+    white-space: normal;
+    overflow: hidden;
+    text-align: center;
+  }
+}
 
 
 
