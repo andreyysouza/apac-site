@@ -322,6 +322,25 @@ body.scrolled .menu-logo {
   .slider {
     height: 520px;
   }
+
+  .menu-center-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* APAC SEMPRE PRIMEIRO */
+  .menu-center-mobile strong {
+    order: 1;
+    margin-bottom: 2px;
+  }
+
+  /* FRASE SEMPRE ABAIXO */
+  .menu-center-mobile .hero-typing {
+    order: 2;
+  }
 }
 
 
@@ -474,6 +493,7 @@ body.scrolled .menu-logo {
     text-align: center;
   }
 }
+
 
 
 
