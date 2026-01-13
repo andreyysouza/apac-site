@@ -478,7 +478,88 @@ body.scrolled .menu-logo {
     overflow: hidden;
     text-align: center;
   }
+
+  /* =====================================================
+   CONTROLE REAL DESKTOP / MOBILE (CLASSES DO HTML)
+   ===================================================== */
+
+/* Desktop padrão */
+.desktop-only {
+  display: flex;
 }
+
+.mobile-only {
+  display: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: block !important;
+  }
+
+  /* =========================================================
+   OVERRIDE FINAL – CONTROLE DEFINITIVO DO TEXTO DO MENU
+   ========================================================= */
+
+/* DESKTOP: APAC estático, não segue o typing */
+@media (min-width: 769px) {
+  .logo-texto {
+    position: relative;
+  }
+}
+
+/* MOBILE: APAC + FRASE CENTRALIZADOS NO MENU */
+@media (max-width: 768px) {
+
+  /* esconde o texto original do desktop */
+  .menu-logo .logo-texto {
+    display: none;
+  }
+
+  /* bloco central real do mobile */
+  .menu-center-mobile {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    color: #fff;
+    pointer-events: none;
+  }
+
+  /* APAC */
+  .menu-center-mobile strong {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+
+  /* FRASE DIGITADA */
+  .menu-center-mobile .hero-typing {
+    position: static;
+    margin-top: 0;
+
+    max-width: 260px;
+    min-height: 2.6em;
+
+    white-space: normal;
+    overflow: hidden;
+    text-align: center;
+  }
+}
+
+
 
 
 
