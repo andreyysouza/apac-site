@@ -8,9 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // pega os dois possíveis destinos do texto (desktop e mobile)
   const typingTargets = [
-    document.getElementById("typing-text"),
-    document.getElementById("typing-text-mobile")
-  ].filter(Boolean); // remove null se algum não existir
+    document.getElementById("typing-text")
+  ]
 
   if (typingTargets.length === 0) return;
 
