@@ -96,7 +96,7 @@ html, body {
 /* ================= IDENTIDADE ================= */
 /* LOGO UM POUCO MAIOR (desktop) */
 .logo-apac {
-  height: 70px;
+  height: 78px;
   width: auto;
   flex-shrink: 0;
 }
@@ -263,7 +263,7 @@ body.scrolled .menu-logo {
 
   /* LOGO UM POUCO MAIOR (mobile) */
   .logo-apac {
-    height: 52px;
+    height: 56px;
   }
 
   /* FRASE DIGITADA NÃO MEXE NO LAYOUT */
@@ -377,6 +377,7 @@ body.scrolled .menu-logo {
   line-height: 1.1;
   white-space: nowrap;
 }
+
 
 
 
