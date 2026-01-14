@@ -111,15 +111,7 @@ html, body {
 }
 
 .logo-texto {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-  min-height: 52px;
-
-  width: 180px;        /* 🔒 trava largura */
+  display: none; /* NÃO USAMOS MAIS PARA TEXTO CENTRAL */
 }
 
 .logo-texto strong {
@@ -402,49 +394,6 @@ body.scrolled .menu-logo {
   }
 }
 
-@media (max-width: 768px) {
-
-  /* transforma o menu em grid de 3 colunas */
-  .menu {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-  }
-
-  /* mantém logo à esquerda */
-  .menu-logo {
-    justify-self: start;
-  }
-
-  /* BLOCO CENTRAL (APAC + typing) */
-  .logo-texto {
-    justify-self: center;
-    align-items: center;
-    text-align: center;
-    min-height: 52px;
-  }
-
-  /* APAC NÃO SE MEXE */
-  .logo-texto strong {
-    line-height: 1.1;
-  }
-
-  /* FRASE DIGITADA */
-  .hero-typing {
-    max-width: 220px;
-    min-height: 2.6em;
-    white-space: normal;
-    overflow: hidden;
-    text-align: center;
-  }
-
-  /* hambúrguer continua à direita */
-  .menu-toggle {
-    justify-self: end;
-  }
-
-}
-
 /* ================= CONTROLE DEFINITIVO DESKTOP / MOBILE ================= */
 
 /* por padrão (desktop) */
@@ -514,76 +463,44 @@ body.scrolled .menu-logo {
     display: block !important;
   }
 
- /* =========================================================
-   OVERRIDE CONTROLADO – HEADER (APAC + TYPING)
-   NÃO REMOVE NADA DO CSS BASE
-   ========================================================= */
+  /* =================================================
+   TEXTO CENTRAL DEFINITIVO (DESKTOP + MOBILE)
+   ================================================= */
 
-/* ================= DESKTOP ================= */
-/* Garante APAC totalmente estático */
-@media (min-width: 769px) {
+.menu-center-mobile {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-  .logo-texto {
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  .logo-texto strong {
-    display: block;
-    transform: none !important;
-    animation: none !important;
-  }
+  width: 300px;
+  max-width: 90%;
 
-  /* Typing não empurra nem anima o APAC */
-  .logo-texto .hero-typing {
-    position: relative;
-    min-height: 1.4em;
-    margin-top: 2px;
-  }
+  text-align: center;
+  color: #fff;
+
+  pointer-events: none;
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
+/* APAC ESTÁTICO */
+.menu-center-mobile strong {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
 
-  /* Texto central real do header (não invade logo nem hambúrguer) */
-  .menu-center-mobile {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    width: auto;
-    max-width: 280px;
-    text-align: center;
-
-    pointer-events: none;
-  }
-
-  /* APAC fixo no mobile */
-  .menu-center-mobile strong {
-    display: block;
-    line-height: 1.1;
-    transform: none !important;
-    animation: none !important;
-  }
-
-  /* Typing não altera layout */
-  .menu-center-mobile .hero-typing {
-    position: static;
-    min-height: 2.6em;
-    margin-top: 2px;
-
-    white-space: normal;
-    overflow: hidden;
-    text-align: center;
-  }
+/* TYPING ISOLADO */
+.menu-center-mobile .hero-typing {
+  min-height: 2.6em;
+  white-space: normal;
+  overflow: hidden;
+  text-align: center;
 }
 
 
