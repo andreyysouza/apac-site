@@ -94,33 +94,11 @@ html, body {
 }
 
 /* ================= IDENTIDADE ================= */
-.menu-logo {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  color: #fff;
-  max-width: calc(100% - 60px);
-  transition: opacity .35s ease, transform .35s ease;
-}
-
 /* LOGO UM POUCO MAIOR (desktop) */
 .logo-apac {
   height: 70px;
   width: auto;
   flex-shrink: 0;
-}
-
-.logo-texto {
-  display: none; /* NÃO USAMOS MAIS PARA TEXTO CENTRAL */
-}
-
-.logo-texto strong {
-  font-size: 16px;
-  font-weight: 700;
-
-  display: block;
-  line-height: 1.1;
-  white-space: nowrap;
 }
 
 /* ================= FRASE DIGITADA ================= */
@@ -129,18 +107,15 @@ html, body {
   opacity: .85;
   margin-top: 2px;
 
-  white-space: nowrap;
-  pointer-events: none;
+  min-height: 2.6em;
 
-  position: absolute;        /* 🔥 isola do fluxo */
-  top: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  width: 180px;
+  white-space: normal;
+  overflow: hidden;
   text-align: center;
-}
 
+  pointer-events: none;
+  position: static; /* 🔑 deixa o .menu-center controlar */
+}
 /* ================= NAVEGAÇÃO ================= */
 .menu-links {
   list-style: none;
@@ -291,21 +266,6 @@ body.scrolled .menu-logo {
     height: 52px;
   }
 
-  /* 🔒 BLOCO DO TEXTO COM ALTURA FIXA */
-  .logo-texto {
-    position: relative;
-    align-items: center;
-    text-align: center;
-
-    height: 52px;   /* TRAVA O APAC */
-    justify-content: flex-start;
-  }
-
-  /* APAC FIXO */
-  .logo-texto strong {
-    line-height: 1.1;
-  }
-
   /* FRASE DIGITADA NÃO MEXE NO LAYOUT */
 .hero-typing {
   position: static;        /* <<< ESSA é a correção */
@@ -322,14 +282,6 @@ body.scrolled .menu-logo {
 
   .slider {
     height: 520px;
-  }
-
-  .menu-center-mobile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
   }
 }
 
@@ -394,82 +346,13 @@ body.scrolled .menu-logo {
   }
 }
 
-/* ================= CONTROLE DEFINITIVO DESKTOP / MOBILE ================= */
-
-/* por padrão (desktop) */
-.menu-center-mobile {
-  display: none;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-
-  /* esconde texto do desktop */
-  .menu-logo .logo-texto {
-    display: none;
-  }
-
-  /* mostra texto central mobile */
-  .menu-center-mobile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    padding: 6px 0 8px;
-
-    color: #fff;
-    text-align: center;
-  }
-
-  .menu-center-mobile strong {
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-
-  .menu-center-mobile .hero-typing {
-    font-size: 0.78rem;
-    opacity: .85;
-    max-width: 260px;
-    min-height: 2.6em;
-
-    white-space: normal;
-    overflow: hidden;
-    text-align: center;
-  }
-
-  /* =====================================================
-   CONTROLE REAL DESKTOP / MOBILE (CLASSES DO HTML)
-   ===================================================== */
-
-/* Desktop padrão */
-.desktop-only {
-  display: flex;
-}
-
-.mobile-only {
-  display: none;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .desktop-only {
-    display: none !important;
-  }
-
-  .mobile-only {
-    display: block !important;
-  }
-
   /* =================================================
    TEXTO CENTRAL DEFINITIVO (DESKTOP + MOBILE)
    ================================================= */
 
-.menu-center-mobile {
+.menu-center {
   position: absolute;
-  top: 50%;
+  top: calc(50% + 12px);
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -478,7 +361,7 @@ body.scrolled .menu-logo {
   align-items: center;
   justify-content: center;
 
-  width: 300px;
+  width: 320px;
   max-width: 90%;
 
   text-align: center;
@@ -488,20 +371,13 @@ body.scrolled .menu-logo {
 }
 
 /* APAC ESTÁTICO */
-.menu-center-mobile strong {
+.menu-center strong {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.1;
   white-space: nowrap;
 }
 
-/* TYPING ISOLADO */
-.menu-center-mobile .hero-typing {
-  min-height: 2.6em;
-  white-space: normal;
-  overflow: hidden;
-  text-align: center;
-}
 
 
 
