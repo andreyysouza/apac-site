@@ -14,29 +14,50 @@
 
 <body>
 
-  <!-- ================= TOPO FIXO ================= -->
+  <!-- HEADER FIXO -->
   <header class="topo">
+    <div class="header-hero">
 
-    <!-- Barra institucional -->
-    <div class="barra-institucional">
-      Este é um site institucional da APAC de Santa Bárbara
+      <!-- BARRA INSTITUCIONAL -->
+      <div class="barra-institucional">
+        Este é um site institucional da APAC de Santa Bárbara - MG
+      </div>
+
+      <!-- MENU -->
+      <nav class="menu">
+
+        <!-- LOGO -->
+        <div class="menu-logo">
+          <img
+            src="logo_apac.png"
+            alt="Logo da APAC"
+            class="logo-apac"
+          />
+        </div>
+
+        <!-- BOTÃO HAMBURGUER -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+          ☰
+        </button>
+
+        <!-- LINKS -->
+        <ul class="menu-links" id="menu-links">
+          <li><a href="/inicio.html">INÍCIO</a></li>
+          <li><a href="/aupac.html">AUPAC</a></li>
+          <li><a href="/catalagoalogo.html">ARTESANATO</a></li>
+        </ul>
+
+      </nav>
+
+      <!-- TEXTO CENTRAL DEFINITIVO (DESKTOP + MOBILE) -->
+      <div class="menu-center">
+        <strong>APAC</strong>
+        <p class="hero-typing">
+          <span id="typing-text"></span><span class="cursor">|</span>
+        </p>
+      </div>
+
     </div>
-
-    <!-- Menu -->
-    <nav class="menu">
-      <div class="menu-logo">APAC</div>
-
-      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
-        ☰
-      </button>
-
-      <ul class="menu-links" id="menu-links">
-        <li><a href="/inicio.html">INÍCIO</a></li>
-        <li><a href="/aupac.html">AUPAC</a></li>
-        <li><a href="/catalago.html">ARTESANATO</a></li>
-      </ul>
-    </nav>
-
   </header>
 
   <!-- ================= HERO / CAPA ================= -->
@@ -133,9 +154,11 @@
 
   <!-- JS -->
   <script src="aupac.js"></script>
+  <script src="hero-typing.js"></script> 
 
 </body>
 </html>
+
 
 
 
