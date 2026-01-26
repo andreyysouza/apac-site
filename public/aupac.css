@@ -348,6 +348,77 @@ footer img {
   display: block;
 }
 
+/* ================= SCROLL ================= */
+body.scrolled .menu-logo {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  .header-hero,
+  .header-spacer {
+    height: 110px;
+  }
+
+  .menu {
+    height: 60px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    display: none;
+    z-index: 10000;
+  }
+
+  .menu-links.active {
+    display: flex;
+  }
+
+  .menu-links li {
+    width: 100%;
+  }
+
+  .menu-links a {
+    display: block;
+    width: 100%;
+    padding: 18px 20px;
+    color: #001051;
+  }
+
+  /* LOGO UM POUCO MAIOR (mobile) */
+  .logo-apac {
+    height: 58px;
+  }
+
+  /* FRASE DIGITADA NÃO MEXE NO LAYOUT */
+.hero-typing {
+  position: static;        /* <<< ESSA é a correção */
+  margin-top: 4px;         /* espaço abaixo do APAC */
+
+  max-width: 220px;
+  min-height: 2.6em;
+
+  white-space: normal;
+  overflow: hidden;
+  text-align: center;
+}
+
+
+
 
 
 
