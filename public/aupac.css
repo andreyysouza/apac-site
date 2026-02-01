@@ -200,6 +200,15 @@ html, body {
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
+  .capa-aupac {
+    min-height: 92vh;
+    background-position: center top;
+  }
+
+  .capa-overlay {
+    padding-top: 120px; /* afasta do header fixo */
+  }
+
   .header-hero,
   .header-spacer {
     height: 110px;
@@ -326,29 +335,57 @@ body.scrolled .menu-logo {
 .header-spacer {
   height: 96px;
 }
-/* ================= HERO ================= */
+/* ================= CAPA ================= */
 
 .capa-aupac {
-  background: #5b74a0;
-  color: #fff;
+  position: relative;
+  min-height: 85vh;               /* ocupa boa parte da tela */
+  background-image: url("hero-aupac.webp"); /* SUA IMAGEM */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   text-align: center;
-  padding: 80px 20px 60px;
+  color: #001051;
+  
+  /* camada para garantir leitura do texto */
+.capa-aupac::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,.85),
+    rgba(255,255,255,.65)
+  );
+  z-index: 1;
+}
+
+.capa-overlay {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 20px;
+}
+
+.capa-aupac h1 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 700;
+}
+
+.capa-aupac h2 {
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-weight: 500;
+  margin: 14px 0 26px;
 }
 
 .logo-aupac {
   width: 120px;
   margin-bottom: 20px;
-}
-
-.capa-aupac h1 {
-  font-size: 2.2rem;
-  font-weight: 700;
-}
-
-.capa-aupac h2 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin: 12px 0 24px;
 }
 
 .btn {
@@ -450,6 +487,7 @@ body.scrolled .menu-logo {
   padding: 40px 20px;
   margin-top: 40px;
 }
+
 
 
 
