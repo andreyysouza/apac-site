@@ -116,6 +116,39 @@ html, body {
   pointer-events: none;
   position: static; /* 🔑 deixa o .menu-center controlar */
 }
+
+  /* =================================================
+   TEXTO CENTRAL DEFINITIVO (DESKTOP + MOBILE)
+   ================================================= */
+
+.menu-center {
+  position: absolute;
+  top: calc(50% + 12px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 320px;
+  max-width: 90%;
+
+  text-align: center;
+  color: #fff;
+
+  pointer-events: none;
+}
+
+/* APAC ESTÁTICO */
+.menu-center strong {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
 /* ================= NAVEGAÇÃO ================= */
 .menu-links {
   list-style: none;
@@ -162,52 +195,6 @@ html, body {
   width: 36px;
   height: 36px;
   border-radius: 8px;
-}
-
-/* ================= ESPAÇADOR ================= */
-.header-spacer {
-  height: 96px;
-}
-
-/* ================= CONTEÚDO ================= */
-main {
-  position: relative;
-  z-index: 1;
-}
-
-/* ================= SLIDER ================= */
-.slider {
-  max-width: 360px;
-  width: 100%;
-  margin: 32px auto 60px;
-  height: 560px;
-  border-radius: 18px;
-  overflow: hidden;
-  position: relative;
-  background: #000;
-  box-shadow: 0 20px 44px rgba(0,0,0,.25);
-}
-
-.slide {
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0;
-  z-index: 1;
-  transition: opacity .6s ease;
-}
-
-.slide.ativo {
-  opacity: 1;
-  z-index: 2;
-}
-
-.slide .overlay {
-  position: absolute;
-  inset: auto 0 0 0;
-  z-index: 3;
 }
 
 /* ================= SCROLL ================= */
@@ -285,6 +272,51 @@ body.scrolled .menu-logo {
   }
 }
 
+/* ================= ESPAÇADOR ================= */
+.header-spacer {
+  height: 96px;
+}
+
+/* ================= CONTEÚDO ================= */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* ================= SLIDER ================= */
+.slider {
+  max-width: 360px;
+  width: 100%;
+  margin: 32px auto 60px;
+  height: 560px;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  background: #000;
+  box-shadow: 0 20px 44px rgba(0,0,0,.25);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity .6s ease;
+}
+
+.slide.ativo {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide .overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 3;
+}
 
 /* ================= ACESSIBILIDADE ================= */
 @media (prefers-reduced-motion: reduce) {
@@ -346,37 +378,7 @@ body.scrolled .menu-logo {
   }
 }
 
-  /* =================================================
-   TEXTO CENTRAL DEFINITIVO (DESKTOP + MOBILE)
-   ================================================= */
 
-.menu-center {
-  position: absolute;
-  top: calc(50% + 12px);
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  width: 320px;
-  max-width: 90%;
-
-  text-align: center;
-  color: #fff;
-
-  pointer-events: none;
-}
-
-/* APAC ESTÁTICO */
-.menu-center strong {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.1;
-  white-space: nowrap;
-}
 
 
 
