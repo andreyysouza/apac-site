@@ -367,19 +367,35 @@ body.scrolled .menu-logo {
 
   padding: 40px 36px;
 
+  /* sombra externa */
   box-shadow:
-    0 20px 40px rgba(0,16,81,0.08),
+    0 18px 36px rgba(0,16,81,0.08),
     0 4px 10px rgba(0,16,81,0.05);
 
-  border: 2px solid rgba(0,16,81,0.08);
+  /* linha azul interna */
+  box-shadow:
+    inset 0 0 0 2px rgba(0,16,81,0.35),
+    0 18px 36px rgba(0,16,81,0.08),
+    0 4px 10px rgba(0,16,81,0.05);
 }
 
 .historia-card h2 {
   text-align: center;
-  font-size: 1.9rem;
+  font-size: 1.95rem;
   font-weight: 700;
   color: #001051;
   margin-bottom: 26px;
+  position: relative;
+}
+
+.historia-card h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: rgba(0,16,81,0.4);
+  margin: 12px auto 0;
+  border-radius: 2px;
 }
 
 .historia-card p {
@@ -400,18 +416,35 @@ body.scrolled .menu-logo {
 .historia-card::after {
   content: "🐾";
   position: absolute;
-  font-size: 28px;
-  opacity: 0.15;
+  font-size: 34px;
+  opacity: 0.22;
 }
 
 .historia-card::before {
-  top: 18px;
-  left: 22px;
+  top: 14px;
+  left: 18px;
 }
 
 .historia-card::after {
-  bottom: 18px;
-  right: 22px;
+  bottom: 16px;
+  right: 20px;
+}
+
+.patinha {
+  position: absolute;
+  font-size: 22px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.patinha-1 {
+  top: 50%;
+  left: 22px;
+}
+
+.patinha-2 {
+  bottom: 38px;
+  right: 60px;
 }
 
 /* ================= PETS ================= */
@@ -606,10 +639,15 @@ body.scrolled .menu-logo {
     border-radius: 18px;
   }
 
+  .historia-card::before,
+  .historia-card::after {
+    font-size: 28px;
+  }
   .historia-card h2 {
     font-size: 1.6rem;
   }
 } 
+
 
 
 
