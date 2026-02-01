@@ -443,7 +443,7 @@ body.scrolled .menu-logo {
     background-size: cover;
 
     /* 🔑 ISSO AQUI É O MAIS IMPORTANTE */
-    background-position: 50% 75%;
+    background-position: 65% 70%;
     min-height: 100vh;
   }
 
@@ -452,18 +452,18 @@ body.scrolled .menu-logo {
     padding-bottom: 40px;
     background: none !important;
     border-radius: 16px;
+    transform: translateY(-20px);
   }
   
-.capa-aupac h1 {
-  text-shadow:
-    0 2px 6px rgba(255,255,255,.85),
-    0 1px 1px rgba(0,0,0,.15);
-}
+  .capa-aupac h1 {
+    text-shadow:
+      0 2px 6px rgba(255,255,255,.85),
+      0 1px 1px rgba(0,0,0,.15);
+  }
 
-.capa-aupac h2 {
-  text-shadow:
-    0 0 16px rgba(255,255,255,.9);
-}
+  .capa-aupac h2 {
+    text-shadow: 0 1px 4px rgba(255,255,255,.9);
+  }
   
   .header-hero,
   .header-spacer {
@@ -533,6 +533,7 @@ body.scrolled .menu-logo {
     font-size: 1.1rem;
   }
 } 
+
 
 
 
