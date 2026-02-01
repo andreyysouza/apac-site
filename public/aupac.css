@@ -450,23 +450,20 @@ body.scrolled .menu-logo {
   .capa-overlay {
     padding-top: 80px;   /* sobe o conteúdo */
     padding-bottom: 40px;
-    background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,.75),
-    rgba(255,255,255,.55)
-  );
+    background: none !important;
     border-radius: 16px;
   }
   
- .capa-aupac h1 {
-    font-size: 1.5rem;
-    line-height: 1.2;
- }
+.capa-aupac h1 {
+  text-shadow:
+    0 2px 6px rgba(255,255,255,.85),
+    0 1px 1px rgba(0,0,0,.15);
+}
 
- .capa-aupac h2 {
-    font-size: 1rem;
-    margin: 10px 0 18px;
-  }
+.capa-aupac h2 {
+  text-shadow:
+    0 0 16px rgba(255,255,255,.9);
+}
   
   .header-hero,
   .header-spacer {
@@ -536,6 +533,7 @@ body.scrolled .menu-logo {
     font-size: 1.1rem;
   }
 } 
+
 
 
 
