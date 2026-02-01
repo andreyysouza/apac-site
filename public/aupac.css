@@ -201,8 +201,8 @@ html, body {
 @media (max-width: 768px) {
 
   .capa-aupac {
+    background-position: 50% center;
     min-height: 92vh;
-    background-position: center top;
   }
 
   .capa-overlay {
@@ -342,7 +342,7 @@ body.scrolled .menu-logo {
   min-height: 85vh;               /* ocupa boa parte da tela */
   background-image: url("hero-aupac.webp"); /* SUA IMAGEM */
   background-size: cover;
-  background-position: center;
+  background-position: 65% center;
   background-repeat: no-repeat;
 
   display: flex;
@@ -487,6 +487,7 @@ body.scrolled .menu-logo {
   padding: 40px 20px;
   margin-top: 40px;
 }
+
 
 
 
