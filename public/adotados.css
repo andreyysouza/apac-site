@@ -1,0 +1,265 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+  background: #f4f5f7;
+  color: #001051;
+}
+
+::selection {
+  background: #001051;
+  color: #fff;
+}
+
+/* ================= ANIMAÇÃO ÚNICA ================= */
+@keyframes menu-flow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* ================= TOPO FIXO ================= */
+.topo {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3000;
+}
+
+/* ================= HEADER ================= */
+.header-hero {
+  position: relative;
+  height: 96px;
+  background: linear-gradient(
+    90deg,
+    #001051 0%,
+    #001845 25%,
+    #2f4f8f 50%,
+    #001845 75%,
+    #001051 100%
+  );
+  background-size: 400% 100%;
+  animation: menu-flow 48s ease-in-out infinite alternate;
+}
+
+/* ================= BARRA INSTITUCIONAL ================= */
+.barra-institucional {
+  height: 24px;
+  line-height: 24px;
+  font-size: 11px;
+  text-align: center;
+  color: rgba(255,255,255,.9);
+  background: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+/* linha branca animada */
+.barra-institucional::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.6) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: linha-institucional 1.2s ease-out forwards;
+}
+
+@keyframes linha-institucional {
+  from { width: 0; opacity: 0; }
+  to   { width: 70%; opacity: 1; }
+}
+
+/* ================= MENU ================= */
+.menu {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  background: inherit;
+}
+
+/* ================= IDENTIDADE ================= */
+/* LOGO UM POUCO MAIOR (desktop) */
+.logo-apac {
+  height: 80px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+/* ================= FRASE DIGITADA ================= */
+.hero-typing {
+  font-size: 0.78rem;
+  opacity: .85;
+  margin-top: 2px;
+
+  min-height: 2.6em;
+
+  white-space: normal;
+  overflow: hidden;
+  text-align: center;
+
+  pointer-events: none;
+  position: static; /* 🔑 deixa o .menu-center controlar */
+}
+
+/* =================================================
+   TEXTO CENTRAL DEFINITIVO (DESKTOP + MOBILE)
+   ================================================= */
+
+.menu-center {
+  position: absolute;
+  top: calc(50% + 12px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 320px;
+  max-width: 90%;
+
+  text-align: center;
+  color: #fff;
+
+  pointer-events: none;
+}
+
+/* APAC ESTÁTICO */
+.menu-center strong {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+/* ================= NAVEGAÇÃO ================= */
+.menu-links {
+  list-style: none;
+  display: flex;
+  gap: 26px;
+}
+
+.menu-links li {
+  display: flex;
+}
+
+.menu-links a {
+  display: block;
+  padding: 6px 0;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+}
+
+.menu-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: rgba(255,255,255,.9);
+  transition: width .25s ease;
+}
+
+.menu-links a:hover::after {
+  width: 100%;
+}
+
+/* ================= HAMBURGUER ================= */
+.menu-toggle {
+  display: none;
+  background: rgba(255,255,255,.14);
+  border: none;
+  font-size: 24px;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  .header-hero,
+  .header-spacer {
+    height: 110px;
+  }
+
+  .menu {
+    height: 60px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    display: none;
+    z-index: 10000;
+  }
+
+  .menu-links.active {
+    display: flex;
+  }
+
+  .menu-links li {
+    width: 100%;
+  }
+
+  .menu-links a {
+    display: block;
+    width: 100%;
+    padding: 18px 20px;
+    color: #001051;
+  }
+
+  /* LOGO UM POUCO MAIOR (mobile) */
+  .logo-apac {
+    height: 58px;
+  }
+
+  /* FRASE DIGITADA NÃO MEXE NO LAYOUT */
+.hero-typing {
+  position: static;        /* <<< ESSA é a correção */
+  margin-top: 4px;         /* espaço abaixo do APAC */
+
+  max-width: 220px;
+  min-height: 2.6em;
+
+  white-space: normal;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* ================= ESPAÇADOR ================= */
+.header-spacer {
+  height: 96px;
+}
