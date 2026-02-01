@@ -187,17 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
   filtroSexo.addEventListener("change", () => { currentPage = 1; renderPage(); });
   filtroPorte.addEventListener("change", () => { currentPage = 1; renderPage(); });
 
-/* ================= ANIMAÇÃO ================= */
-  window.addEventListener("load", () => {
-    const anim = document.querySelector(".animacao-header");
-    if (!anim) return;
-
-    setTimeout(() => {
-      anim.remove();
-    }, 1500);
-  });
-
 });
+
 
 
 
