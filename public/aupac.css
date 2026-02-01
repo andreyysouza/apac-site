@@ -319,17 +319,34 @@ body.scrolled .menu-logo {
 }
 
 .btn {
-  display: inline-block;
+   display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
   background-color: #001051;
-  color: white;
-  padding: 14px 28px;
-  border-radius: 25px;
+  color: #fff;
+
+  padding: 14px 26px;
+  border-radius: 30px;
+
   font-weight: 600;
-  transition: .3s;
+  font-size: 1rem;
+
+  text-decoration: none; /* 🔑 remove qualquer linha */
+  border: none;
+
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.btn .patinha {
+  font-size: 1.2rem;
+  line-height: 1;
 }
 
 .btn:hover {
   background-color: #405881;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
 }
 
 /* ================= SOBRE ================= */
@@ -431,14 +448,31 @@ body.scrolled .menu-logo {
   }
 
   .capa-overlay {
-    padding-top: 120px; /* afasta do header fixo */
+    padding-top: 80px;   /* sobe o conteúdo */
+    padding-bottom: 40px;
+    background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,.75),
+    rgba(255,255,255,.55)
+  );
+    border-radius: 16px;
   }
+  
+ .capa-aupac h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+ }
 
+ .capa-aupac h2 {
+    font-size: 1rem;
+    margin: 10px 0 18px;
+  }
+  
   .header-hero,
   .header-spacer {
     height: 110px;
   }
-
+   
   .menu {
     height: 60px;
   }
@@ -491,8 +525,18 @@ body.scrolled .menu-logo {
   white-space: normal;
   overflow: hidden;
   text-align: center;
-}
+  }
+ .btn {
+    font-size: 1rem;
+    padding: 14px 22px;
+    gap: 8px;
+  }
+
+  .btn .patinha {
+    font-size: 1.1rem;
+  }
 } 
+
 
 
 
