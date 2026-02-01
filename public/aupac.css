@@ -527,7 +527,7 @@ body.scrolled .menu-logo {
     font-size: 1rem;
     padding: 14px 22px;
     gap: 8px;
-    margin-top: 50px; 
+    margin-top: 10px; 
   }
 
   .btn .patinha {
@@ -548,6 +548,7 @@ body.scrolled .menu-logo {
   }
   }
 } 
+
 
 
 
