@@ -443,19 +443,18 @@ body.scrolled .menu-logo {
     background-size: cover;
 
     /* 🔑 ISSO AQUI É O MAIS IMPORTANTE */
-    background-position: 65% 80%;
+    background-position: 65% 85%;
     min-height: 100vh;
   }
 
   .capa-overlay {
-    padding-top: 80px;   /* sobe o conteúdo */
-    padding-bottom: 40px;
-    background: none !important;
-    border-radius: 16px;
-    transform: translateY(-20px);
+    align-self: flex-start;
+    margin-top: 40px;
   }
   
   .capa-aupac h1 {
+    font-size: 1.45rem;
+    line-height: 1.25;
     text-shadow:
       0 2px 6px rgba(255,255,255,.85),
       0 1px 1px rgba(0,0,0,.15);
@@ -534,6 +533,7 @@ body.scrolled .menu-logo {
     font-size: 1.1rem;
   }
 } 
+
 
 
 
