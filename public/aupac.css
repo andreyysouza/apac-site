@@ -322,6 +322,64 @@ body.scrolled .menu-logo {
   pointer-events: none;
 }
 
+/* ================= ANIMAÇÃO ================= */
+.animacao-header {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.animacao-header svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* bola */
+.bola {
+  fill: #ffd166;
+  animation: bola-move 0.9s ease-out forwards;
+}
+
+/* cachorros */
+.dog path {
+  fill: rgba(255,255,255,.85);
+}
+
+.dog {
+  opacity: 0;
+}
+
+.dog1 { animation: dog-move 0.9s ease-out 0.15s forwards; }
+.dog2 { animation: dog-move 0.9s ease-out 0.25s forwards; }
+.dog3 { animation: dog-move 0.9s ease-out 0.35s forwards; }
+
+/* keyframes */
+@keyframes bola-move {
+  from { transform: translateX(0); }
+  to   { transform: translateX(1300px); }
+}
+
+@keyframes dog-move {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(1300px);
+    opacity: 1;
+  }
+}
+
+/* mobile: animação mais simples */
+@media (max-width: 768px) {
+  .dog2,
+  .dog3 {
+    display: none;
+  }
+}
+
 /* ================= ESPAÇADOR ================= */
 .header-spacer {
   height: 96px;
@@ -450,6 +508,7 @@ body.scrolled .menu-logo {
   padding: 40px 20px;
   margin-top: 40px;
 }
+
 
 
 
