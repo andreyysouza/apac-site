@@ -417,6 +417,39 @@ body.scrolled .menu-logo {
   text-align: center;
 }
 
+/* =================================================
+   TEXTO CENTRAL DEFINITIVO (DESKTOP + MOBILE)
+   ================================================= */
+
+.menu-center {
+  position: absolute;
+  top: calc(50% + 12px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 320px;
+  max-width: 90%;
+
+  text-align: center;
+  color: #fff;
+
+  pointer-events: none;
+}
+
+/* APAC ESTÁTICO */
+.menu-center strong {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+
 
 
 
