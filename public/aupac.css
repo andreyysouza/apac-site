@@ -116,6 +116,39 @@ html, body {
   pointer-events: none;
   position: static; /* 🔑 deixa o .menu-center controlar */
 }
+
+/* =================================================
+   TEXTO CENTRAL DEFINITIVO (DESKTOP + MOBILE)
+   ================================================= */
+
+.menu-center {
+  position: absolute;
+  top: calc(50% + 12px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 320px;
+  max-width: 90%;
+
+  text-align: center;
+  color: #fff;
+
+  pointer-events: none;
+}
+
+/* APAC ESTÁTICO */
+.menu-center strong {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
 /* ================= NAVEGAÇÃO ================= */
 .menu-links {
   list-style: none;
@@ -170,7 +203,7 @@ html, body {
 }
 /* ================= HERO ================= */
 
-.hero-aupac {
+.capa-aupac {
   background: #5b74a0;
   color: #fff;
   text-align: center;
@@ -182,12 +215,12 @@ html, body {
   margin-bottom: 20px;
 }
 
-.hero-aupac h1 {
+.capa-aupac h1 {
   font-size: 2.2rem;
   font-weight: 700;
 }
 
-.hero-aupac h2 {
+.capa-aupac h2 {
   font-size: 1.2rem;
   font-weight: 500;
   margin: 12px 0 24px;
@@ -417,37 +450,7 @@ body.scrolled .menu-logo {
   text-align: center;
 }
 
-/* =================================================
-   TEXTO CENTRAL DEFINITIVO (DESKTOP + MOBILE)
-   ================================================= */
 
-.menu-center {
-  position: absolute;
-  top: calc(50% + 12px);
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  width: 320px;
-  max-width: 90%;
-
-  text-align: center;
-  color: #fff;
-
-  pointer-events: none;
-}
-
-/* APAC ESTÁTICO */
-.menu-center strong {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.1;
-  white-space: nowrap;
-}
 
 
 
