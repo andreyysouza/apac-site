@@ -508,7 +508,6 @@ body.scrolled .menu-logo {
   /* LOGO UM POUCO MAIOR (mobile) */
   .logo-apac {
     height: 58px;
-    width: 90px;
   }
 
   /* FRASE DIGITADA NÃO MEXE NO LAYOUT */
@@ -527,12 +526,14 @@ body.scrolled .menu-logo {
     font-size: 1rem;
     padding: 14px 22px;
     gap: 8px;
+    margin-top: 26px; 
   }
 
   .btn .patinha {
     font-size: 1.1rem;
   }
 } 
+
 
 
 
