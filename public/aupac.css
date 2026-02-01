@@ -443,7 +443,7 @@ body.scrolled .menu-logo {
     background-size: cover;
 
     /* 🔑 ISSO AQUI É O MAIS IMPORTANTE */
-    background-position: 65% 70%;
+    background-position: 65% 80%;
     min-height: 100vh;
   }
 
@@ -509,6 +509,7 @@ body.scrolled .menu-logo {
   /* LOGO UM POUCO MAIOR (mobile) */
   .logo-apac {
     height: 58px;
+    width: 90px;
   }
 
   /* FRASE DIGITADA NÃO MEXE NO LAYOUT */
@@ -533,6 +534,7 @@ body.scrolled .menu-logo {
     font-size: 1.1rem;
   }
 } 
+
 
 
 
