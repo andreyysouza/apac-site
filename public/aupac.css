@@ -202,7 +202,11 @@ html, body {
 
   .capa-aupac {
     background-image: url("hero-aupac-mobile.webp");
-    background-position: center;
+    background-size: cover;
+
+    /* 🔑 ISSO AQUI É O MAIS IMPORTANTE */
+    background-position: 50% 75%;
+    min-height: 100vh;
   }
 
   .capa-overlay {
@@ -357,11 +361,13 @@ body.scrolled .menu-logo {
   content: "";
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
     to bottom,
-    rgba(255,255,255,.85),
-    rgba(255,255,255,.65)
+    rgba(0,16,81,.25),
+    rgba(0,16,81,.05)
   );
+
   z-index: 1;
 }
 
@@ -487,6 +493,7 @@ body.scrolled .menu-logo {
   padding: 40px 20px;
   margin-top: 40px;
 }
+
 
 
 
