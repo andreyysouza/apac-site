@@ -76,14 +76,20 @@ document.addEventListener('DOMContentLoaded', () => {
     card.className = "pet-card";
 
     card.innerHTML = `
-      <img class="pet-img" src="${img}" alt="${nome}">
+      <div class="pet-img-wrapper">
+        ${pet.especial ? `<span class="badge-especial">⭐ Especial</span>` : ""}
+        <img class="pet-img" src="${img}" alt="${nome}">
+      </div>
+
       <div class="pet-body">
         <h3>${nome}</h3>
+
         <div class="pet-meta">
-          <div class="badge">Porte: ${porte}</div>
-          <div class="badge">Idade: ${idade}</div>
-          <div class="badge">Sexo: ${sexo}</div>
+          <div class="badge">🐾 ${porte}</div>
+          <div class="badge">🎂 ${idade}</div>
+          <div class="badge">♂♀ ${sexo}</div>
         </div>
+
         <button class="adotar-btn">Quero Adotar</button>
       </div>
     `;
@@ -232,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
