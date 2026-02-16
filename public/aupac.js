@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentPage = 1;
   const itemsPerPage = 10;
 
+  // 🔥 ESTADO DO BOTÃO ESPECIAL
+  let filtroEspecialAtivo = false;
+
   const DEFAULT_WHATSAPP = "5531996005196";
 
   /* ================= CRIAR CARD ================= */
@@ -106,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const fIdade = (filtroIdade.value || "all").toLowerCase();
   const fSexo = (filtroSexo.value || "all").toLowerCase();
   const fPorte = (filtroPorte.value || "all").toLowerCase();
-  const fEspecial = filtroEspecial.value || "all";
 
   visiblePets = allPets.filter(p => {
     const idade = (p.idade || "").toLowerCase();
@@ -116,10 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fIdade !== "all" && idade !== fIdade) return false;
     if (fSexo !== "all" && sexo !== fSexo) return false;
     if (fPorte !== "all" && porte !== fPorte) return false;
+
+    // 🔥 AQUI ESTÁ A CORREÇÃO
     if (filtroEspecialAtivo && !p.especial) return false;
 
     return true;
   });
+}
     const filtroEspecialBtn = document.getElementById("filtro-especial");
     let filtroEspecialAtivo = false;
 
@@ -206,7 +211,14 @@ document.addEventListener('DOMContentLoaded', () => {
   filtroIdade.addEventListener("change", () => { currentPage = 1; renderPage(); });
   filtroSexo.addEventListener("change", () => { currentPage = 1; renderPage(); });
   filtroPorte.addEventListener("change", () => { currentPage = 1; renderPage(); });
-  filtroEspecial.addEventListener("change", () => { currentPage = 1; renderPage(); });
+  if (filtroEspecial) {
+      filtroEspecial.addEventListener("click", () => {
+        filtroEspecialAtivo = !filtroEspecialAtivo;
+        filtroEspecial.classList.toggle("active");
+        currentPage = 1;
+        renderPage();
+      });
+    }
   if (btnFiltrar) {
       btnFiltrar.addEventListener("click", () => {
         currentPage = 1;
@@ -219,12 +231,18 @@ document.addEventListener('DOMContentLoaded', () => {
         filtroIdade.value = "all";
         filtroSexo.value = "all";
         filtroPorte.value = "all";
-
+        
+        if (filtroEspecial) {
+          filtroEspecial.classList.remove("active");
+        }
+        filtroEspecialAtivo = false;
+          
         currentPage = 1;
         renderPage();
   });
 }
 });
+
 
 
 
