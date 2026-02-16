@@ -193,8 +193,22 @@ document.addEventListener('DOMContentLoaded', () => {
   filtroIdade.addEventListener("change", () => { currentPage = 1; renderPage(); });
   filtroSexo.addEventListener("change", () => { currentPage = 1; renderPage(); });
   filtroPorte.addEventListener("change", () => { currentPage = 1; renderPage(); });
+    btnFiltrar.addEventListener("click", () => {
+      currentPage = 1;
+      renderPage();
+    });
 
-});
+    btnLimpar.addEventListener("click", () => {
+      filtroIdade.value = "all";
+      filtroSexo.value = "all";
+      filtroPorte.value = "all";
+    
+      currentPage = 1;
+      renderPage();
+    });
+    
+    });
+
 
 
 
