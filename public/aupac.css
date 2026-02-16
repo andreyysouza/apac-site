@@ -228,20 +228,150 @@ html, body {
   color: white;
   cursor: pointer;
 }
-/* CENTRALIZAR FILTROS */
-.filtros-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/* ================= FILTROS DESKTOP ================= */
 
-.filtros-grid {
-  justify-content: center;
+.filtros-section {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 40px 20px;
   text-align: center;
 }
 
+.filtros-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #001051;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.filtros-title::after {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 1px;
+  background: #d6dbe6;
+  margin: 20px auto 0;
+}
+
+.filtros-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 30px;
+}
+
+.filtro-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.filtro-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: #e2e6ef;
+}
+
+.filtro-item label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #001051;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filtro-item select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #cdd4e3;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  background: #fff;
+  transition: all .25s ease;
+}
+
+.filtro-item select:focus {
+  border-color: #2f4f8f;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47,79,143,0.15);
+}
+
+/* ================= FLAG ESPECIAL ================= */
+
+.filtro-especial-container {
+  margin-bottom: 30px;
+}
+
+.filtro-especial {
+  background: #fff;
+  border: 2px solid #001051;
+  color: #001051;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.filtro-especial:hover {
+  background: #f3f5fa;
+}
+
+.filtro-especial.active {
+  background: #001051;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,16,81,.25);
+}
+
+/* ================= BOTÕES ================= */
+
 .filtros-botoes {
+  display: flex;
   justify-content: center;
+  gap: 20px;
+}
+
+.btn-filtrar {
+  background: linear-gradient(135deg, #2f4f8f, #001051);
+  color: #fff;
+  padding: 14px 40px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.btn-filtrar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,16,81,.25);
+}
+
+.btn-limpar {
+  background: #fff;
+  color: #001051;
+  padding: 14px 40px;
+  border-radius: 12px;
+  border: 1px solid #cdd4e3;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.btn-limpar:hover {
+  background: #f3f5fa;
 }
 /* LOGO DO RODAPÉ */
 footer img {
@@ -647,6 +777,7 @@ body.scrolled .menu-logo {
     font-size: 1.6rem;
   }
 } 
+
 
 
 
