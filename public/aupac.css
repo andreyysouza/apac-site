@@ -783,7 +783,92 @@ body.scrolled .menu-logo {
   .historia-card h2 {
     font-size: 1.6rem;
   }
+
+/* ================= MOBILE FILTROS ================= */
+
+@media (max-width: 768px) {
+
+  .filtros-section {
+    padding: 30px 16px;
+    margin: 40px auto;
+  }
+
+  .filtros-title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+
+  /* TRANSFORMA EM CARD */
+  .filtros-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,16,81,0.08);
+    margin-bottom: 20px;
+  }
+
+  /* Remove linhas verticais do desktop */
+  .filtro-item:not(:last-child)::after {
+    display: none;
+  }
+
+  .filtro-item {
+    align-items: stretch;
+  }
+
+  .filtro-item label {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .filtro-item select {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+
+  /* ================= BOTÃO ESPECIAL ================= */
+
+  .filtro-especial-container {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .filtro-especial {
+    padding: 8px 22px;
+    font-size: 0.85rem;
+    border-radius: 30px;
+  }
+
+  /* ================= BOTÕES ================= */
+
+  .filtros-botoes {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-filtrar {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+  }
+
+  .btn-limpar {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+    border: none;
+    background: transparent;
+    text-decoration: underline;
+  }
+
+}
+  
 } 
+
 
 
 
