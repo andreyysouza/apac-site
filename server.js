@@ -190,7 +190,7 @@ app.put("/api/edit/:tipo/:id", upload.single("imagem"), async (req, res) => {
 
     const campos = [
       "nome", "preco", "descricao", "categoria",
-      "porte", "idade", "sexo", "whatsapp", "obs"
+      "porte", "idade", "sexo", "whatsapp", "obs",  "especial"
     ];
 
     campos.forEach(c => {
@@ -232,6 +232,7 @@ app.delete("/api/delete/:tipo/:id", async (req, res) => {
 app.listen(PORT, () =>
   console.log(`Servidor rodando em http://localhost:${PORT}`)
 );
+
 
 
 
