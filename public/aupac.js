@@ -125,16 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return true;
   });
 }
-    const filtroEspecialBtn = document.getElementById("filtro-especial");
-    let filtroEspecialAtivo = false;
-
-    if (filtroEspecialBtn) {
-      filtroEspecialBtn.addEventListener("click", () => {
-        filtroEspecialAtivo = !filtroEspecialAtivo;
-        filtroEspecialBtn.classList.toggle("active");
-    });
-}
-}
 
   /* ================= PAGINAÇÃO ================= */
   function buildPagination(totalPages) {
@@ -242,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
