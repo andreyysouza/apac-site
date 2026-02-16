@@ -152,6 +152,7 @@ app.post("/api/add/:tipo", upload.single("imagem"), async (req, res) => {
     porte: req.body.porte || null,
     idade: req.body.idade || null,
     sexo: req.body.sexo || null,
+    especial: req.body.especial === "true",
     whatsapp: req.body.whatsapp || null,
     obs: req.body.obs || null,
     imagem: fileUrlFromReqFile(req.file)
@@ -231,6 +232,7 @@ app.delete("/api/delete/:tipo/:id", async (req, res) => {
 app.listen(PORT, () =>
   console.log(`Servidor rodando em http://localhost:${PORT}`)
 );
+
 
 
 
