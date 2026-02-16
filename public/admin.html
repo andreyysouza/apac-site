@@ -90,13 +90,25 @@
       <div class="row">
         <div><label>Nome</label><input id="dog-nome" type="text" required></div>
         <div style="width:160px"><label>Porte</label>
-          <select id="dog-porte"><option value="pequeno">Pequeno</option><option value="medio">Médio</option><option value="grande">Grande</option></select>
+          <select id="dog-porte">
+            <option value="pequeno">Pequeno</option>
+            <option value="medio">Médio</option>
+            <option value="grande">Grande</option>
+            <option value="indefinido">Indefinido</option>
+          </select>
         </div>
         <div style="width:160px"><label>Idade</label>
-          <select id="dog-idade"><option value="filhote">Filhote</option><option value="adulto">Adulto</option><option value="idoso">Idoso</option></select>
+          <select id="dog-idade">
+            <option value="filhote">Filhote</option>
+            <option value="adulto">Adulto</option>
+            <option value="senior">Sênior</option>
+          </select>
         </div>
         <div style="width:160px"><label>Sexo</label>
-          <select id="dog-sexo"><option value="macho">Macho</option><option value="femea">Fêmea</option></select>
+          <select id="dog-sexo">
+            <option value="macho">Macho</option>
+            <option value="femea">Fêmea</option>
+          </select>
         </div>
       </div>
 
@@ -392,6 +404,7 @@ sel("#btn-export-aupac").addEventListener("click", ()=>{
 
 </body>
 </html>
+
 
 
 
