@@ -114,6 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (fPorte !== "all" && porte !== fPorte) return false;
 
         return true;
+        const btnFiltrar = document.getElementById("btn-filtrar");
+        const btnLimpar = document.getElementById("btn-limpar");
       });
     }
 
@@ -193,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
   filtroPorte.addEventListener("change", () => { currentPage = 1; renderPage(); });
 
 });
+
 
 
 
