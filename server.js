@@ -228,9 +228,10 @@ app.delete("/api/delete/:tipo/:id", async (req, res) => {
 /* ======================================================
    START SERVER
 ====================================================== */
-app.listen(PORT, "0.0.0.0", () => {
-  console.log("Servidor iniciado na porta:", PORT);
-});
+app.listen(PORT, () =>
+  console.log(`Servidor rodando em http://localhost:${PORT}`)
+);
+
 
 
 
