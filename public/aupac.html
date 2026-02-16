@@ -110,14 +110,14 @@
 </section>
 
   <!-- ================= FILTROS ================= -->
-  <section class="filtros-container">
-    <h2>Cães disponíveis para adoção</h2>
-    <h3>FILTRAR PETS</h3>
-
+  <section class="filtros-section">
+    <h2 class="filtros-title">Cães disponíveis para adoção</h2>
+  
     <div class="filtros-grid">
-
-      <div class="filtro-group">
-        <label>PORTE:</label>
+  
+      <!-- PORTE -->
+      <div class="filtro-item">
+        <label><span class="icon">🐾</span> Porte</label>
         <select id="filtro-porte">
           <option value="all">Todos</option>
           <option value="pequeno">Pequeno</option>
@@ -126,9 +126,10 @@
           <option value="indefinido">Indefinido</option>
         </select>
       </div>
-
-      <div class="filtro-group">
-        <label>IDADE:</label>
+  
+      <!-- IDADE -->
+      <div class="filtro-item">
+        <label><span class="icon">🎂</span> Idade</label>
         <select id="filtro-idade">
           <option value="all">Todos</option>
           <option value="filhote">Filhote</option>
@@ -136,31 +137,31 @@
           <option value="senior">Sênior</option>
         </select>
       </div>
-
-      <div class="filtro-group">
-        <label>SEXO:</label>
+  
+      <!-- SEXO -->
+      <div class="filtro-item">
+        <label><span class="icon">♂♀</span> Sexo</label>
         <select id="filtro-sexo">
           <option value="all">Todos</option>
-          <option value="femea">Fêmea</option>
           <option value="macho">Macho</option>
+          <option value="femea">Fêmea</option>
         </select>
       </div>
-
-      <div class="filtro-group">
-        <label>ESPECIAL:</label>
-        <select id="filtro-especial">
-          <option value="all">Todos</option>
-          <option value="true">Somente especiais</option>
-        </select>
-      </div>
-
+  
     </div>
-
+  
+    <!-- ESPECIAIS EM FORMATO FLAG -->
+    <div class="filtro-especial-container">
+      <button id="filtro-especial" class="filtro-especial">
+        🏳️ Especiais
+      </button>
+    </div>
+  
     <div class="filtros-botoes">
-      <button id="btn-filtrar" type="btn-filtrar">Filtrar</button>
-      <button id="btn-limpar" type="button">Limpar</button>
+      <button id="btn-filtrar" class="btn-filtrar">Filtrar</button>
+      <button id="btn-limpar" class="btn-limpar">Limpar</button>
     </div>
-  </section>
+</section>
 
   <!-- ================= PETS ================= -->
   <section class="pets-section" id="catalago-pets">
@@ -181,6 +182,7 @@
 
 </body>
 </html>
+
 
 
 
