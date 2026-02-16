@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const filtroPorte = document.getElementById('filtro-porte');
   const btnFiltrar = document.getElementById("btn-filtrar");
   const btnLimpar = document.getElementById("btn-limpar");
+  const filtroEspecial = document.getElementById('filtro-especial');
 
   let allPets = [];
   let visiblePets = [];
@@ -105,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fIdade = (filtroIdade.value || "all").toLowerCase();
   const fSexo = (filtroSexo.value || "all").toLowerCase();
   const fPorte = (filtroPorte.value || "all").toLowerCase();
+  const fEspecial = filtroEspecial.value || "all";
 
   visiblePets = allPets.filter(p => {
     const idade = (p.idade || "").toLowerCase();
@@ -114,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fIdade !== "all" && idade !== fIdade) return false;
     if (fSexo !== "all" && sexo !== fSexo) return false;
     if (fPorte !== "all" && porte !== fPorte) return false;
+    if (fEspecial !== "all" && String(p.especial) !== fEspecial) return false;
 
     return true;
   });
@@ -178,7 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
         porte: item.porte,
         sexo: item.sexo,
         whatsapp: item.whatsapp,
-        imagem: item.imagem
+        imagem: item.imagem,
+        especial: item.especial || false
       }));
 
       renderPage();
@@ -193,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
   filtroIdade.addEventListener("change", () => { currentPage = 1; renderPage(); });
   filtroSexo.addEventListener("change", () => { currentPage = 1; renderPage(); });
   filtroPorte.addEventListener("change", () => { currentPage = 1; renderPage(); });
+  filtroEspecial.addEventListener("change", () => { currentPage = 1; renderPage(); });
   if (btnFiltrar) {
       btnFiltrar.addEventListener("click", () => {
         currentPage = 1;
@@ -211,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
