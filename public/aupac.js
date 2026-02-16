@@ -101,25 +101,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ================= FILTROS ================= */
-  function applyFilters() {
-      const fIdade = (filtroIdade.value || "all").toLowerCase();
-      const fSexo = (filtroSexo.value || "all").toLowerCase();
-      const fPorte = (filtroPorte.value || "all").toLowerCase();
+ function applyFilters() {
+  const fIdade = (filtroIdade.value || "all").toLowerCase();
+  const fSexo = (filtroSexo.value || "all").toLowerCase();
+  const fPorte = (filtroPorte.value || "all").toLowerCase();
 
-      visiblePets = allPets.filter(p => {
-        const idade = (p.idade || "").toLowerCase();
-        const sexo = (p.sexo || "").toLowerCase();
-        const porte = (p.porte || "").toLowerCase();
+  visiblePets = allPets.filter(p => {
+    const idade = (p.idade || "").toLowerCase();
+    const sexo = (p.sexo || "").toLowerCase();
+    const porte = (p.porte || "").toLowerCase();
 
-        if (fIdade !== "all" && idade !== fIdade) return false;
-        if (fSexo !== "all" && sexo !== fSexo) return false;
-        if (fPorte !== "all" && porte !== fPorte) return false;
+    if (fIdade !== "all" && idade !== fIdade) return false;
+    if (fSexo !== "all" && sexo !== fSexo) return false;
+    if (fPorte !== "all" && porte !== fPorte) return false;
 
-        return true;
-        const btnFiltrar = document.getElementById("btn-filtrar");
-        const btnLimpar = document.getElementById("btn-limpar");
-      });
-    }
+    return true;
+  });
+}
 
   /* ================= PAGINAÇÃO ================= */
   function buildPagination(totalPages) {
@@ -212,6 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderPage();
   });
 }
+
 
 
 
