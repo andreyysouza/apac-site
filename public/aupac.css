@@ -639,6 +639,24 @@ body.scrolled .menu-logo {
   background-color: #405881;
 }
 
+.pet-img-wrapper {
+  position: relative;
+}
+
+.badge-especial {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: linear-gradient(135deg, #f7c948, #f0b429);
+  color: #001051;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 2;
+}
+
 /* ================= PAGINAÇÃO ================= */
 
 #pagination-aupac {
@@ -868,6 +886,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
