@@ -210,6 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
         renderPage();
   });
 }
+});
+
 
 
 
