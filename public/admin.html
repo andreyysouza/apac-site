@@ -353,6 +353,7 @@ async function handleSaveDog(){
   const whatsapp = sel("#dog-whatsapp").value.trim();
   const obs = sel("#dog-obs").value.trim();
   const file = sel("#dog-img").files[0] || null;
+  const especial = sel("#dog-especial").checked;
 
   const fd = new FormData();
   fd.append("nome", nome);
@@ -361,6 +362,7 @@ async function handleSaveDog(){
   fd.append("sexo", sexo);
   fd.append("whatsapp", whatsapp);
   fd.append("obs", obs);
+  fd.append("especial", especial);
   if(file) fd.append("imagem", file);
 
   try{
@@ -410,6 +412,7 @@ sel("#btn-export-aupac").addEventListener("click", ()=>{
 
 </body>
 </html>
+
 
 
 
