@@ -116,10 +116,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fIdade !== "all" && idade !== fIdade) return false;
     if (fSexo !== "all" && sexo !== fSexo) return false;
     if (fPorte !== "all" && porte !== fPorte) return false;
-    if (fEspecial !== "all" && String(p.especial) !== fEspecial) return false;
+    if (filtroEspecialAtivo && !p.especial) return false;
 
     return true;
   });
+    const filtroEspecialBtn = document.getElementById("filtro-especial");
+    let filtroEspecialAtivo = false;
+
+    if (filtroEspecialBtn) {
+      filtroEspecialBtn.addEventListener("click", () => {
+        filtroEspecialAtivo = !filtroEspecialAtivo;
+        filtroEspecialBtn.classList.toggle("active");
+    });
+}
 }
 
   /* ================= PAGINAÇÃO ================= */
@@ -216,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
