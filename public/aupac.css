@@ -651,6 +651,7 @@ body.scrolled .menu-logo {
   background: #001051;
   color: #fff;
   width: 80%;
+  margin-top: 14px;
   padding: 12px 0;
   border-radius: 25px;
   border: none;
@@ -1010,6 +1011,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
