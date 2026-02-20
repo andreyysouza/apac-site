@@ -631,6 +631,31 @@ body.scrolled .menu-logo {
   align-items: stretch;
 }
 
+.pet-meta {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 12px 0 16px 0;
+  flex-wrap: wrap;
+}
+
+.sexo-macho {
+  background: #eaf2ff;
+  color: #1f4ed8;
+  font-weight: 600;
+}
+
+.sexo-femea {
+  background: #ffeaf2;
+  color: #d81f60;
+  font-weight: 600;
+}
+
+.badge {
+  min-width: 90px;
+  justify-content: center;
+}
+
 .ver-mais-btn {
   background: transparent;
   border: 1px solid #001051;
@@ -1012,6 +1037,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
