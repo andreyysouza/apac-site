@@ -75,21 +75,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const card = document.createElement('div');
     card.className = "pet-card";
 
-    card.innerHTML = `
-      <div class="pet-img-wrapper">
-        ${pet.especial ? `<span class="badge-especial">⭐ Especial</span>` : ""}
-        <img class="pet-img" src="${img}" alt="${nome}">
-      </div>
+   card.innerHTML = `
+  <img class="pet-img" src="${img}" alt="${nome}">
 
       <div class="pet-body">
-        <h3>${nome}</h3>
-
+        <div class="pet-header">
+          <h3>${nome}</h3>
+          ${pet.especial ? `<span class="badge-especial">✨ Especial</span>` : ``}
+        </div>
+    
         <div class="pet-meta">
           <div class="badge">🐾 ${porte}</div>
           <div class="badge">🎂 ${idade}</div>
           <div class="badge">♂♀ ${sexo}</div>
         </div>
-
+    
         <button class="adotar-btn">Quero Adotar</button>
       </div>
     `;
@@ -238,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
