@@ -645,15 +645,16 @@ body.scrolled .menu-logo {
 
 .badge-especial {
   position: absolute;
-  top: 15px;
-  right: -40px;
-  background: #f0b429;
+  top: 12px;
+  right: 12px; /* muda para direita */
+  background: linear-gradient(135deg, #f7c948, #f0b429);
   color: #001051;
   font-size: 0.7rem;
   font-weight: 600;
-  padding: 5px 40px;
-  transform: rotate(45deg);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  padding: 5px 10px;
+  border-radius: 16px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  z-index: 2;
 }
 
 /* ================= PAGINAÇÃO ================= */
@@ -885,6 +886,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
