@@ -65,59 +65,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ================= CRIAR CARD ================= */
   function createPetCard(pet) {
-    const img = pet.imagem || "img/imagem_padrao.jpg";
-    const nome = pet.nome || "Sem nome";
-    const porte = pet.porte || "";
-    const idade = pet.idade || "";
-    const sexo = pet.sexo || "";
-    const whatsapp = pet.whatsapp || DEFAULT_WHATSAPP;
+  const img = pet.imagem || "img/imagem_padrao.jpg";
+  const nome = pet.nome || "Sem nome";
+  const porte = pet.porte || "";
+  const idade = pet.idade || "";
+  const sexo = pet.sexo || "";
+  const whatsapp = pet.whatsapp || DEFAULT_WHATSAPP;
 
-    const card = document.createElement('div');
-    card.className = "pet-card";
+  const card = document.createElement('div');
+  card.className = "pet-card";
 
-   card.innerHTML = `
-      <div class="pet-img-wrapper">
-        ${pet.especial ? `<span class="badge-especial">⭐ Especial</span>` : ""}
-        <img class="pet-img" src="${img}" alt="${nome}">
+  card.innerHTML = `
+    <div class="pet-img-wrapper">
+      ${pet.especial ? `<span class="badge-especial">⭐ Especial</span>` : ""}
+      <img class="pet-img" src="${img}" alt="${nome}">
+    </div>
+
+    <div class="pet-body">
+      <h3>${nome}</h3>
+
+      <div class="pet-meta">
+        <div class="badge">🐾 ${porte}</div>
+        <div class="badge">🎂 ${idade}</div>
+        <div class="badge">♂♀ ${sexo}</div>
       </div>
-    
-      <div class="pet-body">
-        <h3>${nome}</h3>
-    
-        <div class="pet-meta">
-          <div class="badge">🐾 ${porte}</div>
-          <div class="badge">🎂 ${idade}</div>
-          <div class="badge">♂♀ ${sexo}</div>
-        </div>
-    
-        <div class="pet-actions">
-          <button class="ver-mais-btn">Ver mais</button>
-          <button class="adotar-btn">Quero Adotar</button>
-        </div>
+
+      <div class="pet-actions">
+        <button class="ver-mais-btn">Ver mais</button>
+        <button class="adotar-btn">Quero Adotar</button>
       </div>
-    `;
+    </div>
+  `;
 
-    /* 🔍 Clique para ampliar imagem */
-    const imgEl = card.querySelector(".pet-img");
-    imgEl.addEventListener("click", () => {
-      imgModal.querySelector("img").src = img;
-      imgModal.classList.add("active");
-    });
+  /* 🔍 Clique para ampliar imagem */
+  const imgEl = card.querySelector(".pet-img");
+  imgEl.addEventListener("click", () => {
+    imgModal.querySelector("img").src = img;
+    imgModal.classList.add("active");
+  });
 
-    /* WhatsApp */
-    card.querySelector(".adotar-btn").onclick = () => {
-      const msg = encodeURIComponent(`Olá! Tenho interesse em adotar o(a) ${nome}.`);
-      window.open(`https://wa.me/${whatsapp}?text=${msg}`, "_blank");
-    };
+  /* WhatsApp */
+  card.querySelector(".adotar-btn").onclick = () => {
+    const msg = encodeURIComponent(`Olá! Tenho interesse em adotar o(a) ${nome}.`);
+    window.open(`https://wa.me/${whatsapp}?text=${msg}`, "_blank");
+  };
 
-    return card;
-  }
+  /* 🔥 VER MAIS (AGORA NO LUGAR CERTO) */
+  const verMaisBtn = card.querySelector(".ver-mais-btn");
+  verMaisBtn.addEventListener("click", () => {
+    abrirModal(pet);
+  });
 
-    const verMaisBtn = card.querySelector(".ver-mais-btn");
-
-    verMaisBtn.addEventListener("click", () => {
-      abrirModal(pet);
-    });
+  return card;
+}
 
   /* ================= FILTROS ================= */
  function applyFilters() {
@@ -297,6 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
