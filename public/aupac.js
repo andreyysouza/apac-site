@@ -67,9 +67,22 @@ document.addEventListener('DOMContentLoaded', () => {
   function createPetCard(pet) {
   const img = pet.imagem || "img/imagem_padrao.jpg";
   const nome = pet.nome || "Sem nome";
-  const porte = pet.porte || "";
-  const idade = pet.idade || "";
-  const sexo = pet.sexo || "";
+      
+  let porte = pet.porte || "";
+  if (porte === "pequeno") porte = "Pequeno";
+  if (porte === "medio") porte = "Médio";
+  if (porte === "grande") porte = "Grande";
+  if (porte === "indefinido") porte = "Indefinido";
+      
+  let idade = pet.idade || "";
+  if (idade === "filhote") idade = "Filhote";
+  if (idade === "adulto") idade = "Adulto";
+  if (idade === "senior") idade = "Sênior";
+      
+  let sexo = pet.sexo || "";
+  if (sexo === "femea") sexo = "Fêmea";
+  if (sexo === "macho") sexo = "Macho";
+      
   const whatsapp = pet.whatsapp || DEFAULT_WHATSAPP;
 
   const card = document.createElement('div');
@@ -309,6 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
