@@ -670,6 +670,7 @@ body.scrolled .menu-logo {
   pointer-events: none;
   transition: 0.3s ease;
   z-index: 9999;
+  padding: 20px; /* 🔥 evita colar na borda no mobile */
 }
 
 .modal-detalhe.active {
@@ -679,11 +680,13 @@ body.scrolled .menu-logo {
 
 .modal-conteudo {
   background: #fff;
-  width: 90%;
-  max-width: 500px;
+  width: 92%;
+  max-width: 520px;
+  max-height: 90vh; /* 🔥 limite da altura */
   border-radius: 18px;
   padding: 25px;
   position: relative;
+  overflow-y: auto; /* 🔥 scroll interno */
   animation: modalFade 0.3s ease;
 }
 
@@ -696,8 +699,16 @@ body.scrolled .menu-logo {
   position: absolute;
   right: 18px;
   top: 12px;
-  font-size: 24px;
+  font-size: 26px;
+  font-weight: bold;
   cursor: pointer;
+  background: #f3f5fa;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .modal-img {
@@ -973,6 +984,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
