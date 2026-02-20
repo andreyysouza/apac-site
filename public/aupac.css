@@ -481,9 +481,9 @@ body.scrolled .menu-logo {
 }
 
 .icon-sexo {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #001051;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #7c3aed;
 }
 
 /* ================= SOBRE ================= */
@@ -634,26 +634,44 @@ body.scrolled .menu-logo {
 .pet-meta {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 12px 0 16px 0;
+  gap: 8px;
+  margin: 14px 0;
   flex-wrap: wrap;
 }
 
 .sexo-macho {
-  background: #eaf2ff;
-  color: #1f4ed8;
-  font-weight: 600;
+  background: #e7f0ff;
+  border: 1.5px solid #3b82f6;
+  color: #2563eb;
 }
 
 .sexo-femea {
-  background: #ffeaf2;
-  color: #d81f60;
-  font-weight: 600;
+  background: #ffe6ef;
+  border: 1.5px solid #ec4899;
+  color: #db2777;
 }
 
 .badge {
-  min-width: 90px;
+  display: flex;
+  align-items: center;
   justify-content: center;
+
+  padding: 6px 14px;
+  border-radius: 20px;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  border: 1.5px solid #d9deea;
+  background: #ffffff;
+
+  gap: 6px;
+  min-width: 95px;
+}
+
+.badge span,
+.badge {
+  letter-spacing: 0.3px;
 }
 
 .ver-mais-btn {
@@ -1037,6 +1055,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
