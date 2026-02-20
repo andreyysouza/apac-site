@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card.className = "pet-card";
 
    card.innerHTML = `
-  <img class="pet-img" src="${img}" alt="${nome}">
+      <img class="pet-img" src="${img}" alt="${nome}">
 
       <div class="pet-body">
         <div class="pet-header">
@@ -238,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
