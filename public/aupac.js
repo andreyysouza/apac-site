@@ -100,8 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="pet-meta">
         <div class="badge">🐾 ${porte}</div>
         <div class="badge">🎂 ${idade}</div>
-        <div class="badge">♂♀ ${sexo}</div>
-      </div>
+        ${pet.sexo === "macho" ? `
+          <div class="badge sexo-macho">♂ Macho</div>
+        ` : `
+          <div class="badge sexo-femea">♀ Fêmea</div>
+        `}
+        </div>
 
       <div class="pet-actions">
         <button class="ver-mais-btn">Ver mais</button>
@@ -322,6 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
