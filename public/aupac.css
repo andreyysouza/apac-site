@@ -623,20 +623,44 @@ body.scrolled .menu-logo {
   align-items: center;
 }
 
-.adotar-btn {
-  width: 80%;
-  margin-top: 14px;
-  padding: 12px;
-  background-color: #001051;
+.pet-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+  align-items: stretch;
+}
+
+.ver-mais-btn {
+  background: transparent;
+  border: 1px solid #001051;
+  color: #001051;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ver-mais-btn:hover {
+  background: #001051;
   color: #fff;
-  font-weight: 600;
+}
+
+.adotar-btn {
+  background: #001051;
+  color: #fff;
+  padding: 10px 0;
   border-radius: 25px;
   border: none;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .adotar-btn:hover {
-  background-color: #405881;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,16,81,0.25);
 }
 
 .pet-img-wrapper {
@@ -984,6 +1008,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
