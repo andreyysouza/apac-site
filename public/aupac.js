@@ -116,6 +116,12 @@ document.addEventListener('DOMContentLoaded', () => {
     abrirModal(pet);
   });
 
+  modalDetalhe.addEventListener("click", (e) => {
+      if (e.target === modalDetalhe) {
+        modalDetalhe.classList.remove("active");
+      }
+  });
+
   return card;
 }
 
@@ -297,6 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
