@@ -90,7 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="badge">♂♀ ${sexo}</div>
         </div>
     
-        <button class="adotar-btn">Quero Adotar</button>
+        <div class="pet-actions">
+          <button class="ver-mais-btn">Ver mais</button>
+          <button class="adotar-btn">Quero Adotar</button>
+        </div>
       </div>
     `;
 
@@ -109,6 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     return card;
   }
+
+    const verMaisBtn = card.querySelector(".ver-mais-btn");
+
+    verMaisBtn.addEventListener("click", () => {
+      abrirModal(pet);
+    });
 
   /* ================= FILTROS ================= */
  function applyFilters() {
@@ -200,6 +209,56 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error("Erro ao carregar cães:", e);
     }
   }
+    // ================= MODAL DETALHES =================
+
+    const modalDetalhe = document.createElement("div");
+    modalDetalhe.className = "modal-detalhe";
+    modalDetalhe.innerHTML = `
+      <div class="modal-conteudo">
+        <span class="modal-fechar">&times;</span>
+        <div class="modal-body"></div>
+      </div>
+    `;
+    
+    document.body.appendChild(modalDetalhe);
+    
+    modalDetalhe.querySelector(".modal-fechar").addEventListener("click", () => {
+      modalDetalhe.classList.remove("active");
+    });
+    
+    function abrirModal(pet) {
+      const body = modalDetalhe.querySelector(".modal-body");
+    
+      body.innerHTML = `
+        <img src="${pet.imagem}" class="modal-img">
+    
+        <h2>${pet.nome}</h2>
+    
+        <div class="modal-tags">
+          <span>🐾 ${pet.porte}</span>
+          <span>🎂 ${pet.idade}</span>
+          <span>♂♀ ${pet.sexo}</span>
+        </div>
+    
+        ${pet.especial ? `<div class="modal-especial">
+          ⭐ Cão Especial<br>
+          ${pet.obs || "Este cão necessita de cuidados especiais."}
+        </div>` : ""}
+    
+        <p class="modal-historia">
+          ${pet.historia || "Em breve contaremos mais sobre a história desse amigo incrível."}
+        </p>
+    
+        <button class="modal-whatsapp">Falar no WhatsApp</button>
+      `;
+    
+      body.querySelector(".modal-whatsapp").addEventListener("click", () => {
+        const msg = encodeURIComponent(`Olá! Tenho interesse em adotar o(a) ${pet.nome}.`);
+        window.open(`https://wa.me/${pet.whatsapp}?text=${msg}`, "_blank");
+      });
+    
+      modalDetalhe.classList.add("active");
+    }
 
   loadData();
 
@@ -238,6 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
