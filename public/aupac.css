@@ -657,6 +657,93 @@ body.scrolled .menu-logo {
   z-index: 2;
 }
 
+/* ================= MODAL ================= */
+
+.modal-detalhe {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+
+.modal-detalhe.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-conteudo {
+  background: #fff;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 18px;
+  padding: 25px;
+  position: relative;
+  animation: modalFade 0.3s ease;
+}
+
+@keyframes modalFade {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-fechar {
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-img {
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 15px;
+}
+
+.modal-tags {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.modal-tags span {
+  background: #f3f5fa;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.modal-especial {
+  background: #fff3cd;
+  padding: 10px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #8a6d3b;
+}
+
+.modal-historia {
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.modal-whatsapp {
+  width: 100%;
+  background: linear-gradient(135deg, #2f4f8f, #001051);
+  color: white;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 /* ================= PAGINAÇÃO ================= */
 
 #pagination-aupac {
@@ -886,6 +973,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
