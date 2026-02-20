@@ -221,16 +221,21 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     
     document.body.appendChild(modalDetalhe);
+    // 🔥 Impede que clique dentro do modal feche
+    const modalConteudo = modalDetalhe.querySelector(".modal-conteudo");
 
-    // 🔥 listener aqui (uma vez só)
-    modalDetalhe.addEventListener("click", (e) => {
-      if (e.target === modalDetalhe) {
-        modalDetalhe.classList.remove("active");
-      }
+    modalConteudo.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+
+    // 🔥 Clique no fundo fecha o modal
+    modalDetalhe.addEventListener("click", () => {
+      modalDetalhe.classList.remove("active");
     });
     
     modalDetalhe.querySelector(".modal-fechar").addEventListener("click", () => {
       modalDetalhe.classList.remove("active");
+      document.body.classList.remove("modal-open");
     });
     
     function abrirModal(pet) {
@@ -304,6 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
