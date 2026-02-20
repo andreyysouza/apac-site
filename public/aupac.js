@@ -116,12 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
     abrirModal(pet);
   });
 
-  modalDetalhe.addEventListener("click", (e) => {
-      if (e.target === modalDetalhe) {
-        modalDetalhe.classList.remove("active");
-      }
-  });
-
   return card;
 }
 
@@ -227,6 +221,13 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     
     document.body.appendChild(modalDetalhe);
+
+    // 🔥 listener aqui (uma vez só)
+    modalDetalhe.addEventListener("click", (e) => {
+      if (e.target === modalDetalhe) {
+        modalDetalhe.classList.remove("active");
+      }
+    });
     
     modalDetalhe.querySelector(".modal-fechar").addEventListener("click", () => {
       modalDetalhe.classList.remove("active");
@@ -303,6 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
