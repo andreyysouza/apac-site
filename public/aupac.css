@@ -647,6 +647,26 @@ body.scrolled .menu-logo {
   align-items: center;
 }
 
+.pet-body h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  color: #001051;
+  text-align: center;
+  position: relative;
+}
+
+.pet-body h3::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 2px;
+  background: rgba(0,16,81,0.2);
+  margin: 6px auto 0;
+  border-radius: 2px;
+}
+
 .pet-actions {
   display: flex;
   flex-direction: column;
@@ -660,6 +680,12 @@ body.scrolled .menu-logo {
   justify-content: center;
   gap: 6px;
   margin: 12px 0;
+}
+
+.pet-sexo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
 .badge-porte::before {
@@ -1111,6 +1137,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
