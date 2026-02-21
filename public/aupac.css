@@ -655,6 +655,7 @@ body.scrolled .menu-logo {
   color: #001051;
   text-align: center;
   position: relative;
+  font-family: "Playfair Display", serif;
 }
 
 .pet-body h3::after {
@@ -1137,6 +1138,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
