@@ -658,9 +658,11 @@ body.scrolled .menu-logo {
 .pet-meta {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 8px;
-  margin: 14px 0;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 4px;
 }
 
 .badge-porte::before {
@@ -690,6 +692,9 @@ body.scrolled .menu-logo {
 }
 
 .sexo-macho {
+  display: inline-flex;
+  align-items: center; 
+  justify-content: center;
   background: #e7f0ff;
   border: 1.5px solid #3b82f6;
   color: #1d4ed8;
@@ -697,6 +702,9 @@ body.scrolled .menu-logo {
 }
 
 .sexo-femea {
+  display: inline-flex;
+  align-items: center; 
+  justify-content: center;
   background: #ffe6ef;
   border: 1.5px solid #ec4899;
   color: #be185d;
@@ -704,21 +712,21 @@ body.scrolled .menu-logo {
 }
 
 .badge {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  padding: 6px 14px;
-  border-radius: 20px;
+  padding: 6px 12px;
+  border-radius: 18px;
 
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
 
   border: 1.5px solid #d9deea;
   background: #ffffff;
 
-  gap: 6px;
-  min-width: 95px;
+  white-space: nowrap; 
+  flex-shrink: 0;
 }
 
 .badge span,
@@ -1107,6 +1115,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
