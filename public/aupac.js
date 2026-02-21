@@ -97,15 +97,19 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="pet-body">
       <h3>${nome}</h3>
 
-      <div class="pet-meta">
-        <div class="badge badge-porte">${porte}</div>
-        <div class="badge badge-idade">${idade}</div>
-        ${pet.sexo === "macho" ? `
-          <div class="badge sexo-macho">Macho</div>
-        ` : `
-          <div class="badge sexo-femea">Fêmea</div>
-        `}
+     <div class="pet-meta">
+         <div class="badge badge-porte">${porte}</div>
+         <div class="badge badge-idade">${idade}</div>
+    </div>
 
+    <div class="pet-sexo">
+      ${pet.sexo === "macho" ? `
+        <div class="badge sexo-macho">Macho</div>
+      ` : `
+        <div class="badge sexo-femea">Fêmea</div>
+      `}
+    </div>
+    
       <div class="pet-actions">
         <button class="ver-mais-btn">Ver mais</button>
         <button class="adotar-btn">Quero Adotar</button>
@@ -325,6 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
