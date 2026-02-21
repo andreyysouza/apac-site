@@ -658,11 +658,10 @@ body.scrolled .menu-logo {
 .pet-meta {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding-bottom: 4px;
+  gap: 6px;
+  margin: 12px 0;
+  flex-wrap: nowrap;       /* 🔥 nunca quebra */
+  overflow: hidden;        /* 🔥 impede ultrapassar card */
 }
 
 .badge-porte::before {
@@ -712,11 +711,11 @@ body.scrolled .menu-logo {
 }
 
 .badge {
-  display: inline-flex;
+ display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  padding: 6px 12px;
+  padding: 6px 10px;
   border-radius: 18px;
 
   font-size: 0.8rem;
@@ -725,8 +724,8 @@ body.scrolled .menu-logo {
   border: 1.5px solid #d9deea;
   background: #ffffff;
 
-  white-space: nowrap; 
-  flex-shrink: 0;
+  gap: 4px;
+  white-space: nowrap;
 }
 
 .badge span,
@@ -1115,6 +1114,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
