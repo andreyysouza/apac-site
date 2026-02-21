@@ -660,8 +660,6 @@ body.scrolled .menu-logo {
   justify-content: center;
   gap: 6px;
   margin: 12px 0;
-  flex-wrap: nowrap;       /* 🔥 nunca quebra */
-  overflow: hidden;        /* 🔥 impede ultrapassar card */
 }
 
 .badge-porte::before {
@@ -711,20 +709,19 @@ body.scrolled .menu-logo {
 }
 
 .badge {
- display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 6px 10px;
-  border-radius: 18px;
+  padding: 5px 10px;
+  border-radius: 16px;
 
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
 
   border: 1.5px solid #d9deea;
   background: #ffffff;
 
-  gap: 4px;
   white-space: nowrap;
 }
 
@@ -1114,6 +1111,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
