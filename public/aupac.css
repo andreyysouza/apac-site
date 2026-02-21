@@ -481,9 +481,33 @@ body.scrolled .menu-logo {
 }
 
 .icon-sexo {
-  font-size: 1.3rem;
-  font-weight: 800;
+  position: relative;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* símbolo masculino */
+.icon-sexo::before {
+  content: "♂";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.1rem;
+  font-weight: 900;
   color: #7c3aed;
+}
+
+/* símbolo feminino */
+.icon-sexo::after {
+  content: "♀";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #7c3aed; 
 }
 
 /* ================= SOBRE ================= */
@@ -639,16 +663,44 @@ body.scrolled .menu-logo {
   flex-wrap: wrap;
 }
 
+.badge-porte::before {
+  content: "🐾";
+  font-size: 1rem;
+  margin-right: 6px;
+}
+
+.badge-idade::before {
+  content: "🎂";
+  font-size: 1rem;
+  margin-right: 6px;
+}
+
+.sexo-macho::before {
+  content: "♂";
+  font-size: 1rem;
+  font-weight: 900;
+  margin-right: 6px;
+}
+
+.sexo-femea::before {
+  content: "♀";
+  font-size: 1rem;
+  font-weight: 900;
+  margin-right: 6px;
+}
+
 .sexo-macho {
   background: #e7f0ff;
   border: 1.5px solid #3b82f6;
-  color: #2563eb;
+  color: #1d4ed8;
+  font-weight: 700;
 }
 
 .sexo-femea {
   background: #ffe6ef;
   border: 1.5px solid #ec4899;
-  color: #db2777;
+  color: #be185d;
+  font-weight: 700;
 }
 
 .badge {
@@ -1055,6 +1107,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
