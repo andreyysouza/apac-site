@@ -222,7 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
         whatsapp: item.whatsapp,
         imagem: item.imagem,
         especial: item.especial || false, 
-        obs: item.obs || "",
         historia: item.obs || ""
       }));
 
@@ -275,8 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     
         ${pet.especial ? `<div class="modal-especial">
-          ⭐ Cão Especial<br>
-          ${pet.obs}
+        ⭐ Cão Especial
         </div>` : ""}
     
         <p class="modal-historia">
@@ -331,6 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
