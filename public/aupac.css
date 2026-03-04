@@ -908,6 +908,16 @@ body.scrolled .menu-logo {
   cursor: pointer;
 }
 
+.modal-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,16,81,0.25);
+  background: linear-gradient(135deg, #405881, #001051);
+}
+
+.modal-whatsapp:active {
+  transform: scale(0.97);
+}
+
 /* ================= PAGINAÇÃO ================= */
 
 #pagination-aupac {
@@ -1137,6 +1147,7 @@ body.scrolled .menu-logo {
 }
   
 } 
+
 
 
 
