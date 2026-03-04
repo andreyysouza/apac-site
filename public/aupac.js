@@ -221,7 +221,8 @@ document.addEventListener('DOMContentLoaded', () => {
         sexo: item.sexo,
         whatsapp: item.whatsapp,
         imagem: item.imagem,
-        especial: item.especial || false
+        especial: item.especial || false, 
+        obs: item.obs || "" 
       }));
 
       renderPage();
@@ -274,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         ${pet.especial ? `<div class="modal-especial">
           ⭐ Cão Especial<br>
-          ${pet.obs || "Este cão necessita de cuidados especiais."}
+          ${pet.obs}
         </div>` : ""}
     
         <p class="modal-historia">
@@ -329,6 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
