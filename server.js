@@ -155,6 +155,7 @@ app.post("/api/add/:tipo", upload.single("imagem"), async (req, res) => {
     especial: req.body.especial === "true",
     whatsapp: req.body.whatsapp || null,
     obs: req.body.obs || null,
+    historia: req.body.historia || null,
     imagem: fileUrlFromReqFile(req.file)
   };
 
@@ -190,7 +191,7 @@ app.put("/api/edit/:tipo/:id", upload.single("imagem"), async (req, res) => {
 
     const campos = [
       "nome", "preco", "descricao", "categoria",
-      "porte", "idade", "sexo", "whatsapp", "obs",  "especial"
+      "porte", "idade", "sexo", "whatsapp", "obs",  "especial", "historia"
     ];
 
     campos.forEach(c => {
@@ -232,6 +233,7 @@ app.delete("/api/delete/:tipo/:id", async (req, res) => {
 app.listen(PORT, () =>
   console.log(`Servidor rodando em http://localhost:${PORT}`)
 );
+
 
 
 
