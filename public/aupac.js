@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ${pet.historia || "Em breve contaremos mais sobre a história desse amigo incrível."}
         </p>
     
-        <button class="modal-whatsapp">Falar no WhatsApp</button>
+        <button class="modal-whatsapp">Quero adotar</button>
       `;
     
       body.querySelector(".modal-whatsapp").addEventListener("click", () => {
@@ -329,6 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
