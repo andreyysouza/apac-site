@@ -355,6 +355,7 @@ async function handleSaveDog(){
   const sexo = sel("#dog-sexo").value;
   const whatsapp = sel("#dog-whatsapp").value.trim();
   const obs = sel("#pet-obs").value.trim();
+  const historia = sel("#dog-obs").value.trim();
   const file = sel("#dog-img").files[0] || null;
   const especial = sel("#dog-especial").checked;
 
@@ -364,7 +365,8 @@ async function handleSaveDog(){
   fd.append("idade", idade);
   fd.append("sexo", sexo);
   fd.append("whatsapp", whatsapp);
-  fd.append("obs", obs);
+  fd.append("obs", obs);        // motivo especial
+  fd.append("historia", historia);  // história do cachorro
   fd.append("especial", especial);
   if(file) fd.append("imagem", file);
 
@@ -415,6 +417,7 @@ sel("#btn-export-aupac").addEventListener("click", ()=>{
 
 </body>
 </html>
+
 
 
 
