@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         whatsapp: item.whatsapp,
         imagem: item.imagem,
         especial: item.especial || false, 
-        historia: item.obs || ""
+        historia: item.historia|| ""
       }));
 
       renderPage();
@@ -329,6 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
