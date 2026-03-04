@@ -309,6 +309,7 @@ function openEditDog(i){
   sel("#dog-sexo").value = d.sexo || "macho";
   sel("#dog-obs").value = d.obs || "";
   sel("#dog-whatsapp").value = d.whatsapp || "";
+  sel("#pet-obs").value = d.obs || "";
   window.scrollTo({top:0, behavior:"smooth"});
 }
 
@@ -353,7 +354,7 @@ async function handleSaveDog(){
   const idade = sel("#dog-idade").value;
   const sexo = sel("#dog-sexo").value;
   const whatsapp = sel("#dog-whatsapp").value.trim();
-  const obs = sel("#dog-obs").value.trim();
+  const obs = sel("#pet-obs").value.trim();
   const file = sel("#dog-img").files[0] || null;
   const especial = sel("#dog-especial").checked;
 
@@ -414,6 +415,7 @@ sel("#btn-export-aupac").addEventListener("click", ()=>{
 
 </body>
 </html>
+
 
 
 
