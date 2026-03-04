@@ -307,9 +307,9 @@ function openEditDog(i){
   sel("#dog-porte").value = d.porte || "pequeno";
   sel("#dog-idade").value = d.idade || "filhote";
   sel("#dog-sexo").value = d.sexo || "macho";
-  sel("#dog-obs").value = d.obs || "";
   sel("#dog-whatsapp").value = d.whatsapp || "";
   sel("#pet-obs").value = d.obs || "";
+  sel("#dog-obs").value = d.historia || "";
   window.scrollTo({top:0, behavior:"smooth"});
 }
 
@@ -417,6 +417,7 @@ sel("#btn-export-aupac").addEventListener("click", ()=>{
 
 </body>
 </html>
+
 
 
 
