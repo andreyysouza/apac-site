@@ -222,7 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
         whatsapp: item.whatsapp,
         imagem: item.imagem,
         especial: item.especial || false, 
-        obs: item.obs || "" 
+        obs: item.obs || "",
+        historia: item.obs || ""
       }));
 
       renderPage();
@@ -330,6 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 });
+
 
 
 
