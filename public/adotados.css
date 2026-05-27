@@ -530,5 +530,31 @@ body{
     font-size: 18px;
   }
 
+  .adotados-section{
+    padding: 50px 20px;
+  }
+
+  .titulo-section h2{
+    font-size: 36px;
+    line-height: 1.1;
+  }
+
+  .titulo-section p{
+    font-size: 20px;
+  }
+
+  .cards-adotados{
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .card-imagem{
+    height: 360px;
+  }
+
+  .card-info h3{
+    font-size: 28px;
+  }
+
 }  
   
