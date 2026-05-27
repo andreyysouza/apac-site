@@ -214,7 +214,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const lista = Array.isArray(dados) ? dados : dados.cachorros || [];
 
-      allPets = lista.map(item => ({
+      allPets = lista
+        .filter(item => item.status !== "adotado")
+        .map(item => ({
         nome: item.nome,
         idade: item.idade,
         porte: item.porte,
@@ -223,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         imagem: item.imagem,
         especial: item.especial || false, 
         obs: item.obs || "",
-        historia: item.historia|| ""
+        descricao: item.descricao || ""
       }));
 
       renderPage();
@@ -280,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>` : ""}
     
         <p class="modal-historia">
-          ${pet.historia || "Em breve contaremos mais sobre a história desse amigo incrível."}
+          ${pet.descricao || "Em breve contaremos mais sobre a história desse amigo incrível."}
         </p>
     
         <button class="modal-whatsapp">Quero adotar</button>
