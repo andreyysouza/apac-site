@@ -32,66 +32,99 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScroll = current;
   });
 
- const adotados = [
-
-  {
-    nome: "Agatha",
-    imagem: "img/adotados/agatha.jpg",
-    descricao: "Agora vivendo com muito amor.",
-    data: "Maio de 2026"
-  },
-
-  {
-    nome: "Thor",
-    imagem: "img/adotados/thor.jpg",
-    descricao: "Ganhou uma família incrível.",
-    data: "Abril de 2026"
-  },
-
-  {
-    nome: "Mel",
-    imagem: "img/adotados/mel.jpg",
-    descricao: "Hoje vive cercada de carinho.",
-    data: "Abril de 2026"
-  }
-
-];
+  /* ================= ADOTADOS ================= */
 
 const container =
 document.getElementById("cardsAdotados");
 
-adotados.forEach(animal => {
+async function carregarAdotados() {
 
-  container.innerHTML += `
+  try {
 
-    <div class="card-adotado">
+    const response =
+    await fetch("/api/aupac");
 
-      <div class="card-imagem">
+    const dados =
+    await response.json();
 
-        <img src="${animal.imagem}">
+    const adotados = dados.filter(
+      animal => animal.status === "adotado"
+    );
 
-        <div class="selo">
-          ❤️ ADOTADO
+    container.innerHTML = "";
+
+    if(adotados.length === 0){
+
+      container.innerHTML = `
+        <p class="sem-adotados">
+          Nenhum animal adotado ainda.
+        </p>
+      `;
+
+      return;
+    }
+
+    adotados.forEach(animal => {
+
+      container.innerHTML += `
+
+        <div class="card-adotado">
+
+          <div class="card-imagem">
+
+            <img
+              src="${animal.imagem}"
+              alt="${animal.nome}"
+            >
+
+            <div class="selo">
+              ❤️ ADOTADO
+            </div>
+
+          </div>
+
+          <div class="card-info">
+
+            <h3>${animal.nome}</h3>
+
+            <p>
+              ${animal.descricao ||
+              "Agora vivendo em um lar cheio de amor."}
+            </p>
+
+            <span class="data">
+
+              ${animal.dataAdocao
+              ? `Adotado em ${animal.dataAdocao}`
+              : "Adoção concluída"}
+
+            </span>
+
+          </div>
+
         </div>
 
-      </div>
+      `;
 
-      <div class="card-info">
+    });
 
-        <h3>${animal.nome}</h3>
+  } catch(err){
 
-        <p>${animal.descricao}</p>
+    console.error(err);
 
-        <span class="data">
-          Adotado em ${animal.data}
-        </span>
+    container.innerHTML = `
+      <p class="sem-adotados">
+        Erro ao carregar animais adotados.
+      </p>
+    `;
+  }
 
-      </div>
+}
 
-    </div>
+carregarAdotados();  
 
-  `;
+const container =
+document.getElementById("cardsAdotados");
 
-});   
 }); // fecha DOMContentLoaded    
     
