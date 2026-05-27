@@ -93,3 +93,5 @@ adotados.forEach(animal => {
   `;
 
 });   
+}); // fecha DOMContentLoaded    
+    
