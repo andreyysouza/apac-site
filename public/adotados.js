@@ -31,3 +31,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
     lastScroll = current;
   });
+
+ const adotados = [
+
+  {
+    nome: "Agatha",
+    imagem: "img/adotados/agatha.jpg",
+    descricao: "Agora vivendo com muito amor.",
+    data: "Maio de 2026"
+  },
+
+  {
+    nome: "Thor",
+    imagem: "img/adotados/thor.jpg",
+    descricao: "Ganhou uma família incrível.",
+    data: "Abril de 2026"
+  },
+
+  {
+    nome: "Mel",
+    imagem: "img/adotados/mel.jpg",
+    descricao: "Hoje vive cercada de carinho.",
+    data: "Abril de 2026"
+  }
+
+];
+
+const container =
+document.getElementById("cardsAdotados");
+
+adotados.forEach(animal => {
+
+  container.innerHTML += `
+
+    <div class="card-adotado">
+
+      <div class="card-imagem">
+
+        <img src="${animal.imagem}">
+
+        <div class="selo">
+          ❤️ ADOTADO
+        </div>
+
+      </div>
+
+      <div class="card-info">
+
+        <h3>${animal.nome}</h3>
+
+        <p>${animal.descricao}</p>
+
+        <span class="data">
+          Adotado em ${animal.data}
+        </span>
+
+      </div>
+
+    </div>
+
+  `;
+
+});   
