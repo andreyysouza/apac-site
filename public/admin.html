@@ -109,6 +109,23 @@
             <option value="macho">Macho</option>
             <option value="femea">Fêmea</option>
           </select>
+        <div style="width:180px">
+
+          <label>Status</label>
+
+          <select id="dog-status">
+
+            <option value="disponivel">
+              Disponível
+            </option>
+
+            <option value="adotado">
+              Adotado
+            </option>
+
+          </select>
+
+        </div>
         </div>
         <div style="width:160px">
           <label>
@@ -120,10 +137,33 @@
         </div>
       </div>
 
-      <div class="row" style="margin-top:8px">
-        <div><label>Observação (apenas interna)</label><input id="dog-obs" type="text" placeholder="opcional"></div>
-        <div style="width:220px"><label>Imagem (upload)</label><input id="dog-img" type="file" accept="image/*"></div>
-      </div>
+  <div class="row" style="margin-top:8px">
+
+    <div>
+
+      <label>Descrição do animal</label>
+
+      <textarea
+        id="dog-descricao"
+        rows="4"
+        placeholder="Ex: Muito dócil, ama crianças e é extremamente brincalhão."
+      ></textarea>
+
+    </div>
+
+    <div style="width:220px">
+
+      <label>Imagem (upload)</label>
+
+      <input
+        id="dog-img"
+        type="file"
+        accept="image/*"
+      >
+
+    </div>
+
+  </div>
 
       <div class="row" style="margin-top:8px">
         <div style="width:220px"><label>WhatsApp</label><input id="dog-whatsapp" type="text"></div>
@@ -307,6 +347,8 @@ function openEditDog(i){
   sel("#dog-porte").value = d.porte || "pequeno";
   sel("#dog-idade").value = d.idade || "filhote";
   sel("#dog-sexo").value = d.sexo || "macho";
+  sel("#dog-status").value =
+  d.status || "disponivel";
   sel("#dog-whatsapp").value = d.whatsapp || "";
   sel("#pet-obs").value = d.obs || "";
   sel("#dog-descricao").value =
@@ -354,6 +396,8 @@ async function handleSaveDog(){
   const porte = sel("#dog-porte").value;
   const idade = sel("#dog-idade").value;
   const sexo = sel("#dog-sexo").value;
+  const status =
+  sel("#dog-status").value;
   const whatsapp = sel("#dog-whatsapp").value.trim();
   const obs = sel("#pet-obs").value.trim();
   const descricao =
@@ -366,6 +410,7 @@ async function handleSaveDog(){
   fd.append("porte", porte);
   fd.append("idade", idade);
   fd.append("sexo", sexo);
+  fd.append("status", status);
   fd.append("whatsapp", whatsapp);
   fd.append("obs", obs);        // motivo especial
   fd.append("descricao", descricao);  // história do cachorro
