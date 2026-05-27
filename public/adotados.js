@@ -123,8 +123,5 @@ async function carregarAdotados() {
 
 carregarAdotados();  
 
-const container =
-document.getElementById("cardsAdotados");
-
 }); // fecha DOMContentLoaded    
     
