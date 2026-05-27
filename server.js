@@ -152,10 +152,11 @@ app.post("/api/add/:tipo", upload.single("imagem"), async (req, res) => {
     porte: req.body.porte || null,
     idade: req.body.idade || null,
     sexo: req.body.sexo || null,
+    status: req.body.status || "disponivel",
     especial: req.body.especial === "true",
     whatsapp: req.body.whatsapp || null,
     obs: req.body.obs || null,
-    historia: req.body.historia || null,
+    descricao: req.body.descricao || "",
     imagem: fileUrlFromReqFile(req.file)
   };
 
@@ -190,13 +191,17 @@ app.put("/api/edit/:tipo/:id", upload.single("imagem"), async (req, res) => {
     const item = snap.data();
 
     const campos = [
-      "nome", "preco", "descricao", "categoria",
-      "porte", "idade", "sexo", "whatsapp", "obs",  "especial", "historia"
+      "porte", "idade", "sexo",
+      "whatsapp", "obs",
+      "especial", "descricao",
+      "status"
     ];
 
     campos.forEach(c => {
       if (req.body[c] !== undefined) item[c] = req.body[c];
     });
+    item.especial =
+    req.body.especial === "true"; 
 
     if (req.file) item.imagem = fileUrlFromReqFile(req.file);
 
