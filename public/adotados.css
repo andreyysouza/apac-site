@@ -351,85 +351,130 @@ body{
   color: #666;
 }
 
-/* GRID */
+/* ========================= SECTION ========================= */
+
+.adotados-section{
+  width: 100%;
+  padding: 80px 5%;
+}
+
+.titulo-section{
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.titulo-section h2{
+  font-size: 65px;
+  color: #001b5e;
+  margin-bottom: 10px;
+}
+
+.titulo-section p{
+  font-size: 28px;
+  color: #555;
+}
+
+/* ========================= GRID ========================= */
 
 .cards-adotados{
+  width: 100%;
+
   display: grid;
 
   grid-template-columns:
-  repeat(auto-fit,minmax(280px,1fr));
+  repeat(auto-fit, minmax(320px, 1fr));
 
-  gap: 30px;
+  gap: 35px;
+
+  align-items: start;
 }
 
-/* CARD */
+/* ========================= CARD ========================= */
 
 .card-adotado{
   background: white;
 
-  border-radius: 20px;
+  border-radius: 25px;
 
   overflow: hidden;
 
-  box-shadow: 0 5px 20px rgba(0,0,0,.08);
+  box-shadow:
+  0 8px 25px rgba(0,0,0,.08);
 
   transition: .3s;
+
+  position: relative;
 }
 
 .card-adotado:hover{
   transform: translateY(-8px);
 }
 
+/* IMAGEM */
+
 .card-imagem{
   position: relative;
-  height: 380px;
+
+  width: 100%;
+  height: 420px;
+
   overflow: hidden;
 }
 
 .card-imagem img{
   width: 100%;
   height: 100%;
+
   object-fit: cover;
+
+  display: block;
 }
+
+/* SELO */
 
 .selo{
   position: absolute;
 
-  top: 15px;
-  left: 15px;
+  top: 20px;
+  left: 20px;
 
   background: #001b5e;
-
   color: white;
 
-  padding: 8px 16px;
+  padding: 12px 22px;
 
-  border-radius: 30px;
+  border-radius: 40px;
 
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
+
+  z-index: 2;
 }
 
+/* INFO */
+
 .card-info{
-  padding: 25px;
+  padding: 28px;
 }
 
 .card-info h3{
-  font-size: 30px;
+  font-size: 36px;
   color: #001b5e;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .card-info p{
-  color: #666;
-  margin-bottom: 18px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #555;
+
+  margin-bottom: 20px;
 }
 
 .data{
-  font-size: 14px;
-  color: #999;
+  font-size: 15px;
+  color: #888;
 }
-
 /* ESTATISTICAS */
 
 .estatisticas{
