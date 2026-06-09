@@ -275,7 +275,7 @@ body{
 .capa-adotados {
   position: relative;
   min-height: 85vh;               /* ocupa boa parte da tela */
-  background-image: ("fundo.png"); /* SUA IMAGEM */
+  background-image: url("fundo.png"); /* SUA IMAGEM */
   background-size: cover;
   background-position: 65% center;
   background-repeat: no-repeat;
