@@ -279,7 +279,7 @@ body{
   height: 520px;
 
   background-image:
-  url('/img/banner-adotados.jpg');
+  url('fundo.png');
 
   background-size: cover;
   background-position: center 35%;
