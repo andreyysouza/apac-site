@@ -275,7 +275,7 @@ body{
 .capa-adotados {
   position: relative;
   min-height: 85vh;               /* ocupa boa parte da tela */
-  background-image: url("hero-aupac.webp"); /* SUA IMAGEM */
+  background-image: ("fundo.png"); /* SUA IMAGEM */
   background-size: cover;
   background-position: 65% center;
   background-repeat: no-repeat;
