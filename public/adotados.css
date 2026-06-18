@@ -603,12 +603,12 @@ body{
 
 } 
 
-@media (max-width:768px){
+@media(max-width:768px){
 
   .capa-adotados{
-    background-size: contain;
-    background-position: center bottom;
-    background-color: #dfe9f7;
+    background-size: cover;
+    background-position: 50% center;
+    min-height: 500px;
   }
 
   .capa-overlay{
