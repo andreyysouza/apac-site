@@ -537,30 +537,35 @@ body{
 
   .capa-adotados{
     background-size: cover;
-    background-position: 45% center;
+    background-position: 38% center;
     min-height: 650px;
   }
 
   .capa-overlay{
 
-    margin-top: 70px;
+    margin-top:0;
+    
+    transform: translateY(-80px);
   
     max-width: 320px;
   
     padding: 20px;
   }
+  
   .logo-aupac{
-    width: 60px;
+    width: 110px;
     margin-bottom: 15px;
   }
 
   .capa-adotados h1{
 
-    font-size: 2rem;
+   font-size: clamp(2.4rem, 5vw, 4rem);
+    
+   font-weight: 700;
+    
+   line-height: 1.1;
 
-    line-height: 1.1;
-
-    text-shadow:
+   text-shadow:
     0 2px 15px rgba(255,255,255,.9);
   }
 
