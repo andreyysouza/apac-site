@@ -286,6 +286,7 @@ body{
 
   text-align: center;
   color: #001051;
+  padding-top: 40px;
 }
   /* camada para garantir leitura do texto */
 .capa-adotados::before {
@@ -302,17 +303,19 @@ body{
   z-index: 1;
 }
 
-.capa-overlay{
+.capa-overlay {
+  position: relative;
+  z-index: 2;
 
-  background: rgba(255,255,255,.65);
+  max-width: 620px;
 
-  backdrop-filter: blur(8px);
+  padding: 25px;
 
-  border-radius: 25px;
+  background: rgba(255,255,255,.15);
 
-  padding: 30px;
+  backdrop-filter: blur(4px);
 
-  max-width: 700px;
+  border-radius: 24px;
 }
 
 .capa-adotados h1 {
@@ -536,104 +539,36 @@ body{
   padding: 60px 0;
 }  
 
-/* RESPONSIVO */
-
-@media(max-width:768px){
-
-  .hero-adotados{
-    height: 520px;
-
-    background-position:
-    center center;
-  }
-
-  .overlay{
-    background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.72) 0%,
-      rgba(0,0,0,.38) 100%
-    );
-  }
-
-  .hero-content{
-    margin: 0 25px;
-    max-width: 100%;
-  }
-
-  .hero-content h1{
-    font-size: 58px;
-    line-height: .95;
-
-    margin-bottom: 22px;
-  }
-
-  .hero-content p{
-    font-size: 18px;
-    line-height: 1.5;
-
-    margin-bottom: 28px;
-  }
-
-  .btn-hero{
-    width: 100%;
-    padding: 18px;
-    font-size: 18px;
-  }
-
-  .adotados-section{
-    padding: 50px 20px;
-  }
-
-  .titulo-section h2{
-    font-size: 36px;
-    line-height: 1.1;
-  }
-
-  .titulo-section p{
-    font-size: 20px;
-  }
-
-  .cards-adotados{
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  .card-imagem{
-    height: 360px;
-  }
-
-  .card-info h3{
-    font-size: 28px;
-  }
-
-} 
-
 @media(max-width:768px){
 
   .capa-adotados{
     background-size: cover;
     background-position: 55% center;
-    min-height: 500px;
+    min-height: 650px;
   }
 
   .capa-overlay{
 
-    width: calc(100% - 40px);
-
+    margin-top: 70px;
+  
+    max-width: 320px;
+  
     padding: 20px;
-
+  
+    background: rgba(255,255,255,.35);
+  
+    backdrop-filter: blur(6px);
+  
     border-radius: 20px;
   }
-
   .logo-aupac{
-    width: 80px;
+    width: 60px;
     margin-bottom: 15px;
   }
 
   .capa-adotados h1{
 
-    font-size: 2.4rem;
+    font-size: 2rem;
 
     line-height: 1.1;
   }
