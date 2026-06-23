@@ -302,11 +302,17 @@ body{
   z-index: 1;
 }
 
-.capa-overlay {
-  position: relative;
-  z-index: 2;
-  max-width: 550px;
-  padding: 20px;
+.capa-overlay{
+
+  background: rgba(255,255,255,.65);
+
+  backdrop-filter: blur(8px);
+
+  border-radius: 25px;
+
+  padding: 30px;
+
+  max-width: 700px;
 }
 
 .capa-adotados h1 {
@@ -607,17 +613,17 @@ body{
 
   .capa-adotados{
     background-size: cover;
-    background-position: 50% center;
+    background-position: 55% center;
     min-height: 500px;
   }
 
   .capa-overlay{
 
-    margin-top: 120px;
+    width: calc(100% - 40px);
 
-    max-width: 320px;
+    padding: 20px;
 
-    padding: 0 20px;
+    border-radius: 20px;
   }
 
   .logo-aupac{
