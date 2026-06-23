@@ -323,13 +323,6 @@ body{
   margin: 14px 0 26px;
 }
 
-.capa-adotados h1,
-.capa-adotados h2{
-
-  text-shadow:
-  0 2px 15px rgba(255,255,255,.9);
-}
-
 .logo-aupac {
   width: 120px;
   margin-bottom: 20px;
@@ -555,12 +548,6 @@ body{
     max-width: 320px;
   
     padding: 20px;
-  
-    background: rgba(255,255,255,.35);
-  
-    backdrop-filter: blur(6px);
-  
-    border-radius: 20px;
   }
   .logo-aupac{
     width: 60px;
@@ -572,6 +559,9 @@ body{
     font-size: 2rem;
 
     line-height: 1.1;
+
+    text-shadow:
+    0 2px 15px rgba(255,255,255,.9);
   }
 
   .capa-adotados h2{
@@ -581,8 +571,12 @@ body{
     line-height: 1.4;
 
     margin: 15px 0 25px;
+
+    text-shadow:
+    0 2px 15px rgba(255,255,255,.9);
   }
 
+  
   .btn{
 
     width: 100%;
