@@ -542,9 +542,9 @@ body{
     
       background-size: cover;
     
-      background-position: center top;
+      background-position: center -40px;
        
-      min-height: 560px;
+      min-height: 650px;
     }
 
    .capa-overlay{
@@ -559,6 +559,16 @@ body{
     padding: 15px;
   
     text-align: center;
+
+    transform: translateY(-80px);
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(255,255,255,.55) 0%,
+        rgba(255,255,255,.25) 50%,
+        rgba(255,255,255,0) 100%
+      ); 
   
   }
   
