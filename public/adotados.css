@@ -537,32 +537,18 @@ body{
 
    .capa-adotados{
   
-      background-image:
-      url("fundo-mobile.png");
-    
+      background-image: url("fundo-mobile.png");
       background-size: cover;
-    
-      background-position: center -40px;
-       
-      min-height: 620px;
+
+      background-position: 65% 85%;
+      min-height: 100vh;
+
     }
 
    .capa-overlay{
 
-    position: relative;
-    z-index: 2;
-  
-    max-width: 320px;
-  
-    margin: 0 auto;
-  
-    padding: 10px 20px;
-  
-    text-align: center;
-
-    transform: translateY(-80px);
-
-    top: -40px; 
+    align-self: flex-start;
+    margin-top: 40px;
   
   }
   
@@ -573,31 +559,17 @@ body{
 
   .capa-adotados h1{
 
-   font-size: 2.7rem;
-
-   line-height: 1;
-
-   margin-bottom: 12px; 
-
-   color:#001051;
-
+   font-size: 1.45rem;
+   line-height: 1.25;
    text-shadow:
-    0 0 12px rgba(255,255,255,1),
-    0 0 25px rgba(255,255,255,.95),
-    0 0 40px rgba(255,255,255,.8);
+      0 2px 6px rgba(255,255,255,.85),
+      0 1px 1px rgba(0,0,0,.15);
+
   }
 
   .capa-adotados h2{
-
-    font-size: 1.05rem;
-
-    line-height: 1.35;
-
-    margin: 18px;
-
-    text-shadow:
-     0 0 8px rgba(255,255,255,1),
-     0 0 18px rgba(255,255,255,.9);
+    text-shadow: 0 1px 4px rgba(255,255,255,.9);
+    margin-top: 140px;
   }
 
   
