@@ -401,57 +401,40 @@ body{
 /* ========================= GRID ========================= */
 
 .cards-adotados{
-  width: 100%;
-
-  display: grid;
+  display:grid;
 
   grid-template-columns:
-  repeat(auto-fit, minmax(320px, 1fr));
+  repeat(auto-fit,minmax(280px,320px));
 
-  gap: 35px;
+  justify-content:center;
 
-  align-items: start;
+  gap:40px;
 }
 
 /* ========================= CARD ========================= */
 
 .card-adotado{
-  background: white;
+  overflow:hidden;
 
-  border-radius: 25px;
+  border-radius:24px;
 
-  overflow: hidden;
+  background:#fff;
 
   box-shadow:
-  0 8px 25px rgba(0,0,0,.08);
+  0 10px 30px rgba(0,0,0,.08);
 
-  transition: .3s;
-
-  position: relative;
+  transition:.3s;
 }
 
 .card-adotado:hover{
-  transform: translateY(-8px);
+  transform:translateY(-8px);
+  box-shadow:
+  0 18px 40px rgba(0,0,0,.15);
 }
 
-/* IMAGEM */
-
-.card-imagem{
-  position: relative;
-
-  width: 100%;
-  height: 420px;
-
-  overflow: hidden;
-}
-
-.card-imagem img{
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  display: block;
+.card-adotado img{
+  width:100%;
+  display:block;
 }
 
 /* SELO */
@@ -475,30 +458,6 @@ body{
   z-index: 2;
 }
 
-/* INFO */
-
-.card-info{
-  padding: 28px;
-}
-
-.card-info h3{
-  font-size: 36px;
-  color: #001b5e;
-  margin-bottom: 15px;
-}
-
-.card-info p{
-  font-size: 18px;
-  line-height: 1.5;
-  color: #555;
-
-  margin-bottom: 20px;
-}
-
-.data{
-  font-size: 15px;
-  color: #888;
-}
 /* ESTATISTICAS */
 
 .estatisticas{
