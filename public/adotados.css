@@ -537,38 +537,29 @@ body{
 
    .capa-adotados{
   
-    background-image:
-    url("fundo-mobile.png");
-  
-    background-size: 115%;
-  
-    background-position: center top;
-     
-    min-height: 560px;
-  }
+      background-image:
+      url("fundo-mobile.png");
+    
+      background-size: cover;
+    
+      background-position: center top;
+       
+      min-height: 560px;
+    }
 
-  .capa-overlay{
+   .capa-overlay{
+
     position: relative;
     z-index: 2;
   
-    max-width: 700px;
+    max-width: 320px;
+  
+    margin: 0 auto;
+  
+    padding: 15px;
   
     text-align: center;
-
-    width: 90%;
-
-    margin: 0 auto;
-
-    transform: translateY(-20px);
-
-    padding: 30px;
-
-    background: radial-gradient(
-      circle,
-      rgba(255,255,255,.55) 0%,
-      rgba(255,255,255,.25) 45%,
-      rgba(255,255,255,0) 100%
-    );
+  
   }
   
   .logo-aupac{
@@ -584,9 +575,12 @@ body{
     
    line-height: 1.1;
 
+   color:#001051;
+
    text-shadow:
-    0 0 10px rgba(255,255,255,.95),
-    0 0 20px rgba(255,255,255,.8);
+    0 0 12px rgba(255,255,255,1),
+    0 0 25px rgba(255,255,255,.95),
+    0 0 40px rgba(255,255,255,.8);
   }
 
   .capa-adotados h2{
@@ -598,7 +592,8 @@ body{
     margin: 15px 0 25px;
 
     text-shadow:
-      0 0 8px rgba(255,255,255,.9);
+     0 0 8px rgba(255,255,255,1),
+     0 0 18px rgba(255,255,255,.9);
   }
 
   
