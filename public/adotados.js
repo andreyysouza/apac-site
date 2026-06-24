@@ -71,37 +71,25 @@ async function carregarAdotados() {
         <div class="card-adotado">
 
           <div class="card-imagem">
-
-            <img
-              src="${animal.imagem}"
-              alt="${animal.nome}"
-            >
+            <img src="${animal.imagem}">
+          </div>
 
             <div class="selo">
               ❤️ ADOTADO
             </div>
 
-          </div>
-
           <div class="card-info">
 
             <h3>${animal.nome}</h3>
-
-            <p>
-              ${animal.descricao ||
-              "Agora vivendo em um lar cheio de amor."}
-            </p>
-
+        
+            <p>${animal.descricao}</p>
+        
             <span class="data">
-
-              ${animal.dataAdocao
-              ? `Adotado em ${animal.dataAdocao}`
-              : "Adoção concluída"}
-
+              ${animal.dataAdocao}
             </span>
-
+        
           </div>
-
+        
         </div>
 
       `;
