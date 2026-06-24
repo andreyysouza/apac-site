@@ -561,14 +561,6 @@ body{
     text-align: center;
 
     transform: translateY(-80px);
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(255,255,255,.55) 0%,
-        rgba(255,255,255,.25) 50%,
-        rgba(255,255,255,0) 100%
-      ); 
   
   }
   
